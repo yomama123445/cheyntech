@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review your cart and proceed to checkout — CheynTech Online Store">
+  <title>My Cart | CheynTech</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .cart-section { padding: 2.5rem 0 4rem; }
+    .cart-item-card {
+      background: #fff;
+      border: 1.5px solid var(--ct-border);
+      border-radius: var(--ct-radius);
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--ct-transition);
+    }
+    .cart-item-card:hover { border-color: var(--ct-primary); box-shadow: var(--ct-shadow); }
+    .cart-item-img {
+      width: 88px; height: 88px;
+      border-radius: var(--ct-radius-sm);
+      object-fit: cover;
+      background: var(--ct-primary-light);
+      flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name { font-weight: 700; font-size: 0.95rem; color: var(--ct-text); margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cart-item-variant { font-size: 0.8rem; color: var(--ct-muted); margin-bottom: 0.35rem; }
+    .qty-stepper { display: inline-flex; align-items: center; border: 1.5px solid var(--ct-border); border-radius: var(--ct-radius-sm); overflow: hidden; user-select: none; }
+    .qty-stepper button { background: none; border: none; padding: 0.3rem 0.65rem; font-size: 1.1rem; line-height: 1; cursor: pointer; color: var(--ct-text); transition: background 0.15s; }
+    .qty-stepper button:hover { background: var(--ct-primary-light); color: var(--ct-primary); }
+    .qty-stepper .qty-val { min-width: 32px; text-align: center; font-weight: 700; font-size: 0.88rem; border-left: 1.5px solid var(--ct-border); border-right: 1.5px solid var(--ct-border); padding: 0.3rem 0; }
+    .cart-item-price { font-weight: 800; color: var(--ct-primary); font-size: 1rem; white-space: nowrap; }
+    .cart-item-unit  { font-size: 0.75rem; color: var(--ct-muted); }
+    .btn-remove { background: none; border: none; color: var(--ct-muted); font-size: 1.15rem; cursor: pointer; padding: 0.3rem 0.5rem; border-radius: var(--ct-radius-sm); transition: var(--ct-transition); flex-shrink: 0; }
+    .btn-remove:hover { color: #dc3545; background: #fee2e2; }
+    .summary-card { background: #fff; border: 1.5px solid var(--ct-border); border-radius: var(--ct-radius); padding: 1.5rem; position: sticky; top: 90px; }
+    .summary-card .summary-title { font-weight: 800; font-size: 1.05rem; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--ct-border); }
+    .summary-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.7rem; font-size: 0.9rem; }
+    .summary-row .label { color: var(--ct-muted); }
+    .summary-row .value { font-weight: 600; }
+    .summary-total { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; margin-top: 0.5rem; border-top: 2px solid var(--ct-border); font-weight: 800; font-size: 1.05rem; }
+    .summary-total .value { color: var(--ct-primary); font-size: 1.25rem; }
+    .shipping-note { background: var(--ct-primary-light); border-radius: var(--ct-radius-sm); padding: 0.65rem 0.85rem; font-size: 0.8rem; color: #c2185b; display: flex; gap: 0.4rem; align-items: flex-start; margin-bottom: 1rem; }
+    .secure-note { font-size: 0.75rem; color: var(--ct-muted); text-align: center; margin-top: 0.65rem; }
+    .empty-cart { text-align: center; padding: 4rem 1rem; }
+    .empty-cart .empty-icon { width: 100px; height: 100px; border-radius: 50%; background: var(--ct-primary-light); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: var(--ct-primary); margin: 0 auto 1.5rem; }
+    .empty-cart h3 { font-weight: 800; font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .empty-cart p  { color: var(--ct-muted); margin-bottom: 1.5rem; }
+    @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(233,30,140,0.4); } 70% { box-shadow: 0 0 0 10px rgba(233,30,140,0); } 100% { box-shadow: 0 0 0 0 rgba(233,30,140,0); } }
+    .step.active .step-circle { animation: pulse-ring 1.6s ease-out infinite; }
+    @media (max-width: 575.98px) { .cart-item-card { flex-wrap: wrap; } .cart-item-img { width: 70px; height: 70px; } }
+  </style>
+</head>
+<body>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="search-close" id="searchClose" aria-label="Close search"><i class="bi bi-x"></i></button>
+    <form class="search-inner" id="searchForm" role="search">
+      <input type="search" id="searchInput" placeholder="Search for phones, tablets…" autocomplete="off">
+      <p class="search-hint">Press Enter to search · Esc to close</p>
+    </form>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-ct sticky-top" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo.svg" alt="CheynTech" width="38" height="38">
+        <span class="brand-name">CheynTech</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+        aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Catalog</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="track-order.html">Track Order</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3 nav-icons">
+          <a href="#" id="searchToggle" aria-label="Search"><i class="bi bi-search"></i></a>
+          <a href="cart.html" class="position-relative" aria-label="Shopping cart">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" style="display:none;">0</span>
+          </a>
+          <a href="login.html" aria-label="Account"><i class="bi bi-person-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-wrap">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="cart-section">
+    <div class="container">
+
+      <h1 class="fw-800 mb-4" style="font-size:1.6rem;">
+        <i class="bi bi-cart3 me-2" style="color:var(--ct-primary);"></i>My Cart
+      </h1>
+
+      <!-- EMPTY STATE -->
+      <div id="emptyCartState" class="empty-cart d-none">
+        <div class="empty-icon">
+          <i class="bi bi-cart-x"></i>
+        </div>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added any items yet.<br>Browse our gadgets and find your next favorite!</p>
+        <a href="catalog.html" class="btn btn-ct px-4">
+          <i class="bi bi-grid me-2"></i>Browse Products
+        </a>
+      </div>
+
+      <!-- CART CONTENT -->
+      <div id="cartContent" class="row g-4">
+
+        <!-- LEFT: item list -->
+        <div class="col-lg-8">
+          <div id="cartItemList" class="d-flex flex-column gap-3"></div>
+          <div class="mt-3">
+            <a href="catalog.html" class="text-decoration-none fw-600" style="font-size:0.88rem; color:var(--ct-muted);">
+              <i class="bi bi-arrow-left me-1"></i> Continue Shopping
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div class="col-lg-4">
+          <div class="summary-card">
+            <div class="summary-title">
+              <i class="bi bi-receipt me-2" style="color:var(--ct-primary);"></i>Order Summary
+            </div>
+
+            <div class="shipping-note">
+              <i class="bi bi-info-circle-fill flex-shrink-0 mt-1" style="font-size:0.85rem;"></i>
+              <span>Shipping will be confirmed based on your fulfillment option (pickup or delivery) at checkout.</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="label">Subtotal (<span id="summaryItemCount">0</span> items)</span>
+              <span class="value" id="summarySubtotal">&#8369;0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">Shipping</span>
+              <span class="value text-muted" style="font-size:0.8rem;">Calculated at checkout</span>
+            </div>
+
+            <div class="summary-total">
+              <span>Total</span>
+              <span class="value" id="summaryTotal">&#8369;0</span>
+            </div>
+
+            <a href="checkout.html" class="btn btn-ct w-100 mt-4 py-3" id="checkoutBtn" style="font-size:1rem;">
+              <i class="bi bi-lock-fill me-2"></i>Proceed to Checkout
+            </a>
+
+            <p class="secure-note">
+              <i class="bi bi-shield-check me-1"></i>Secure checkout &middot; Manual payment confirmation
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /cartContent -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer mt-auto">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6">
+          <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none mb-3">
+            <img src="assets/img/logo.svg" alt="CheynTech" width="34" height="34">
+            <span class="footer-brand-name">CheynTech</span>
+          </a>
+          <p class="mb-3">Your trusted source for pre-owned, refurbished, and brand-new gadgets in the Philippines.</p>
+          <div class="social-links d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 offset-md-0 col-lg-2">
+          <h6 class="footer-heading">Shop</h6>
+          <div class="footer-links">
+            <a href="catalog.html?cat=preowned">Pre-owned iPhones</a>
+            <a href="catalog.html?cat=new">New iPhones</a>
+            <a href="catalog.html?cat=android">Android</a>
+            <a href="catalog.html?cat=tablet">Tablets</a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Help</h6>
+          <div class="footer-links">
+            <a href="track-order.html">Track Order</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Account</h6>
+          <div class="footer-links">
+            <a href="login.html">Log In</a>
+            <a href="login.html#register">Register</a>
+            <a href="cart.html">My Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        &copy; 2026 CheynTech Trading. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    function conditionBadge(condition) {
+      const map = { 'Pre-owned': 'badge-preowned', 'Refurbished': 'badge-refurbished', 'Brand New': 'badge-available' };
+      const cls = map[condition] || 'badge-refurbished';
+      return '<span class="badge-ct ' + cls + '">' + (condition || 'Pre-owned') + '</span>';
+    }
+
+    function seedSampleCart() {
+      const existing = CheynCart.get();
+      if (existing.length === 0) {
+        CheynCart.save([
+          { id: 'iphone13pro-128-graphite', name: 'iPhone 13 Pro', variant: '128GB', color: 'Graphite', condition: 'Pre-owned',   price: 32500, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro' },
+          { id: 'iphone12-64-blue',         name: 'iPhone 12',     variant: '64GB',  color: 'Blue',     condition: 'Refurbished', price: 21800, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12' }
+        ]);
+      }
+    }
+
+    function buildItemCard(item, index) {
+      var lineTotal = item.price * (item.qty || 1);
+      return '<div class="cart-item-card" data-index="' + index + '">' +
+        '<img src="' + (item.image || 'https://placehold.co/400x400/fce4ec/e91e8c?text=Product') + '" alt="' + item.name + '" class="cart-item-img" loading="lazy" onerror="this.src=\'https://placehold.co/400x400/fce4ec/e91e8c?text=Product\'">' +
+        '<div class="cart-item-info">' +
+          '<div class="cart-item-name">' + item.name + '</div>' +
+          '<div class="cart-item-variant">' + (item.variant || '') + (item.color ? ' &middot; ' + item.color : '') + '</div>' +
+          conditionBadge(item.condition) +
+          '<div class="mt-2">' +
+            '<div class="qty-stepper" role="group" aria-label="Quantity">' +
+              '<button type="button" class="qty-btn-minus" data-index="' + index + '" aria-label="Decrease">&minus;</button>' +
+              '<span class="qty-val">' + item.qty + '</span>' +
+              '<button type="button" class="qty-btn-plus" data-index="' + index + '" aria-label="Increase">+</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="text-end flex-shrink-0">' +
+          '<div class="cart-item-unit mb-1">Unit: ' + formatPrice(item.price) + '</div>' +
+          '<div class="cart-item-price">' + formatPrice(lineTotal) + '</div>' +
+        '</div>' +
+        '<button class="btn-remove btn-remove-item" data-index="' + index + '" aria-label="Remove from cart"><i class="bi bi-trash3"></i></button>' +
+      '</div>';
+    }
+
+    function updateSummary() {
+      var cart     = CheynCart.get();
+      var count    = cart.reduce(function(s,i){ return s + (i.qty||1); }, 0);
+      var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
+      document.getElementById('summaryItemCount').textContent = count;
+      document.getElementById('summarySubtotal').textContent  = formatPrice(subtotal);
+      document.getElementById('summaryTotal').textContent     = formatPrice(subtotal);
+    }
+
+    function renderCart() {
+      var cart        = CheynCart.get();
+      var emptyState  = document.getElementById('emptyCartState');
+      var cartContent = document.getElementById('cartContent');
+      var listEl      = document.getElementById('cartItemList');
+
+      if (!cart.length) {
+        emptyState.classList.remove('d-none');
+        cartContent.classList.add('d-none');
+        return;
+      }
+
+      emptyState.classList.add('d-none');
+      cartContent.classList.remove('d-none');
+      listEl.innerHTML = cart.map(function(item, i){ return buildItemCard(item, i); }).join('');
+      updateSummary();
+    }
+
+    document.getElementById('cartItemList').addEventListener('click', function(e) {
+      var minusBtn  = e.target.closest('.qty-btn-minus');
+      var plusBtn   = e.target.closest('.qty-btn-plus');
+      var removeBtn = e.target.closest('.btn-remove-item');
+
+      if (minusBtn) {
+        var idx = +minusBtn.dataset.index;
+        var cart = CheynCart.get();
+        var newQty = (cart[idx].qty || 1) - 1;
+        if (newQty <= 0) { CheynCart.remove(idx); showToast('Item removed from cart', 'info'); }
+        else { CheynCart.updateQty(idx, newQty); }
+        renderCart();
+      }
+      if (plusBtn) {
+        var idx2 = +plusBtn.dataset.index;
+        var cart2 = CheynCart.get();
+        CheynCart.updateQty(idx2, (cart2[idx2].qty || 1) + 1);
+        renderCart();
+      }
+      if (removeBtn) {
+        var idx3 = +removeBtn.dataset.index;
+        var cart3 = CheynCart.get();
+        var name = cart3[idx3] ? cart3[idx3].name : 'Item';
+        CheynCart.remove(idx3);
+        showToast(name + ' removed from cart', 'info');
+        renderCart();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      seedSampleCart();
+      renderCart();
+    });
+  })();
+  </script>
+</body>
+</html>
