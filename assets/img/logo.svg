@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#e91e8c"/>
+  <!-- Cherry blossom petals -->
+  <ellipse cx="60" cy="32" rx="10" ry="20" fill="white" fill-opacity="0.85" transform="rotate(0,60,60)"/>
+  <ellipse cx="60" cy="32" rx="10" ry="20" fill="white" fill-opacity="0.85" transform="rotate(72,60,60)"/>
+  <ellipse cx="60" cy="32" rx="10" ry="20" fill="white" fill-opacity="0.85" transform="rotate(144,60,60)"/>
+  <ellipse cx="60" cy="32" rx="10" ry="20" fill="white" fill-opacity="0.85" transform="rotate(216,60,60)"/>
+  <ellipse cx="60" cy="32" rx="10" ry="20" fill="white" fill-opacity="0.85" transform="rotate(288,60,60)"/>
+  <!-- Center cap -->
+  <circle cx="60" cy="60" r="17" fill="#e91e8c"/>
+  <circle cx="60" cy="60" r="14" fill="white" fill-opacity="0.15"/>
+  <!-- Initials -->
+  <text x="60" y="66" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="16" fill="white" letter-spacing="-0.5">CT</text>
+</svg>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in or create your CheynTech account to start shopping for gadgets.">
+  <title>Log In / Register | CheynTech</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body { background:#f8f9fa; min-height:100vh; display:flex; flex-direction:column; }
+    .auth-header { background:#1a1a2e; padding:.9rem 0; }
+    .auth-header a { text-decoration:none; display:flex; align-items:center; gap:.6rem; justify-content:center; }
+    .auth-header .brand-name { font-size:1.2rem; font-weight:700; color:#fff; letter-spacing:-.3px; }
+    .auth-wrapper { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem 1rem; }
+    .auth-card { background:#fff; border-radius:1rem; box-shadow:0 8px 32px rgba(0,0,0,.08); width:100%; max-width:480px; overflow:hidden; }
+    .auth-tabs .nav-tabs { border-bottom:2px solid #f0f0f0; padding:0 1.5rem; }
+    .auth-tabs .nav-link { border:none; border-bottom:3px solid transparent; font-weight:600; color:#888; padding:1rem 1.25rem; margin-bottom:-2px; transition:color .2s,border-color .2s; background:none; }
+    .auth-tabs .nav-link:hover { color:#e91e8c; }
+    .auth-tabs .nav-link.active { color:#e91e8c; border-bottom-color:#e91e8c; }
+    .auth-card-body { padding:2rem 2rem 1.5rem; }
+    @media (max-width:480px) { .auth-card-body { padding:1.5rem 1.25rem 1.25rem; } }
+    .auth-footer-text { color:#aaa; font-size:.8rem; margin-top:1.5rem; }
+    .pass-toggle { border-left:0; background:#fff; color:#888; }
+    .pass-toggle:hover { color:#e91e8c; background:#fff; }
+    .form-control:focus { border-color:#e91e8c; box-shadow:0 0 0 .2rem rgba(233,30,140,.15); }
+    .forgot-link { color:#e91e8c; font-size:.85rem; text-decoration:none; }
+    .forgot-link:hover { text-decoration:underline; }
+    .terms-label a { color:#e91e8c; }
+  </style>
+</head>
+<body>
+  <header class="auth-header">
+    <div class="container text-center">
+      <a href="index.html">
+        <img src="assets/img/logo.svg" alt="CheynTech logo" width="34" height="34">
+        <span class="brand-name">CheynTech</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="auth-wrapper">
+    <div class="text-center mb-4">
+      <img src="assets/img/logo.svg" alt="" width="56" height="56" class="mb-2">
+      <h1 class="h4 fw-bold mb-0" style="color:#1a1a2e;">Welcome to CheynTech</h1>
+      <p class="text-muted small mt-1">Your trusted gadget store in Iloilo City</p>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <ul class="nav nav-tabs" id="authTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab" aria-controls="loginPane" aria-selected="true">
+              <i class="bi bi-box-arrow-in-right me-1"></i>Log In
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerPane" type="button" role="tab" aria-controls="registerPane" aria-selected="false">
+              <i class="bi bi-person-plus me-1"></i>Register
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <!-- LOG IN PANE -->
+          <div class="tab-pane fade show active" id="loginPane" role="tabpanel" aria-labelledby="login-tab">
+            <div class="auth-card-body">
+              <h2 class="h5 fw-bold mb-1" style="color:#1a1a2e;">Log In to Your Account</h2>
+              <p class="text-muted small mb-4">Enter your credentials to continue.</p>
+              <form id="loginForm" novalidate>
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" id="loginEmail" placeholder="you@email.com" autocomplete="email" required>
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label fw-semibold">Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control border-end-0" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+                    <button class="btn btn-outline-secondary pass-toggle" type="button" id="loginPassToggle" aria-label="Show password">
+                      <i class="bi bi-eye" id="loginPassIcon"></i>
+                    </button>
+                  </div>
+                  <div class="invalid-feedback">Please enter your password.</div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                  <div class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label small" for="rememberMe">Remember me</label>
+                  </div>
+                  <a href="#" class="forgot-link">Forgot your password?</a>
+                </div>
+                <div class="d-grid mb-3">
+                  <button type="submit" class="btn btn-ct btn-lg"><i class="bi bi-box-arrow-in-right me-2"></i>Log In</button>
+                </div>
+                <p class="text-center text-muted small mb-0">
+                  Don't have an account? <a href="#" class="forgot-link fw-semibold" id="switchToRegister">Create one</a>
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <!-- REGISTER PANE -->
+          <div class="tab-pane fade" id="registerPane" role="tabpanel" aria-labelledby="register-tab">
+            <div class="auth-card-body">
+              <h2 class="h5 fw-bold mb-1" style="color:#1a1a2e;">Create an Account</h2>
+              <p class="text-muted small mb-4">Join CheynTech and start shopping today.</p>
+              <form id="registerForm" novalidate>
+                <div class="mb-3">
+                  <label for="regName" class="form-label fw-semibold">Full Name</label>
+                  <input type="text" class="form-control" id="regName" placeholder="Juan dela Cruz" autocomplete="name" required>
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="regEmail" class="form-label fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" id="regEmail" placeholder="you@email.com" autocomplete="email" required>
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="regPhone" class="form-label fw-semibold">Phone Number</label>
+                  <input type="tel" class="form-control" id="regPhone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+                </div>
+                <div class="mb-3">
+                  <label for="regPassword" class="form-label fw-semibold">Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control border-end-0" id="regPassword" placeholder="Create a strong password" autocomplete="new-password" required minlength="8">
+                    <button class="btn btn-outline-secondary pass-toggle" type="button" id="regPassToggle" aria-label="Show password">
+                      <i class="bi bi-eye" id="regPassIcon"></i>
+                    </button>
+                  </div>
+                  <div class="invalid-feedback">Password must be at least 8 characters.</div>
+                  <div class="form-text" style="font-size:.78rem;">Minimum 8 characters.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="regConfirmPassword" class="form-label fw-semibold">Confirm Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control border-end-0" id="regConfirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
+                    <button class="btn btn-outline-secondary pass-toggle" type="button" id="regConfirmPassToggle" aria-label="Show confirm password">
+                      <i class="bi bi-eye" id="regConfirmPassIcon"></i>
+                    </button>
+                  </div>
+                  <div class="invalid-feedback" id="confirmPassError">Passwords do not match.</div>
+                </div>
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                  <label class="form-check-label small terms-label" for="agreeTerms">
+                    I agree to the <a href="#">Terms and Conditions</a>
+                  </label>
+                  <div class="invalid-feedback">You must agree to the Terms and Conditions.</div>
+                </div>
+                <div class="d-grid mb-3">
+                  <button type="submit" class="btn btn-ct btn-lg"><i class="bi bi-person-check me-2"></i>Create Account</button>
+                </div>
+                <p class="text-center text-muted small mb-0">
+                  Already have an account? <a href="#" class="forgot-link fw-semibold" id="switchToLogin">Log in</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="auth-footer-text text-center">&copy; 2026 CheynTech Trading. All Rights Reserved.</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // Activate tab from hash
+      function activateTabFromHash() {
+        if (window.location.hash === '#register') {
+          bootstrap.Tab.getOrCreateInstance(document.getElementById('register-tab')).show();
+        }
+      }
+      activateTabFromHash();
+      window.addEventListener('hashchange', activateTabFromHash);
+
+      // Cross-link tab switches
+      document.getElementById('switchToRegister').addEventListener('click', function (e) {
+        e.preventDefault();
+        bootstrap.Tab.getOrCreateInstance(document.getElementById('register-tab')).show();
+        history.replaceState(null, '', '#register');
+      });
+      document.getElementById('switchToLogin').addEventListener('click', function (e) {
+        e.preventDefault();
+        bootstrap.Tab.getOrCreateInstance(document.getElementById('login-tab')).show();
+        history.replaceState(null, '', window.location.pathname);
+      });
+
+      // Password toggle helper
+      function wirePassToggle(btnId, inputId, iconId) {
+        var btn = document.getElementById(btnId);
+        var inp = document.getElementById(inputId);
+        var ico = document.getElementById(iconId);
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var isPass = inp.type === 'password';
+          inp.type = isPass ? 'text' : 'password';
+          ico.className = isPass ? 'bi bi-eye-slash' : 'bi bi-eye';
+          btn.setAttribute('aria-label', isPass ? 'Hide password' : 'Show password');
+          inp.focus();
+        });
+      }
+      wirePassToggle('loginPassToggle', 'loginPassword', 'loginPassIcon');
+      wirePassToggle('regPassToggle', 'regPassword', 'regPassIcon');
+      wirePassToggle('regConfirmPassToggle', 'regConfirmPassword', 'regConfirmPassIcon');
+
+      // Login form
+      var loginForm = document.getElementById('loginForm');
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!loginForm.checkValidity()) { loginForm.classList.add('was-validated'); return; }
+        alert('Login submitted! (Backend integration pending)');
+      });
+
+      // Register form
+      var registerForm = document.getElementById('registerForm');
+      registerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var pass = document.getElementById('regPassword').value;
+        var conf = document.getElementById('regConfirmPassword');
+        if (pass !== conf.value) {
+          conf.setCustomValidity('Passwords do not match.');
+        } else {
+          conf.setCustomValidity('');
+        }
+        if (!registerForm.checkValidity()) { registerForm.classList.add('was-validated'); return; }
+        alert('Account created! (Backend integration pending)');
+      });
+
+      document.getElementById('regConfirmPassword').addEventListener('input', function () {
+        this.setCustomValidity('');
+      });
+    })();
+  </script>
+</body>
+</html>

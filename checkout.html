@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your order — CheynTech Checkout">
+  <title>Checkout | CheynTech</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .checkout-section { padding: 2.5rem 0 5rem; }
+
+    /* Section headers inside form */
+    .form-section-heading {
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ct-primary);
+      border-bottom: 2px solid var(--ct-primary-light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+
+    /* Radio option cards */
+    .radio-card {
+      border: 1.5px solid var(--ct-border);
+      border-radius: var(--ct-radius-sm);
+      padding: 0.85rem 1.1rem;
+      cursor: pointer;
+      transition: var(--ct-transition);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .radio-card:hover { border-color: var(--ct-primary); background: var(--ct-primary-soft); }
+    .radio-card.selected { border-color: var(--ct-primary); background: var(--ct-primary-soft); }
+    .radio-card input[type="radio"] { margin-top: 0.18rem; flex-shrink: 0; }
+    .radio-card .radio-label { font-weight: 600; font-size: 0.9rem; color: var(--ct-text); }
+    .radio-card .radio-sub { font-size: 0.8rem; color: var(--ct-muted); margin-top: 0.15rem; line-height: 1.5; }
+    .radio-card .radio-icon { font-size: 1.3rem; color: var(--ct-primary); flex-shrink: 0; margin-top: 0.05rem; }
+
+    /* Payment instruction box */
+    .payment-info-box {
+      background: var(--ct-primary-light);
+      border-radius: var(--ct-radius-sm);
+      padding: 0.85rem 1rem;
+      font-size: 0.83rem;
+      color: #7b1c47;
+      display: none;
+      margin-top: 0.75rem;
+      line-height: 1.7;
+    }
+    .payment-info-box.show { display: block; }
+    .payment-info-box strong { color: var(--ct-primary); }
+
+    /* Order summary sidebar */
+    .order-summary-card {
+      background: #fff;
+      border: 1.5px solid var(--ct-border);
+      border-radius: var(--ct-radius);
+      padding: 1.5rem;
+      position: sticky;
+      top: 90px;
+    }
+    .order-summary-card .summary-title { font-weight: 800; font-size: 1rem; margin-bottom: 1.1rem; padding-bottom: 0.65rem; border-bottom: 1px solid var(--ct-border); }
+    .summary-item { display: flex; gap: 0.75rem; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--ct-bg, #f8f9fa); }
+    .summary-item:last-of-type { border-bottom: none; }
+    .summary-item img { width: 48px; height: 48px; border-radius: var(--ct-radius-sm); object-fit: cover; background: var(--ct-primary-light); flex-shrink: 0; }
+    .summary-item-info .name { font-weight: 600; font-size: 0.82rem; line-height: 1.3; }
+    .summary-item-info .variant { font-size: 0.75rem; color: var(--ct-muted); }
+    .summary-item-price { font-weight: 700; font-size: 0.88rem; color: var(--ct-primary); white-space: nowrap; margin-left: auto; }
+    .summary-divider { border: none; border-top: 1px solid var(--ct-border); margin: 0.9rem 0; }
+    .summary-row { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.55rem; }
+    .summary-row .label { color: var(--ct-muted); }
+    .summary-row .value { font-weight: 600; }
+    .summary-grand { display: flex; justify-content: space-between; font-weight: 800; font-size: 1.05rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 2px solid var(--ct-border); }
+    .summary-grand .value { color: var(--ct-primary); }
+
+    /* Security badges */
+    .security-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .sec-badge { font-size: 0.72rem; color: var(--ct-muted); display: flex; align-items: center; gap: 0.3rem; background: var(--ct-bg); border-radius: 999px; padding: 0.3rem 0.7rem; }
+    .sec-badge i { color: var(--ct-primary); }
+
+    /* Confirmation modal */
+    .modal-order-id { font-size: 1.5rem; font-weight: 800; color: var(--ct-primary); letter-spacing: 1px; }
+    .confirm-row { display: flex; justify-content: space-between; font-size: 0.88rem; padding: 0.4rem 0; border-bottom: 1px solid var(--ct-border); }
+    .confirm-row:last-child { border-bottom: none; }
+    .confirm-row .cl { color: var(--ct-muted); }
+
+    /* Delivery address collapse */
+    #deliveryAddressFields { margin-top: 0.85rem; }
+
+    @media (max-width: 991.98px) {
+      .order-summary-card { position: static; margin-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="search-close" id="searchClose" aria-label="Close search"><i class="bi bi-x"></i></button>
+    <form class="search-inner" id="searchForm" role="search">
+      <input type="search" id="searchInput" placeholder="Search for phones, tablets…" autocomplete="off">
+      <p class="search-hint">Press Enter to search &middot; Esc to close</p>
+    </form>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-ct sticky-top" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo.svg" alt="CheynTech" width="38" height="38">
+        <span class="brand-name">CheynTech</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+        aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalog.html">Catalog</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="track-order.html">Track Order</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3 nav-icons">
+          <a href="#" id="searchToggle" aria-label="Search"><i class="bi bi-search"></i></a>
+          <a href="cart.html" class="position-relative" aria-label="Shopping cart">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" style="display:none;">0</span>
+          </a>
+          <a href="login.html" aria-label="Account"><i class="bi bi-person-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-wrap">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="cart.html">Cart</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="checkout-section">
+    <div class="container">
+      <h1 class="fw-800 mb-4" style="font-size:1.6rem;">
+        <i class="bi bi-bag-check me-2" style="color:var(--ct-primary);"></i>Checkout
+      </h1>
+
+      <div class="row g-4 align-items-start">
+
+        <!-- ═══ LEFT: FORM ═══ -->
+        <div class="col-lg-7">
+          <form id="checkoutForm" novalidate>
+
+            <!-- ── Section 1: Contact Info ── -->
+            <div class="mb-4">
+              <div class="form-section-heading">
+                <i class="bi bi-person-lines-fill me-2"></i>Contact Information
+              </div>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="fullName" class="form-label fw-600">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g. Maria Santos" required autocomplete="name">
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label fw-600">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label fw-600">Phone Number <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">&#127477;&#127469;</span>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
+                  </div>
+                  <div class="invalid-feedback">Enter a valid PH mobile number (e.g. 09171234567).</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── Section 2: Fulfillment Method ── -->
+            <div class="mb-4">
+              <div class="form-section-heading">
+                <i class="bi bi-truck me-2"></i>Fulfillment Method
+              </div>
+
+              <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Fulfillment method">
+
+                <!-- Pickup -->
+                <label class="radio-card" id="cardPickup">
+                  <input class="form-check-input mt-0" type="radio" name="fulfillment" id="fulfillPickup" value="pickup" checked>
+                  <div class="radio-icon"><i class="bi bi-shop"></i></div>
+                  <div>
+                    <div class="radio-label">Pickup at CheynTech Store</div>
+                    <div class="radio-sub">
+                      <i class="bi bi-geo-alt me-1"></i>Cheyn's Gadgets, Molo, Iloilo City<br>
+                      Mon&ndash;Sat &bull; 9:00 AM &ndash; 6:00 PM &bull; <span class="fw-600 text-success">Free</span>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Delivery -->
+                <label class="radio-card" id="cardDelivery">
+                  <input class="form-check-input mt-0" type="radio" name="fulfillment" id="fulfillDelivery" value="delivery">
+                  <div class="radio-icon"><i class="bi bi-truck"></i></div>
+                  <div class="w-100">
+                    <div class="radio-label">Local Delivery</div>
+                    <div class="radio-sub">Delivery within Iloilo City &amp; nearby areas &bull; Fee confirmed after order review</div>
+
+                    <!-- Delivery address fields (shown when delivery selected) -->
+                    <div id="deliveryAddressFields" class="d-none">
+                      <div class="row g-2 mt-1">
+                        <div class="col-12">
+                          <input type="text" class="form-control form-control-sm" id="addrStreet" name="addrStreet" placeholder="House No. / Street / Subdivision">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control form-control-sm" id="addrBarangay" name="addrBarangay" placeholder="Barangay">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control form-control-sm" id="addrCity" name="addrCity" placeholder="City / Municipality">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control form-control-sm" id="addrProvince" name="addrProvince" placeholder="Province">
+                        </div>
+                        <div class="col-12">
+                          <textarea class="form-control form-control-sm" id="addrNotes" name="addrNotes" rows="2" placeholder="Delivery notes (landmark, gate code, etc.)"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- ── Section 3: Payment Method ── -->
+            <div class="mb-4">
+              <div class="form-section-heading">
+                <i class="bi bi-credit-card-2-front me-2"></i>Payment Method
+              </div>
+
+              <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Payment method">
+
+                <!-- Cash -->
+                <label class="radio-card" id="cardCash">
+                  <input class="form-check-input mt-0" type="radio" name="payment" id="paymentCash" value="cash" checked>
+                  <div class="radio-icon"><i class="bi bi-cash-stack"></i></div>
+                  <div>
+                    <div class="radio-label">Cash on Pickup / Delivery</div>
+                    <div class="radio-sub">Pay in cash when you pick up or receive your order. No upfront payment required.</div>
+                  </div>
+                </label>
+
+                <!-- GCash -->
+                <label class="radio-card" id="cardGcash">
+                  <input class="form-check-input mt-0" type="radio" name="payment" id="paymentGcash" value="gcash">
+                  <div class="radio-icon" style="color:#007dff;"><i class="bi bi-phone-fill"></i></div>
+                  <div>
+                    <div class="radio-label">GCash</div>
+                    <div class="radio-sub">Send payment via GCash and upload your proof of payment.</div>
+                    <div id="gcashInfo" class="payment-info-box">
+                      <strong><i class="bi bi-phone me-1"></i>GCash Number:</strong><br>
+                      <span style="font-size:1rem; font-weight:700; letter-spacing:1px;">0917-888-2468</span><br>
+                      Account Name: <strong>Cheyn T.</strong><br>
+                      <br>
+                      After sending, email your screenshot to <strong>pay@cheyntech.ph</strong> with your order ID as subject.
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Bank Transfer -->
+                <label class="radio-card" id="cardBank">
+                  <input class="form-check-input mt-0" type="radio" name="payment" id="paymentBank" value="bank">
+                  <div class="radio-icon" style="color:#003087;"><i class="bi bi-bank"></i></div>
+                  <div>
+                    <div class="radio-label">Bank Transfer (BDO / BPI)</div>
+                    <div class="radio-sub">Transfer to our bank account and send proof of payment.</div>
+                    <div id="bankInfo" class="payment-info-box">
+                      <strong><i class="bi bi-bank me-1"></i>BDO Savings Account</strong><br>
+                      Account No.: <strong>0056-7890-1234</strong><br>
+                      Account Name: <strong>CheynTech Trading</strong><br>
+                      <br>
+                      <strong><i class="bi bi-bank me-1"></i>BPI Savings Account</strong><br>
+                      Account No.: <strong>3120-4567-89</strong><br>
+                      Account Name: <strong>CheynTech Trading</strong><br>
+                      <br>
+                      Email screenshot to <strong>pay@cheyntech.ph</strong> with your order ID as subject.
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- ── Submit ── -->
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-ct py-3" style="font-size:1.05rem;">
+                <i class="bi bi-check2-circle me-2"></i>Place Order
+              </button>
+              <p class="text-center mt-2" style="font-size:0.78rem; color:var(--ct-muted);">
+                By placing your order, you agree to our <a href="#">Terms &amp; Conditions</a>. Orders are subject to manual review.
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- ═══ RIGHT: Order Summary ═══ -->
+        <div class="col-lg-5">
+          <div class="order-summary-card">
+            <div class="summary-title">
+              <i class="bi bi-bag me-2" style="color:var(--ct-primary);"></i>Your Order
+            </div>
+
+            <!-- Cart items rendered by JS -->
+            <div id="checkoutItemList"></div>
+
+            <hr class="summary-divider">
+
+            <div class="summary-row">
+              <span class="label">Subtotal</span>
+              <span class="value" id="coSubtotal">&#8369;0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">Delivery Fee</span>
+              <span class="value" id="coDeliveryFee" style="color:var(--ct-primary);">Free</span>
+            </div>
+
+            <div class="summary-grand">
+              <span>Total</span>
+              <span class="value" id="coTotal">&#8369;0</span>
+            </div>
+
+            <!-- Security badges -->
+            <div class="security-badges">
+              <span class="sec-badge"><i class="bi bi-shield-lock-fill"></i> Secure Checkout</span>
+              <span class="sec-badge"><i class="bi bi-eye-fill"></i> Manual Review</span>
+              <span class="sec-badge"><i class="bi bi-arrow-counterclockwise"></i> 7-Day Guarantee</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div>
+  </main>
+
+  <!-- ═══ ORDER CONFIRMATION MODAL ═══ -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header border-0 text-white pb-0" style="background: linear-gradient(135deg,#e91e8c,#c2185b); padding: 2rem 2rem 0;">
+          <div class="w-100 text-center pb-3">
+            <div style="font-size:3rem; margin-bottom:0.5rem;">&#127881;</div>
+            <h4 class="fw-800 mb-1">Order Placed Successfully!</h4>
+            <p class="mb-0" style="opacity:0.9; font-size:0.9rem;">We've received your order. Our team will review and confirm it shortly.</p>
+          </div>
+        </div>
+        <div class="modal-body p-4">
+          <div class="text-center mb-4">
+            <div class="modal-order-id" id="modalOrderId">CT-XXXXX</div>
+            <div style="font-size:0.8rem; color:var(--ct-muted);">Your Order ID &mdash; save this for tracking</div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-12">
+              <div class="p-3 rounded-3" style="background:var(--ct-bg);">
+                <div class="confirm-row"><span class="cl">Customer</span><span id="confirmName" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Email</span><span id="confirmEmail" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Phone</span><span id="confirmPhone" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Fulfillment</span><span id="confirmFulfillment" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Payment</span><span id="confirmPayment" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600" style="color:var(--ct-primary);"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert d-flex align-items-center gap-2 mb-0" style="background:var(--ct-primary-light); border:none; border-radius:var(--ct-radius-sm); font-size:0.83rem; color:#7b1c47;">
+            <i class="bi bi-info-circle-fill flex-shrink-0"></i>
+            <span>You'll receive a confirmation message via SMS or email within <strong>1&ndash;2 hours</strong>. Our team manually reviews all orders.</span>
+          </div>
+        </div>
+        <div class="modal-footer border-0 px-4 pb-4 gap-2 flex-nowrap">
+          <a href="track-order.html" class="btn btn-ct flex-fill">
+            <i class="bi bi-search me-1"></i>Track My Order
+          </a>
+          <a href="catalog.html" class="btn btn-ct-outline flex-fill">
+            <i class="bi bi-grid me-1"></i>Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer mt-auto">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6">
+          <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none mb-3">
+            <img src="assets/img/logo.svg" alt="CheynTech" width="34" height="34">
+            <span class="footer-brand-name">CheynTech</span>
+          </a>
+          <p class="mb-3">Your trusted source for pre-owned, refurbished, and brand-new gadgets in the Philippines.</p>
+          <div class="social-links d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 offset-md-0 col-lg-2">
+          <h6 class="footer-heading">Shop</h6>
+          <div class="footer-links">
+            <a href="catalog.html?cat=preowned">Pre-owned iPhones</a>
+            <a href="catalog.html?cat=new">New iPhones</a>
+            <a href="catalog.html?cat=android">Android</a>
+            <a href="catalog.html?cat=tablet">Tablets</a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Help</h6>
+          <div class="footer-links">
+            <a href="track-order.html">Track Order</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Account</h6>
+          <div class="footer-links">
+            <a href="login.html">Log In</a>
+            <a href="login.html#register">Register</a>
+            <a href="cart.html">My Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        &copy; 2026 CheynTech Trading. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Fallback sample cart ── */
+    function getCartOrFallback() {
+      var cart = CheynCart.get();
+      if (!cart.length) {
+        cart = [
+          { id: 'iphone13pro-128-graphite', name: 'iPhone 13 Pro', variant: '128GB', color: 'Graphite', condition: 'Pre-owned',   price: 32500, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro' },
+          { id: 'iphone12-64-blue',         name: 'iPhone 12',     variant: '64GB',  color: 'Blue',     condition: 'Refurbished', price: 21800, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12' }
+        ];
+      }
+      return cart;
+    }
+
+    /* ── Render order summary sidebar ── */
+    function renderSummary() {
+      var cart     = getCartOrFallback();
+      var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
+      var listEl   = document.getElementById('checkoutItemList');
+
+      listEl.innerHTML = cart.map(function(item) {
+        return '<div class="summary-item">' +
+          '<img src="' + (item.image || 'https://placehold.co/400x400/fce4ec/e91e8c?text=Product') + '" alt="' + item.name + '" onerror="this.src=\'https://placehold.co/400x400/fce4ec/e91e8c?text=Product\'">' +
+          '<div class="summary-item-info">' +
+            '<div class="name">' + item.name + ' &times;' + (item.qty||1) + '</div>' +
+            '<div class="variant">' + (item.variant||'') + (item.color ? ' &middot; '+item.color : '') + '</div>' +
+          '</div>' +
+          '<div class="summary-item-price">' + formatPrice(item.price*(item.qty||1)) + '</div>' +
+        '</div>';
+      }).join('');
+
+      document.getElementById('coSubtotal').textContent = formatPrice(subtotal);
+      document.getElementById('coTotal').textContent    = formatPrice(subtotal);
+      updateDeliveryFee();
+    }
+
+    /* ── Update delivery fee label based on fulfillment ── */
+    function updateDeliveryFee() {
+      var isDelivery = document.getElementById('fulfillDelivery').checked;
+      var feeEl = document.getElementById('coDeliveryFee');
+      if (isDelivery) {
+        feeEl.textContent = 'To be confirmed';
+        feeEl.style.color = 'var(--ct-muted)';
+      } else {
+        feeEl.textContent = 'Free';
+        feeEl.style.color = 'var(--ct-primary)';
+      }
+    }
+
+    /* ── Radio card visual selection ── */
+    function initRadioCards() {
+      document.querySelectorAll('.radio-card').forEach(function(card) {
+        var radio = card.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.addEventListener('change', function() {
+            // Deselect siblings in same group
+            document.querySelectorAll('input[name="' + radio.name + '"]').forEach(function(r) {
+              r.closest('.radio-card') && r.closest('.radio-card').classList.remove('selected');
+            });
+            card.classList.add('selected');
+          });
+          if (radio.checked) card.classList.add('selected');
+        }
+      });
+    }
+
+    /* ── Show/hide delivery address ── */
+    function initFulfillmentToggle() {
+      var pickup   = document.getElementById('fulfillPickup');
+      var delivery = document.getElementById('fulfillDelivery');
+      var addrFields = document.getElementById('deliveryAddressFields');
+
+      function toggle() {
+        if (delivery.checked) {
+          addrFields.classList.remove('d-none');
+        } else {
+          addrFields.classList.add('d-none');
+        }
+        updateDeliveryFee();
+      }
+
+      pickup.addEventListener('change', toggle);
+      delivery.addEventListener('change', toggle);
+      toggle();
+    }
+
+    /* ── Show/hide payment info boxes ── */
+    function initPaymentToggle() {
+      var payments = document.querySelectorAll('input[name="payment"]');
+      payments.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          document.getElementById('gcashInfo').classList.remove('show');
+          document.getElementById('bankInfo').classList.remove('show');
+          if (radio.value === 'gcash') document.getElementById('gcashInfo').classList.add('show');
+          if (radio.value === 'bank')  document.getElementById('bankInfo').classList.add('show');
+        });
+      });
+    }
+
+    /* ── Generate random order ID ── */
+    function generateOrderId() {
+      return 'CT-' + String(Math.floor(10000 + Math.random() * 90000));
+    }
+
+    /* ── Fulfillment label ── */
+    function fulfillmentLabel() {
+      return document.getElementById('fulfillDelivery').checked ? 'Local Delivery' : 'Pickup at CheynTech Store';
+    }
+
+    /* ── Payment label ── */
+    function paymentLabel() {
+      var val = document.querySelector('input[name="payment"]:checked').value;
+      var map = { cash: 'Cash on Pickup/Delivery', gcash: 'GCash', bank: 'Bank Transfer (BDO/BPI)' };
+      return map[val] || val;
+    }
+
+    /* ── Form submit ── */
+    function initForm() {
+      var form = document.getElementById('checkoutForm');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // HTML5 validation
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          form.querySelector(':invalid') && form.querySelector(':invalid').focus();
+          showToast('Please fill in all required fields.', 'error');
+          return;
+        }
+
+        var cart     = getCartOrFallback();
+        var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
+        var orderId  = generateOrderId();
+
+        // Populate modal
+        document.getElementById('modalOrderId').textContent   = orderId;
+        document.getElementById('confirmName').textContent    = document.getElementById('fullName').value;
+        document.getElementById('confirmEmail').textContent   = document.getElementById('email').value;
+        document.getElementById('confirmPhone').textContent   = document.getElementById('phone').value;
+        document.getElementById('confirmFulfillment').textContent = fulfillmentLabel();
+        document.getElementById('confirmPayment').textContent     = paymentLabel();
+        document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
+
+        // Save order ID for track page
+        try { sessionStorage.setItem('ct_last_order', orderId); } catch(e) {}
+
+        // Clear cart after placing
+        CheynCart.clear();
+
+        // Show modal
+        var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
+        modal.show();
+      });
+    }
+
+    /* ── Boot ── */
+    document.addEventListener('DOMContentLoaded', function() {
+      initRadioCards();
+      initFulfillmentToggle();
+      initPaymentToggle();
+      renderSummary();
+      initForm();
+    });
+
+  })();
+  </script>
+</body>
+</html>
