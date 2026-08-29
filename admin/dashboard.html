@@ -13,7 +13,7 @@
 <body>
 
 <!-- Sidebar Overlay (mobile) -->
-<div id="sidebarOverlay" class="position-fixed" style="display:none;background:rgba(0,0,0,0.4);z-index:99;top:0;left:0;right:0;bottom:0;"></div>
+<div id="sidebarOverlay" class="position-fixed" ></div>
 
 <div class="admin-layout">
 
@@ -42,13 +42,13 @@
 
     <div class="sidebar-section-label mt-2">System</div>
     <nav>
-      <a href="#" class="nav-link" style="opacity:0.4;pointer-events:none;" aria-disabled="true">
+      <a href="#" class="nav-link" class="sidebar-disabled" aria-disabled="true">
         <i class="bi bi-gear"></i> Settings
       </a>
     </nav>
 
     <div class="mt-auto p-3 border-top border-white border-opacity-10">
-      <a href="../login.html" class="nav-link" style="color:#f87171;">
+      <a href="../login.html" class="nav-link" class="sidebar-logout">
         <i class="bi bi-box-arrow-left"></i> Logout
       </a>
     </div>
@@ -64,12 +64,12 @@
       </button>
       <h5 class="mb-0 me-auto">Dashboard</h5>
       <div class="d-flex align-items-center gap-3">
-        <span class="d-none d-sm-inline text-muted" style="font-size:0.82rem;">
+        <span class="d-none d-sm-inline text-muted" class="qa-desc">
           <i class="bi bi-calendar3 me-1"></i><span id="todayDate"></span>
         </span>
         <div class="d-flex align-items-center gap-2">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--ct-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">A</div>
-          <span class="fw-600 d-none d-md-inline" style="font-size:0.88rem;">Admin User</span>
+          <div class="admin-user-avatar">A</div>
+          <span class="fw-600 d-none d-md-inline" class="admin-username">Admin User</span>
         </div>
       </div>
     </header>
@@ -80,7 +80,7 @@
       <!-- Welcome -->
       <div class="mb-4">
         <h4 class="fw-700 mb-1">Welcome back, Admin 👋</h4>
-        <p class="text-muted mb-0" style="font-size:0.88rem;">Here's what's happening with your store today.</p>
+        <p class="text-muted mb-0" class="admin-username">Here's what's happening with your store today.</p>
       </div>
 
       <!-- STAT CARDS -->
@@ -127,69 +127,69 @@
 
         <!-- RECENT ORDERS TABLE -->
         <div class="col-12 col-xl-8">
-          <div class="card border-0 shadow-sm" style="border-radius:var(--ct-radius);">
+          <div class="card border-0 shadow-sm" >
             <div class="card-header bg-white border-0 d-flex align-items-center justify-content-between py-3 px-4">
               <h6 class="fw-700 mb-0"><i class="bi bi-receipt me-2 text-ct"></i>Recent Orders</h6>
-              <a href="orders.html" class="btn btn-sm" style="background:transparent;border:2px solid var(--ct-primary);color:var(--ct-primary);font-size:0.78rem;font-weight:600;border-radius:8px;padding:0.3rem 0.9rem;">View All</a>
+              <a href="orders.html" class="btn btn-sm" class="btn-ct-outline">View All</a>
             </div>
             <div class="table-responsive">
               <table class="table table-hover align-middle mb-0" aria-label="Recent orders">
                 <thead class="table-light">
                   <tr>
-                    <th class="ps-4" style="font-size:0.78rem;font-weight:700;">Order ID</th>
-                    <th style="font-size:0.78rem;font-weight:700;">Customer</th>
-                    <th class="d-none d-md-table-cell" style="font-size:0.78rem;font-weight:700;">Items</th>
-                    <th style="font-size:0.78rem;font-weight:700;">Total</th>
-                    <th class="d-none d-lg-table-cell" style="font-size:0.78rem;font-weight:700;">Fulfillment</th>
-                    <th style="font-size:0.78rem;font-weight:700;">Status</th>
-                    <th class="pe-4" style="font-size:0.78rem;font-weight:700;">Action</th>
+                    <th class="ps-4" class="admin-th">Order ID</th>
+                    <th class="admin-th">Customer</th>
+                    <th class="d-none d-md-table-cell" class="admin-th">Items</th>
+                    <th class="admin-th">Total</th>
+                    <th class="d-none d-lg-table-cell" class="admin-th">Fulfillment</th>
+                    <th class="admin-th">Status</th>
+                    <th class="pe-4" class="admin-th">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="ps-4" style="font-size:0.83rem;font-weight:600;">#CT-0091</td>
-                    <td style="font-size:0.83rem;">Maria Santos</td>
-                    <td class="d-none d-md-table-cell" style="font-size:0.82rem;color:var(--ct-muted);">iPhone 14 Pro × 1</td>
-                    <td style="font-size:0.83rem;font-weight:600;">₱58,000</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill" style="font-size:0.72rem;">Delivery</span></td>
-                    <td><span class="badge bg-warning-subtle text-warning-emphasis rounded-pill" style="font-size:0.72rem;">Pending</span></td>
-                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" style="font-size:0.75rem;">View</a></td>
+                    <td class="ps-4" class="td-id">#CT-0091</td>
+                    <td class="td-name">Maria Santos</td>
+                    <td class="d-none d-md-table-cell" class="td-meta">iPhone 14 Pro × 1</td>
+                    <td class="td-id">₱58,000</td>
+                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill" class="td-sm-badge">Delivery</span></td>
+                    <td><span class="badge bg-warning-subtle text-warning-emphasis rounded-pill" class="td-sm-badge">Pending</span></td>
+                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" class="td-sm-badge">View</a></td>
                   </tr>
                   <tr>
-                    <td class="ps-4" style="font-size:0.83rem;font-weight:600;">#CT-0090</td>
-                    <td style="font-size:0.83rem;">Juan dela Cruz</td>
-                    <td class="d-none d-md-table-cell" style="font-size:0.82rem;color:var(--ct-muted);">Samsung S24 Ultra × 1</td>
-                    <td style="font-size:0.83rem;font-weight:600;">₱72,500</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill" style="font-size:0.72rem;">Pickup</span></td>
-                    <td><span class="badge rounded-pill" style="background:#dbeafe;color:#1e3a8a;font-size:0.72rem;">Processing</span></td>
-                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" style="font-size:0.75rem;">View</a></td>
+                    <td class="ps-4" class="td-id">#CT-0090</td>
+                    <td class="td-name">Juan dela Cruz</td>
+                    <td class="d-none d-md-table-cell" class="td-meta">Samsung S24 Ultra × 1</td>
+                    <td class="td-id">₱72,500</td>
+                    <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill" class="td-sm-badge">Pickup</span></td>
+                    <td><span class="badge rounded-pill td-sm-badge badge-status-processing">Processing</span></td>
+                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" class="td-sm-badge">View</a></td>
                   </tr>
                   <tr>
-                    <td class="ps-4" style="font-size:0.83rem;font-weight:600;">#CT-0089</td>
-                    <td style="font-size:0.83rem;">Ana Reyes</td>
-                    <td class="d-none d-md-table-cell" style="font-size:0.82rem;color:var(--ct-muted);">iPad Air (M2) × 1, AirPods × 1</td>
-                    <td style="font-size:0.83rem;font-weight:600;">₱46,200</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill" style="font-size:0.72rem;">Delivery</span></td>
-                    <td><span class="badge rounded-pill" style="background:#fde68a;color:#78350f;font-size:0.72rem;">Ready</span></td>
-                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" style="font-size:0.75rem;">View</a></td>
+                    <td class="ps-4" class="td-id">#CT-0089</td>
+                    <td class="td-name">Ana Reyes</td>
+                    <td class="d-none d-md-table-cell" class="td-meta">iPad Air (M2) × 1, AirPods × 1</td>
+                    <td class="td-id">₱46,200</td>
+                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill" class="td-sm-badge">Delivery</span></td>
+                    <td><span class="badge rounded-pill td-sm-badge badge-status-ready">Ready</span></td>
+                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" class="td-sm-badge">View</a></td>
                   </tr>
                   <tr>
-                    <td class="ps-4" style="font-size:0.83rem;font-weight:600;">#CT-0088</td>
-                    <td style="font-size:0.83rem;">Carlo Mendoza</td>
-                    <td class="d-none d-md-table-cell" style="font-size:0.82rem;color:var(--ct-muted);">iPhone 13 Pre-owned × 2</td>
-                    <td style="font-size:0.83rem;font-weight:600;">₱39,000</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill" style="font-size:0.72rem;">Pickup</span></td>
-                    <td><span class="badge bg-success-subtle text-success-emphasis rounded-pill" style="font-size:0.72rem;">Completed</span></td>
-                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" style="font-size:0.75rem;">View</a></td>
+                    <td class="ps-4" class="td-id">#CT-0088</td>
+                    <td class="td-name">Carlo Mendoza</td>
+                    <td class="d-none d-md-table-cell" class="td-meta">iPhone 13 Pre-owned × 2</td>
+                    <td class="td-id">₱39,000</td>
+                    <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill" class="td-sm-badge">Pickup</span></td>
+                    <td><span class="badge bg-success-subtle text-success-emphasis rounded-pill" class="td-sm-badge">Completed</span></td>
+                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" class="td-sm-badge">View</a></td>
                   </tr>
                   <tr>
-                    <td class="ps-4" style="font-size:0.83rem;font-weight:600;">#CT-0087</td>
-                    <td style="font-size:0.83rem;">Liza Bautista</td>
-                    <td class="d-none d-md-table-cell" style="font-size:0.82rem;color:var(--ct-muted);">Xiaomi 14T Pro × 1</td>
-                    <td style="font-size:0.83rem;font-weight:600;">₱29,999</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill" style="font-size:0.72rem;">Delivery</span></td>
-                    <td><span class="badge rounded-pill" style="background:#dbeafe;color:#1e3a8a;font-size:0.72rem;">Processing</span></td>
-                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" style="font-size:0.75rem;">View</a></td>
+                    <td class="ps-4" class="td-id">#CT-0087</td>
+                    <td class="td-name">Liza Bautista</td>
+                    <td class="d-none d-md-table-cell" class="td-meta">Xiaomi 14T Pro × 1</td>
+                    <td class="td-id">₱29,999</td>
+                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill" class="td-sm-badge">Delivery</span></td>
+                    <td><span class="badge rounded-pill td-sm-badge badge-status-processing">Processing</span></td>
+                    <td class="pe-4"><a href="orders.html" class="btn btn-sm btn-outline-secondary" class="td-sm-badge">View</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -199,22 +199,22 @@
 
         <!-- LOW STOCK ALERTS -->
         <div class="col-12 col-xl-4">
-          <div class="card border-0 shadow-sm" style="border-radius:var(--ct-radius);">
+          <div class="card border-0 shadow-sm" >
             <div class="card-header bg-white border-0 d-flex align-items-center justify-content-between py-3 px-4">
-              <h6 class="fw-700 mb-0"><i class="bi bi-exclamation-triangle me-2" style="color:#1d4ed8;"></i>Low Stock Alerts</h6>
-              <a href="products.html" class="btn btn-sm" style="background:transparent;border:2px solid var(--ct-primary);color:var(--ct-primary);font-size:0.78rem;font-weight:600;border-radius:8px;padding:0.3rem 0.9rem;">Manage</a>
+              <h6 class="fw-700 mb-0"><i class="bi bi-exclamation-triangle me-2" class="alert-icon-blue"></i>Low Stock Alerts</h6>
+              <a href="products.html" class="btn btn-sm" class="btn-ct-outline">Manage</a>
             </div>
             <div class="card-body px-4 py-2">
               <ul class="list-unstyled mb-0">
 
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
                   <div class="d-flex align-items-center gap-3">
-                    <div style="width:40px;height:40px;border-radius:8px;background:var(--ct-primary-light);display:flex;align-items:center;justify-content:center;">
-                      <i class="bi bi-phone" style="color:var(--ct-primary);font-size:1.1rem;"></i>
+                    <div class="low-stock-icon pink">
+                      <i class="bi bi-phone" ></i>
                     </div>
                     <div>
-                      <div style="font-size:0.85rem;font-weight:600;">iPhone 12 Mini (Pre-owned)</div>
-                      <div style="font-size:0.76rem;color:var(--ct-muted);">Only 2 units left</div>
+                      <div class="low-stock-name">iPhone 12 Mini (Pre-owned)</div>
+                      <div class="low-stock-qty">Only 2 units left</div>
                     </div>
                   </div>
                   <span class="badge-ct badge-preowned">Restock</span>
@@ -222,12 +222,12 @@
 
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
                   <div class="d-flex align-items-center gap-3">
-                    <div style="width:40px;height:40px;border-radius:8px;background:#dbeafe;display:flex;align-items:center;justify-content:center;">
-                      <i class="bi bi-tablet" style="color:#1d4ed8;font-size:1.1rem;"></i>
+                    <div class="low-stock-icon blue">
+                      <i class="bi bi-tablet" ></i>
                     </div>
                     <div>
-                      <div style="font-size:0.85rem;font-weight:600;">Samsung Galaxy Tab S9</div>
-                      <div style="font-size:0.76rem;color:var(--ct-muted);">Only 1 unit left</div>
+                      <div class="low-stock-name">Samsung Galaxy Tab S9</div>
+                      <div class="low-stock-qty">Only 1 unit left</div>
                     </div>
                   </div>
                   <span class="badge-ct badge-preowned">Restock</span>
@@ -235,12 +235,12 @@
 
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
                   <div class="d-flex align-items-center gap-3">
-                    <div style="width:40px;height:40px;border-radius:8px;background:#fef3c7;display:flex;align-items:center;justify-content:center;">
-                      <i class="bi bi-earbuds" style="color:#92400e;font-size:1.1rem;"></i>
+                    <div class="low-stock-icon yellow">
+                      <i class="bi bi-earbuds" ></i>
                     </div>
                     <div>
-                      <div style="font-size:0.85rem;font-weight:600;">AirPods Pro (2nd Gen)</div>
-                      <div style="font-size:0.76rem;color:var(--ct-muted);">Only 3 units left</div>
+                      <div class="low-stock-name">AirPods Pro (2nd Gen)</div>
+                      <div class="low-stock-qty">Only 3 units left</div>
                     </div>
                   </div>
                   <span class="badge-ct badge-refurbished">Restock</span>
@@ -248,12 +248,12 @@
 
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
                   <div class="d-flex align-items-center gap-3">
-                    <div style="width:40px;height:40px;border-radius:8px;background:#d1fae5;display:flex;align-items:center;justify-content:center;">
-                      <i class="bi bi-watch" style="color:#065f46;font-size:1.1rem;"></i>
+                    <div class="low-stock-icon green">
+                      <i class="bi bi-watch" ></i>
                     </div>
                     <div>
-                      <div style="font-size:0.85rem;font-weight:600;">Apple Watch Series 9</div>
-                      <div style="font-size:0.76rem;color:var(--ct-muted);">Only 2 units left</div>
+                      <div class="low-stock-name">Apple Watch Series 9</div>
+                      <div class="low-stock-qty">Only 2 units left</div>
                     </div>
                   </div>
                   <span class="badge-ct badge-available">Restock</span>
@@ -261,12 +261,12 @@
 
                 <li class="d-flex align-items-center justify-content-between py-3">
                   <div class="d-flex align-items-center gap-3">
-                    <div style="width:40px;height:40px;border-radius:8px;background:var(--ct-primary-light);display:flex;align-items:center;justify-content:center;">
-                      <i class="bi bi-phone-flip" style="color:var(--ct-primary);font-size:1.1rem;"></i>
+                    <div class="low-stock-icon pink">
+                      <i class="bi bi-phone-flip" ></i>
                     </div>
                     <div>
-                      <div style="font-size:0.85rem;font-weight:600;">Oppo Find X7 Ultra</div>
-                      <div style="font-size:0.76rem;color:var(--ct-muted);">Only 1 unit left</div>
+                      <div class="low-stock-name">Oppo Find X7 Ultra</div>
+                      <div class="low-stock-qty">Only 1 unit left</div>
                     </div>
                   </div>
                   <span class="badge-ct badge-preowned">Restock</span>
@@ -285,39 +285,39 @@
           <h6 class="fw-700 mb-2"><i class="bi bi-lightning-charge-fill me-2 text-ct"></i>Quick Actions</h6>
         </div>
         <div class="col-12 col-md-4">
-          <div class="card border-0 shadow-sm text-center p-4" style="border-radius:var(--ct-radius);">
+          <div class="card border-0 shadow-sm text-center p-4" >
             <div class="mb-3">
-              <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:var(--ct-primary-light);">
-                <i class="bi bi-plus-circle-fill" style="font-size:1.6rem;color:var(--ct-primary);"></i>
+              <span class="qa-icon-wrap pink">
+                <i class="bi bi-plus-circle-fill" ></i>
               </span>
             </div>
             <h6 class="fw-700 mb-1">Add New Product</h6>
-            <p class="text-muted mb-3" style="font-size:0.82rem;">List a new gadget in your inventory.</p>
-            <a href="products.html" class="btn w-100" style="background:var(--ct-primary);color:#fff;font-weight:600;border-radius:8px;">Add Product</a>
+            <p class="text-muted mb-3" class="qa-desc">List a new gadget in your inventory.</p>
+            <a href="products.html" class="btn w-100" class="btn-ct">Add Product</a>
           </div>
         </div>
         <div class="col-12 col-md-4">
-          <div class="card border-0 shadow-sm text-center p-4" style="border-radius:var(--ct-radius);">
+          <div class="card border-0 shadow-sm text-center p-4" >
             <div class="mb-3">
-              <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:#d1fae5;">
-                <i class="bi bi-file-earmark-spreadsheet-fill" style="font-size:1.6rem;color:#065f46;"></i>
+              <span class="qa-icon-wrap green">
+                <i class="bi bi-file-earmark-spreadsheet-fill" ></i>
               </span>
             </div>
             <h6 class="fw-700 mb-1">Export Orders CSV</h6>
-            <p class="text-muted mb-3" style="font-size:0.82rem;">Download all order records as a spreadsheet.</p>
-            <button class="btn w-100" style="background:transparent;border:2px solid var(--ct-primary);color:var(--ct-primary);font-weight:600;border-radius:8px;" onclick="exportOrdersCSV()">Export CSV</button>
+            <p class="text-muted mb-3" class="qa-desc">Download all order records as a spreadsheet.</p>
+            <button class="btn w-100" class="btn-ct-outline" onclick="exportOrdersCSV()">Export CSV</button>
           </div>
         </div>
         <div class="col-12 col-md-4">
-          <div class="card border-0 shadow-sm text-center p-4" style="border-radius:var(--ct-radius);">
+          <div class="card border-0 shadow-sm text-center p-4" >
             <div class="mb-3">
-              <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:12px;background:#dbeafe;">
-                <i class="bi bi-boxes" style="font-size:1.6rem;color:#1d4ed8;"></i>
+              <span class="qa-icon-wrap blue">
+                <i class="bi bi-boxes" ></i>
               </span>
             </div>
             <h6 class="fw-700 mb-1">View Inventory</h6>
-            <p class="text-muted mb-3" style="font-size:0.82rem;">Check stock levels and product details.</p>
-            <a href="products.html" class="btn w-100" style="background:transparent;border:2px solid var(--ct-primary);color:var(--ct-primary);font-weight:600;border-radius:8px;">View Inventory</a>
+            <p class="text-muted mb-3" class="qa-desc">Check stock levels and product details.</p>
+            <a href="products.html" class="btn w-100" class="btn-ct-outline">View Inventory</a>
           </div>
         </div>
       </div>
@@ -330,35 +330,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/main.js"></script>
-<script>
-  // Today date
-  const d = new Date();
-  document.getElementById('todayDate').textContent = d.toLocaleDateString('en-PH',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
 
-  // Sidebar toggle (mobile)
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const adminSidebar  = document.getElementById('adminSidebar');
-  const overlay       = document.getElementById('sidebarOverlay');
-
-  sidebarToggle && sidebarToggle.addEventListener('click', () => {
-    adminSidebar.classList.toggle('open');
-    overlay.style.display = adminSidebar.classList.contains('open') ? 'block' : 'none';
-  });
-  overlay && overlay.addEventListener('click', () => {
-    adminSidebar.classList.remove('open');
-    overlay.style.display = 'none';
-  });
-
-  function exportOrdersCSV() {
-    showToast('Orders CSV download started!', 'toast-success');
-  }
-
-  function showToast(msg, cls='') {
-    const t = document.getElementById('toastMsg');
-    t.textContent = msg;
-    t.className = 'toast-ct show ' + cls;
-    setTimeout(() => t.className = 'toast-ct', 3200);
-  }
-</script>
+  <script src="../assets/js/admin/dashboard.js"></script>
 </body>
 </html>

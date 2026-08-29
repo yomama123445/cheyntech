@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,101 +6,13 @@
   <meta name="description" content="CheynTech — Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery in Iloilo City.">
   <title>CheynTech | Gadgets You Can Trust</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
-
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- CheynTech Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <style>
-    /* ---- Home-page-specific additions ---- */
-    .feature-icon-wrap {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: var(--ct-primary-light);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      color: var(--ct-primary);
-      margin: 0 auto 1rem;
-      transition: var(--ct-transition);
-      flex-shrink: 0;
-    }
-
-    .feature-card:hover .feature-icon-wrap {
-      background: var(--ct-primary);
-      color: #fff;
-    }
-
-    .feature-card {
-      padding: 2rem 1.25rem;
-      border-radius: var(--ct-radius);
-      text-align: center;
-      transition: var(--ct-transition);
-      border: 1.5px solid var(--ct-border);
-      background: #fff;
-      height: 100%;
-    }
-
-    .feature-card:hover {
-      border-color: var(--ct-primary);
-      transform: translateY(-4px);
-      box-shadow: var(--ct-shadow-pink);
-    }
-
-    .testimonial-card {
-      background: #fff;
-      border: 1.5px solid var(--ct-border);
-      border-radius: var(--ct-radius);
-      padding: 1.5rem;
-      transition: var(--ct-transition);
-    }
-
-    .testimonial-card:hover { box-shadow: var(--ct-shadow); }
-
-    .testimonial-card .stars { color: #f59e0b; font-size: 0.9rem; }
-
-    .cta-section {
-      background: linear-gradient(135deg, var(--ct-primary) 0%, var(--ct-primary-dark) 100%);
-      padding: 5rem 0;
-      border-radius: 0;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 1.5rem;
-      animation: marquee 22s linear infinite;
-      width: max-content;
-    }
-
-    .marquee-wrap { overflow: hidden; padding: 0.5rem 0; }
-
-    .marquee-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--ct-primary-soft);
-      border: 1px solid var(--ct-primary-light);
-      border-radius: 999px;
-      padding: 0.35rem 1rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--ct-primary);
-      white-space: nowrap;
-    }
-
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .section-divider { border-top: 1px solid var(--ct-border); }
-  </style>
 </head>
 <body>
 
-  <!-- ===== SEARCH OVERLAY ===== -->
+  <!-- SEARCH OVERLAY -->
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
     <button class="search-close" id="searchClose" aria-label="Close search"><i class="bi bi-x"></i></button>
     <form class="search-inner" id="searchForm" role="search">
@@ -109,19 +21,17 @@
     </form>
   </div>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-ct sticky-top" role="navigation" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
         <img src="assets/img/logo.svg" alt="CheynTech logo" width="38" height="38">
         <span class="brand-name">CheynTech</span>
       </a>
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
               aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav mx-auto gap-1">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
@@ -133,7 +43,7 @@
           <a href="#" id="searchToggle" aria-label="Search"><i class="bi bi-search"></i></a>
           <a href="cart.html" class="position-relative" aria-label="Shopping cart">
             <i class="bi bi-cart3"></i>
-            <span class="cart-badge" style="display:none;">0</span>
+            <span class="cart-badge">0</span>
           </a>
           <a href="login.html" aria-label="Account"><i class="bi bi-person-circle"></i></a>
         </div>
@@ -141,17 +51,17 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
+  <!-- HERO -->
   <section class="hero-section" aria-label="Hero">
     <div class="container">
       <div class="row align-items-center gy-4">
         <div class="col-lg-6 col-md-7">
-          <p class="text-ct fw-700 mb-2" style="font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase;">Cheyn's Gadgets · Iloilo City</p>
+          <p class="hero-eyebrow mb-2">Cheyn's Gadgets · Iloilo City</p>
           <h1>Gadgets You Can <span class="highlight">Trust</span>, Prices You'll Love</h1>
           <p class="lead mt-3">Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery.</p>
           <div class="d-flex gap-3 flex-wrap mt-4">
-            <a href="catalog.html" class="btn-ct btn text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
-            <a href="track-order.html" class="btn-ct-outline btn">Track My Order</a>
+            <a href="catalog.html" class="btn btn-ct text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="track-order.html" class="btn btn-ct-outline">Track My Order</a>
           </div>
           <div class="d-flex gap-4 mt-4 flex-wrap">
             <div class="d-flex align-items-center gap-2">
@@ -180,11 +90,10 @@
     </div>
   </section>
 
-  <!-- ===== MARQUEE TICKER ===== -->
-  <section class="py-3 border-top border-bottom" style="background:var(--ct-primary-soft);" aria-hidden="true">
+  <!-- MARQUEE TICKER -->
+  <section class="marquee-section" aria-hidden="true">
     <div class="marquee-wrap">
       <div class="marquee-track">
-        <!-- items duplicated for seamless loop -->
         <span class="marquee-item"><i class="bi bi-phone"></i> New iPhones</span>
         <span class="marquee-item"><i class="bi bi-recycle"></i> Pre-owned Phones</span>
         <span class="marquee-item"><i class="bi bi-tablet"></i> Tablets</span>
@@ -193,7 +102,7 @@
         <span class="marquee-item"><i class="bi bi-shield-check-fill"></i> 7-Day Guarantee</span>
         <span class="marquee-item"><i class="bi bi-cash-coin"></i> GCash / Bank Transfer</span>
         <span class="marquee-item"><i class="bi bi-patch-check-fill"></i> Function Tested</span>
-        <!-- duplicate for seamless scroll -->
+        <!-- duplicate for seamless loop -->
         <span class="marquee-item"><i class="bi bi-phone"></i> New iPhones</span>
         <span class="marquee-item"><i class="bi bi-recycle"></i> Pre-owned Phones</span>
         <span class="marquee-item"><i class="bi bi-tablet"></i> Tablets</span>
@@ -206,7 +115,7 @@
     </div>
   </section>
 
-  <!-- ===== SHOP BY CATEGORY ===== -->
+  <!-- SHOP BY CATEGORY -->
   <section class="py-5" id="categories">
     <div class="container">
       <div class="section-header text-center">
@@ -214,12 +123,11 @@
         <h2 class="section-title">Shop by Category</h2>
         <p class="section-subtitle">Find the right device for every need and budget</p>
       </div>
-
       <div class="row g-3 justify-content-center">
         <div class="col-6 col-md-3">
           <a href="catalog.html?cat=preowned" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=📱" alt="Pre-owned iPhones" loading="lazy">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Pre-owned" alt="Pre-owned iPhones" loading="lazy">
             </div>
             <p class="cat-name mb-0">Pre-owned iPhones</p>
             <span class="cat-count">Quality-checked units</span>
@@ -228,7 +136,7 @@
         <div class="col-6 col-md-3">
           <a href="catalog.html?cat=new" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=✨" alt="New iPhones" loading="lazy">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=New" alt="New iPhones" loading="lazy">
             </div>
             <p class="cat-name mb-0">New iPhones</p>
             <span class="cat-count">Brand-new sealed units</span>
@@ -237,19 +145,19 @@
         <div class="col-6 col-md-3">
           <a href="catalog.html?cat=android" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=🤖" alt="Android" loading="lazy">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Android" alt="Android" loading="lazy">
             </div>
             <p class="cat-name mb-0">Android</p>
-            <span class="cat-count">Samsung, Pixel & more</span>
+            <span class="cat-count">Samsung, Pixel &amp; more</span>
           </a>
         </div>
         <div class="col-6 col-md-3">
           <a href="catalog.html?cat=tablet" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=📲" alt="Tablets" loading="lazy">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Tablet" alt="Tablets" loading="lazy">
             </div>
             <p class="cat-name mb-0">Tablets</p>
-            <span class="cat-count">iPad & Android tablets</span>
+            <span class="cat-count">iPad &amp; Android tablets</span>
           </a>
         </div>
       </div>
@@ -258,7 +166,7 @@
 
   <div class="section-divider"></div>
 
-  <!-- ===== FEATURED PRODUCTS ===== -->
+  <!-- FEATURED PRODUCTS -->
   <section class="py-5 bg-ct-soft" id="featured">
     <div class="container">
       <div class="section-header d-flex align-items-end justify-content-between flex-wrap gap-2">
@@ -266,12 +174,10 @@
           <span class="section-label">Hot Picks</span>
           <h2 class="section-title">Featured Products</h2>
         </div>
-        <a href="catalog.html" class="btn-ct-outline btn btn-sm mb-1">View All <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="catalog.html" class="btn btn-ct-outline btn-sm mb-1">View All <i class="bi bi-arrow-right ms-1"></i></a>
       </div>
-
       <div class="row g-3" id="featuredGrid">
 
-        <!-- Product 1 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -283,7 +189,7 @@
               <p class="product-price">₱32,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P001', name:'iPhone 13 Pro 128GB Graphite', price:32500, variant:'128GB', color:'Graphite' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P001',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -291,7 +197,6 @@
           </article>
         </div>
 
-        <!-- Product 2 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -303,7 +208,7 @@
               <p class="product-price">₱21,800</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P002', name:'iPhone 12 64GB Blue', price:21800, variant:'64GB', color:'Blue' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P002',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -311,7 +216,6 @@
           </article>
         </div>
 
-        <!-- Product 3 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -323,7 +227,7 @@
               <p class="product-price">₱28,000</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P003', name:'Samsung Galaxy S22 256GB', price:28000, variant:'256GB', color:'Phantom Black' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P003',name:'Samsung Galaxy S22 256GB',price:28000,variant:'256GB',color:'Phantom Black'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -331,7 +235,6 @@
           </article>
         </div>
 
-        <!-- Product 4 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -343,7 +246,7 @@
               <p class="product-price">₱22,000</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P004', name:'iPad 9th Gen 64GB', price:22000, variant:'64GB', color:'Space Gray' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P004',name:'iPad 9th Gen 64GB',price:22000,variant:'64GB',color:'Space Gray'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -351,11 +254,10 @@
           </article>
         </div>
 
-        <!-- Product 5 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Pixel+7" alt="Google Pixel 7" loading="lazy">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Pixel+7" alt="Google Pixel 7 128GB" loading="lazy">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -363,7 +265,7 @@
               <p class="product-price">₱24,000</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P005', name:'Google Pixel 7 128GB', price:24000, variant:'128GB', color:'Snow' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P005',name:'Google Pixel 7 128GB',price:24000,variant:'128GB',color:'Snow'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -371,7 +273,6 @@
           </article>
         </div>
 
-        <!-- Product 6 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -383,7 +284,7 @@
               <p class="product-price">₱28,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P006', name:'iPhone 13 128GB Midnight', price:28500, variant:'128GB', color:'Midnight' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P006',name:'iPhone 13 128GB Midnight',price:28500,variant:'128GB',color:'Midnight'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -391,7 +292,6 @@
           </article>
         </div>
 
-        <!-- Product 7 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -403,7 +303,7 @@
               <p class="product-price">₱16,999</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P007', name:'Samsung Galaxy A54 5G 128GB', price:16999, variant:'128GB', color:'Awesome Graphite' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P007',name:'Samsung Galaxy A54 5G 128GB',price:16999,variant:'128GB',color:'Awesome Graphite'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -411,7 +311,6 @@
           </article>
         </div>
 
-        <!-- Product 8 -->
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
@@ -423,7 +322,7 @@
               <p class="product-price">₱18,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({ id:'P008', name:'iPhone SE 3rd Gen 64GB', price:18500, variant:'64GB', color:'Starlight' })">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P008',name:'iPhone SE 3rd Gen 64GB',price:18500,variant:'64GB',color:'Starlight'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -432,16 +331,15 @@
         </div>
 
       </div><!-- /row -->
-
       <div class="text-center mt-4">
-        <a href="catalog.html" class="btn-ct btn text-white px-5">Browse All Products <i class="bi bi-grid ms-1"></i></a>
+        <a href="catalog.html" class="btn btn-ct text-white px-5">Browse All Products <i class="bi bi-grid ms-1"></i></a>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- ===== WHY CHOOSE US ===== -->
+  <!-- WHY CHOOSE US -->
   <section class="py-5" id="features">
     <div class="container">
       <div class="section-header text-center">
@@ -449,33 +347,32 @@
         <h2 class="section-title">Why Choose CheynTech?</h2>
         <p class="section-subtitle">We make buying secondhand phones safe, simple, and satisfying</p>
       </div>
-
       <div class="row g-3 justify-content-center">
         <div class="col-sm-6 col-lg-3">
-          <div class="feature-card feature-card">
+          <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-patch-check-fill"></i></div>
-            <h5 class="fw-700 mb-2" style="font-size:1rem;">Function Tested</h5>
-            <p class="text-muted small mb-0">Every unit is fully tested before listing — battery, screen, camera, and connectivity all checked.</p>
+            <h5 class="feature-title mb-2">Function Tested</h5>
+            <p class="text-muted small mb-0">Every unit is fully tested — battery, screen, camera, and connectivity all checked.</p>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
           <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-shield-check-fill"></i></div>
-            <h5 class="fw-700 mb-2" style="font-size:1rem;">7-Day Guarantee</h5>
+            <h5 class="feature-title mb-2">7-Day Guarantee</h5>
             <p class="text-muted small mb-0">Not satisfied? Get a free replacement within 7 days — no hassle, no fine print.</p>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
           <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-cash-coin"></i></div>
-            <h5 class="fw-700 mb-2" style="font-size:1rem;">Honest Pricing</h5>
+            <h5 class="feature-title mb-2">Honest Pricing</h5>
             <p class="text-muted small mb-0">No inflated prices or hidden fees. The price you see is the price you pay.</p>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
           <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-truck"></i></div>
-            <h5 class="fw-700 mb-2" style="font-size:1rem;">Pickup or Delivery</h5>
+            <h5 class="feature-title mb-2">Pickup or Delivery</h5>
             <p class="text-muted small mb-0">Pick up at our store or get it delivered locally — you choose what works best.</p>
           </div>
         </div>
@@ -483,48 +380,39 @@
     </div>
   </section>
 
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="py-5" style="background: var(--ct-primary-soft);">
+  <!-- HOW IT WORKS -->
+  <section class="py-5 bg-ct-soft">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-label">Simple Process</span>
         <h2 class="section-title">How It Works</h2>
       </div>
-
       <div class="row g-4 justify-content-center text-center">
         <div class="col-md-3 col-6">
           <div class="p-3">
-            <div class="feature-icon-wrap mx-auto mb-3" style="background:#fff; box-shadow: var(--ct-shadow-pink);">
-              <i class="bi bi-search"></i>
-            </div>
-            <div class="fw-700 mb-1" style="font-size:0.92rem;">1. Browse</div>
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-search"></i></div>
+            <p class="step-title">1. Browse</p>
             <p class="text-muted small mb-0">Search and filter products by category, condition, storage, and price.</p>
           </div>
         </div>
         <div class="col-md-3 col-6">
           <div class="p-3">
-            <div class="feature-icon-wrap mx-auto mb-3" style="background:#fff; box-shadow: var(--ct-shadow-pink);">
-              <i class="bi bi-cart-plus"></i>
-            </div>
-            <div class="fw-700 mb-1" style="font-size:0.92rem;">2. Order</div>
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-cart-plus"></i></div>
+            <p class="step-title">2. Order</p>
             <p class="text-muted small mb-0">Add to cart, checkout, and choose your preferred payment and fulfillment method.</p>
           </div>
         </div>
         <div class="col-md-3 col-6">
           <div class="p-3">
-            <div class="feature-icon-wrap mx-auto mb-3" style="background:#fff; box-shadow: var(--ct-shadow-pink);">
-              <i class="bi bi-clock-history"></i>
-            </div>
-            <div class="fw-700 mb-1" style="font-size:0.92rem;">3. We Process</div>
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-clock-history"></i></div>
+            <p class="step-title">3. We Process</p>
             <p class="text-muted small mb-0">Our team prepares and verifies your order. You'll get a status update.</p>
           </div>
         </div>
         <div class="col-md-3 col-6">
           <div class="p-3">
-            <div class="feature-icon-wrap mx-auto mb-3" style="background:#fff; box-shadow: var(--ct-shadow-pink);">
-              <i class="bi bi-bag-heart-fill"></i>
-            </div>
-            <div class="fw-700 mb-1" style="font-size:0.92rem;">4. Receive</div>
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-bag-heart-fill"></i></div>
+            <p class="step-title">4. Receive</p>
             <p class="text-muted small mb-0">Pick up in-store or receive delivery. Enjoy your new gadget!</p>
           </div>
         </div>
@@ -532,24 +420,23 @@
     </div>
   </section>
 
-  <!-- ===== TESTIMONIALS ===== -->
+  <!-- TESTIMONIALS -->
   <section class="py-5">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-label">Happy Customers</span>
         <h2 class="section-title">What People Say</h2>
       </div>
-
       <div class="row g-3">
         <div class="col-md-4">
           <div class="testimonial-card">
             <div class="stars mb-2">★★★★★</div>
             <p class="small mb-3">"Ordered a pre-owned iPhone 12. Came in perfect condition, fully tested. The delivery was fast and the price was unbeatable!"</p>
             <div class="d-flex align-items-center gap-2">
-              <div style="width:36px;height:36px;border-radius:50%;background:var(--ct-primary-light);display:flex;align-items:center;justify-content:center;color:var(--ct-primary);font-weight:700;font-size:0.9rem;">MJ</div>
+              <div class="avatar-circle">MJ</div>
               <div>
-                <div class="fw-600" style="font-size:0.88rem;">Maria J.</div>
-                <div class="text-muted" style="font-size:0.75rem;">Iloilo City</div>
+                <div class="testimonial-name">Maria J.</div>
+                <div class="testimonial-place text-muted">Iloilo City</div>
               </div>
             </div>
           </div>
@@ -559,10 +446,10 @@
             <div class="stars mb-2">★★★★★</div>
             <p class="small mb-3">"Ang ganda ng serbisyo! Nag-order ako ng Samsung Galaxy S22 tapos dumating ng mabilis. Legit na tindahan, sure akong babalik!"</p>
             <div class="d-flex align-items-center gap-2">
-              <div style="width:36px;height:36px;border-radius:50%;background:var(--ct-primary-light);display:flex;align-items:center;justify-content:center;color:var(--ct-primary);font-weight:700;font-size:0.9rem;">KA</div>
+              <div class="avatar-circle">KA</div>
               <div>
-                <div class="fw-600" style="font-size:0.88rem;">Kristoffer A.</div>
-                <div class="text-muted" style="font-size:0.75rem;">Molo, Iloilo</div>
+                <div class="testimonial-name">Kristoffer A.</div>
+                <div class="testimonial-place text-muted">Molo, Iloilo</div>
               </div>
             </div>
           </div>
@@ -572,10 +459,10 @@
             <div class="stars mb-2">★★★★★</div>
             <p class="small mb-3">"Super satisfied! They replaced the unit no questions asked when I found a minor issue. The 7-day guarantee is real!"</p>
             <div class="d-flex align-items-center gap-2">
-              <div style="width:36px;height:36px;border-radius:50%;background:var(--ct-primary-light);display:flex;align-items:center;justify-content:center;color:var(--ct-primary);font-weight:700;font-size:0.9rem;">JT</div>
+              <div class="avatar-circle">JT</div>
               <div>
-                <div class="fw-600" style="font-size:0.88rem;">Joy T.</div>
-                <div class="text-muted" style="font-size:0.75rem;">Pasig, Manila</div>
+                <div class="testimonial-name">Joy T.</div>
+                <div class="testimonial-place text-muted">Pasig, Manila</div>
               </div>
             </div>
           </div>
@@ -584,23 +471,19 @@
     </div>
   </section>
 
-  <!-- ===== CTA BANNER ===== -->
+  <!-- CTA BANNER -->
   <section class="cta-section text-center text-white">
     <div class="container">
-      <h2 class="fw-800 mb-2" style="font-size: clamp(1.5rem,3vw,2.25rem);">Ready to Find Your Next Gadget?</h2>
+      <h2 class="mb-2">Ready to Find Your Next Gadget?</h2>
       <p class="mb-4 opacity-75">Shop hundreds of pre-owned, refurbished, and brand-new devices today.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="catalog.html" class="btn btn-light fw-600 px-5" style="color:var(--ct-primary); border-radius: var(--ct-radius-sm);">
-          Shop Now <i class="bi bi-arrow-right ms-1"></i>
-        </a>
-        <a href="contact.html" class="btn btn-outline-light fw-600 px-5" style="border-radius: var(--ct-radius-sm);">
-          Contact Us
-        </a>
+        <a href="catalog.html" class="btn btn-cta-light">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="contact.html" class="btn btn-cta-outline-light">Contact Us</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="row gy-4">
@@ -650,20 +533,10 @@
     </div>
   </footer>
 
-  <!-- ===== BACK TO TOP ===== -->
   <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- CheynTech JS -->
   <script src="assets/js/main.js"></script>
-
-  <script>
-    // ---- Quick Add to Cart shorthand ----
-    function quickAddToCart(product) {
-      CheynCart.add(product);
-    }
-  </script>
-
+  <script src="assets/js/index.js"></script>
 </body>
 </html>

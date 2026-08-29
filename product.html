@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iPhone 13 Pro – 128GB Graphite. Refurbished unit, fully function-tested with 7-day replacement guarantee. CheynTech, Iloilo City.">
+  <title>iPhone 13 Pro – 128GB Graphite | CheynTech</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- SEARCH OVERLAY -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="search-close" id="searchClose" aria-label="Close search"><i class="bi bi-x"></i></button>
+    <form class="search-inner" id="searchForm" role="search">
+      <input type="search" id="searchInput" placeholder="Search for phones, tablets…" autocomplete="off">
+      <p class="search-hint">Press Enter to search · Esc to close</p>
+    </form>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-ct sticky-top" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo.svg" alt="CheynTech" width="38" height="38">
+        <span class="brand-name">CheynTech</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+              aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="catalog.html">Catalog</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="track-order.html">Track Order</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3 nav-icons">
+          <a href="#" id="searchToggle" aria-label="Search"><i class="bi bi-search"></i></a>
+          <a href="cart.html" class="position-relative" aria-label="Shopping cart">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge">0</span>
+          </a>
+          <a href="login.html" aria-label="Account"><i class="bi bi-person-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-wrap">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="catalog.html">Catalog</a></li>
+          <li class="breadcrumb-item"><a href="catalog.html?cat=preowned">Phones &amp; Tablets</a></li>
+          <li class="breadcrumb-item active" aria-current="page">iPhone 13 Pro</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN PRODUCT SECTION -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- LEFT: Image Gallery -->
+        <div class="col-lg-6">
+          <div class="product-gallery">
+            <!-- Main image -->
+            <div class="gallery-main mb-3">
+              <img
+                id="mainProductImg"
+                src="https://placehold.co/540x480/fce4ec/e91e8c?text=iPhone+13+Pro+Front"
+                alt="iPhone 13 Pro – 128GB Graphite"
+                class="img-fluid rounded-ct w-100"
+                loading="eager"
+              >
+            </div>
+            <!-- Thumbnails -->
+            <div class="gallery-thumbs d-flex gap-2 flex-wrap">
+              <button class="gallery-thumb active" aria-label="Front view" data-src="https://placehold.co/540x480/fce4ec/e91e8c?text=Front">
+                <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Front" alt="Front">
+              </button>
+              <button class="gallery-thumb" aria-label="Back view" data-src="https://placehold.co/540x480/fce4ec/e91e8c?text=Back">
+                <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Back" alt="Back">
+              </button>
+              <button class="gallery-thumb" aria-label="Side view" data-src="https://placehold.co/540x480/fce4ec/e91e8c?text=Side">
+                <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Side" alt="Side">
+              </button>
+              <button class="gallery-thumb" aria-label="Box and accessories" data-src="https://placehold.co/540x480/fce4ec/e91e8c?text=Box+%26+Accessories">
+                <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Box" alt="Box">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Product Info -->
+        <div class="col-lg-6">
+
+          <!-- Condition badges -->
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge-ct badge-refurbished">Refurbished</span>
+            <span class="badge-ct badge-available">Available</span>
+          </div>
+
+          <!-- Product name & price -->
+          <h1 class="fw-800 mb-1" id="productName">iPhone 13 Pro – 128GB Graphite</h1>
+          <div class="product-price mb-3" id="productPrice">₱32,500</div>
+
+          <!-- Storage selector -->
+          <div class="mb-3">
+            <p class="filter-group-label mb-2">Storage</p>
+            <div class="d-flex gap-2 flex-wrap" id="storageOptions">
+              <button class="btn btn-sm btn-ct storage-btn active" data-storage="128GB" data-price="32500">128GB</button>
+              <button class="btn btn-sm btn-ct-outline storage-btn" data-storage="256GB" data-price="38500">256GB</button>
+              <button class="btn btn-sm btn-ct-outline storage-btn" data-storage="512GB" data-price="45900">512GB</button>
+            </div>
+          </div>
+
+          <!-- Color selector -->
+          <div class="mb-4">
+            <p class="filter-group-label mb-2">Color — <span id="selectedColorLabel" class="text-ct fw-700">Graphite</span></p>
+            <div class="d-flex gap-3 flex-wrap" id="colorOptions">
+              <label class="color-option-btn active" data-color="Graphite">
+                <input type="radio" name="color" value="Graphite" checked class="visually-hidden">
+                <span class="color-dot" style="background:#4a4a4a;" title="Graphite"></span>
+                <span class="color-label">Graphite</span>
+              </label>
+              <label class="color-option-btn" data-color="Silver">
+                <input type="radio" name="color" value="Silver" class="visually-hidden">
+                <span class="color-dot" style="background:#e2e2e4;border-color:#c0c0c0;" title="Silver"></span>
+                <span class="color-label">Silver</span>
+              </label>
+              <label class="color-option-btn" data-color="Gold">
+                <input type="radio" name="color" value="Gold" class="visually-hidden">
+                <span class="color-dot" style="background:#f0d58c;" title="Gold"></span>
+                <span class="color-label">Gold</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Short description -->
+          <p class="text-muted mb-3">
+            The iPhone 13 Pro features Apple's A15 Bionic chip, a ProMotion 120Hz Super Retina XDR display, and an advanced triple-camera system with macro photography. Fully function-tested by our team before listing.
+          </p>
+
+          <!-- Trust note -->
+          <div class="d-flex align-items-center gap-2 mb-4 p-3 bg-ct-soft rounded-ct-lg">
+            <i class="bi bi-patch-check-fill text-ct fs-5 flex-shrink-0"></i>
+            <span class="small">Full function test passed — battery, screen, cameras, FaceID, and all connectivity checked. <strong>7-day replacement guarantee</strong> · Comes with charger and original box.</span>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="d-flex gap-3 flex-wrap mb-3">
+            <button class="btn btn-ct px-4 py-2 flex-grow-1" id="addToCartBtn">
+              <i class="bi bi-cart-plus me-2"></i>Add to Cart
+            </button>
+            <a href="contact.html?product=iPhone+13+Pro+128GB+Graphite" class="btn btn-ct-outline px-4 py-2">
+              <i class="bi bi-chat-dots me-2"></i>Ask a Question
+            </a>
+          </div>
+
+          <!-- Secondary trust -->
+          <div class="d-flex gap-3 flex-wrap">
+            <span class="d-flex align-items-center gap-1 small text-muted">
+              <i class="bi bi-shield-check text-ct"></i> 7-Day Guarantee
+            </span>
+            <span class="d-flex align-items-center gap-1 small text-muted">
+              <i class="bi bi-truck text-ct"></i> Pickup or Delivery
+            </span>
+            <span class="d-flex align-items-center gap-1 small text-muted">
+              <i class="bi bi-cash-coin text-ct"></i> GCash / Bank Transfer
+            </span>
+          </div>
+
+        </div><!-- /col right -->
+      </div><!-- /row -->
+
+      <!-- TABBED SECTION: Description / Specs / How to Order -->
+      <div class="mt-5">
+        <ul class="nav nav-tabs" id="productTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="descTab" data-bs-toggle="tab" data-bs-target="#descPane"
+                    type="button" role="tab" aria-controls="descPane" aria-selected="true">
+              Description
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="specsTab" data-bs-toggle="tab" data-bs-target="#specsPane"
+                    type="button" role="tab" aria-controls="specsPane" aria-selected="false">
+              Specifications
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="howtoTab" data-bs-toggle="tab" data-bs-target="#howtoPane"
+                    type="button" role="tab" aria-controls="howtoPane" aria-selected="false">
+              How to Order
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content border border-top-0 rounded-bottom p-4 bg-white" id="productTabContent">
+
+          <!-- Description -->
+          <div class="tab-pane fade show active" id="descPane" role="tabpanel" aria-labelledby="descTab">
+            <h5 class="fw-700 mb-3">About This Unit</h5>
+            <p>This iPhone 13 Pro has been professionally refurbished by CheynTech. The device has been fully cleaned, tested, and any faulty components replaced. The screen, battery, cameras, Face ID sensor, and all ports are in excellent working condition.</p>
+            <p>The unit comes in original Apple packaging with a USB-C to Lightning cable and an official Apple 20W USB-C power adapter.</p>
+            <ul class="text-muted small">
+              <li>Battery health: 87% or higher</li>
+              <li>iCloud-clean — no activation lock</li>
+              <li>No cosmetic damage visible from normal use distance</li>
+              <li>IMEI checked — clean international status</li>
+            </ul>
+          </div>
+
+          <!-- Specifications -->
+          <div class="tab-pane fade" id="specsPane" role="tabpanel" aria-labelledby="specsTab">
+            <h5 class="fw-700 mb-3">Technical Specifications</h5>
+            <table class="table table-sm table-bordered">
+              <tbody>
+                <tr><th class="text-muted fw-600 col-4">Display</th><td>6.1&Prime; Super Retina XDR, 120Hz ProMotion</td></tr>
+                <tr><th class="text-muted fw-600">Chip</th><td>Apple A15 Bionic</td></tr>
+                <tr><th class="text-muted fw-600">Storage</th><td id="specStorage">128GB</td></tr>
+                <tr><th class="text-muted fw-600">Rear Camera</th><td>Triple 12MP (main, ultrawide, 3× telephoto)</td></tr>
+                <tr><th class="text-muted fw-600">Front Camera</th><td>12MP TrueDepth with Face ID</td></tr>
+                <tr><th class="text-muted fw-600">Battery</th><td>3,095 mAh · MagSafe compatible</td></tr>
+                <tr><th class="text-muted fw-600">Connectivity</th><td>5G, Wi-Fi 6, Bluetooth 5.0, NFC, Lightning</td></tr>
+                <tr><th class="text-muted fw-600">OS</th><td>Upgradeable to iOS 17+</td></tr>
+                <tr><th class="text-muted fw-600">Condition</th><td>Refurbished — Grade A</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- How to Order -->
+          <div class="tab-pane fade" id="howtoPane" role="tabpanel" aria-labelledby="howtoTab">
+            <h5 class="fw-700 mb-3">How to Order from CheynTech</h5>
+            <ol class="ps-3">
+              <li class="mb-2"><strong>Add to Cart</strong> — Select your preferred storage and color, then click "Add to Cart".</li>
+              <li class="mb-2"><strong>Checkout</strong> — Fill in your contact details and choose your fulfillment method (Pickup or Local Delivery).</li>
+              <li class="mb-2"><strong>Choose Payment</strong> — Pay via Cash on Pickup, GCash, or Bank Transfer. Instructions will be provided after checkout.</li>
+              <li class="mb-2"><strong>Confirmation</strong> — Our team will review and confirm your order within 1–2 hours during store hours.</li>
+              <li><strong>Receive Your Unit</strong> — Pick up at our Molo, Iloilo City store, or wait for our delivery staff to coordinate with you.</li>
+            </ol>
+            <div class="alert alert-info mt-3 small">
+              <i class="bi bi-info-circle me-2"></i>
+              Store hours: Mon–Sat, 9:00 AM – 7:00 PM · Questions? <a href="contact.html" class="alert-link">Contact us</a> or message us on Facebook.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- YOU MAY ALSO LIKE -->
+      <section class="mt-5 pt-4">
+        <div class="section-header mb-4">
+          <span class="section-label">Related</span>
+          <h2 class="section-title">You May Also Like</h2>
+        </div>
+        <div class="row g-3">
+          <div class="col-6 col-md-3">
+            <article class="product-card">
+              <div class="card-img-wrap">
+                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12" alt="iPhone 12 64GB Blue" loading="lazy">
+                <span class="badge-ct badge-preowned">Pre-owned</span>
+              </div>
+              <div class="card-body">
+                <p class="product-name">iPhone 12 – 64GB Blue</p>
+                <p class="product-price">₱21,800</p>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'P002',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue'})">
+                  <i class="bi bi-cart-plus me-1"></i>Add
+                </button>
+                <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-6 col-md-3">
+            <article class="product-card">
+              <div class="card-img-wrap">
+                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+SE+3" alt="iPhone SE 3rd Gen" loading="lazy">
+                <span class="badge-ct badge-refurbished">Refurbished</span>
+              </div>
+              <div class="card-body">
+                <p class="product-name">iPhone SE 3rd Gen – 128GB Starlight</p>
+                <p class="product-price">₱23,500</p>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'P009',name:'iPhone SE 3rd Gen 128GB',price:23500,variant:'128GB',color:'Starlight'})">
+                  <i class="bi bi-cart-plus me-1"></i>Add
+                </button>
+                <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-6 col-md-3">
+            <article class="product-card">
+              <div class="card-img-wrap">
+                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+14" alt="iPhone 14 256GB Midnight" loading="lazy">
+                <span class="badge-ct badge-available">Brand New</span>
+              </div>
+              <div class="card-body">
+                <p class="product-name">iPhone 14 – 256GB Midnight</p>
+                <p class="product-price">₱44,900</p>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'P010',name:'iPhone 14 256GB Midnight',price:44900,variant:'256GB',color:'Midnight'})">
+                  <i class="bi bi-cart-plus me-1"></i>Add
+                </button>
+                <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-6 col-md-3">
+            <article class="product-card">
+              <div class="card-img-wrap">
+                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13" alt="iPhone 13 128GB Midnight" loading="lazy">
+                <span class="badge-ct badge-preowned">Pre-owned</span>
+              </div>
+              <div class="card-body">
+                <p class="product-name">iPhone 13 – 128GB Midnight</p>
+                <p class="product-price">₱28,500</p>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'P006',name:'iPhone 13 128GB Midnight',price:28500,variant:'128GB',color:'Midnight'})">
+                  <i class="bi bi-cart-plus me-1"></i>Add
+                </button>
+                <a href="product.html" class="btn btn-ct-outline btn-ct-sm">View</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6">
+          <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none mb-3">
+            <img src="assets/img/logo.svg" alt="CheynTech" width="34" height="34">
+            <span class="footer-brand-name">CheynTech</span>
+          </a>
+          <p class="mb-3">Your trusted source for pre-owned, refurbished, and brand-new gadgets in the Philippines.</p>
+          <div class="social-links d-flex gap-2">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Shop</h6>
+          <div class="footer-links">
+            <a href="catalog.html?cat=preowned">Pre-owned iPhones</a>
+            <a href="catalog.html?cat=new">New iPhones</a>
+            <a href="catalog.html?cat=android">Android</a>
+            <a href="catalog.html?cat=tablet">Tablets</a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Help</h6>
+          <div class="footer-links">
+            <a href="track-order.html">Track Order</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="footer-heading">Account</h6>
+          <div class="footer-links">
+            <a href="login.html">Log In</a>
+            <a href="login.html#register">Register</a>
+            <a href="cart.html">My Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container text-center">
+        © 2026 CheynTech Trading. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/product.js"></script>
+</body>
+</html>
