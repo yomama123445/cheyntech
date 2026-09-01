@@ -45,7 +45,8 @@
   });
 
   // -- Add to Cart --
-  document.getElementById('addToCartBtn').addEventListener('click', function () {
+  var addBtn = document.getElementById('addToCartBtn');
+  addBtn && addBtn.addEventListener('click', function () {
     CheynCart.add({
       id      : 'iphone13pro-' + currentStorage.toLowerCase() + '-' + currentColor.toLowerCase().replace(/\s/g, ''),
       name    : 'iPhone 13 Pro – ' + currentStorage + ' ' + currentColor,
@@ -53,6 +54,6 @@
       variant : currentStorage,
       color   : currentColor,
       image   : 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro'
-    });
+    }, this);
   });
 })();

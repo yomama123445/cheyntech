@@ -234,6 +234,18 @@ img { max-width: 100%; }
 
 .btn-ct-sm { padding: 0.35rem 1rem; font-size: 0.85rem; }
 
+/* Add to Cart — success feedback state (set via JS for 1.5 s) */
+.btn-added,
+.btn-added:disabled {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  cursor: default;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 /* ===================================================
    CONDITION / STATUS BADGES
    =================================================== */
@@ -983,16 +995,16 @@ img { max-width: 100%; }
 .btn-cta-light:hover { background: var(--ct-primary-light); color: var(--ct-primary-dark); }
 
 .btn-cta-outline-light {
-  background: transparent;
+  background: rgba(255,255,255,0.12);
   color: #fff;
   font-weight: 600;
-  border: 2px solid rgba(255,255,255,0.5);
+  border: 2px solid rgba(255,255,255,0.85);
   border-radius: var(--ct-radius-sm);
   padding: 0.6rem 2rem;
   transition: var(--ct-transition);
 }
 
-.btn-cta-outline-light:hover { background: rgba(255,255,255,0.15); border-color: #fff; color: #fff; }
+.btn-cta-outline-light:hover { background: rgba(255,255,255,0.25); border-color: #fff; color: #fff; }
 
 /* ===================================================
    SHARED — Avatar initials circle
