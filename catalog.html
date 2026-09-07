@@ -9,54 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    .catalog-hero{background:linear-gradient(135deg,var(--ct-primary-light) 0%,#fff8fb 60%,#fff 100%);padding:2.5rem 0 2rem;border-bottom:1px solid var(--ct-border);}
-    .catalog-hero h1{font-size:1.65rem;font-weight:800;margin:0;}
-    .catalog-hero .result-count{font-size:.88rem;color:var(--ct-muted);margin:0;}
-    .filter-card{background:#fff;border:1.5px solid var(--ct-border);border-radius:var(--ct-radius);padding:1.25rem;position:sticky;top:76px;}
-    .filter-title-bar{font-weight:800;font-size:.92rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ct-text);margin-bottom:1rem;padding-bottom:.65rem;border-bottom:2px solid var(--ct-primary-light);display:flex;align-items:center;justify-content:space-between;}
-    .filter-title-bar a{font-size:.75rem;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ct-muted);text-decoration:none;}
-    .filter-title-bar a:hover{color:var(--ct-primary);}
-    .filter-group-label{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ct-text);margin-bottom:.6rem;}
-    .filter-group{margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--ct-border);}
-    .filter-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-    .filter-check .form-check{margin-bottom:.3rem;}
-    .filter-check .form-check-input:checked{background-color:var(--ct-primary);border-color:var(--ct-primary);}
-    .filter-check .form-check-input:focus{box-shadow:0 0 0 3px rgba(233,30,140,.15);}
-    .filter-check .form-check-label{font-size:.87rem;cursor:pointer;}
-    .color-option{display:flex;align-items:center;gap:.45rem;margin-bottom:.35rem;cursor:pointer;}
-    .color-option input[type="checkbox"]:checked{background-color:var(--ct-primary);border-color:var(--ct-primary);}
-    .color-option input[type="checkbox"]:focus{box-shadow:0 0 0 3px rgba(233,30,140,.15);}
-    .color-dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(0,0,0,.12);display:inline-block;flex-shrink:0;}
-    .color-label{font-size:.87rem;}
-    .price-inputs{display:flex;align-items:center;gap:.5rem;}
-    .price-inputs .form-control{font-size:.85rem;border-radius:var(--ct-radius-sm);border-color:var(--ct-border);padding:.35rem .6rem;}
-    .price-inputs .form-control:focus{border-color:var(--ct-primary);box-shadow:0 0 0 3px rgba(233,30,140,.15);}
-    .price-sep{color:var(--ct-muted);font-size:.85rem;flex-shrink:0;}
-    .catalog-search-wrap{position:relative;margin-bottom:1rem;}
-    .catalog-search-wrap input{padding-right:2.4rem;border-radius:var(--ct-radius-sm);font-size:.88rem;border-color:var(--ct-border);}
-    .catalog-search-wrap input:focus{border-color:var(--ct-primary);box-shadow:0 0 0 3px rgba(233,30,140,.15);}
-    .catalog-search-wrap .search-icon{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);color:var(--ct-muted);font-size:.95rem;pointer-events:none;}
-    .sort-bar{background:#fff;border:1.5px solid var(--ct-border);border-radius:var(--ct-radius-sm);padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;}
-    .sort-bar .sort-label{font-size:.85rem;color:var(--ct-muted);white-space:nowrap;}
-    .sort-bar .form-select{border-color:var(--ct-border);border-radius:var(--ct-radius-sm);font-size:.85rem;padding:.3rem 2rem .3rem .7rem;width:auto;cursor:pointer;}
-    .sort-bar .form-select:focus{border-color:var(--ct-primary);box-shadow:0 0 0 3px rgba(233,30,140,.15);}
-    .product-desc{font-size:.8rem;color:var(--ct-muted);margin-bottom:.5rem;line-height:1.5;}
-    .page-link{border-radius:var(--ct-radius-sm)!important;color:var(--ct-primary);border-color:var(--ct-border);font-size:.88rem;font-weight:600;padding:.45rem .8rem;}
-    .page-link:hover{background:var(--ct-primary-light);border-color:var(--ct-primary);color:var(--ct-primary);}
-    .page-item.active .page-link{background:var(--ct-primary);border-color:var(--ct-primary);}
-    .page-item.disabled .page-link{color:var(--ct-muted);}
-    .filter-mobile-btn{display:none;}
-    @media(max-width:991.98px){.filter-col{display:none;}.filter-mobile-btn{display:flex;}}
-    .offcanvas-filter .offcanvas-header{border-bottom:1px solid var(--ct-border);}
-    .offcanvas-filter .offcanvas-title{font-weight:800;font-size:1rem;}
-    .offcanvas-filter .offcanvas-body{padding:1.25rem;}
-    .active-filters{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.85rem;}
-    .filter-tag{background:var(--ct-primary-light);color:var(--ct-primary);border:1px solid rgba(233,30,140,.2);border-radius:999px;font-size:.75rem;font-weight:600;padding:.2em .75em .2em .65em;display:inline-flex;align-items:center;gap:.35rem;}
-    .filter-tag button{background:none;border:none;padding:0;color:var(--ct-primary);cursor:pointer;font-size:.85rem;line-height:1;opacity:.7;}
-    .filter-tag button:hover{opacity:1;}
-  </style>
-</head>
+  </head>
 <body>
 
   <!-- SEARCH OVERLAY -->
@@ -90,7 +43,7 @@
           <a href="#" id="searchToggle" aria-label="Search"><i class="bi bi-search"></i></a>
           <a href="cart.html" class="position-relative" aria-label="Shopping cart">
             <i class="bi bi-cart3"></i>
-            <span class="cart-badge" style="display:none;">0</span>
+            <span class="cart-badge" >0</span>
           </a>
           <a href="login.html" aria-label="Account"><i class="bi bi-person-circle"></i></a>
         </div>
@@ -118,8 +71,9 @@
           <h1>Shop by Category</h1>
           <p class="result-count mt-1">Showing <strong>12</strong> results</p>
         </div>
-        <button class="btn btn-ct-outline btn-sm filter-mobile-btn d-flex align-items-center gap-2"
-          type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas">
+        <button class="btn btn-ct-outline btn-sm filter-mobile-btn d-flex d-lg-none align-items-center gap-2"
+          type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"
+          aria-label="Open filters">
           <i class="bi bi-sliders2"></i> Filters
         </button>
       </div>
@@ -248,16 +202,6 @@
               </div>
             </div>
 
-            <div class="filter-group">
-              <p class="filter-group-label">Price Range</p>
-              <div class="price-inputs mb-2">
-                <span class="text-muted" style="font-size:.82rem;">₱</span>
-                <input type="number" class="form-control" id="priceMin" placeholder="Min" min="0" aria-label="Minimum price">
-                <span class="price-sep">–</span>
-                <span class="text-muted" style="font-size:.82rem;">₱</span>
-                <input type="number" class="form-control" id="priceMax" placeholder="Max" min="0" aria-label="Maximum price">
-              </div>
-            </div>
 
             <div class="d-grid">
               <button type="button" class="btn btn-ct" id="applyFiltersBtn">
@@ -299,7 +243,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'iphone13pro-128-graphite',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro'})">
+                    onclick="CheynCart.add({id:'iphone13pro-128-graphite',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPhone 13 Pro"><i class="bi bi-eye"></i></a>
@@ -321,7 +265,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'iphone12-64-blue',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue',image:'https://placehold.co/400x400/dbeafe/1e3a8a?text=iPhone+12'})">
+                    onclick="CheynCart.add({id:'iphone12-64-blue',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue',image:'https://placehold.co/400x400/dbeafe/1e3a8a?text=iPhone+12'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPhone 12"><i class="bi bi-eye"></i></a>
@@ -343,7 +287,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'s22-256-phantom',name:'Samsung Galaxy S22 256GB Phantom Black',price:28000,variant:'256GB',color:'Phantom Black',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Galaxy+S22'})">
+                    onclick="CheynCart.add({id:'s22-256-phantom',name:'Samsung Galaxy S22 256GB Phantom Black',price:28000,variant:'256GB',color:'Phantom Black',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Galaxy+S22'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View Galaxy S22"><i class="bi bi-eye"></i></a>
@@ -365,7 +309,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'ipad9-64-gray',name:'Apple iPad 9th Gen 64GB Space Gray',price:22000,variant:'64GB',color:'Space Gray',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPad+9th+Gen'})">
+                    onclick="CheynCart.add({id:'ipad9-64-gray',name:'Apple iPad 9th Gen 64GB Space Gray',price:22000,variant:'64GB',color:'Space Gray',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPad+9th+Gen'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPad 9th Gen"><i class="bi bi-eye"></i></a>
@@ -387,7 +331,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'pixel7-128-obsidian',name:'Google Pixel 7 128GB Obsidian',price:24000,variant:'128GB',color:'Obsidian',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Pixel+7'})">
+                    onclick="CheynCart.add({id:'pixel7-128-obsidian',name:'Google Pixel 7 128GB Obsidian',price:24000,variant:'128GB',color:'Obsidian',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Pixel+7'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View Pixel 7"><i class="bi bi-eye"></i></a>
@@ -409,7 +353,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'iphone14-256-midnight',name:'iPhone 14 256GB Midnight',price:44900,variant:'256GB',color:'Midnight',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+14'})">
+                    onclick="CheynCart.add({id:'iphone14-256-midnight',name:'iPhone 14 256GB Midnight',price:44900,variant:'256GB',color:'Midnight',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+14'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPhone 14"><i class="bi bi-eye"></i></a>
@@ -431,7 +375,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'iphone11-64-white',name:'iPhone 11 64GB White',price:17500,variant:'64GB',color:'White',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+11'})">
+                    onclick="CheynCart.add({id:'iphone11-64-white',name:'iPhone 11 64GB White',price:17500,variant:'64GB',color:'White',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+11'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPhone 11"><i class="bi bi-eye"></i></a>
@@ -453,7 +397,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'a54-128-violet',name:'Samsung Galaxy A54 128GB Awesome Violet',price:19990,variant:'128GB',color:'Awesome Violet',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Galaxy+A54'})">
+                    onclick="CheynCart.add({id:'a54-128-violet',name:'Samsung Galaxy A54 128GB Awesome Violet',price:19990,variant:'128GB',color:'Awesome Violet',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Galaxy+A54'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View Galaxy A54"><i class="bi bi-eye"></i></a>
@@ -475,7 +419,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'iphonese3-128-starlight',name:'iPhone SE 3rd Gen 128GB Starlight',price:23500,variant:'128GB',color:'Starlight',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+SE+3'})">
+                    onclick="CheynCart.add({id:'iphonese3-128-starlight',name:'iPhone SE 3rd Gen 128GB Starlight',price:23500,variant:'128GB',color:'Starlight',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+SE+3'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPhone SE 3rd Gen"><i class="bi bi-eye"></i></a>
@@ -497,7 +441,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'rn12pro-256-skyblue',name:'Xiaomi Redmi Note 12 Pro 256GB Sky Blue',price:16499,variant:'256GB',color:'Sky Blue',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Redmi+Note+12'})">
+                    onclick="CheynCart.add({id:'rn12pro-256-skyblue',name:'Xiaomi Redmi Note 12 Pro 256GB Sky Blue',price:16499,variant:'256GB',color:'Sky Blue',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=Redmi+Note+12'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View Redmi Note 12 Pro"><i class="bi bi-eye"></i></a>
@@ -519,7 +463,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'ipadmini6-64-purple',name:'Apple iPad Mini 6th Gen 64GB Purple',price:29800,variant:'64GB',color:'Purple',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPad+Mini+6'})">
+                    onclick="CheynCart.add({id:'ipadmini6-64-purple',name:'Apple iPad Mini 6th Gen 64GB Purple',price:29800,variant:'64GB',color:'Purple',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=iPad+Mini+6'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View iPad Mini 6th Gen"><i class="bi bi-eye"></i></a>
@@ -541,7 +485,7 @@
                 </div>
                 <div class="card-footer">
                   <button class="btn btn-ct btn-ct-sm flex-fill"
-                    onclick="CheynCart.add({id:'op11-256-titan',name:'OnePlus 11 256GB Titan Black',price:34500,variant:'256GB',color:'Titan Black',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=OnePlus+11'})">
+                    onclick="CheynCart.add({id:'op11-256-titan',name:'OnePlus 11 256GB Titan Black',price:34500,variant:'256GB',color:'Titan Black',image:'https://placehold.co/400x400/fce4ec/e91e8c?text=OnePlus+11'}, this)">
                     <i class="bi bi-cart-plus me-1"></i> Add to Cart
                   </button>
                   <a href="product.html" class="btn btn-ct-outline btn-ct-sm" aria-label="View OnePlus 11"><i class="bi bi-eye"></i></a>
@@ -613,16 +557,6 @@
           <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondNew"><label class="form-check-label" for="mCondNew">Brand New</label></div>
         </div>
       </div>
-      <div class="filter-group mb-3 pb-3 border-bottom">
-        <p class="filter-group-label">Price Range</p>
-        <div class="price-inputs mb-2">
-          <span class="text-muted" style="font-size:.82rem;">₱</span>
-          <input type="number" class="form-control" id="mPriceMin" placeholder="Min" min="0">
-          <span class="price-sep">–</span>
-          <span class="text-muted" style="font-size:.82rem;">₱</span>
-          <input type="number" class="form-control" id="mPriceMax" placeholder="Max" min="0">
-        </div>
-      </div>
       <div class="d-grid gap-2 mt-3">
         <button type="button" class="btn btn-ct" data-bs-dismiss="offcanvas"><i class="bi bi-funnel-fill me-1"></i> Apply Filters</button>
         <a href="catalog.html" class="btn btn-ct-outline">Clear All</a>
@@ -682,41 +616,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    'use strict';
-    document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
-      const q        = document.getElementById('catalogSearchInput')?.value.trim() || '';
-      const cats     = [...document.querySelectorAll('input[name="cat"]:checked')].map(i => i.value);
-      const variants = [...document.querySelectorAll('input[name="variant"]:checked')].map(i => i.value);
-      const colors   = [...document.querySelectorAll('input[name="color"]:checked')].map(i => i.value);
-      const conds    = [...document.querySelectorAll('input[name="condition"]:checked')].map(i => i.value);
-      const priceMin = document.getElementById('priceMin')?.value || '';
-      const priceMax = document.getElementById('priceMax')?.value || '';
-      const params   = new URLSearchParams();
-      if (q)               params.set('q', q);
-      if (cats.length)     params.set('cat', cats.join(','));
-      if (variants.length) params.set('variant', variants.join(','));
-      if (colors.length)   params.set('color', colors.join(','));
-      if (conds.length)    params.set('condition', conds.join(','));
-      if (priceMin)        params.set('priceMin', priceMin);
-      if (priceMax)        params.set('priceMax', priceMax);
-      window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
-      showToast('Filters applied', 'info');
-    });
-    (function () {
-      const params   = new URLSearchParams(window.location.search);
-      const catParam = params.get('cat');
-      if (catParam) catParam.split(',').forEach(v => {
-        const el = document.querySelector('input[name="cat"][value="' + v + '"]');
-        if (el) el.checked = true;
-      });
-    })();
-    document.querySelectorAll('.filter-tag button').forEach(btn => {
-      btn.addEventListener('click', () => btn.closest('.filter-tag').remove());
-    });
-    document.getElementById('sortSelect')?.addEventListener('change', (e) => {
-      showToast('Sorted by: ' + e.target.options[e.target.selectedIndex].text, 'info');
-    });
-  </script>
+  
+  <script src="assets/js/catalog.js"></script>
 </body>
 </html>

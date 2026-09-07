@@ -13,7 +13,7 @@
 <body>
 
 <!-- Sidebar Overlay (mobile) -->
-<div id="sidebarOverlay" class="position-fixed" style="display:none;background:rgba(0,0,0,0.4);z-index:99;top:0;left:0;right:0;bottom:0;"></div>
+<div id="sidebarOverlay" class="position-fixed" ></div>
 
 <div class="admin-layout">
 
@@ -42,13 +42,13 @@
 
     <div class="sidebar-section-label mt-2">System</div>
     <nav>
-      <a href="#" class="nav-link" style="opacity:0.4;pointer-events:none;" aria-disabled="true">
+      <a href="#" class="nav-link" class="sidebar-disabled" aria-disabled="true">
         <i class="bi bi-gear"></i> Settings
       </a>
     </nav>
 
     <div class="mt-auto p-3 border-top border-white border-opacity-10">
-      <a href="../login.html" class="nav-link" style="color:#f87171;">
+      <a href="../login.html" class="nav-link" class="sidebar-logout">
         <i class="bi bi-box-arrow-left"></i> Logout
       </a>
     </div>
@@ -64,12 +64,12 @@
       </button>
       <h5 class="mb-0 me-auto">Products</h5>
       <div class="d-flex align-items-center gap-3">
-        <button class="btn" style="background:var(--ct-primary);color:#fff;font-weight:600;border-radius:8px;font-size:0.88rem;" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
+        <button class="btn" class="btn-ct" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
           <i class="bi bi-plus-lg me-1"></i> Add Product
         </button>
         <div class="d-flex align-items-center gap-2">
-          <div style="width:34px;height:34px;border-radius:50%;background:var(--ct-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">A</div>
-          <span class="fw-600 d-none d-md-inline" style="font-size:0.88rem;">Admin User</span>
+          <div class="admin-user-avatar">A</div>
+          <span class="fw-600 d-none d-md-inline" class="admin-username">Admin User</span>
         </div>
       </div>
     </header>
@@ -78,7 +78,7 @@
     <main class="admin-main">
 
       <!-- Search / Filter Bar -->
-      <div class="card border-0 shadow-sm mb-4 px-4 py-3" style="border-radius:var(--ct-radius);">
+      <div class="card border-0 shadow-sm mb-4 px-4 py-3" >
         <div class="row g-2 align-items-center">
           <div class="col-12 col-md-5">
             <div class="input-group">
@@ -114,7 +114,7 @@
 
       <!-- Products Count -->
       <div class="d-flex align-items-center justify-content-between mb-3">
-        <p class="text-muted mb-0" style="font-size:0.85rem;">Showing <span id="productCount">10</span> products</p>
+        <p class="text-muted mb-0" >Showing <span id="productCount">10</span> products</p>
         <div class="d-flex gap-2">
           <button class="btn btn-sm btn-outline-secondary" title="Grid view" id="viewGrid"><i class="bi bi-grid-3x3-gap"></i></button>
           <button class="btn btn-sm btn-secondary" title="Table view" id="viewTable"><i class="bi bi-table"></i></button>
@@ -122,19 +122,19 @@
       </div>
 
       <!-- Products Table -->
-      <div class="card border-0 shadow-sm mb-4" style="border-radius:var(--ct-radius);">
+      <div class="card border-0 shadow-sm mb-4" >
         <div class="table-responsive">
           <table class="table table-hover align-middle mb-0" id="productsTable" aria-label="Products table">
             <thead class="table-light">
               <tr>
-                <th class="ps-4" style="font-size:0.78rem;font-weight:700;width:60px;">Image</th>
-                <th style="font-size:0.78rem;font-weight:700;">Product Name</th>
-                <th style="font-size:0.78rem;font-weight:700;" class="d-none d-md-table-cell">Category</th>
-                <th style="font-size:0.78rem;font-weight:700;" class="d-none d-lg-table-cell">Condition</th>
-                <th style="font-size:0.78rem;font-weight:700;">Price</th>
-                <th style="font-size:0.78rem;font-weight:700;" class="d-none d-md-table-cell">Stock</th>
-                <th style="font-size:0.78rem;font-weight:700;" class="d-none d-lg-table-cell">Status</th>
-                <th class="pe-4" style="font-size:0.78rem;font-weight:700;">Actions</th>
+                <th class="ps-4" class="admin-th">Image</th>
+                <th class="admin-th">Product Name</th>
+                <th class="admin-th" class="d-none d-md-table-cell">Category</th>
+                <th class="admin-th" class="d-none d-lg-table-cell">Condition</th>
+                <th class="admin-th">Price</th>
+                <th class="admin-th" class="d-none d-md-table-cell">Stock</th>
+                <th class="admin-th" class="d-none d-lg-table-cell">Status</th>
+                <th class="pe-4" class="admin-th">Actions</th>
               </tr>
             </thead>
             <tbody id="productsTbody">
@@ -251,7 +251,7 @@
       </div>
       <div class="modal-footer border-0 pt-0">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn" style="background:var(--ct-primary);color:#fff;font-weight:600;border-radius:8px;" onclick="saveProduct()">
+        <button type="button" class="btn" class="btn-ct" onclick="saveProduct()">
           <i class="bi bi-check-lg me-1"></i> <span id="saveLabel">Save Product</span>
         </button>
       </div>
@@ -268,7 +268,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body py-2">
-        <p class="mb-0" style="font-size:0.9rem;">Are you sure you want to delete <strong id="deleteProductName"></strong>? This action cannot be undone.</p>
+        <p class="mb-0" >Are you sure you want to delete <strong id="deleteProductName"></strong>? This action cannot be undone.</p>
       </div>
       <div class="modal-footer border-0 pt-0">
         <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
@@ -283,221 +283,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/main.js"></script>
-<script>
-// ====== PRODUCT DATA ======
-let products = [
-  { id:1, name:'iPhone 15 Pro Max', category:'iPhone', condition:'Brand New', storage:'256GB', color:'Titanium Black', price:79999, stock:8, status:'Available', img:'https://placehold.co/60x60/fce4ec/e91e8c?text=i15PM' },
-  { id:2, name:'iPhone 14 Pro', category:'iPhone', condition:'Pre-owned', storage:'128GB', color:'Deep Purple', price:48000, stock:5, status:'Available', img:'https://placehold.co/60x60/fce4ec/e91e8c?text=i14P' },
-  { id:3, name:'iPhone 13 mini', category:'iPhone', condition:'Pre-owned', storage:'64GB', color:'Midnight', price:23500, stock:2, status:'Low Stock', img:'https://placehold.co/60x60/fce4ec/e91e8c?text=i13m' },
-  { id:4, name:'Samsung Galaxy S24 Ultra', category:'Android', condition:'Brand New', storage:'512GB', color:'Titanium Gray', price:72500, stock:6, status:'Available', img:'https://placehold.co/60x60/dbeafe/1e3a8a?text=S24U' },
-  { id:5, name:'Xiaomi 14T Pro', category:'Android', condition:'Brand New', storage:'256GB', color:'Titan Black', price:29999, stock:10, status:'Available', img:'https://placehold.co/60x60/dbeafe/1e3a8a?text=14TP' },
-  { id:6, name:'Samsung Galaxy Tab S9', category:'Tablet', condition:'Refurbished', storage:'128GB', color:'Graphite', price:36000, stock:1, status:'Low Stock', img:'https://placehold.co/60x60/fef3c7/78350f?text=TabS9' },
-  { id:7, name:'iPad Air (M2)', category:'Tablet', condition:'Brand New', storage:'256GB', color:'Starlight', price:41999, stock:7, status:'Available', img:'https://placehold.co/60x60/fce4ec/e91e8c?text=iPadA' },
-  { id:8, name:'AirPods Pro (2nd Gen)', category:'Accessories', condition:'Brand New', storage:'N/A', color:'White', price:14999, stock:3, status:'Low Stock', img:'https://placehold.co/60x60/fef3c7/78350f?text=APPro' },
-  { id:9, name:'Apple Watch Series 9', category:'Wearables', condition:'Brand New', storage:'N/A', color:'Midnight Alum.', price:22999, stock:2, status:'Low Stock', img:'https://placehold.co/60x60/d1fae5/065f46?text=AW9' },
-  { id:10, name:'Oppo Find X7 Ultra', category:'Android', condition:'Pre-owned', storage:'512GB', color:'Black', price:54000, stock:1, status:'Low Stock', img:'https://placehold.co/60x60/dbeafe/1e3a8a?text=FindX7' },
-];
 
-let nextId = 11;
-let deleteTargetId = null;
-const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-const deleteModal  = new bootstrap.Modal(document.getElementById('deleteModal'));
-
-function conditionBadge(cond) {
-  if (cond === 'Pre-owned')  return '<span class="badge-ct badge-preowned">Pre-owned</span>';
-  if (cond === 'Refurbished') return '<span class="badge-ct badge-refurbished">Refurbished</span>';
-  return '<span class="badge-ct badge-available">Brand New</span>';
-}
-
-function statusBadge(st, stock) {
-  if (stock === 0) return '<span class="badge-ct badge-outofstock">Out of Stock</span>';
-  if (stock <= 3)  return '<span class="badge rounded-pill" style="background:#dbeafe;color:#1e3a8a;font-size:0.72rem;font-weight:600;">Low Stock</span>';
-  return '<span class="badge-ct badge-available">Available</span>';
-}
-
-function renderTable(list) {
-  const tbody = document.getElementById('productsTbody');
-  document.getElementById('productCount').textContent = list.length;
-  if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-5 text-muted">No products found.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = list.map(p => `
-    <tr data-id="${p.id}" data-category="${p.category}" data-condition="${p.condition}">
-      <td class="ps-4">
-        <img src="${p.img}" alt="${p.name}" width="48" height="48" style="border-radius:8px;object-fit:cover;">
-      </td>
-      <td>
-        <div style="font-size:0.88rem;font-weight:600;">${p.name}</div>
-        <div style="font-size:0.76rem;color:var(--ct-muted);">${p.storage !== 'N/A' ? p.storage + ' · ' : ''}${p.color}</div>
-      </td>
-      <td class="d-none d-md-table-cell" style="font-size:0.85rem;">${p.category}</td>
-      <td class="d-none d-lg-table-cell">${conditionBadge(p.condition)}</td>
-      <td style="font-size:0.88rem;font-weight:600;color:var(--ct-primary);">₱${p.price.toLocaleString()}</td>
-      <td class="d-none d-md-table-cell">
-        <span style="font-size:0.88rem;font-weight:600;${p.stock <= 3 ? 'color:#1d4ed8' : ''}">${p.stock}</span>
-      </td>
-      <td class="d-none d-lg-table-cell">${statusBadge(p.status, p.stock)}</td>
-      <td class="pe-4">
-        <div class="d-flex gap-1">
-          <button class="btn btn-sm btn-outline-secondary" onclick="openEditModal(${p.id})" title="Edit"><i class="bi bi-pencil"></i></button>
-          <button class="btn btn-sm btn-outline-danger" onclick="openDeleteModal(${p.id})" title="Delete"><i class="bi bi-trash"></i></button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
-}
-
-function applyFilters() {
-  const q     = document.getElementById('productSearch').value.toLowerCase().trim();
-  const cat   = document.getElementById('filterCategory').value;
-  const cond  = document.getElementById('filterCondition').value;
-  const list  = products.filter(p => {
-    const matchQ    = !q    || p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
-    const matchCat  = !cat  || p.category === cat;
-    const matchCond = !cond || p.condition === cond;
-    return matchQ && matchCat && matchCond;
-  });
-  renderTable(list);
-}
-
-function resetFilters() {
-  document.getElementById('productSearch').value = '';
-  document.getElementById('filterCategory').value = '';
-  document.getElementById('filterCondition').value = '';
-  renderTable(products);
-}
-
-document.getElementById('productSearch').addEventListener('input', applyFilters);
-document.getElementById('filterCategory').addEventListener('change', applyFilters);
-document.getElementById('filterCondition').addEventListener('change', applyFilters);
-
-// ---- ADD MODAL ----
-function openAddModal() {
-  document.getElementById('productModalLabel').textContent = 'Add New Product';
-  document.getElementById('saveLabel').textContent = 'Save Product';
-  document.getElementById('productForm').reset();
-  document.getElementById('editProductId').value = '';
-  document.getElementById('imagePreviewWrap').innerHTML = '';
-  document.getElementById('productForm').classList.remove('was-validated');
-}
-
-// ---- EDIT MODAL ----
-function openEditModal(id) {
-  const p = products.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById('productModalLabel').textContent = 'Edit Product';
-  document.getElementById('saveLabel').textContent = 'Update Product';
-  document.getElementById('editProductId').value = id;
-  document.getElementById('pName').value = p.name;
-  document.getElementById('pCategory').value = p.category;
-  document.getElementById('pCondition').value = p.condition;
-  document.getElementById('pStorage').value = p.storage;
-  document.getElementById('pColor').value = p.color;
-  document.getElementById('pPrice').value = p.price;
-  document.getElementById('pStock').value = p.stock;
-  document.getElementById('pDescription').value = p.description || '';
-  document.getElementById('imagePreviewWrap').innerHTML = `<img src="${p.img}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;" alt="current">`;
-  document.getElementById('productForm').classList.remove('was-validated');
-  productModal.show();
-}
-
-// ---- SAVE (ADD / EDIT) ----
-function saveProduct() {
-  const form = document.getElementById('productForm');
-  form.classList.add('was-validated');
-  if (!form.checkValidity()) return;
-
-  const id   = document.getElementById('editProductId').value;
-  const data = {
-    name:      document.getElementById('pName').value.trim(),
-    category:  document.getElementById('pCategory').value,
-    condition: document.getElementById('pCondition').value,
-    storage:   document.getElementById('pStorage').value || 'N/A',
-    color:     document.getElementById('pColor').value.trim() || '—',
-    price:     parseFloat(document.getElementById('pPrice').value),
-    stock:     parseInt(document.getElementById('pStock').value),
-    description: document.getElementById('pDescription').value.trim(),
-    img:       'https://placehold.co/60x60/fce4ec/e91e8c?text=Prod',
-  };
-  data.status = data.stock === 0 ? 'Out of Stock' : data.stock <= 3 ? 'Low Stock' : 'Available';
-
-  if (id) {
-    const idx = products.findIndex(x => x.id === parseInt(id));
-    if (idx > -1) { products[idx] = { ...products[idx], ...data }; }
-    showToast('Product updated successfully!', 'toast-success');
-  } else {
-    data.id = nextId++;
-    products.unshift(data);
-    showToast('Product added successfully!', 'toast-success');
-  }
-
-  productModal.hide();
-  renderTable(products);
-}
-
-// ---- DELETE ----
-function openDeleteModal(id) {
-  const p = products.find(x => x.id === id);
-  if (!p) return;
-  deleteTargetId = id;
-  document.getElementById('deleteProductName').textContent = p.name;
-  deleteModal.show();
-}
-
-document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
-  products = products.filter(x => x.id !== deleteTargetId);
-  deleteModal.hide();
-  renderTable(products);
-  showToast('Product deleted.', 'toast-error');
-});
-
-// ---- IMAGE PREVIEW ----
-document.getElementById('pImages').addEventListener('change', function () {
-  const wrap = document.getElementById('imagePreviewWrap');
-  wrap.innerHTML = '';
-  Array.from(this.files).slice(0, 5).forEach(file => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.style = 'width:60px;height:60px;border-radius:8px;object-fit:cover;border:2px solid var(--ct-primary)';
-      wrap.appendChild(img);
-    };
-    reader.readAsDataURL(file);
-  });
-});
-
-// ---- PAGINATION STUB ----
-function changePage(p, e) {
-  e.preventDefault();
-  document.querySelectorAll('#pagination .page-item').forEach(li => li.classList.remove('active'));
-  e.currentTarget.parentElement.classList.add('active');
-}
-
-// ---- SIDEBAR TOGGLE ----
-const sidebarToggle = document.getElementById('sidebarToggle');
-const adminSidebar  = document.getElementById('adminSidebar');
-const overlay       = document.getElementById('sidebarOverlay');
-sidebarToggle && sidebarToggle.addEventListener('click', () => {
-  adminSidebar.classList.toggle('open');
-  overlay.style.display = adminSidebar.classList.contains('open') ? 'block' : 'none';
-});
-overlay && overlay.addEventListener('click', () => {
-  adminSidebar.classList.remove('open');
-  overlay.style.display = 'none';
-});
-
-// ---- TOAST ----
-function showToast(msg, cls='') {
-  const t = document.getElementById('toastMsg');
-  t.textContent = msg;
-  t.className = 'toast-ct show ' + cls;
-  setTimeout(() => t.className = 'toast-ct', 3200);
-}
-
-// Init
-renderTable(products);
-</script>
+  <script src="../assets/js/admin/products.js"></script>
 </body>
 </html>

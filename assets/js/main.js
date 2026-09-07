@@ -23,8 +23,8 @@ const CheynCart = {
     CheynCart.updateBadge();
   },
 
-  /** Add or increment a product */
-  add(product) {
+  /** Add or increment a product. Pass the clicked button as triggerBtn for visual feedback. */
+  add(product, triggerBtn) {
     const cart = CheynCart.get();
     const idx  = cart.findIndex(
       i => i.id === product.id && i.variant === product.variant && i.color === product.color
@@ -36,6 +36,19 @@ const CheynCart = {
     }
     CheynCart.save(cart);
     showToast(`✓ ${product.name} added to cart`, 'success');
+
+    /* Visual button feedback */
+    if (triggerBtn) {
+      const original = triggerBtn.innerHTML;
+      triggerBtn.innerHTML = '<i class="bi bi-check-lg me-1"></i>Added!';
+      triggerBtn.classList.add('btn-added');
+      triggerBtn.disabled = true;
+      setTimeout(() => {
+        triggerBtn.innerHTML = original;
+        triggerBtn.classList.remove('btn-added');
+        triggerBtn.disabled = false;
+      }, 1500);
+    }
   },
 
   /** Remove item by index */
@@ -112,7 +125,23 @@ function initSearchOverlay() {
   const input     = document.getElementById('searchInput');
   const form      = document.getElementById('searchForm');
 
-  if (!toggleBtn || !overlay) return;
+  if (!toggleBtn) return;
+
+  /* On the catalog page, skip the modal — just focus the inline search box */
+  const onCatalogPage = !!document.getElementById('catalogSearchInput');
+  if (onCatalogPage) {
+    toggleBtn.addEventListener('click', e => {
+      e.preventDefault();
+      const catalogInput = document.getElementById('catalogSearchInput');
+      if (catalogInput) {
+        catalogInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => catalogInput.focus(), 300);
+      }
+    });
+    return; /* skip overlay wiring on this page */
+  }
+
+  if (!overlay) return;
 
   const open  = () => { overlay.classList.add('active');    requestAnimationFrame(() => input && input.focus()); };
   const close = () => overlay.classList.remove('active');
