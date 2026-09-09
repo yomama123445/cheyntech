@@ -1087,6 +1087,65 @@ img { max-width: 100%; }
 .admin-username { font-size: 0.88rem; font-weight: 600; }
 
 /* ===================================================
+   ADMIN — Profile dropdown
+   =================================================== */
+.admin-profile-btn {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  border-radius: var(--ct-radius-sm);
+  padding: 0.25rem 0.4rem !important;
+  transition: background var(--ct-transition);
+}
+.admin-profile-btn:hover,
+.admin-profile-btn:focus {
+  background: rgba(0,0,0,0.05);
+  box-shadow: none;
+}
+
+.admin-chevron {
+  font-size: 0.7rem;
+  color: #6c757d;
+  transition: transform 0.2s;
+}
+.admin-profile-btn[aria-expanded="true"] .admin-chevron {
+  transform: rotate(180deg);
+}
+
+.admin-profile-menu {
+  min-width: 220px;
+  border: 1px solid var(--ct-border);
+  border-radius: var(--ct-radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 0.25rem 0;
+}
+
+.admin-profile-header {
+  background: #f8f9fa;
+  border-radius: var(--ct-radius) var(--ct-radius) 0 0;
+}
+
+.admin-profile-name { font-size: 0.9rem; }
+.admin-profile-role { font-size: 0.75rem; }
+
+.admin-profile-menu .dropdown-item {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+.admin-profile-menu .dropdown-item:hover {
+  background: var(--ct-primary-soft);
+  color: var(--ct-primary);
+}
+.admin-profile-menu .dropdown-item.text-danger:hover {
+  background: #fff5f5;
+  color: #dc3545;
+}
+
+/* ===================================================
    ADMIN — Product images in tables / modals
    =================================================== */
 .product-thumb {
