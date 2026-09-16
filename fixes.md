@@ -1,0 +1,10 @@
+- Meaningless CTA buttons on the homescree, ensure this gets optimized, replaced, or removed.
+- Remove promise section, or replace it with something else entirely.
+- Flex box issue. Filters button shows up when the screen is not on full. But disappears when it is.
+- Change featured options or scroll into something that aligns with the brand.
+- Organization, and lack of adherance with the format.
+- Change the brand name into the local location here in Roxas city, and any other indication that pertains that it's in another area.
+- Remove emojis and any other symbols that signals unprofessionalism. Ensure, that everything is aligned and well formatted.
+- Ensure that the login page is well aligned with the formatting.
+- Ensure that the notifications and other pop ups are personalized with the brand theme, and not the usual format.
+- Fix the other buttons not working as well.

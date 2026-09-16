@@ -35,7 +35,7 @@ const CheynCart = {
       cart.push({ ...product, qty: 1 });
     }
     CheynCart.save(cart);
-    showToast(`✓ ${product.name} added to cart`, 'success');
+    showToast(`${product.name} added to cart`, 'success');
 
     /* Visual button feedback */
     if (triggerBtn) {
