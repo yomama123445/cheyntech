@@ -1,6 +1,6 @@
 <?php
-$pageTitle   = 'CheynTech | Gadgets You Can Trust';
-$pageDescription = 'CheynTech — Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery in Roxas City.';
+$pageTitle   = 'CheynTech | Function-Tested Phones in Roxas City';
+$pageDescription = 'Every phone function-tested before listing. Pre-owned, refurbished, and brand-new phones and tablets from Cheyn\'s Gadgets, Roxas City — order online for pickup or local delivery.';
 $activePage  = 'home';
 require 'includes/header.php';
 ?>
@@ -11,8 +11,8 @@ require 'includes/header.php';
       <div class="row align-items-center gy-4">
         <div class="col-lg-6 col-md-7">
           <p class="hero-eyebrow mb-2">Cheyn's Gadgets · Roxas City</p>
-          <h1>Gadgets You Can <span class="highlight">Trust</span>, Prices You'll Love</h1>
-          <p class="lead mt-3">Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery.</p>
+          <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
+          <p class="lead mt-3">Pre-owned, refurbished, and brand-new phones and tablets from Cheyn's Gadgets — graded in-store and available for pickup or delivery in Roxas City.</p>
           <div class="d-flex gap-3 flex-wrap mt-4">
             <a href="catalog.php" class="btn btn-ct text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
             <a href="track-order.php" class="btn btn-ct-outline">Track My Order</a>
