@@ -4,8 +4,8 @@
    Tech: Bootstrap 5.3 + Vanilla JS
    ===================================================== */
 
-/* ----- Google Font import (Poppins) ----- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* ----- Google Font import (Inter) ----- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* ----- CSS Custom Properties ----- */
 :root {
@@ -43,7 +43,7 @@ a:hover       { color: var(--ct-primary-dark); }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-size: 0.95rem;
   color: var(--ct-text);
   background: #fff;
@@ -148,7 +148,7 @@ img { max-width: 100%; }
   border-bottom: 2px solid var(--ct-primary);
   color: #fff;
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   outline: none;
   padding: 0.5rem 0;
   caret-color: var(--ct-primary);
@@ -197,7 +197,7 @@ img { max-width: 100%; }
   border: 2px solid var(--ct-primary);
   border-radius: var(--ct-radius-sm);
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: var(--ct-transition);
   padding: 0.55rem 1.5rem;
   line-height: 1.4;
@@ -219,7 +219,7 @@ img { max-width: 100%; }
   border: 2px solid var(--ct-primary);
   border-radius: var(--ct-radius-sm);
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: var(--ct-transition);
   padding: 0.55rem 1.5rem;
   line-height: 1.4;
