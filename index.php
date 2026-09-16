@@ -17,18 +17,18 @@ require 'includes/header.php';
             <a href="catalog.php" class="btn btn-ct text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
             <a href="track-order.php" class="btn btn-ct-outline">Track My Order</a>
           </div>
-          <div class="d-flex gap-4 mt-4 flex-wrap">
-            <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-shield-fill-check text-ct fs-5"></i>
-              <span class="small fw-500">7-Day Guarantee</span>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <div class="d-flex align-items-center gap-1 text-muted">
+              <i class="bi bi-shield-fill-check text-ct"></i>
+              <span class="small">7-Day Guarantee</span>
             </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-truck text-ct fs-5"></i>
-              <span class="small fw-500">Local Delivery</span>
+            <div class="d-flex align-items-center gap-1 text-muted">
+              <i class="bi bi-truck text-ct"></i>
+              <span class="small">Local Delivery</span>
             </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
-              <span class="small fw-500">Function Tested</span>
+            <div class="d-flex align-items-center gap-1 text-muted">
+              <i class="bi bi-patch-check-fill text-ct"></i>
+              <span class="small">Function Tested</span>
             </div>
           </div>
         </div>

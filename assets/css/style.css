@@ -352,11 +352,11 @@ img { max-width: 100%; }
   justify-content: center;
   padding: 2rem 1rem;
   border-radius: var(--ct-radius);
-  background: var(--ct-primary-light);
+  background: var(--ct-bg);
   text-decoration: none;
   transition: var(--ct-transition);
   text-align: center;
-  border: 1.5px solid transparent;
+  border: 1.5px solid var(--ct-border);
 }
 
 .category-card:hover {
@@ -417,7 +417,7 @@ img { max-width: 100%; }
   margin-bottom: 0.35rem;
 }
 .section-header .section-title {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.65rem;
   color: var(--ct-text);
   margin: 0;
@@ -429,18 +429,11 @@ img { max-width: 100%; }
    HERO SECTION
    =================================================== */
 .hero-section {
-  background: linear-gradient(135deg, var(--ct-primary-light) 0%, #fff8fb 40%, #fff 70%);
+  background: #fff;
+  border-bottom: 1px solid var(--ct-border);
   padding: 5rem 0 4rem;
   position: relative;
   overflow: hidden;
-}
-
-.hero-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 75% 50%, rgba(233,30,140,0.06) 0%, transparent 65%);
-  pointer-events: none;
 }
 
 .hero-section h1 {
@@ -462,7 +455,7 @@ img { max-width: 100%; }
 .hero-product-img {
   max-height: 400px;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(233,30,140,0.25));
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.10));
   animation: heroFloat 3s ease-in-out infinite;
 }
 
@@ -859,9 +852,9 @@ img { max-width: 100%; }
    HOME PAGE — Feature Strip (static, no animation)
    =================================================== */
 .feature-strip {
-  background: var(--ct-primary-soft);
-  border-top: 1px solid var(--ct-primary-light);
-  border-bottom: 1px solid var(--ct-primary-light);
+  background: var(--ct-bg);
+  border-top: 1px solid var(--ct-border);
+  border-bottom: 1px solid var(--ct-border);
   padding: 1rem 0;
 }
 
@@ -884,10 +877,10 @@ img { max-width: 100%; }
    =================================================== */
 .hero-eyebrow {
   font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ct-primary);
+  color: var(--ct-muted);
 }
 
 /* ===================================================
@@ -1167,7 +1160,7 @@ img { max-width: 100%; }
    =================================================== */
 .text-ct   { color: var(--ct-primary) !important; }
 .bg-ct     { background-color: var(--ct-primary) !important; }
-.bg-ct-soft{ background-color: var(--ct-primary-soft) !important; }
+.bg-ct-soft{ background-color: var(--ct-bg) !important; }
 .bg-ct-light { background-color: var(--ct-primary-light) !important; }
 
 .rounded-ct    { border-radius: var(--ct-radius) !important; }
