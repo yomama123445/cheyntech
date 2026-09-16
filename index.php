@@ -34,13 +34,14 @@ require 'includes/header.php';
         <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
           <div class="hero-img-frame">
             <img
-              src="/assets/img/hero-product.jpg"
-              alt="Featured product — iPhone 13 Pro"
+              id="heroProductImg"
+              src=""
+              alt=""
               class="hero-product-img"
               loading="eager"
             >
           </div>
-          <p class="hero-img-caption">iPhone 13 Pro · 128GB · Graphite</p>
+          <p class="hero-img-caption" id="heroProductCaption"></p>
         </div>
       </div>
     </div>
