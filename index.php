@@ -45,6 +45,38 @@ require 'includes/header.php';
   </section>
 
 
+  <!-- FEATURE STRIP -->
+  <div class="feature-strip">
+    <div class="container">
+      <div class="row row-cols-2 row-cols-md-4 g-3 justify-content-center text-center">
+        <div class="col">
+          <div class="feature-strip-item">
+            <i class="bi bi-recycle"></i>
+            <span>Pre-owned, Refurbished &amp; Brand New</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-strip-item">
+            <i class="bi bi-cash-coin"></i>
+            <span>Cash · GCash · Bank Transfer</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-strip-item">
+            <i class="bi bi-upc-scan"></i>
+            <span>IMEI Verified Units</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="feature-strip-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>Roxas City, Capiz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SHOP BY CATEGORY -->
   <section class="py-5" id="categories">
     <div class="container">
