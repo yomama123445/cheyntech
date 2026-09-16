@@ -13,9 +13,8 @@ require 'includes/header.php';
           <p class="hero-eyebrow mb-2">Cheyn's Gadgets · Roxas City</p>
           <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
           <p class="lead mt-3">Pre-owned, refurbished, and brand-new phones and tablets from Cheyn's Gadgets — graded in-store and available for pickup or delivery in Roxas City.</p>
-          <div class="d-flex gap-3 flex-wrap mt-4">
+          <div class="mt-4">
             <a href="catalog.php" class="btn btn-ct text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
-            <a href="track-order.php" class="btn btn-ct-outline">Track My Order</a>
           </div>
           <div class="d-flex gap-3 mt-4 flex-wrap">
             <div class="d-flex align-items-center gap-1 text-muted">
