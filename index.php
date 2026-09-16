@@ -1,0 +1,402 @@
+<?php
+$pageTitle   = 'CheynTech | Gadgets You Can Trust';
+$pageDescription = 'CheynTech — Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery in Roxas City.';
+$activePage  = 'home';
+require 'includes/header.php';
+?>
+
+  <!-- HERO -->
+  <section class="hero-section" aria-label="Hero">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-6 col-md-7">
+          <p class="hero-eyebrow mb-2">Cheyn's Gadgets · Roxas City</p>
+          <h1>Gadgets You Can <span class="highlight">Trust</span>, Prices You'll Love</h1>
+          <p class="lead mt-3">Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery.</p>
+          <div class="d-flex gap-3 flex-wrap mt-4">
+            <a href="catalog.php" class="btn btn-ct text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="track-order.php" class="btn btn-ct-outline">Track My Order</a>
+          </div>
+          <div class="d-flex gap-4 mt-4 flex-wrap">
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-shield-fill-check text-ct fs-5"></i>
+              <span class="small fw-500">7-Day Guarantee</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-truck text-ct fs-5"></i>
+              <span class="small fw-500">Local Delivery</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
+              <span class="small fw-500">Function Tested</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
+          <img
+            src="https://placehold.co/460x420/fce4ec/e91e8c?text=iPhone+13+Pro"
+            alt="Featured phone"
+            class="hero-product-img img-fluid"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <section class="marquee-section" aria-hidden="true">
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item"><i class="bi bi-phone"></i> New iPhones</span>
+        <span class="marquee-item"><i class="bi bi-recycle"></i> Pre-owned Phones</span>
+        <span class="marquee-item"><i class="bi bi-tablet"></i> Tablets</span>
+        <span class="marquee-item"><i class="bi bi-android2"></i> Android Flagships</span>
+        <span class="marquee-item"><i class="bi bi-truck"></i> Local Delivery</span>
+        <span class="marquee-item"><i class="bi bi-shield-fill-check"></i> 7-Day Guarantee</span>
+        <span class="marquee-item"><i class="bi bi-cash-coin"></i> GCash / Bank Transfer</span>
+        <span class="marquee-item"><i class="bi bi-patch-check-fill"></i> Function Tested</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-item"><i class="bi bi-phone"></i> New iPhones</span>
+        <span class="marquee-item"><i class="bi bi-recycle"></i> Pre-owned Phones</span>
+        <span class="marquee-item"><i class="bi bi-tablet"></i> Tablets</span>
+        <span class="marquee-item"><i class="bi bi-android2"></i> Android Flagships</span>
+        <span class="marquee-item"><i class="bi bi-truck"></i> Local Delivery</span>
+        <span class="marquee-item"><i class="bi bi-shield-fill-check"></i> 7-Day Guarantee</span>
+        <span class="marquee-item"><i class="bi bi-cash-coin"></i> GCash / Bank Transfer</span>
+        <span class="marquee-item"><i class="bi bi-patch-check-fill"></i> Function Tested</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP BY CATEGORY -->
+  <section class="py-5" id="categories">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">Browse</span>
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">Find the right device for every need and budget</p>
+      </div>
+      <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-3">
+          <a href="catalog.php?cat=preowned" class="category-card h-100">
+            <div class="cat-img-wrap">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Pre-owned" alt="Pre-owned iPhones" loading="lazy">
+            </div>
+            <p class="cat-name mb-0">Pre-owned iPhones</p>
+            <span class="cat-count">Quality-checked units</span>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="catalog.php?cat=new" class="category-card h-100">
+            <div class="cat-img-wrap">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=New" alt="New iPhones" loading="lazy">
+            </div>
+            <p class="cat-name mb-0">New iPhones</p>
+            <span class="cat-count">Brand-new sealed units</span>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="catalog.php?cat=android" class="category-card h-100">
+            <div class="cat-img-wrap">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Android" alt="Android" loading="lazy">
+            </div>
+            <p class="cat-name mb-0">Android</p>
+            <span class="cat-count">Samsung, Pixel &amp; more</span>
+          </a>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="catalog.php?cat=tablet" class="category-card h-100">
+            <div class="cat-img-wrap">
+              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Tablet" alt="Tablets" loading="lazy">
+            </div>
+            <p class="cat-name mb-0">Tablets</p>
+            <span class="cat-count">iPad &amp; Android tablets</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="py-5 bg-ct-soft" id="featured">
+    <div class="container">
+      <div class="section-header d-flex align-items-end justify-content-between flex-wrap gap-2">
+        <div>
+          <span class="section-label">Hot Picks</span>
+          <h2 class="section-title">Featured Products</h2>
+        </div>
+        <a href="catalog.php" class="btn btn-ct-outline btn-sm mb-1">View All <i class="bi bi-arrow-right ms-1"></i></a>
+      </div>
+      <div class="row g-3" id="featuredGrid">
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro" alt="iPhone 13 Pro 128GB Graphite" loading="lazy">
+              <span class="badge-ct badge-refurbished">Refurbished</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">iPhone 13 Pro – 128GB Graphite</p>
+              <p class="product-price">₱32,500</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P001',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12" alt="iPhone 12 64GB Blue" loading="lazy">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">iPhone 12 – 64GB Blue</p>
+              <p class="product-price">₱21,800</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P002',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Samsung+S22" alt="Samsung Galaxy S22 256GB" loading="lazy">
+              <span class="badge-ct badge-available">Brand New</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">Samsung Galaxy S22 – 256GB Phantom Black</p>
+              <p class="product-price">₱28,000</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P003',name:'Samsung Galaxy S22 256GB',price:28000,variant:'256GB',color:'Phantom Black'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPad+9th" alt="iPad 9th Gen 64GB" loading="lazy">
+              <span class="badge-ct badge-refurbished">Refurbished</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">iPad 9th Gen – 64GB Space Gray</p>
+              <p class="product-price">₱22,000</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P004',name:'iPad 9th Gen 64GB',price:22000,variant:'64GB',color:'Space Gray'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Pixel+7" alt="Google Pixel 7 128GB" loading="lazy">
+              <span class="badge-ct badge-available">Brand New</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">Google Pixel 7 – 128GB Snow</p>
+              <p class="product-price">₱24,000</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P005',name:'Google Pixel 7 128GB',price:24000,variant:'128GB',color:'Snow'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13" alt="iPhone 13 128GB Midnight" loading="lazy">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">iPhone 13 – 128GB Midnight</p>
+              <p class="product-price">₱28,500</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P006',name:'iPhone 13 128GB Midnight',price:28500,variant:'128GB',color:'Midnight'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Samsung+A54" alt="Samsung Galaxy A54 5G" loading="lazy">
+              <span class="badge-ct badge-available">Brand New</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">Samsung Galaxy A54 5G – 128GB Awesome Graphite</p>
+              <p class="product-price">₱16,999</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P007',name:'Samsung Galaxy A54 5G 128GB',price:16999,variant:'128GB',color:'Awesome Graphite'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-3">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+SE" alt="iPhone SE 3rd Gen 64GB" loading="lazy">
+              <span class="badge-ct badge-refurbished">Refurbished</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">iPhone SE 3rd Gen – 64GB Starlight</p>
+              <p class="product-price">₱18,500</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P008',name:'iPhone SE 3rd Gen 64GB',price:18500,variant:'64GB',color:'Starlight'})">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+      </div><!-- /row -->
+      <div class="text-center mt-4">
+        <a href="catalog.php" class="btn btn-ct text-white px-5">Browse All Products <i class="bi bi-grid ms-1"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section class="py-5 bg-ct-soft">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">Simple Process</span>
+        <h2 class="section-title">How It Works</h2>
+      </div>
+      <div class="row g-4 justify-content-center text-center">
+        <div class="col-md-3 col-6">
+          <div class="p-3">
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-search"></i></div>
+            <p class="step-title">1. Browse</p>
+            <p class="text-muted small mb-0">Search and filter products by category, condition, storage, and price.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="p-3">
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-cart-plus"></i></div>
+            <p class="step-title">2. Order</p>
+            <p class="text-muted small mb-0">Add to cart, checkout, and choose your preferred payment and fulfillment method.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="p-3">
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-clock-history"></i></div>
+            <p class="step-title">3. We Process</p>
+            <p class="text-muted small mb-0">Our team prepares and verifies your order. You'll get a status update.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="p-3">
+            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-bag-heart-fill"></i></div>
+            <p class="step-title">4. Receive</p>
+            <p class="text-muted small mb-0">Pick up in-store or receive delivery. Enjoy your new gadget!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-5">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">Happy Customers</span>
+        <h2 class="section-title">What People Say</h2>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="stars mb-2">★★★★★</div>
+            <p class="small mb-3">"Ordered a pre-owned iPhone 12. Came in perfect condition, fully tested. The delivery was fast and the price was unbeatable!"</p>
+            <div class="d-flex align-items-center gap-2">
+              <div class="avatar-circle">MJ</div>
+              <div>
+                <div class="testimonial-name">Maria J.</div>
+                <div class="testimonial-place text-muted">Roxas City</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="stars mb-2">★★★★★</div>
+            <p class="small mb-3">"Ang ganda ng serbisyo! Nag-order ako ng Samsung Galaxy S22 tapos dumating ng mabilis. Legit na tindahan, sure akong babalik!"</p>
+            <div class="d-flex align-items-center gap-2">
+              <div class="avatar-circle">KA</div>
+              <div>
+                <div class="testimonial-name">Kristoffer A.</div>
+                <div class="testimonial-place text-muted">Roxas City</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="stars mb-2">★★★★★</div>
+            <p class="small mb-3">"Super satisfied! They replaced the unit no questions asked when I found a minor issue. The 7-day guarantee is real!"</p>
+            <div class="d-flex align-items-center gap-2">
+              <div class="avatar-circle">JT</div>
+              <div>
+                <div class="testimonial-name">Joy T.</div>
+                <div class="testimonial-place text-muted">Roxas City</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section text-center text-white">
+    <div class="container">
+      <h2 class="mb-2">Ready to Find Your Next Gadget?</h2>
+      <p class="mb-4 opacity-75">Shop hundreds of pre-owned, refurbished, and brand-new devices today.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="catalog.php" class="btn btn-cta-light">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="about.php" class="btn btn-cta-outline-light">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+<?php require 'includes/footer.php'; ?>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<?php
+$pageTitle       = 'Checkout | CheynTech';
+$pageDescription = 'Complete your order — CheynTech Checkout';
+$activePage      = '';
+require 'includes/header.php';
+?>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-wrap">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="cart.php">Cart</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="checkout-section">
+    <div class="container">
+      <h1 class="fw-800 mb-4">
+        <i class="bi bi-bag-check me-2" class="checkout-page-icon"></i>Checkout
+      </h1>
+
+      <div class="row g-4 align-items-start">
+
+        <!-- ═══ LEFT: FORM ═══ -->
+        <div class="col-lg-7">
+          <form id="checkoutForm" novalidate>
+
+            <!-- ── Section 1: Contact Info ── -->
+            <div class="mb-4">
+              <div class="form-section-heading">
+                <i class="bi bi-person-lines-fill me-2"></i>Contact Information
+              </div>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="fullName" class="form-label fw-600">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g. Maria Santos" required autocomplete="name">
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label fw-600">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label fw-600">Phone Number <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">&#127477;&#127469;</span>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
+                  </div>
+                  <div class="invalid-feedback">Enter a valid PH mobile number (e.g. 09171234567).</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── Section 2: Fulfillment Method ── -->
+            <div class="mb-4">
+              <div class="form-section-heading">
+                <i class="bi bi-truck me-2"></i>Fulfillment Method
+              </div>
+
+              <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Fulfillment method">
+
+                <!-- Pickup -->
+                <label class="radio-card" id="cardPickup">
+                  <input class="form-check-input mt-0" type="radio" name="fulfillment" id="fulfillPickup" value="pickup" checked>
+                  <div class="radio-icon"><i class="bi bi-shop"></i></div>
+                  <div>
+                    <div class="radio-label">Pickup at CheynTech Store</div>
+                    <div class="radio-sub">
+                      <i class="bi bi-geo-alt me-1"></i>Cheyn's Gadgets, Roxas City<br>
+                      Mon&ndash;Sat &bull; 9:00 AM &ndash; 6:00 PM &bull; <span class="fw-600 text-success">Free</span>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Delivery -->
+                <label class="radio-card" id="cardDelivery">
+                  <input class="form-check-input mt-0" type="radio" name="fulfillment" id="fulfillDelivery" value="delivery">
+                  <div class="radio-icon"><i class="bi bi-truck"></i></div>
+                  <div class="w-100">
+                    <div class="radio-label">Local Delivery</div>
+                    <div class="radio-sub">Delivery within Roxas City &amp; nearby areas &bull; Fee confirmed after order review</div>
+
+                    <!-- Delivery address fields (shown when delivery selected) -->
+                    <div id="deliveryAddressFields" class="d-none">
+                      <div class="row g-2 mt-1">
+                        <div class="col-12">
+                          <input type="text" class="form-control form-control-sm" id="addrStreet" name="addrStreet" placeholder="House No. / Street / Subdivision">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control form-control-sm" id="addrBarangay" name="addrBarangay" placeholder="Barangay">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control form-control-sm" id="addrCity" name="addrCity" placeholder="City / Municipality">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control form-control-sm" id="addrProvince" name="addrProvince" placeholder="Province">
+                        </div>
+                        <div class="col-12">
+                          <textarea class="form-control form-control-sm" id="addrNotes" name="addrNotes" rows="2" placeholder="Delivery notes (landmark, gate code, etc.)"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- ── Section 3: Payment Method ── -->
+            <div class="mb-4">
+              <div class="form-section-heading">
+                <i class="bi bi-credit-card-2-front me-2"></i>Payment Method
+              </div>
+
+              <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Payment method">
+
+                <!-- Cash -->
+                <label class="radio-card" id="cardCash">
+                  <input class="form-check-input mt-0" type="radio" name="payment" id="paymentCash" value="cash" checked>
+                  <div class="radio-icon"><i class="bi bi-cash-stack"></i></div>
+                  <div>
+                    <div class="radio-label">Cash on Pickup / Delivery</div>
+                    <div class="radio-sub">Pay in cash when you pick up or receive your order. No upfront payment required.</div>
+                  </div>
+                </label>
+
+                <!-- GCash -->
+                <label class="radio-card" id="cardGcash">
+                  <input class="form-check-input mt-0" type="radio" name="payment" id="paymentGcash" value="gcash">
+                  <div class="radio-icon"><i class="bi bi-phone-fill"></i></div>
+                  <div>
+                    <div class="radio-label">GCash</div>
+                    <div class="radio-sub">Send payment via GCash and upload your proof of payment.</div>
+                    <div id="gcashInfo" class="payment-info-box">
+                      <strong><i class="bi bi-phone me-1"></i>GCash Number:</strong><br>
+                      <span class="payment-number">0917-888-2468</span><br>
+                      Account Name: <strong>Cheyn T.</strong><br>
+                      <br>
+                      After sending, email your screenshot to <strong>pay@cheyntech.ph</strong> with your order ID as subject.
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Bank Transfer -->
+                <label class="radio-card" id="cardBank">
+                  <input class="form-check-input mt-0" type="radio" name="payment" id="paymentBank" value="bank">
+                  <div class="radio-icon"><i class="bi bi-bank"></i></div>
+                  <div>
+                    <div class="radio-label">Bank Transfer (BDO / BPI)</div>
+                    <div class="radio-sub">Transfer to our bank account and send proof of payment.</div>
+                    <div id="bankInfo" class="payment-info-box">
+                      <strong><i class="bi bi-bank me-1"></i>BDO Savings Account</strong><br>
+                      Account No.: <strong>0056-7890-1234</strong><br>
+                      Account Name: <strong>CheynTech Trading</strong><br>
+                      <br>
+                      <strong><i class="bi bi-bank me-1"></i>BPI Savings Account</strong><br>
+                      Account No.: <strong>3120-4567-89</strong><br>
+                      Account Name: <strong>CheynTech Trading</strong><br>
+                      <br>
+                      Email screenshot to <strong>pay@cheyntech.ph</strong> with your order ID as subject.
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- ── Submit ── -->
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-ct py-3" class="submit-btn-lg">
+                <i class="bi bi-check2-circle me-2"></i>Place Order
+              </button>
+              <p class="text-center mt-2" class="secure-form-note">
+                By placing your order, you agree to our <a href="#">Terms &amp; Conditions</a>. Orders are subject to manual review.
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- ═══ RIGHT: Order Summary ═══ -->
+        <div class="col-lg-5">
+          <div class="order-summary-card">
+            <div class="summary-title">
+              <i class="bi bi-bag me-2" class="checkout-page-icon"></i>Your Order
+            </div>
+
+            <!-- Cart items rendered by JS -->
+            <div id="checkoutItemList"></div>
+
+            <hr class="summary-divider">
+
+            <div class="summary-row">
+              <span class="label">Subtotal</span>
+              <span class="value" id="coSubtotal">&#8369;0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">Delivery Fee</span>
+              <span class="value" id="coDeliveryFee" class="checkout-page-icon">Free</span>
+            </div>
+
+            <div class="summary-grand">
+              <span>Total</span>
+              <span class="value" id="coTotal">&#8369;0</span>
+            </div>
+
+            <!-- Security badges -->
+            <div class="security-badges">
+              <span class="sec-badge"><i class="bi bi-shield-lock-fill"></i> Secure Checkout</span>
+              <span class="sec-badge"><i class="bi bi-eye-fill"></i> Manual Review</span>
+              <span class="sec-badge"><i class="bi bi-arrow-counterclockwise"></i> 7-Day Guarantee</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div>
+  </main>
+
+  <!-- ═══ ORDER CONFIRMATION MODAL ═══ -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header border-0 text-white pb-0" class="modal-gradient-header">
+          <div class="w-100 text-center pb-3">
+            <div class="track-emoji">&#127881;</div>
+            <h4 class="fw-800 mb-1">Order Placed Successfully!</h4>
+            <p class="mb-0">We've received your order. Our team will review and confirm it shortly.</p>
+          </div>
+        </div>
+        <div class="modal-body p-4">
+          <div class="text-center mb-4">
+            <div class="modal-order-id" id="modalOrderId">CT-XXXXX</div>
+            <div class="confirm-modal-note">Your Order ID &mdash; save this for tracking</div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-12">
+              <div class="p-3 rounded-3" class="confirm-info-box">
+                <div class="confirm-row"><span class="cl">Customer</span><span id="confirmName" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Email</span><span id="confirmEmail" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Phone</span><span id="confirmPhone" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Fulfillment</span><span id="confirmFulfillment" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Payment</span><span id="confirmPayment" class="fw-600"></span></div>
+                <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600" class="checkout-page-icon"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert d-flex align-items-center gap-2 mb-0">
+            <i class="bi bi-info-circle-fill flex-shrink-0"></i>
+            <span>You'll receive a confirmation message via SMS or email within <strong>1&ndash;2 hours</strong>. Our team manually reviews all orders.</span>
+          </div>
+        </div>
+        <div class="modal-footer border-0 px-4 pb-4 gap-2 flex-nowrap">
+          <a href="track-order.php" class="btn btn-ct flex-fill">
+            <i class="bi bi-search me-1"></i>Track My Order
+          </a>
+          <a href="catalog.php" class="btn btn-ct-outline flex-fill">
+            <i class="bi bi-grid me-1"></i>Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<?php require 'includes/footer.php'; ?>
+  <script src="assets/js/checkout.js"></script>
+</body>
+</html>
