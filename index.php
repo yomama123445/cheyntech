@@ -33,12 +33,15 @@ require 'includes/header.php';
           </div>
         </div>
         <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
-          <img
-            src="https://placehold.co/460x420/fce4ec/e91e8c?text=iPhone+13+Pro"
-            alt="Featured phone"
-            class="hero-product-img img-fluid"
-            loading="eager"
-          >
+          <div class="hero-img-frame">
+            <img
+              src="/assets/img/hero-product.jpg"
+              alt="Featured product — iPhone 13 Pro"
+              class="hero-product-img"
+              loading="eager"
+            >
+          </div>
+          <p class="hero-img-caption">iPhone 13 Pro · 128GB · Graphite</p>
         </div>
       </div>
     </div>

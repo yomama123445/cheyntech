@@ -452,16 +452,38 @@ img { max-width: 100%; }
   line-height: 1.7;
 }
 
+.hero-img-frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ct-bg);
+  border: 1px solid var(--ct-border);
+  border-radius: var(--ct-radius-lg);
+  overflow: hidden;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+}
+
 .hero-product-img {
-  max-height: 400px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.10));
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.08));
   animation: heroFloat 3s ease-in-out infinite;
+}
+
+.hero-img-caption {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--ct-muted);
+  letter-spacing: 0.02em;
 }
 
 @keyframes heroFloat {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
+  50%       { transform: translateY(-8px); }
 }
 
 /* ===================================================
@@ -838,7 +860,7 @@ img { max-width: 100%; }
 
 @media (max-width: 767.98px) {
   .hero-section { padding: 3rem 0; }
-  .hero-product-img { max-height: 240px; }
+  .hero-img-frame { max-width: 300px; }
   .category-card { padding: 1.25rem 0.75rem; }
   .order-stepper .step-label { font-size: 0.65rem; max-width: 60px; }
 }
