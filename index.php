@@ -44,30 +44,6 @@ require 'includes/header.php';
     </div>
   </section>
 
-  <!-- MARQUEE TICKER -->
-  <section class="marquee-section" aria-hidden="true">
-    <div class="marquee-wrap">
-      <div class="marquee-track">
-        <span class="marquee-item"><i class="bi bi-phone"></i> New iPhones</span>
-        <span class="marquee-item"><i class="bi bi-recycle"></i> Pre-owned Phones</span>
-        <span class="marquee-item"><i class="bi bi-tablet"></i> Tablets</span>
-        <span class="marquee-item"><i class="bi bi-android2"></i> Android Flagships</span>
-        <span class="marquee-item"><i class="bi bi-truck"></i> Local Delivery</span>
-        <span class="marquee-item"><i class="bi bi-shield-fill-check"></i> 7-Day Guarantee</span>
-        <span class="marquee-item"><i class="bi bi-cash-coin"></i> GCash / Bank Transfer</span>
-        <span class="marquee-item"><i class="bi bi-patch-check-fill"></i> Function Tested</span>
-        <!-- duplicate for seamless loop -->
-        <span class="marquee-item"><i class="bi bi-phone"></i> New iPhones</span>
-        <span class="marquee-item"><i class="bi bi-recycle"></i> Pre-owned Phones</span>
-        <span class="marquee-item"><i class="bi bi-tablet"></i> Tablets</span>
-        <span class="marquee-item"><i class="bi bi-android2"></i> Android Flagships</span>
-        <span class="marquee-item"><i class="bi bi-truck"></i> Local Delivery</span>
-        <span class="marquee-item"><i class="bi bi-shield-fill-check"></i> 7-Day Guarantee</span>
-        <span class="marquee-item"><i class="bi bi-cash-coin"></i> GCash / Bank Transfer</span>
-        <span class="marquee-item"><i class="bi bi-patch-check-fill"></i> Function Tested</span>
-      </div>
-    </div>
-  </section>
 
   <!-- SHOP BY CATEGORY -->
   <section class="py-5" id="categories">

@@ -854,43 +854,6 @@ img { max-width: 100%; }
   .section-header .section-title { font-size: 1.35rem; }
 }
 
-/* ===================================================
-   HOME PAGE — Marquee Ticker
-   =================================================== */
-.marquee-section {
-  background: var(--ct-primary-soft);
-  border-top: 1px solid var(--ct-primary-light);
-  border-bottom: 1px solid var(--ct-primary-light);
-  padding: 0.65rem 0;
-}
-
-.marquee-wrap  { overflow: hidden; }
-
-.marquee-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  animation: marquee 22s linear infinite;
-}
-
-.marquee-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--ct-primary-soft);
-  border: 1px solid var(--ct-primary-light);
-  border-radius: 999px;
-  padding: 0.35rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--ct-primary);
-  white-space: nowrap;
-}
-
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
 
 /* ===================================================
    HOME PAGE — Hero micro-label
