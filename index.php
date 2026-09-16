@@ -291,47 +291,7 @@ require 'includes/header.php';
     </div>
   </section>
 
-  <div class="section-divider"></div>
 
-  <!-- HOW IT WORKS -->
-  <section class="py-5 bg-ct-soft">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-label">Simple Process</span>
-        <h2 class="section-title">How It Works</h2>
-      </div>
-      <div class="row g-4 justify-content-center text-center">
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-search"></i></div>
-            <p class="step-title">1. Browse</p>
-            <p class="text-muted small mb-0">Search and filter products by category, condition, storage, and price.</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-cart-plus"></i></div>
-            <p class="step-title">2. Order</p>
-            <p class="text-muted small mb-0">Add to cart, checkout, and choose your preferred payment and fulfillment method.</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-clock-history"></i></div>
-            <p class="step-title">3. We Process</p>
-            <p class="text-muted small mb-0">Our team prepares and verifies your order. You'll get a status update.</p>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="p-3">
-            <div class="feature-icon-wrap feature-icon-white mx-auto mb-3"><i class="bi bi-bag-heart-fill"></i></div>
-            <p class="step-title">4. Receive</p>
-            <p class="text-muted small mb-0">Pick up in-store or receive delivery. Enjoy your new gadget!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- TESTIMONIALS -->
   <section class="py-5">
