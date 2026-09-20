@@ -92,7 +92,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=preowned" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Pre-owned" alt="Pre-owned iPhones" loading="lazy">
+              <img src="/assets/products/category-preowned.jpg" alt="Pre-owned iPhones" loading="lazy">
             </div>
             <p class="cat-name mb-0">Pre-owned iPhones</p>
             <span class="cat-count">Quality-checked units</span>
@@ -101,7 +101,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=new" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=New" alt="New iPhones" loading="lazy">
+              <img src="/assets/products/category-new.jpg" alt="New iPhones" loading="lazy">
             </div>
             <p class="cat-name mb-0">New iPhones</p>
             <span class="cat-count">Brand-new sealed units</span>
@@ -110,7 +110,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=android" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Android" alt="Android" loading="lazy">
+              <img src="/assets/products/category-android.jpg" alt="Android" loading="lazy">
             </div>
             <p class="cat-name mb-0">Android</p>
             <span class="cat-count">Samsung, Pixel &amp; more</span>
@@ -119,7 +119,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=tablet" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="https://placehold.co/80x80/fce4ec/e91e8c?text=Tablet" alt="Tablets" loading="lazy">
+              <img src="/assets/products/category-tablet.jpg" alt="Tablets" loading="lazy">
             </div>
             <p class="cat-name mb-0">Tablets</p>
             <span class="cat-count">iPad &amp; Android tablets</span>
@@ -146,7 +146,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro" alt="iPhone 13 Pro 128GB Graphite" loading="lazy">
+              <img src="/assets/products/iphone13pro-128-graphite.jpg" alt="iPhone 13 Pro 128GB Graphite" loading="lazy">
               <span class="badge-ct badge-refurbished">Refurbished</span>
             </div>
             <div class="card-body">
@@ -154,10 +154,10 @@ require 'includes/header.php';
               <p class="product-price">₱32,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P001',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone13pro-128-graphite',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite',image:'/assets/products/iphone13pro-128-graphite.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=iphone13pro" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -165,7 +165,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12" alt="iPhone 12 64GB Blue" loading="lazy">
+              <img src="/assets/products/iphone12-64-blue.jpg" alt="iPhone 12 64GB Blue" loading="lazy">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -173,10 +173,10 @@ require 'includes/header.php';
               <p class="product-price">₱21,800</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P002',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone12-64-blue',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue',image:'/assets/products/iphone12-64-blue.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=iphone12" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -184,7 +184,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Samsung+S22" alt="Samsung Galaxy S22 256GB" loading="lazy">
+              <img src="/assets/products/s22-256-phantom.jpg" alt="Samsung Galaxy S22 256GB Phantom Black" loading="lazy">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -192,10 +192,10 @@ require 'includes/header.php';
               <p class="product-price">₱28,000</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P003',name:'Samsung Galaxy S22 256GB',price:28000,variant:'256GB',color:'Phantom Black'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'s22-256-phantom',name:'Samsung Galaxy S22 256GB',price:28000,variant:'256GB',color:'Phantom Black',image:'/assets/products/s22-256-phantom.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=s22" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -203,7 +203,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPad+9th" alt="iPad 9th Gen 64GB" loading="lazy">
+              <img src="/assets/products/ipad9-64-gray.jpg" alt="iPad 9th Gen 64GB Space Gray" loading="lazy">
               <span class="badge-ct badge-refurbished">Refurbished</span>
             </div>
             <div class="card-body">
@@ -211,10 +211,10 @@ require 'includes/header.php';
               <p class="product-price">₱22,000</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P004',name:'iPad 9th Gen 64GB',price:22000,variant:'64GB',color:'Space Gray'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'ipad9-64-gray',name:'iPad 9th Gen 64GB',price:22000,variant:'64GB',color:'Space Gray',image:'/assets/products/ipad9-64-gray.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=ipad9" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -222,7 +222,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Pixel+7" alt="Google Pixel 7 128GB" loading="lazy">
+              <img src="/assets/products/pixel7-128-obsidian.jpg" alt="Google Pixel 7 128GB Obsidian" loading="lazy">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -230,10 +230,10 @@ require 'includes/header.php';
               <p class="product-price">₱24,000</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P005',name:'Google Pixel 7 128GB',price:24000,variant:'128GB',color:'Snow'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'pixel7-128-obsidian',name:'Google Pixel 7 128GB',price:24000,variant:'128GB',color:'Obsidian',image:'/assets/products/pixel7-128-obsidian.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=pixel7" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -241,7 +241,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13" alt="iPhone 13 128GB Midnight" loading="lazy">
+              <img src="/assets/products/iphone14-256-midnight.jpg" alt="iPhone 14 256GB Midnight" loading="lazy">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -249,10 +249,10 @@ require 'includes/header.php';
               <p class="product-price">₱28,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P006',name:'iPhone 13 128GB Midnight',price:28500,variant:'128GB',color:'Midnight'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone14-256-midnight',name:'iPhone 14 256GB Midnight',price:44900,variant:'256GB',color:'Midnight',image:'/assets/products/iphone14-256-midnight.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=iphone14" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -260,7 +260,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=Samsung+A54" alt="Samsung Galaxy A54 5G" loading="lazy">
+              <img src="/assets/products/a54-128-violet.jpg" alt="Samsung Galaxy A54 5G 128GB Awesome Graphite" loading="lazy">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -268,10 +268,10 @@ require 'includes/header.php';
               <p class="product-price">₱16,999</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P007',name:'Samsung Galaxy A54 5G 128GB',price:16999,variant:'128GB',color:'Awesome Graphite'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'a54-128-violet',name:'Samsung Galaxy A54 128GB Awesome Violet',price:19990,variant:'128GB',color:'Awesome Violet',image:'/assets/products/a54-128-violet.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=a54" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -279,7 +279,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+SE" alt="iPhone SE 3rd Gen 64GB" loading="lazy">
+              <img src="/assets/products/iphonese3-128-starlight.jpg" alt="iPhone SE 3rd Gen 64GB Starlight" loading="lazy">
               <span class="badge-ct badge-refurbished">Refurbished</span>
             </div>
             <div class="card-body">
@@ -287,10 +287,10 @@ require 'includes/header.php';
               <p class="product-price">₱18,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'P008',name:'iPhone SE 3rd Gen 64GB',price:18500,variant:'64GB',color:'Starlight'})">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphonese3-128-starlight',name:'iPhone SE 3rd Gen 128GB Starlight',price:23500,variant:'128GB',color:'Starlight',image:'/assets/products/iphonese3-128-starlight.jpg'})">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=iphonese3" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>

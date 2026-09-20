@@ -11,8 +11,8 @@
       const existing = CheynCart.get();
       if (existing.length === 0) {
         CheynCart.save([
-          { id: 'iphone13pro-128-graphite', name: 'iPhone 13 Pro', variant: '128GB', color: 'Graphite', condition: 'Pre-owned',   price: 32500, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro' },
-          { id: 'iphone12-64-blue',         name: 'iPhone 12',     variant: '64GB',  color: 'Blue',     condition: 'Refurbished', price: 21800, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12' }
+          { id: 'iphone13pro-128-graphite', name: 'iPhone 13 Pro', variant: '128GB', color: 'Graphite', condition: 'Pre-owned',   price: 32500, qty: 1, image: '/assets/products/iphone13pro-128-graphite.jpg' },
+          { id: 'iphone12-64-blue',         name: 'iPhone 12',     variant: '64GB',  color: 'Blue',     condition: 'Refurbished', price: 21800, qty: 1, image: '/assets/products/iphone12-64-blue.jpg' }
         ]);
       }
     }
@@ -20,7 +20,7 @@
     function buildItemCard(item, index) {
       var lineTotal = item.price * (item.qty || 1);
       return '<div class="cart-item-card" data-index="' + index + '">' +
-        '<img src="' + (item.image || 'https://placehold.co/400x400/fce4ec/e91e8c?text=Product') + '" alt="' + item.name + '" class="cart-item-img" loading="lazy" onerror="this.src=\'https://placehold.co/400x400/fce4ec/e91e8c?text=Product\'">' +
+        '<img src="' + (item.image || '/assets/products/placeholder.jpg') + '" alt="' + item.name + '" class="cart-item-img" loading="lazy" onerror="this.src=\'/assets/products/placeholder.jpg\'">' +
         '<div class="cart-item-info">' +
           '<div class="cart-item-name">' + item.name + '</div>' +
           '<div class="cart-item-variant">' + (item.variant || '') + (item.color ? ' &middot; ' + item.color : '') + '</div>' +

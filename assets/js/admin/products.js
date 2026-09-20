@@ -25,7 +25,7 @@ function conditionBadge(cond) {
 
 function statusBadge(st, stock) {
   if (stock === 0) return '<span class="badge-ct badge-outofstock">Out of Stock</span>';
-  if (stock <= 3)  return '<span class="badge rounded-pill" class="td-sm-badge">Low Stock</span>';
+  if (stock <= 3)  return '<span class="badge rounded-pill td-sm-badge">Low Stock</span>';
   return '<span class="badge-ct badge-available">Available</span>';
 }
 

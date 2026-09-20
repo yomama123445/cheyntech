@@ -112,8 +112,8 @@ function statusBadgeHtml(status) {
 
 function fulfillmentBadgeHtml(f) {
   return f === 'Delivery'
-    ? `<span class="badge bg-info-subtle text-info-emphasis rounded-pill" class="td-sm-badge">Delivery</span>`
-    : `<span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill" class="td-sm-badge">Pickup</span>`;
+    ? `<span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span>`
+    : `<span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill td-sm-badge">Pickup</span>`;
 }
 
 // ====================================================
@@ -131,8 +131,8 @@ function renderOrders(list) {
     const total = o.items.reduce((sum, i) => sum + i.price * i.qty, 0);
     return `
       <tr data-id="${o.id}" data-status="${o.status}">
-        <td class="ps-4" class="text-sm fw-700">#${o.id}</td>
-        <td class="d-none d-md-table-cell" class="text-xs text-muted">${formatDate(o.date)}</td>
+        <td class="ps-4 text-sm fw-700">#${o.id}</td>
+        <td class="d-none d-md-table-cell text-xs text-muted">${formatDate(o.date)}</td>
         <td >${o.customer.name}</td>
         <td class="d-none d-lg-table-cell text-xs text-muted text-truncate" style="max-width:180px;">${itemSummary}</td>
         <td class="fw-700 text-ct">₱${total.toLocaleString()}</td>
@@ -140,7 +140,7 @@ function renderOrders(list) {
         <td class="d-none d-lg-table-cell" >${o.payment}</td>
         <td class="status-cell">${statusBadgeHtml(o.status)}</td>
         <td class="pe-4">
-          <button class="btn btn-sm btn-outline-secondary" class="text-xs" onclick="openOrderModal('${o.id}')">
+          <button class="btn btn-sm btn-outline-secondary text-xs" onclick="openOrderModal('${o.id}')">
             <i class="bi bi-eye me-1"></i>View
           </button>
         </td>
@@ -185,7 +185,7 @@ function openOrderModal(id) {
     <div class="d-flex justify-content-between align-items-start py-2 border-bottom" >
       <div>
         <div class="fw-600">${i.name}</div>
-        <div class="text-muted" class="text-xs">Qty: ${i.qty}</div>
+        <div class="text-muted text-xs">Qty: ${i.qty}</div>
       </div>
       <div class="fw-700 text-nowrap ms-3">₱${(i.price * i.qty).toLocaleString()}</div>
     </div>
@@ -219,7 +219,7 @@ function renderStatusHistory(history) {
         </div>
         <div>
           <div class="fw-600" >${h.status}</div>
-          <div class="text-muted" class="text-xs">${h.date}</div>
+          <div class="text-muted text-xs">${h.date}</div>
           <div >${h.note}</div>
         </div>
       </li>`;
