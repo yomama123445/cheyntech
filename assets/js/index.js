@@ -19,12 +19,11 @@ function initHero() {
   const caption = document.getElementById('heroProductCaption');
 
   if (img) {
-    const alt = 'Featured product — ' + heroProduct.name;
+    img.alt = 'Featured product — ' + heroProduct.name;
     if (heroProduct.image) {
       img.src = heroProduct.image;
-      img.alt = alt;
     } else {
-      img.outerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--ct-primary-light);border-radius:var(--ct-radius-lg)" aria-label="${alt}"><i class="bi bi-phone" style="font-size:5rem;color:var(--ct-primary)"></i></div>`;
+      img.outerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--ct-primary-light);border-radius:var(--ct-radius-lg)"><i class="bi bi-phone" style="font-size:5rem;color:var(--ct-primary)"></i></div>';
     }
   }
 
