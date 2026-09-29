@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Products | CheynTech Admin';
-$pageDescription = 'CheynTech Admin — Product Management.';
+$pageTitle       = 'Products | Cheyn Gadgets Admin';
+$pageDescription = 'Cheyn Gadgets Admin — Product Management.';
 $adminActivePage = 'products';
 require '../includes/admin_header.php';
 require '../includes/admin_sidebar.php';

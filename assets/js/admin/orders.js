@@ -284,7 +284,7 @@ function exportCSV() {
   const blob = new Blob([csvContent], { type:'text/csv;charset=utf-8;' });
   const url  = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'cheyntech_orders.csv'; a.click();
+  a.href = url; a.download = 'cheyn-gadgets-orders.csv'; a.click();
   URL.revokeObjectURL(url);
   showToast('Orders exported to CSV!', 'toast-success');
 }

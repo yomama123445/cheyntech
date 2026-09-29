@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Contact Us | CheynTech';
-$pageDescription = 'Contact CheynTech — send an inquiry about a listing or reach us at our Roxas City store.';
+$pageTitle       = 'Contact Us | Cheyn Gadgets';
+$pageDescription = 'Contact Cheyn Gadgets — send an inquiry about a listing or reach us at our Roxas City store.';
 $activePage      = '';
 require 'includes/header.php';
 ?>
@@ -116,9 +116,9 @@ require 'includes/header.php';
               <div class="mb-4">
                 <p class="fw-semibold small text-uppercase text-muted mb-2">Follow Us</p>
                 <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                  <a href="#" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                  <a href="#" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a aria-disabled="true" tabindex="-1" title="Coming soon" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="Instagram (coming soon)" style="opacity:.45;cursor:default;pointer-events:none;"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.tiktok.com/@cheyniphonesandgadgets" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
                 </div>
               </div>
               <!-- Map Placeholder -->

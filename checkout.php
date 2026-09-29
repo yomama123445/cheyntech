@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Checkout | CheynTech';
-$pageDescription = 'Complete your order — CheynTech Checkout';
+$pageTitle       = 'Checkout | Cheyn Gadgets';
+$pageDescription = 'Complete your order — Cheyn Gadgets Checkout';
 $activePage      = '';
 require 'includes/header.php';
 ?>
@@ -71,7 +71,7 @@ require 'includes/header.php';
                   <input class="form-check-input mt-0" type="radio" name="fulfillment" id="fulfillPickup" value="pickup" checked>
                   <div class="radio-icon"><i class="bi bi-shop"></i></div>
                   <div>
-                    <div class="radio-label">Pickup at CheynTech Store</div>
+                    <div class="radio-label">Pickup at Cheyn Gadgets Store</div>
                     <div class="radio-sub">
                       <i class="bi bi-geo-alt me-1"></i>Cheyn's Gadgets, Roxas City<br>
                       Mon&ndash;Sat &bull; 9:00 AM &ndash; 6:00 PM &bull; <span class="fw-600 text-success">Free</span>

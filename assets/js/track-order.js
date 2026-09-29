@@ -5,7 +5,7 @@
     var ORDERS = {
       'CT-10493': {
         id:        'CT-10493',
-        product:   'iPhone 13 Pro &ndash; 128GB &bull; Pickup at CheynTech Store',
+        product:   'iPhone 13 Pro &ndash; 128GB &bull; Pickup at Cheyn Gadgets Store',
         date:      'August 12, 2026',
         status:    'Ready for Pickup',
         statusBadgeIcon: 'bi-bag-check'
@@ -56,24 +56,12 @@
           return;
         }
 
-        // Look up order — fall back to demo CT-10493 data for any valid CT-XXXXX input
         var order = ORDERS[val];
         if (!order) {
-          // For demo: accept any CT-NNNNN and show the sample
-          if (/^CT-\d{4,6}$/.test(val)) {
-            order = {
-              id:      val,
-              product: 'iPhone 13 Pro &ndash; 128GB &bull; Pickup at CheynTech Store',
-              date:    'August 12, 2026',
-              status:  'Ready for Pickup',
-            };
-            document.getElementById('resultOrderId').textContent = val;
-          } else {
-            errEl.style.display = 'block';
-            errEl.innerHTML = '<i class="bi bi-exclamation-circle me-1"></i>Order ID not found. Please double-check and try again.';
-            input.focus();
-            return;
-          }
+          errEl.style.display = 'block';
+          errEl.innerHTML = '<i class="bi bi-exclamation-circle me-1"></i>Order not found. Please double-check your Order ID or <a href="contact.php">contact us</a>.';
+          input.focus();
+          return;
         }
 
         showResult(order);
@@ -90,7 +78,7 @@
           document.getElementById('trackInput').value = last;
           showResult({
             id:      last,
-            product: 'iPhone 13 Pro &ndash; 128GB &bull; Pickup at CheynTech Store',
+            product: 'iPhone 13 Pro &ndash; 128GB &bull; Pickup at Cheyn Gadgets Store',
             date:    'August 12, 2026',
             status:  'Ready for Pickup'
           });

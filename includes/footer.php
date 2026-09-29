@@ -4,14 +4,14 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <a href="index.php" class="d-flex align-items-center gap-2 text-decoration-none mb-3">
-            <img src="assets/img/logo.svg" alt="CheynTech" width="34" height="34">
-            <span class="footer-brand-name">CheynTech</span>
+            <img src="assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
+            <span class="footer-brand-name">Cheyn Gadgets</span>
           </a>
           <p class="mb-3">Your trusted source for pre-owned, refurbished, and brand-new gadgets in Roxas City.</p>
           <div class="social-links d-flex gap-2">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a aria-disabled="true" tabindex="-1" title="Coming soon" aria-label="Instagram (coming soon)" style="opacity:.45;cursor:default;pointer-events:none;"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.tiktok.com/@cheyniphonesandgadgets" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
@@ -43,7 +43,7 @@
     </div>
     <div class="footer-bottom">
       <div class="container text-center">
-        &copy; 2026 CheynTech Trading. All Rights Reserved.
+        &copy; 2026 Cheyn Gadgets. All Rights Reserved.
       </div>
     </div>
   </footer>

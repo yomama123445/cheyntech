@@ -8,8 +8,8 @@
   <!-- ========== SIDEBAR ========== -->
   <aside class="admin-sidebar" id="adminSidebar" aria-label="Admin navigation">
     <a href="dashboard.php" class="sidebar-brand">
-      <img src="../assets/img/logo.svg" alt="CheynTech" width="34" height="34">
-      <span class="brand-name">CheynTech</span>
+      <img src="../assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
+      <span class="brand-name">Cheyn Gadgets</span>
     </a>
 
     <div class="sidebar-section-label">Main Menu</div>

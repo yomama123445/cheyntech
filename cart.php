@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'My Cart | CheynTech';
-$pageDescription = 'Review your cart and proceed to checkout — CheynTech Online Store';
+$pageTitle       = 'My Cart | Cheyn Gadgets';
+$pageDescription = 'Review your cart and proceed to checkout — Cheyn Gadgets Online Store';
 $activePage      = '';
 require 'includes/header.php';
 ?>

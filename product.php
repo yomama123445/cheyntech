@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Product Detail | CheynTech';
-$pageDescription = 'Browse function-tested phones and tablets at CheynTech, Roxas City.';
+$pageTitle       = 'Product Detail | Cheyn Gadgets';
+$pageDescription = 'Browse function-tested phones and tablets at Cheyn Gadgets, Roxas City.';
 $activePage      = 'catalog';
 require 'includes/header.php';
 ?>
@@ -138,7 +138,7 @@ require 'includes/header.php';
 
           <!-- How to Order — static -->
           <div class="tab-pane fade" id="howtoPane" role="tabpanel" aria-labelledby="howtoTab">
-            <h5 class="fw-700 mb-3">How to Order from CheynTech</h5>
+            <h5 class="fw-700 mb-3">How to Order from Cheyn Gadgets</h5>
             <ol class="ps-3">
               <li class="mb-2"><strong>Add to Cart</strong> — Select your preferred storage and color, then click "Add to Cart".</li>
               <li class="mb-2"><strong>Checkout</strong> — Fill in your contact details and choose your fulfillment method (Pickup or Local Delivery).</li>
@@ -161,80 +161,7 @@ require 'includes/header.php';
           <span class="section-label">Related</span>
           <h2 class="section-title">You May Also Like</h2>
         </div>
-        <div class="row g-3">
-          <div class="col-6 col-md-3">
-            <article class="product-card">
-              <div class="card-img-wrap">
-                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12" alt="iPhone 12 64GB Blue" loading="lazy">
-                <span class="badge-ct badge-preowned">Pre-owned</span>
-              </div>
-              <div class="card-body">
-                <p class="product-name">iPhone 12 – 64GB Blue</p>
-                <p class="product-price">₱21,800</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'iphone12-64-blue',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue',image:'/assets/products/iphone12-64-blue.jpg'}, this)">
-                  <i class="bi bi-cart-plus me-1"></i>Add
-                </button>
-                <a href="product.php?id=iphone12" class="btn btn-ct-outline btn-ct-sm">View</a>
-              </div>
-            </article>
-          </div>
-          <div class="col-6 col-md-3">
-            <article class="product-card">
-              <div class="card-img-wrap">
-                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+SE+3" alt="iPhone SE 3rd Gen" loading="lazy">
-                <span class="badge-ct badge-refurbished">Refurbished</span>
-              </div>
-              <div class="card-body">
-                <p class="product-name">iPhone SE 3rd Gen – 128GB Starlight</p>
-                <p class="product-price">₱23,500</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'iphonese3-128-starlight',name:'iPhone SE 3rd Gen 128GB Starlight',price:23500,variant:'128GB',color:'Starlight',image:'/assets/products/iphonese3-128-starlight.jpg'}, this)">
-                  <i class="bi bi-cart-plus me-1"></i>Add
-                </button>
-                <a href="product.php?id=iphonese3" class="btn btn-ct-outline btn-ct-sm">View</a>
-              </div>
-            </article>
-          </div>
-          <div class="col-6 col-md-3">
-            <article class="product-card">
-              <div class="card-img-wrap">
-                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+14" alt="iPhone 14 256GB Midnight" loading="lazy">
-                <span class="badge-ct badge-available">Brand New</span>
-              </div>
-              <div class="card-body">
-                <p class="product-name">iPhone 14 – 256GB Midnight</p>
-                <p class="product-price">₱44,900</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'iphone14-256-midnight',name:'iPhone 14 256GB Midnight',price:44900,variant:'256GB',color:'Midnight',image:'/assets/products/iphone14-256-midnight.jpg'}, this)">
-                  <i class="bi bi-cart-plus me-1"></i>Add
-                </button>
-                <a href="product.php?id=iphone14" class="btn btn-ct-outline btn-ct-sm">View</a>
-              </div>
-            </article>
-          </div>
-          <div class="col-6 col-md-3">
-            <article class="product-card">
-              <div class="card-img-wrap">
-                <img src="https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+11" alt="iPhone 11 64GB White" loading="lazy">
-                <span class="badge-ct badge-preowned">Pre-owned</span>
-              </div>
-              <div class="card-body">
-                <p class="product-name">iPhone 11 – 64GB White</p>
-                <p class="product-price">₱17,500</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="CheynCart.add({id:'iphone11-64-white',name:'iPhone 11 64GB White',price:17500,variant:'64GB',color:'White',image:'/assets/products/iphone11-64-white.jpg'}, this)">
-                  <i class="bi bi-cart-plus me-1"></i>Add
-                </button>
-                <a href="product.php?id=iphone11" class="btn btn-ct-outline btn-ct-sm">View</a>
-              </div>
-            </article>
-          </div>
-        </div>
+        <div id="relatedGrid" class="row g-3"></div>
       </section>
 
     </div><!-- /container -->

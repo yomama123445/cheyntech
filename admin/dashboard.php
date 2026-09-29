@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Dashboard | CheynTech Admin';
-$pageDescription = 'CheynTech Admin Dashboard — overview of orders, products, and inventory.';
+$pageTitle       = 'Dashboard | Cheyn Gadgets Admin';
+$pageDescription = 'Cheyn Gadgets Admin Dashboard — overview of orders, products, and inventory.';
 $adminActivePage = 'dashboard';
 require '../includes/admin_header.php';
 require '../includes/admin_sidebar.php';

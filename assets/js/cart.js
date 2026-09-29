@@ -7,16 +7,6 @@
       return '<span class="badge-ct ' + cls + '">' + (condition || 'Pre-owned') + '</span>';
     }
 
-    function seedSampleCart() {
-      const existing = CheynCart.get();
-      if (existing.length === 0) {
-        CheynCart.save([
-          { id: 'iphone13pro-128-graphite', name: 'iPhone 13 Pro', variant: '128GB', color: 'Graphite', condition: 'Pre-owned',   price: 32500, qty: 1, image: '/assets/products/iphone13pro-128-graphite.jpg' },
-          { id: 'iphone12-64-blue',         name: 'iPhone 12',     variant: '64GB',  color: 'Blue',     condition: 'Refurbished', price: 21800, qty: 1, image: '/assets/products/iphone12-64-blue.jpg' }
-        ]);
-      }
-    }
-
     function buildItemCard(item, index) {
       var lineTotal = item.price * (item.qty || 1);
       return '<div class="cart-item-card" data-index="' + index + '">' +
@@ -98,7 +88,6 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-      seedSampleCart();
       renderCart();
     });
   })();

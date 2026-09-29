@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Track Order | CheynTech';
-$pageDescription = 'Track your CheynTech order in real time';
+$pageTitle       = 'Track Order | Cheyn Gadgets';
+$pageDescription = 'Track your Cheyn Gadgets order in real time';
 $activePage      = 'track-order';
 require 'includes/header.php';
 ?>
@@ -25,7 +25,7 @@ require 'includes/header.php';
       <div class="track-search-wrap mb-5">
         <div class="track-emoji">&#128269;</div>
         <h2>Track Your Order</h2>
-        <p>Enter your Order ID to see real-time status updates on your CheynTech purchase.</p>
+        <p>Enter your Order ID to see real-time status updates on your Cheyn Gadgets purchase.</p>
         <form id="trackForm" novalidate>
           <div class="track-input-group d-flex">
             <input
@@ -57,7 +57,7 @@ require 'includes/header.php';
               <div class="result-order-id" id="resultOrderId">CT-10493</div>
               <div class="result-product">
                 <i class="bi bi-phone me-1"></i>
-                <span id="resultProduct">iPhone 13 Pro &ndash; 128GB &bull; Pickup at CheynTech Store</span>
+                <span id="resultProduct">iPhone 13 Pro &ndash; 128GB &bull; Pickup at Cheyn Gadgets Store</span>
               </div>
               <div class="result-meta">
                 <i class="bi bi-calendar3 me-1"></i>Placed on <span id="resultDate">August 12, 2026</span>

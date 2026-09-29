@@ -45,7 +45,7 @@
       loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!loginForm.checkValidity()) { loginForm.classList.add('was-validated'); return; }
-        alert('Login submitted! (Backend integration pending)');
+        showToast('Login coming soon. Stay tuned!', 'info');
       });
 
       // Register form
@@ -60,7 +60,7 @@
           conf.setCustomValidity('');
         }
         if (!registerForm.checkValidity()) { registerForm.classList.add('was-validated'); return; }
-        alert('Account created! (Backend integration pending)');
+        showToast('Registration coming soon. Stay tuned!', 'info');
       });
 
       document.getElementById('regConfirmPassword').addEventListener('input', function () {

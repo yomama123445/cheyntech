@@ -1,21 +1,10 @@
 (function () {
     'use strict';
 
-    /* ── Fallback sample cart ── */
-    function getCartOrFallback() {
-      var cart = CheynCart.get();
-      if (!cart.length) {
-        cart = [
-          { id: 'iphone13pro-128-graphite', name: 'iPhone 13 Pro', variant: '128GB', color: 'Graphite', condition: 'Pre-owned',   price: 32500, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+13+Pro' },
-          { id: 'iphone12-64-blue',         name: 'iPhone 12',     variant: '64GB',  color: 'Blue',     condition: 'Refurbished', price: 21800, qty: 1, image: 'https://placehold.co/400x400/fce4ec/e91e8c?text=iPhone+12' }
-        ];
-      }
-      return cart;
-    }
-
     /* ── Render order summary sidebar ── */
     function renderSummary() {
-      var cart     = getCartOrFallback();
+      if (CheynCart.get().length === 0) { window.location.href = 'cart.php'; return; }
+      var cart     = CheynCart.get();
       var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
       var listEl   = document.getElementById('checkoutItemList');
 
@@ -105,7 +94,7 @@
 
     /* ── Fulfillment label ── */
     function fulfillmentLabel() {
-      return document.getElementById('fulfillDelivery').checked ? 'Local Delivery' : 'Pickup at CheynTech Store';
+      return document.getElementById('fulfillDelivery').checked ? 'Local Delivery' : 'Pickup at Cheyn Gadgets Store';
     }
 
     /* ── Payment label ── */
@@ -129,7 +118,7 @@
           return;
         }
 
-        var cart     = getCartOrFallback();
+        var cart     = CheynCart.get();
         var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
         var orderId  = generateOrderId();
 

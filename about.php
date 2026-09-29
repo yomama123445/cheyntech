@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'About Us | CheynTech';
-$pageDescription = 'Learn about CheynTech — Roxas City\'s trusted source for pre-owned, refurbished, and brand-new gadgets.';
+$pageTitle       = 'About Us | Cheyn Gadgets';
+$pageDescription = 'Learn about Cheyn Gadgets — Roxas City\'s trusted source for pre-owned, refurbished, and brand-new gadgets.';
 $activePage      = 'about';
 require 'includes/header.php';
 ?>
@@ -21,7 +21,7 @@ require 'includes/header.php';
   <section class="about-hero text-white text-center" aria-labelledby="aboutHeroHeading">
     <div class="container position-relative">
       <span class="hero-badge"><i class="bi bi-geo-alt-fill me-1"></i>Roxas City, Philippines</span>
-      <h1 id="aboutHeroHeading" class="text-white mb-3">About CheynTech</h1>
+      <h1 id="aboutHeroHeading" class="text-white mb-3">About Cheyn Gadgets</h1>
       <p class="hero-sub mb-0">Connecting Filipinos to the Gadgets They Love</p>
     </div>
   </section>
@@ -36,7 +36,7 @@ require 'includes/header.php';
             Born Local, Built on Trust
           </h2>
           <p class="text-muted mb-3">
-            CheynTech — trading as <strong>Cheyn's Gadgets</strong> — started as a small passion project right here in Roxas City. What began as reselling a few pre-owned iPhones among friends quickly grew into a community-trusted shop for locals looking for quality gadgets at fair prices.
+            <strong>Cheyn Gadgets</strong> started as a small passion project right here in Roxas City. What began as reselling a few pre-owned iPhones among friends quickly grew into a community-trusted shop for locals looking for quality gadgets at fair prices.
           </p>
           <p class="text-muted mb-4">
             Today, we carry a curated selection of <strong>pre-owned</strong>, <strong>refurbished</strong>, and <strong>brand-new</strong> smartphones and tablets — every unit personally checked before listing. We believe every Filipino deserves access to a great device without overpaying.
@@ -84,7 +84,7 @@ require 'includes/header.php';
     <div class="container">
       <div class="text-center mb-5">
         <span class="pill-badge">WHY CHOOSE US</span>
-        <h2 id="whyHeading" class="fw-bold">Shopping at CheynTech is Different</h2>
+        <h2 id="whyHeading" class="fw-bold">Shopping at Cheyn Gadgets is Different</h2>
         <p class="text-muted mx-auto">We hold ourselves to a higher standard — because you deserve more than just a transaction.</p>
       </div>
       <div class="row g-4">
@@ -122,7 +122,7 @@ require 'includes/header.php';
           <span class="pill-badge">THE TEAM</span>
           <h2 id="teamHeading" class="fw-bold mb-3">Small Team, Big Heart</h2>
           <p class="text-muted mb-3">
-            Behind CheynTech is a small, dedicated team of gadget enthusiasts right here in Roxas City. We're not a big corporation — we're your neighbors, and we genuinely care about every order we pack and every inquiry we receive.
+            Behind Cheyn Gadgets is a small, dedicated team of gadget enthusiasts right here in Roxas City. We're not a big corporation — we're your neighbors, and we genuinely care about every order we pack and every inquiry we receive.
           </p>
           <p class="text-muted mb-3">
             Our team handles everything from sourcing and quality-checking units, to packing orders and coordinating delivery through trusted local couriers. We personally respond to all messages and inquiries, because good customer service isn't just a policy — it's who we are.

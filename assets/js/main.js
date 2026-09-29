@@ -1,5 +1,5 @@
 /* =====================================================
-   CheynTech — Global JavaScript
+   Cheyn Gadgets — Global JavaScript
    Project: Online Ordering & Delivery Management System
    ===================================================== */
 

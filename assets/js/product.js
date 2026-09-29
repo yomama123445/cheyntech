@@ -21,7 +21,7 @@
             '<a href="catalog.php" class="btn btn-ct text-white mt-2">Back to Catalog</a>' +
           '</div>';
       }
-      document.title = 'Product Not Found | CheynTech';
+      document.title = 'Product Not Found | Cheyn Gadgets';
     });
     return;
   }
@@ -40,7 +40,7 @@
   document.addEventListener('DOMContentLoaded', function () {
 
     /* --- Page title & meta --- */
-    document.title = product.name + ' | CheynTech';
+    document.title = product.name + ' | Cheyn Gadgets';
 
     /* --- Breadcrumb --- */
     var bc = document.getElementById('breadcrumbProduct');
@@ -203,6 +203,20 @@
           image   : product.image,
         }, addBtn);
       });
+    }
+
+    var relatedGrid = document.getElementById('relatedGrid');
+    if (relatedGrid) {
+      var related = CHEYN_PRODUCTS.filter(function(p) { return p.id !== product.id; }).slice(0, 4);
+      relatedGrid.innerHTML = related.map(function(p) {
+        var opt = p.storageOptions[0];
+        return '<div class="col-6 col-md-3"><article class="product-card">' +
+          '<div class="card-img-wrap"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'https://placehold.co/400x400/fce4ec/e91e8c?text=\'+encodeURIComponent(this.alt)">' +
+          '<span class="badge-ct ' + p.badge + '">' + p.badgeLabel + '</span></div>' +
+          '<div class="card-body"><p class="product-name">' + p.name + '</p><p class="product-price">' + formatPrice(opt.price) + '</p></div>' +
+          '<div class="card-footer"><a href="product.php?id=' + p.id + '" class="btn btn-ct btn-ct-sm flex-grow-1">View</a></div>' +
+          '</article></div>';
+      }).join('');
     }
 
   }); // end DOMContentLoaded

@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Catalog | CheynTech';
-$pageDescription = 'Browse pre-owned, refurbished, and brand-new phones and tablets at CheynTech — your trusted Roxas City gadget store.';
+$pageTitle       = 'Catalog | Cheyn Gadgets';
+$pageDescription = 'Browse pre-owned, refurbished, and brand-new phones and tablets at Cheyn Gadgets — your trusted Roxas City gadget store.';
 $activePage      = 'catalog';
 require 'includes/header.php';
 ?>
@@ -23,7 +23,7 @@ require 'includes/header.php';
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
         <div>
           <h1>Shop by Category</h1>
-          <p class="result-count mt-1">Showing <strong>12</strong> results</p>
+          <p class="result-count mt-1">Showing <strong id="heroResultCount">0</strong> results</p>
         </div>
         <button class="btn btn-ct-outline btn-sm filter-mobile-btn d-flex d-lg-none align-items-center gap-2"
           type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"
@@ -47,10 +47,7 @@ require 'includes/header.php';
               <a href="catalog.php" id="clearAllLink">Clear All</a>
             </div>
 
-            <div class="active-filters" id="activeFilters">
-              <span class="filter-tag">Pre-owned <button type="button" aria-label="Remove filter"><i class="bi bi-x"></i></button></span>
-              <span class="filter-tag">128GB <button type="button" aria-label="Remove filter"><i class="bi bi-x"></i></button></span>
-            </div>
+            <div class="active-filters" id="activeFilters"></div>
 
             <div class="filter-group">
               <div class="catalog-search-wrap">
@@ -64,20 +61,20 @@ require 'includes/header.php';
               <p class="filter-group-label">Category</p>
               <div class="filter-check">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catPreownedIphone" name="cat" value="preowned">
-                  <label class="form-check-label" for="catPreownedIphone">Pre-owned iPhones <span class="text-muted">(5)</span></label>
+                  <input class="form-check-input" type="checkbox" id="catPreownedIphone" name="cat" value="preowned" data-filter-count-for="preowned">
+                  <label class="form-check-label" for="catPreownedIphone">Pre-owned iPhones <span class="filter-count text-muted ms-1" data-count-for="preowned"></span></label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catNewIphone" name="cat" value="new">
-                  <label class="form-check-label" for="catNewIphone">New iPhones <span class="text-muted">(2)</span></label>
+                  <input class="form-check-input" type="checkbox" id="catNewIphone" name="cat" value="new" data-filter-count-for="new">
+                  <label class="form-check-label" for="catNewIphone">New iPhones <span class="filter-count text-muted ms-1" data-count-for="new"></span></label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catAndroid" name="cat" value="android">
-                  <label class="form-check-label" for="catAndroid">Android <span class="text-muted">(3)</span></label>
+                  <input class="form-check-input" type="checkbox" id="catAndroid" name="cat" value="android" data-filter-count-for="android">
+                  <label class="form-check-label" for="catAndroid">Android <span class="filter-count text-muted ms-1" data-count-for="android"></span></label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catTablet" name="cat" value="tablet">
-                  <label class="form-check-label" for="catTablet">Tablets <span class="text-muted">(2)</span></label>
+                  <input class="form-check-input" type="checkbox" id="catTablet" name="cat" value="tablet" data-filter-count-for="tablet">
+                  <label class="form-check-label" for="catTablet">Tablets <span class="filter-count text-muted ms-1" data-count-for="tablet"></span></label>
                 </div>
               </div>
             </div>
@@ -167,7 +164,7 @@ require 'includes/header.php';
         <!-- PRODUCT GRID -->
         <div class="col-lg-9">
           <div class="sort-bar">
-            <span class="sort-label"><i class="bi bi-grid-3x3-gap me-1"></i> 12 products found</span>
+            <span class="sort-label"><i class="bi bi-grid-3x3-gap me-1"></i> <span id="sortBarCount">0</span> products found</span>
             <div class="d-flex align-items-center gap-2">
               <label for="sortSelect" class="sort-label mb-0">Sort by:</label>
               <select id="sortSelect" class="form-select form-select-sm" aria-label="Sort products">
@@ -209,27 +206,27 @@ require 'includes/header.php';
       <div class="filter-group mb-3 pb-3 border-bottom">
         <p class="filter-group-label">Category</p>
         <div class="filter-check">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatPreownedIphone"><label class="form-check-label" for="mCatPreownedIphone">Pre-owned iPhones</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatNewIphone"><label class="form-check-label" for="mCatNewIphone">New iPhones</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatAndroid"><label class="form-check-label" for="mCatAndroid">Android</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatTablet"><label class="form-check-label" for="mCatTablet">Tablets</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatPreownedIphone" name="cat" value="preowned"><label class="form-check-label" for="mCatPreownedIphone">Pre-owned iPhones</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatNewIphone" name="cat" value="new"><label class="form-check-label" for="mCatNewIphone">New iPhones</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatAndroid" name="cat" value="android"><label class="form-check-label" for="mCatAndroid">Android</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatTablet" name="cat" value="tablet"><label class="form-check-label" for="mCatTablet">Tablets</label></div>
         </div>
       </div>
       <div class="filter-group mb-3 pb-3 border-bottom">
         <p class="filter-group-label">Storage</p>
         <div class="filter-check">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar64"><label class="form-check-label" for="mVar64">64 GB</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar128"><label class="form-check-label" for="mVar128">128 GB</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar256"><label class="form-check-label" for="mVar256">256 GB</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar512"><label class="form-check-label" for="mVar512">512 GB</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar64" name="variant" value="64gb"><label class="form-check-label" for="mVar64">64 GB</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar128" name="variant" value="128gb"><label class="form-check-label" for="mVar128">128 GB</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar256" name="variant" value="256gb"><label class="form-check-label" for="mVar256">256 GB</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar512" name="variant" value="512gb"><label class="form-check-label" for="mVar512">512 GB</label></div>
         </div>
       </div>
       <div class="filter-group mb-3 pb-3 border-bottom">
         <p class="filter-group-label">Condition</p>
         <div class="filter-check">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondPreowned"><label class="form-check-label" for="mCondPreowned">Pre-owned</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondRefurb"><label class="form-check-label" for="mCondRefurb">Refurbished</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondNew"><label class="form-check-label" for="mCondNew">Brand New</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondPreowned" name="condition" value="preowned"><label class="form-check-label" for="mCondPreowned">Pre-owned</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondRefurb" name="condition" value="refurbished"><label class="form-check-label" for="mCondRefurb">Refurbished</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondNew" name="condition" value="brandnew"><label class="form-check-label" for="mCondNew">Brand New</label></div>
         </div>
       </div>
       <div class="d-grid gap-2 mt-3">

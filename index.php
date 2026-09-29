@@ -1,5 +1,5 @@
 <?php
-$pageTitle   = 'CheynTech | Function-Tested Phones in Roxas City';
+$pageTitle   = 'Cheyn Gadgets | Function-Tested Phones in Roxas City';
 $pageDescription = 'Every phone function-tested before listing. Pre-owned, refurbished, and brand-new phones and tablets from Cheyn\'s Gadgets, Roxas City — order online for pickup or local delivery.';
 $activePage  = 'home';
 require 'includes/header.php';
@@ -146,7 +146,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphone13pro-128-graphite.jpg" alt="iPhone 13 Pro 128GB Graphite" loading="lazy">
+              <img src="/assets/products/iphone13pro-128-graphite.jpg" alt="iPhone 13 Pro 128GB Graphite" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-refurbished">Refurbished</span>
             </div>
             <div class="card-body">
@@ -165,7 +165,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphone12-64-blue.jpg" alt="iPhone 12 64GB Blue" loading="lazy">
+              <img src="/assets/products/iphone12-64-blue.jpg" alt="iPhone 12 64GB Blue" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -184,7 +184,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/s22-256-phantom.jpg" alt="Samsung Galaxy S22 256GB Phantom Black" loading="lazy">
+              <img src="/assets/products/s22-256-phantom.jpg" alt="Samsung Galaxy S22 256GB Phantom Black" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -203,7 +203,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/ipad9-64-gray.jpg" alt="iPad 9th Gen 64GB Space Gray" loading="lazy">
+              <img src="/assets/products/ipad9-64-gray.jpg" alt="iPad 9th Gen 64GB Space Gray" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-refurbished">Refurbished</span>
             </div>
             <div class="card-body">
@@ -222,7 +222,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/pixel7-128-obsidian.jpg" alt="Google Pixel 7 128GB Obsidian" loading="lazy">
+              <img src="/assets/products/pixel7-128-obsidian.jpg" alt="Google Pixel 7 128GB Obsidian" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -241,7 +241,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphone14-256-midnight.jpg" alt="iPhone 14 256GB Midnight" loading="lazy">
+              <img src="/assets/products/iphone14-256-midnight.jpg" alt="iPhone 14 256GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -260,7 +260,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/a54-128-violet.jpg" alt="Samsung Galaxy A54 5G 128GB Awesome Violet" loading="lazy">
+              <img src="/assets/products/a54-128-violet.jpg" alt="Samsung Galaxy A54 5G 128GB Awesome Violet" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
@@ -279,7 +279,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-4 col-xl-3">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphonese3-128-starlight.jpg" alt="iPhone SE 3rd Gen 128GB Starlight" loading="lazy">
+              <img src="/assets/products/iphonese3-128-starlight.jpg" alt="iPhone SE 3rd Gen 128GB Starlight" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-refurbished">Refurbished</span>
             </div>
             <div class="card-body">

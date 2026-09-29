@@ -16,6 +16,6 @@
         successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         form.reset();
         form.classList.remove('was-validated');
-        productInput.value = 'iPhone 13 Pro-128GB Graphite';
+        productInput.value = '';
       });
     })();

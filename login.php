@@ -1,13 +1,13 @@
 <?php
-$pageTitle       = 'Log In / Register | CheynTech';
-$pageDescription = 'Log in or create your CheynTech account to start shopping for gadgets.';
+$pageTitle       = 'Log In / Register | Cheyn Gadgets';
+$pageDescription = 'Log in or create your Cheyn Gadgets account to start shopping for gadgets.';
 $activePage      = 'login';
 require 'includes/header.php';
 ?>
 
   <main class="auth-wrapper">
     <div class="text-center mb-4">
-      <h1 class="h4 fw-bold mb-0">Welcome to CheynTech</h1>
+      <h1 class="h4 fw-bold mb-0">Welcome to Cheyn Gadgets</h1>
       <p class="text-muted small mt-1">Your trusted gadget store in Roxas City</p>
     </div>
 
@@ -69,7 +69,7 @@ require 'includes/header.php';
           <div class="tab-pane fade" id="registerPane" role="tabpanel" aria-labelledby="register-tab">
             <div class="auth-card-body">
               <h2 class="h5 fw-bold mb-1">Create an Account</h2>
-              <p class="text-muted small mb-4">Join CheynTech and start shopping today.</p>
+              <p class="text-muted small mb-4">Join Cheyn Gadgets and start shopping today.</p>
               <form id="registerForm" novalidate>
                 <div class="mb-3">
                   <label for="regName" class="form-label fw-semibold">Full Name</label>
@@ -126,7 +126,7 @@ require 'includes/header.php';
       </div>
     </div>
 
-    <p class="auth-footer-text text-center">&copy; 2026 CheynTech Trading. All Rights Reserved.</p>
+    <p class="auth-footer-text text-center">&copy; 2026 Cheyn Gadgets. All Rights Reserved.</p>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

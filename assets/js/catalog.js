@@ -223,17 +223,37 @@ function renderProducts() {
   const start     = (currentPage - 1) * PAGE_SIZE;
   const pageItems = sorted.slice(start, start + PAGE_SIZE);
 
-  // Update count label
-  const countLabel = document.querySelector('.sort-label i.bi-grid-3x3-gap')?.parentElement;
-  if (countLabel) {
-    countLabel.innerHTML = `<i class="bi bi-grid-3x3-gap me-1"></i> ${sorted.length} products found`;
-  }
-
   grid.innerHTML = pageItems.length
     ? pageItems.map(buildCardHTML).join('')
     : '<p class="text-muted py-5 text-center col-12">No products match your filters.</p>';
 
   renderPagination(totalPages);
+  updateFilterCounts(filtered);
+
+  // Keep both result-count elements in sync
+  const heroCount = document.getElementById('heroResultCount');
+  const sortCount = document.getElementById('sortBarCount');
+  if (heroCount) heroCount.textContent = filtered.length;
+  if (sortCount) sortCount.textContent = filtered.length;
+}
+
+/* ============================================================
+   FILTER COUNTS
+   Updates every [data-count-for] span with the number of products
+   in the current filtered set that match that category value.
+   ============================================================ */
+function updateFilterCounts(filteredProducts) {
+  document.querySelectorAll('[data-count-for]').forEach(span => {
+    const key = span.dataset.countFor;
+    let count = 0;
+
+    filteredProducts.forEach(p => {
+      const pCats = productCategories(p);
+      if (pCats.includes(key)) count++;
+    });
+
+    span.textContent = count > 0 ? '(' + count + ')' : '';
+  });
 }
 
 /* ============================================================
@@ -270,6 +290,7 @@ document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
   window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
 
   renderProducts();
+  renderActiveTags();
   showToast('Filters applied', 'info');
 });
 
@@ -316,9 +337,62 @@ document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
   }
 })();
 
-document.querySelectorAll('.filter-tag button').forEach(btn => {
-  btn.addEventListener('click', () => btn.closest('.filter-tag').remove());
-});
+/* ============================================================
+   ACTIVE FILTER TAGS
+   ============================================================ */
+function renderActiveTags() {
+  const container = document.getElementById('activeFilters');
+  if (!container) return;
+
+  const { q, cats, variants, colors, conds } = activeFilters;
+
+  // Human-readable label maps
+  const catLabels  = { preowned: 'Pre-owned iPhones', new: 'New iPhones', android: 'Android', tablet: 'Tablets' };
+  const condLabels = { preowned: 'Pre-owned', refurbished: 'Refurbished', brandnew: 'Brand New' };
+
+  const tags = [];
+
+  if (q) tags.push({ label: `"${q}"`, name: 'q', value: q });
+  cats.forEach(v     => tags.push({ label: catLabels[v]  || v, name: 'cat',       value: v }));
+  variants.forEach(v => tags.push({ label: v.toUpperCase(),    name: 'variant',   value: v }));
+  colors.forEach(v   => tags.push({ label: v.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+                                    name: 'color', value: v }));
+  conds.forEach(v    => tags.push({ label: condLabels[v]  || v, name: 'condition', value: v }));
+
+  if (!tags.length) {
+    container.innerHTML = '';
+    container.style.display = 'none';
+    return;
+  }
+
+  container.style.display = '';
+  container.innerHTML = tags.map(tag =>
+    `<span class="filter-tag" data-name="${tag.name}" data-value="${tag.value}">${tag.label} ` +
+    `<button type="button" aria-label="Remove ${tag.label} filter"><i class="bi bi-x"></i></button></span>`
+  ).join('');
+
+  // Wire each × button
+  container.querySelectorAll('.filter-tag button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const span  = btn.closest('.filter-tag');
+      const fname = span.dataset.name;
+      const fval  = span.dataset.value;
+
+      if (fname === 'q') {
+        const input = document.getElementById('catalogSearchInput');
+        if (input) input.value = '';
+      } else {
+        const cb = document.querySelector(`input[name="${fname}"][value="${fval}"]`);
+        if (cb) cb.checked = false;
+      }
+
+      activeFilters = collectFiltersFromDOM();
+      currentPage   = 1;
+      renderProducts();
+      renderActiveTags();
+    });
+  });
+}
 
 /* ============================================================
    SORT EVENT LISTENER (fixed)
@@ -327,6 +401,7 @@ document.getElementById('sortSelect')?.addEventListener('change', e => {
   currentSort = e.target.value;
   currentPage = 1;
   renderProducts();
+  renderActiveTags();
 });
 
 /* ============================================================
@@ -341,5 +416,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sortEl) currentSort = sortEl.value;
 
   renderProducts();
+  renderActiveTags();
 });
-

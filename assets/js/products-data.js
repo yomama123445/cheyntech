@@ -1,6 +1,6 @@
 'use strict';
 /* ============================================================
-   CHEYNTECH SHARED PRODUCT DATA
+   CHEYN GADGETS SHARED PRODUCT DATA
    Used by: catalog.js, product.js, index.js
    One entry per product; variants are listed inside storageOptions.
    ============================================================ */
@@ -13,7 +13,7 @@ var CHEYN_PRODUCTS = [
     badgeLabel:  'Refurbished',
     condition:   'Refurbished',
     desc:        'A15 Bionic chip · Pro camera system · 120Hz ProMotion display',
-    fullDesc:    'This iPhone 13 Pro has been professionally refurbished by CheynTech. The device has been fully cleaned, tested, and any faulty components replaced. The screen, battery, cameras, Face ID sensor, and all ports are in excellent working condition. Comes with a USB-C to Lightning cable and an official Apple 20W USB-C power adapter.',
+    fullDesc:    'This iPhone 13 Pro has been professionally refurbished by Cheyn Gadgets. The device has been fully cleaned, tested, and any faulty components replaced. The screen, battery, cameras, Face ID sensor, and all ports are in excellent working condition. Comes with a USB-C to Lightning cable and an official Apple 20W USB-C power adapter.',
     image:       '/assets/products/iphone13pro-128-graphite.jpg',
     date:        7,
     storageOptions: [
