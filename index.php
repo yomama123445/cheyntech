@@ -92,7 +92,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=preowned" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="/assets/products/category-preowned.jpg" alt="Pre-owned iPhones" loading="lazy">
+              <i class="bi bi-phone cat-icon"></i>
             </div>
             <p class="cat-name mb-0">Pre-owned iPhones</p>
             <span class="cat-count">Quality-checked units</span>
@@ -101,7 +101,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=new" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="/assets/products/category-new.jpg" alt="New iPhones" loading="lazy">
+              <i class="bi bi-phone-fill cat-icon"></i>
             </div>
             <p class="cat-name mb-0">New iPhones</p>
             <span class="cat-count">Brand-new sealed units</span>
@@ -110,7 +110,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=android" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="/assets/products/category-android.jpg" alt="Android" loading="lazy">
+              <i class="bi bi-grid cat-icon"></i>
             </div>
             <p class="cat-name mb-0">Android</p>
             <span class="cat-count">Samsung, Pixel &amp; more</span>
@@ -119,7 +119,7 @@ require 'includes/header.php';
         <div class="col-6 col-md-3">
           <a href="catalog.php?cat=tablet" class="category-card h-100">
             <div class="cat-img-wrap">
-              <img src="/assets/products/category-tablet.jpg" alt="Tablets" loading="lazy">
+              <i class="bi bi-tablet cat-icon"></i>
             </div>
             <p class="cat-name mb-0">Tablets</p>
             <span class="cat-count">iPad &amp; Android tablets</span>

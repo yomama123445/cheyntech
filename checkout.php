@@ -139,11 +139,7 @@ require 'includes/header.php';
                     <div class="radio-label">GCash</div>
                     <div class="radio-sub">Send payment via GCash and upload your proof of payment.</div>
                     <div id="gcashInfo" class="payment-info-box">
-                      <strong><i class="bi bi-phone me-1"></i>GCash Number:</strong><br>
-                      <span class="payment-number">0917-888-2468</span><br>
-                      Account Name: <strong>Cheyn T.</strong><br>
-                      <br>
-                      After sending, email your screenshot to <strong>pay@cheyntech.ph</strong> with your order ID as subject.
+                      <span class="text-muted fst-italic">GCash details will be provided upon order confirmation via SMS or email.</span>
                     </div>
                   </div>
                 </label>
@@ -156,15 +152,7 @@ require 'includes/header.php';
                     <div class="radio-label">Bank Transfer (BDO / BPI)</div>
                     <div class="radio-sub">Transfer to our bank account and send proof of payment.</div>
                     <div id="bankInfo" class="payment-info-box">
-                      <strong><i class="bi bi-bank me-1"></i>BDO Savings Account</strong><br>
-                      Account No.: <strong>0056-7890-1234</strong><br>
-                      Account Name: <strong>CheynTech Trading</strong><br>
-                      <br>
-                      <strong><i class="bi bi-bank me-1"></i>BPI Savings Account</strong><br>
-                      Account No.: <strong>3120-4567-89</strong><br>
-                      Account Name: <strong>CheynTech Trading</strong><br>
-                      <br>
-                      Email screenshot to <strong>pay@cheyntech.ph</strong> with your order ID as subject.
+                      <span class="text-muted fst-italic">Bank transfer details will be provided upon order confirmation via SMS or email.</span>
                     </div>
                   </div>
                 </label>
