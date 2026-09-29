@@ -32,6 +32,6 @@ function initHero() {
 
 document.addEventListener('DOMContentLoaded', initHero);
 
-function quickAddToCart(product) {
-  CheynCart.add(product);
+function quickAddToCart(product, btn) {
+  CheynCart.add(product, btn);
 }

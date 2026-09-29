@@ -19,7 +19,7 @@ require 'includes/header.php';
 
   <!-- MAIN -->
   <main class="track-section">
-    <div class="container" class="track-container">
+    <div class="container track-container">
 
       <!-- ── TOP: SEARCH FORM ── -->
       <div class="track-search-wrap mb-5">
@@ -77,7 +77,7 @@ require 'includes/header.php';
               <div class="order-stepper" role="list" aria-label="Order status steps">
 
                 <!-- Fill line (animated by initStepper in main.js) -->
-                <div class="step-fill" class="status-fill-bar"></div>
+                <div class="step-fill status-fill-bar"></div>
 
                 <!-- Step 1: Pending (completed) -->
                 <div class="step completed" role="listitem">
@@ -136,7 +136,7 @@ require 'includes/header.php';
                   <div class="hist-sub">
                     Your item is ready at <strong>Cheyn's Gadgets, Roxas City</strong>.<br>
                     Visit us Mon&ndash;Sat, 9:00 AM&ndash;6:00 PM. Bring a valid ID and your Order ID.<br>
-                    <a href="tel:+639171234567" class="fw-600" class="track-action-link">
+                    <a href="tel:+639171234567" class="fw-600 track-action-link">
                       <i class="bi bi-telephone-fill me-1"></i>0917-123-4567
                     </a>
                   </div>
@@ -147,7 +147,7 @@ require 'includes/header.php';
                 <div class="history-dot" aria-label="Pending"><i class="bi bi-star"></i></div>
                 <div class="history-info">
                   <div class="hist-time">Pending</div>
-                  <div class="hist-msg" class="hist-msg-note">Order Completed</div>
+                  <div class="hist-msg hist-msg-note">Order Completed</div>
                   <div class="hist-sub">Item successfully handed over. We hope you enjoy your gadget!</div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ require 'includes/header.php';
             <!-- ── Help strip ── -->
             <div class="help-strip">
               <p>
-                <i class="bi bi-headset me-2" class="track-action-link"></i>
+                <i class="bi bi-headset me-2 track-action-link"></i>
                 Need help with your order? Our team is happy to assist.
               </p>
               <a href="contact.php" class="btn btn-ct-outline btn-ct-sm">
@@ -174,24 +174,24 @@ require 'includes/header.php';
       <div id="trackInfoCards" class="mt-5">
         <div class="row g-3 text-center">
           <div class="col-md-4">
-            <div class="p-3 rounded-3" class="track-info-panel">
+            <div class="p-3 rounded-3 track-info-panel">
               <div class="track-info-icon"><i class="bi bi-clock-history"></i></div>
-              <div class="fw-700" class="track-info-label">Real-Time Updates</div>
-              <p class="mb-0" class="track-info-text">Order statuses updated by our team as your item progresses.</p>
+              <div class="fw-700 track-info-label">Real-Time Updates</div>
+              <p class="mb-0 track-info-text">Order statuses updated by our team as your item progresses.</p>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="p-3 rounded-3" class="track-info-panel">
+            <div class="p-3 rounded-3 track-info-panel">
               <div class="track-info-icon"><i class="bi bi-shield-check"></i></div>
-              <div class="fw-700" class="track-info-label">Verified &amp; Inspected</div>
-              <p class="mb-0" class="track-info-text">Every unit is inspected before being released to you.</p>
+              <div class="fw-700 track-info-label">Verified &amp; Inspected</div>
+              <p class="mb-0 track-info-text">Every unit is inspected before being released to you.</p>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="p-3 rounded-3" class="track-info-panel">
+            <div class="p-3 rounded-3 track-info-panel">
               <div class="track-info-icon"><i class="bi bi-headset"></i></div>
-              <div class="fw-700" class="track-info-label">Dedicated Support</div>
-              <p class="mb-0" class="track-info-text">Questions? Message us on Facebook or call our store directly.</p>
+              <div class="fw-700 track-info-label">Dedicated Support</div>
+              <p class="mb-0 track-info-text">Questions? Message us on Facebook or call our store directly.</p>
             </div>
           </div>
         </div>

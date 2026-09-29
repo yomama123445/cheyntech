@@ -62,29 +62,17 @@ require 'includes/header.php';
   <!-- STATS -->
   <section class="stats-section" aria-label="Store statistics">
     <div class="container">
-      <div class="row g-0 text-center">
-        <div class="col-6 col-md-3">
-          <div class="stat-box">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Products Sold</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="stat-box">
-            <div class="stat-number">200+</div>
-            <div class="stat-label">Happy Customers</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="stat-box">
+      <div class="row g-0 text-center justify-content-center">
+        <div class="col-6 col-md-6">
+          <div class="about-stat-box">
             <div class="stat-number">4</div>
-            <div class="stat-label">Product Categories</div>
+            <div class="about-stat-label">Product Categories</div>
           </div>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="stat-box">
+        <div class="col-6 col-md-6">
+          <div class="about-stat-box">
             <div class="stat-number">3-Day</div>
-            <div class="stat-label">Average Delivery</div>
+            <div class="about-stat-label">Average Delivery</div>
           </div>
         </div>
       </div>
@@ -150,7 +138,7 @@ require 'includes/header.php';
   <!-- CTA -->
   <section class="cta-section py-5 py-lg-6" aria-labelledby="ctaHeading">
     <div class="container text-center">
-      <i class="bi bi-bag-heart-fill mb-3" class="text-ct"></i>
+      <i class="bi bi-bag-heart-fill mb-3 text-ct"></i>
       <h2 id="ctaHeading" class="fw-bold mb-2">Ready to Shop?</h2>
       <p class="text-muted mb-4 mx-auto">
         Browse our full catalog of pre-owned, refurbished, and brand-new gadgets — or get in touch if you have questions.

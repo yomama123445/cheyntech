@@ -117,15 +117,15 @@ require '../includes/admin_sidebar.php';
           <table class="table table-hover align-middle mb-0" id="ordersTable" aria-label="Orders table">
             <thead class="table-light">
               <tr>
-                <th class="ps-4" class="admin-th">Order ID</th>
-                <th class="admin-th" class="d-none d-md-table-cell">Date</th>
+                <th class="ps-4 admin-th">Order ID</th>
+                <th class="admin-th d-none d-md-table-cell">Date</th>
                 <th class="admin-th">Customer</th>
-                <th class="admin-th" class="d-none d-lg-table-cell">Items</th>
+                <th class="admin-th d-none d-lg-table-cell">Items</th>
                 <th class="admin-th">Total</th>
-                <th class="admin-th" class="d-none d-md-table-cell">Fulfillment</th>
-                <th class="admin-th" class="d-none d-lg-table-cell">Payment</th>
+                <th class="admin-th d-none d-md-table-cell">Fulfillment</th>
+                <th class="admin-th d-none d-lg-table-cell">Payment</th>
                 <th class="admin-th">Status</th>
-                <th class="pe-4" class="admin-th">Action</th>
+                <th class="pe-4 admin-th">Action</th>
               </tr>
             </thead>
             <tbody id="ordersTbody">
@@ -190,7 +190,7 @@ require '../includes/admin_sidebar.php';
               <div id="modalItemsList"></div>
               <div class="d-flex justify-content-between pt-3 border-top mt-2">
                 <span class="fw-600">Order Total</span>
-                <span class="fw-800" class="text-ct" id="modalTotal">₱0</span>
+                <span class="fw-800 text-ct" id="modalTotal">₱0</span>
               </div>
             </div>
 
@@ -225,7 +225,7 @@ require '../includes/admin_sidebar.php';
                 <option value="Completed">Completed</option>
                 <option value="Cancelled">Cancelled</option>
               </select>
-              <button class="btn w-100 fw-600" class="btn-ct" onclick="updateOrderStatus()">
+              <button class="btn w-100 fw-600 btn-ct" onclick="updateOrderStatus()">
                 <i class="bi bi-check-lg me-1"></i> Update Status
               </button>
             </div>

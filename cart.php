@@ -22,7 +22,7 @@ require 'includes/header.php';
     <div class="container">
 
       <h1 class="fw-800 mb-4">
-        <i class="bi bi-cart3 me-2" class="cart-page-title-icon"></i>My Cart
+        <i class="bi bi-cart3 me-2 cart-page-title-icon"></i>My Cart
       </h1>
 
       <!-- EMPTY STATE -->
@@ -54,7 +54,7 @@ require 'includes/header.php';
         <div class="col-lg-4">
           <div class="summary-card">
             <div class="summary-title">
-              <i class="bi bi-receipt me-2" class="cart-page-title-icon"></i>Order Summary
+              <i class="bi bi-receipt me-2 cart-page-title-icon"></i>Order Summary
             </div>
 
             <div class="shipping-note">
@@ -68,7 +68,7 @@ require 'includes/header.php';
             </div>
             <div class="summary-row">
               <span class="label">Shipping</span>
-              <span class="value text-muted" class="value-note">Calculated at checkout</span>
+              <span class="value text-muted value-note">Calculated at checkout</span>
             </div>
 
             <div class="summary-total">
@@ -76,7 +76,7 @@ require 'includes/header.php';
               <span class="value" id="summaryTotal">&#8369;0</span>
             </div>
 
-            <a href="checkout.php" class="btn btn-ct w-100 mt-4 py-3" id="checkoutBtn" class="checkout-btn">
+            <a href="checkout.php" class="btn btn-ct w-100 mt-4 py-3 checkout-btn" id="checkoutBtn">
               <i class="bi bi-lock-fill me-2"></i>Proceed to Checkout
             </a>
 

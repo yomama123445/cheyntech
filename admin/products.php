@@ -13,7 +13,7 @@ require '../includes/admin_sidebar.php';
       </button>
       <h5 class="mb-0 me-auto">Products</h5>
       <div class="d-flex align-items-center gap-3">
-        <button class="btn" class="btn-ct" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
+        <button class="btn btn-ct" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
           <i class="bi bi-plus-lg me-1"></i> Add Product
         </button>
         <div class="dropdown">
@@ -95,14 +95,14 @@ require '../includes/admin_sidebar.php';
           <table class="table table-hover align-middle mb-0" id="productsTable" aria-label="Products table">
             <thead class="table-light">
               <tr>
-                <th class="ps-4" class="admin-th">Image</th>
+                <th class="ps-4 admin-th">Image</th>
                 <th class="admin-th">Product Name</th>
-                <th class="admin-th" class="d-none d-md-table-cell">Category</th>
-                <th class="admin-th" class="d-none d-lg-table-cell">Condition</th>
+                <th class="admin-th d-none d-md-table-cell">Category</th>
+                <th class="admin-th d-none d-lg-table-cell">Condition</th>
                 <th class="admin-th">Price</th>
-                <th class="admin-th" class="d-none d-md-table-cell">Stock</th>
-                <th class="admin-th" class="d-none d-lg-table-cell">Status</th>
-                <th class="pe-4" class="admin-th">Actions</th>
+                <th class="admin-th d-none d-md-table-cell">Stock</th>
+                <th class="admin-th d-none d-lg-table-cell">Status</th>
+                <th class="pe-4 admin-th">Actions</th>
               </tr>
             </thead>
             <tbody id="productsTbody">
@@ -219,7 +219,7 @@ require '../includes/admin_sidebar.php';
       </div>
       <div class="modal-footer border-0 pt-0">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn" class="btn-ct" onclick="saveProduct()">
+        <button type="button" class="btn btn-ct" onclick="saveProduct()">
           <i class="bi bi-check-lg me-1"></i> <span id="saveLabel">Save Product</span>
         </button>
       </div>
