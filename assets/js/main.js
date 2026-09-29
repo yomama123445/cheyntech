@@ -155,7 +155,7 @@ function initSearchOverlay() {
     form.addEventListener('submit', e => {
       e.preventDefault();
       const q = input.value.trim();
-      if (q) window.location.href = `catalog.html?q=${encodeURIComponent(q)}`;
+      if (q) window.location.href = `catalog.php?q=${encodeURIComponent(q)}`;
     });
   }
 }

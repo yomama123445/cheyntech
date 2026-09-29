@@ -1,32 +1,12 @@
 <?php
 $pageTitle       = 'Log In / Register | CheynTech';
 $pageDescription = 'Log in or create your CheynTech account to start shopping for gadgets.';
+$activePage      = 'login';
+require 'includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
-  <title><?= htmlspecialchars($pageTitle) ?></title>
-  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-  <header class="auth-header">
-    <div class="container text-center">
-      <a href="index.php">
-        <img src="assets/img/logo.svg" alt="CheynTech logo" width="34" height="34">
-        <span class="brand-name">CheynTech</span>
-      </a>
-    </div>
-  </header>
 
   <main class="auth-wrapper">
     <div class="text-center mb-4">
-      <img src="assets/img/logo.svg" alt="" width="56" height="56" class="mb-2">
       <h1 class="h4 fw-bold mb-0">Welcome to CheynTech</h1>
       <p class="text-muted small mt-1">Your trusted gadget store in Roxas City</p>
     </div>

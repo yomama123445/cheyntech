@@ -77,34 +77,34 @@ require 'includes/header.php';
         <div class="col-lg-5">
           <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
             <div class="p-4">
-              <h2 class="h5 fw-bold text-white mb-1"><i class="bi bi-shop me-2" class="text-ct"></i>Cheyn's Gadgets</h2>
+              <h2 class="h5 fw-bold text-white mb-1"><i class="bi bi-shop me-2 text-ct"></i>Cheyn's Gadgets</h2>
               <p class="text-white-50 small mb-0">Roxas City's trusted gadget store</p>
             </div>
             <div class="card-body p-4">
               <ul class="list-unstyled mb-4">
                 <li class="d-flex align-items-start gap-3 mb-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-geo-alt-fill" class="text-ct"></i></span>
+                  <span class="contact-icon-wrap"><i class="bi bi-geo-alt-fill text-ct"></i></span>
                   <div>
                     <div class="fw-semibold small text-uppercase text-muted mb-1">Address</div>
                     <div>Roxas City, Capiz, Philippines</div>
                   </div>
                 </li>
                 <li class="d-flex align-items-start gap-3 mb-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-telephone-fill" class="text-ct"></i></span>
+                  <span class="contact-icon-wrap"><i class="bi bi-telephone-fill text-ct"></i></span>
                   <div>
                     <div class="fw-semibold small text-uppercase text-muted mb-1">Phone</div>
                     <a href="tel:09XXXXXXXXX" class="text-dark text-decoration-none">09XX-XXX-XXXX</a>
                   </div>
                 </li>
                 <li class="d-flex align-items-start gap-3 mb-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-envelope-fill" class="text-ct"></i></span>
+                  <span class="contact-icon-wrap"><i class="bi bi-envelope-fill text-ct"></i></span>
                   <div>
                     <div class="fw-semibold small text-uppercase text-muted mb-1">Email</div>
                     <a href="mailto:hello@cheyntech.ph" class="text-dark text-decoration-none">hello@cheyntech.ph</a>
                   </div>
                 </li>
                 <li class="d-flex align-items-start gap-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-clock-fill" class="text-ct"></i></span>
+                  <span class="contact-icon-wrap"><i class="bi bi-clock-fill text-ct"></i></span>
                   <div>
                     <div class="fw-semibold small text-uppercase text-muted mb-1">Store Hours</div>
                     <div>Monday – Saturday</div>

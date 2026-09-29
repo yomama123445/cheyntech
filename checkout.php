@@ -22,7 +22,7 @@ require 'includes/header.php';
   <main class="checkout-section">
     <div class="container">
       <h1 class="fw-800 mb-4">
-        <i class="bi bi-bag-check me-2" class="checkout-page-icon"></i>Checkout
+        <i class="bi bi-bag-check me-2 checkout-page-icon"></i>Checkout
       </h1>
 
       <div class="row g-4 align-items-start">
@@ -174,10 +174,10 @@ require 'includes/header.php';
 
             <!-- ── Submit ── -->
             <div class="d-grid mt-4">
-              <button type="submit" class="btn btn-ct py-3" class="submit-btn-lg">
+              <button type="submit" class="btn btn-ct py-3 submit-btn-lg">
                 <i class="bi bi-check2-circle me-2"></i>Place Order
               </button>
-              <p class="text-center mt-2" class="secure-form-note">
+              <p class="text-center mt-2 secure-form-note">
                 By placing your order, you agree to our <a href="#">Terms &amp; Conditions</a>. Orders are subject to manual review.
               </p>
             </div>
@@ -189,7 +189,7 @@ require 'includes/header.php';
         <div class="col-lg-5">
           <div class="order-summary-card">
             <div class="summary-title">
-              <i class="bi bi-bag me-2" class="checkout-page-icon"></i>Your Order
+              <i class="bi bi-bag me-2 checkout-page-icon"></i>Your Order
             </div>
 
             <!-- Cart items rendered by JS -->
@@ -203,7 +203,7 @@ require 'includes/header.php';
             </div>
             <div class="summary-row">
               <span class="label">Delivery Fee</span>
-              <span class="value" id="coDeliveryFee" class="checkout-page-icon">Free</span>
+              <span class="value checkout-page-icon" id="coDeliveryFee">Free</span>
             </div>
 
             <div class="summary-grand">
@@ -228,7 +228,7 @@ require 'includes/header.php';
   <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-        <div class="modal-header border-0 text-white pb-0" class="modal-gradient-header">
+        <div class="modal-header border-0 text-white pb-0 modal-gradient-header">
           <div class="w-100 text-center pb-3">
             <div class="track-emoji">&#127881;</div>
             <h4 class="fw-800 mb-1">Order Placed Successfully!</h4>
@@ -243,13 +243,13 @@ require 'includes/header.php';
 
           <div class="row g-3 mb-3">
             <div class="col-12">
-              <div class="p-3 rounded-3" class="confirm-info-box">
+              <div class="p-3 rounded-3 confirm-info-box">
                 <div class="confirm-row"><span class="cl">Customer</span><span id="confirmName" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Email</span><span id="confirmEmail" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Phone</span><span id="confirmPhone" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Fulfillment</span><span id="confirmFulfillment" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Payment</span><span id="confirmPayment" class="fw-600"></span></div>
-                <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600" class="checkout-page-icon"></span></div>
+                <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600 checkout-page-icon"></span></div>
               </div>
             </div>
           </div>
