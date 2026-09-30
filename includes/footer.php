@@ -41,11 +41,6 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="container text-center">
-        &copy; 2026 Cheyn Gadgets. All Rights Reserved.
-      </div>
-    </div>
   </footer>
 
   <button id="backToTop" aria-label="Back to top"><i class="bi bi-chevron-up"></i></button>

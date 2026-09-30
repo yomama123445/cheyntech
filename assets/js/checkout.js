@@ -63,8 +63,14 @@
       function toggle() {
         if (delivery.checked) {
           addrFields.classList.remove('d-none');
+          requestAnimationFrame(function() {
+            addrFields.classList.add('open');
+          });
         } else {
-          addrFields.classList.add('d-none');
+          addrFields.classList.remove('open');
+          setTimeout(function() {
+            if (!delivery.checked) addrFields.classList.add('d-none');
+          }, 350);
         }
         updateDeliveryFee();
       }

@@ -17,13 +17,13 @@ require 'includes/header.php';
     </div>
   </div>
 
-  <!-- CATALOG HERO HEADER -->
-  <div class="catalog-hero">
+  <!-- PAGE HEADER -->
+  <div class="page-header">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
         <div>
           <h1>Shop by Category</h1>
-          <p class="result-count mt-1">Showing <strong id="heroResultCount">0</strong> results</p>
+          <p class="page-subtitle result-count mt-1">Showing <strong id="heroResultCount">0</strong> results</p>
         </div>
         <button class="btn btn-ct-outline btn-sm filter-mobile-btn d-flex d-lg-none align-items-center gap-2"
           type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"

@@ -17,15 +17,23 @@ require 'includes/header.php';
     </div>
   </div>
 
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Track Your Order</h1>
+      <p class="page-subtitle mb-0">Enter your Order ID to see real-time status updates on your Cheyn Gadgets purchase.</p>
+    </div>
+  </div>
+
   <!-- MAIN -->
   <main class="track-section">
     <div class="container track-container">
 
       <!-- ── TOP: SEARCH FORM ── -->
       <div class="track-search-wrap mb-5">
-        <div class="track-emoji">&#128269;</div>
-        <h2>Track Your Order</h2>
-        <p>Enter your Order ID to see real-time status updates on your Cheyn Gadgets purchase.</p>
+        <div class="track-icon-badge"><i class="bi bi-box-seam"></i></div>
+        <h2 class="h4 fw-700 mb-2">Order Lookup</h2>
+        <p class="text-muted small mb-3">Check the status of your delivery or in-store pickup.</p>
         <form id="trackForm" novalidate>
           <div class="track-input-group d-flex">
             <input
@@ -49,27 +57,27 @@ require 'includes/header.php';
 
       <!-- ── RESULT SECTION (hidden until search) ── -->
       <div id="trackResult" class="d-none" aria-live="polite">
-        <div class="order-result-card">
+        <div class="order-info-card">
 
           <!-- Header -->
-          <div class="result-header">
+          <div class="order-info-header">
             <div>
-              <div class="result-order-id" id="resultOrderId">CT-10493</div>
-              <div class="result-product">
+              <div class="order-info-id" id="resultOrderId">CT-10493</div>
+              <div class="order-info-product">
                 <i class="bi bi-phone me-1"></i>
                 <span id="resultProduct">iPhone 13 Pro &ndash; 128GB &bull; Pickup at Cheyn Gadgets Store</span>
               </div>
-              <div class="result-meta">
+              <div class="order-info-meta">
                 <i class="bi bi-calendar3 me-1"></i>Placed on <span id="resultDate">August 12, 2026</span>
               </div>
             </div>
-            <div class="result-status-badge">
+            <div class="order-info-badge">
               <i class="bi bi-bag-check me-1"></i>Ready for Pickup
             </div>
           </div>
 
           <!-- Body -->
-          <div class="result-body">
+          <div class="order-info-body">
 
             <!-- ── Stepper ── -->
             <div class="mb-4">
@@ -110,31 +118,31 @@ require 'includes/header.php';
             <div class="status-history">
               <div class="status-history-title">Status History</div>
 
-              <div class="history-item done">
-                <div class="history-dot" aria-label="Completed"><i class="bi bi-check-lg"></i></div>
+              <div class="status-history-item done">
+                <div class="status-dot status-dot-done" aria-label="Completed"><i class="bi bi-check-lg"></i></div>
                 <div class="history-info">
-                  <div class="hist-time">August 12, 2026 &bull; 10:14 AM</div>
-                  <div class="hist-msg">Order Received</div>
-                  <div class="hist-sub">Your order CT-10493 has been placed and is pending review by our team.</div>
+                  <div class="status-history-time">August 12, 2026 &bull; 10:14 AM</div>
+                  <div class="status-history-label">Order Received</div>
+                  <div class="status-history-note">Your order CT-10493 has been placed and is pending review by our team.</div>
                 </div>
               </div>
 
-              <div class="history-item done">
-                <div class="history-dot" aria-label="Completed"><i class="bi bi-check-lg"></i></div>
+              <div class="status-history-item done">
+                <div class="status-dot status-dot-done" aria-label="Completed"><i class="bi bi-check-lg"></i></div>
                 <div class="history-info">
-                  <div class="hist-time">August 12, 2026 &bull; 11:47 AM</div>
-                  <div class="hist-msg">Order Confirmed &amp; Processing</div>
-                  <div class="hist-sub">Payment verified. Your iPhone 13 Pro is being prepared and inspected by our technicians.</div>
+                  <div class="status-history-time">August 12, 2026 &bull; 11:47 AM</div>
+                  <div class="status-history-label">Order Confirmed &amp; Processing</div>
+                  <div class="status-history-note">Payment verified. Your iPhone 13 Pro is being prepared and inspected by our technicians.</div>
                 </div>
               </div>
 
-              <div class="history-item current">
-                <div class="history-dot" aria-label="Current"><i class="bi bi-bag-check-fill"></i></div>
+              <div class="status-history-item current">
+                <div class="status-dot status-dot-current" aria-label="Current"><i class="bi bi-bag-check-fill"></i></div>
                 <div class="history-info">
-                  <div class="hist-time">August 13, 2026 &bull; 9:05 AM</div>
-                  <div class="hist-msg">Ready for Pickup &#8212; <span class="track-action-link">Action Required</span></div>
-                  <div class="hist-sub">
-                    Your item is ready at <strong>Cheyn's Gadgets, Roxas City</strong>.<br>
+                  <div class="status-history-time">August 13, 2026 &bull; 9:05 AM</div>
+                  <div class="status-history-label">Ready for Pickup &#8212; <span class="track-action-link">Action Required</span></div>
+                  <div class="status-history-note">
+                    Your item is ready at <strong>Cheyn Gadgets, Roxas City</strong>.<br>
                     Visit us Mon&ndash;Sat, 9:00 AM&ndash;6:00 PM. Bring a valid ID and your Order ID.<br>
                     <a href="tel:+639171234567" class="fw-600 track-action-link">
                       <i class="bi bi-telephone-fill me-1"></i>0917-123-4567
@@ -143,12 +151,12 @@ require 'includes/header.php';
                 </div>
               </div>
 
-              <div class="history-item">
-                <div class="history-dot" aria-label="Pending"><i class="bi bi-star"></i></div>
+              <div class="status-history-item pending">
+                <div class="status-dot status-dot-pending" aria-label="Pending"><i class="bi bi-clock"></i></div>
                 <div class="history-info">
-                  <div class="hist-time">Pending</div>
-                  <div class="hist-msg hist-msg-note">Order Completed</div>
-                  <div class="hist-sub">Item successfully handed over. We hope you enjoy your gadget!</div>
+                  <div class="status-history-time">Pending</div>
+                  <div class="status-history-label">Order Completed</div>
+                  <div class="status-history-note">Item successfully handed over. We hope you enjoy your gadget!</div>
                 </div>
               </div>
 
@@ -166,8 +174,8 @@ require 'includes/header.php';
               </a>
             </div>
 
-          </div><!-- /result-body -->
-        </div><!-- /order-result-card -->
+          </div><!-- /order-info-body -->
+        </div><!-- /order-info-card -->
       </div><!-- /trackResult -->
 
       <!-- ── Info cards below search ── -->

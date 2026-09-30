@@ -6,7 +6,7 @@ require 'includes/header.php';
 ?>
 
   <!-- BREADCRUMB -->
-  <div class="breadcrumb-bar">
+  <div class="breadcrumb-wrap">
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
@@ -17,14 +17,17 @@ require 'includes/header.php';
     </div>
   </div>
 
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p class="page-subtitle mb-0">Have a question about a listing? Want to know more before you buy? We're happy to help!</p>
+    </div>
+  </div>
+
   <!-- MAIN -->
   <main class="py-5">
     <div class="container">
-      <div class="mb-4">
-        <h1 class="fw-bold">Contact Us</h1>
-        <p class="text-muted">Have a question about a listing? Want to know more before you buy? We're happy to help!</p>
-      </div>
-
       <div class="row g-4 align-items-start">
         <!-- LEFT: Inquiry Form -->
         <div class="col-lg-7">
@@ -75,46 +78,48 @@ require 'includes/header.php';
 
         <!-- RIGHT: Contact Info Card -->
         <div class="col-lg-5">
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-            <div class="p-4">
-              <h2 class="h5 fw-bold text-white mb-1"><i class="bi bi-shop me-2 text-ct"></i>Cheyn's Gadgets</h2>
+          <div class="contact-info-card">
+            <div class="contact-info-header">
+              <h2 class="h5 fw-bold text-white mb-1"><i class="bi bi-shop me-2 text-ct"></i>Cheyn Gadgets</h2>
               <p class="text-white-50 small mb-0">Roxas City's trusted gadget store</p>
             </div>
-            <div class="card-body p-4">
-              <ul class="list-unstyled mb-4">
-                <li class="d-flex align-items-start gap-3 mb-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-geo-alt-fill text-ct"></i></span>
+            <div class="contact-info-body">
+              <div class="contact-info-list mb-4">
+                <div class="contact-info-item">
+                  <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-geo-alt-fill"></i></span>
                   <div>
-                    <div class="fw-semibold small text-uppercase text-muted mb-1">Address</div>
-                    <div>Roxas City, Capiz, Philippines</div>
+                    <div class="contact-info-label">Address</div>
+                    <div class="contact-info-value">Roxas City, Capiz, Philippines</div>
                   </div>
-                </li>
-                <li class="d-flex align-items-start gap-3 mb-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-telephone-fill text-ct"></i></span>
+                </div>
+                <div class="contact-info-item">
+                  <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-telephone-fill"></i></span>
                   <div>
-                    <div class="fw-semibold small text-uppercase text-muted mb-1">Phone</div>
-                    <a href="tel:09XXXXXXXXX" class="text-dark text-decoration-none">09XX-XXX-XXXX</a>
+                    <div class="contact-info-label">Phone</div>
+                    <div class="contact-info-value"><a href="tel:09XXXXXXXXX" class="text-dark text-decoration-none">09XX-XXX-XXXX</a></div>
                   </div>
-                </li>
-                <li class="d-flex align-items-start gap-3 mb-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-envelope-fill text-ct"></i></span>
+                </div>
+                <div class="contact-info-item">
+                  <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-envelope-fill"></i></span>
                   <div>
-                    <div class="fw-semibold small text-uppercase text-muted mb-1">Email</div>
-                    <a href="mailto:hello@cheyntech.ph" class="text-dark text-decoration-none">hello@cheyntech.ph</a>
+                    <div class="contact-info-label">Email</div>
+                    <div class="contact-info-value"><a href="mailto:hello@cheyntech.ph" class="text-dark text-decoration-none">hello@cheyntech.ph</a></div>
                   </div>
-                </li>
-                <li class="d-flex align-items-start gap-3">
-                  <span class="contact-icon-wrap"><i class="bi bi-clock-fill text-ct"></i></span>
+                </div>
+                <div class="contact-info-item">
+                  <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-clock-fill"></i></span>
                   <div>
-                    <div class="fw-semibold small text-uppercase text-muted mb-1">Store Hours</div>
-                    <div>Monday – Saturday</div>
-                    <div class="fw-semibold">9:00 AM – 6:00 PM</div>
+                    <div class="contact-info-label">Store Hours</div>
+                    <div class="contact-info-value">
+                      <div>Monday – Saturday</div>
+                      <div class="fw-semibold">9:00 AM – 6:00 PM</div>
+                    </div>
                   </div>
-                </li>
-              </ul>
+                </div>
+              </div>
               <hr class="my-3">
               <div class="mb-4">
-                <p class="fw-semibold small text-uppercase text-muted mb-2">Follow Us</p>
+                <p class="contact-info-label mb-2">Follow Us</p>
                 <div class="d-flex gap-2">
                   <a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                   <a aria-disabled="true" tabindex="-1" title="Coming soon" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="Instagram (coming soon)" style="opacity:.45;cursor:default;pointer-events:none;"><i class="bi bi-instagram"></i></a>
@@ -122,10 +127,10 @@ require 'includes/header.php';
                 </div>
               </div>
               <!-- Map Placeholder -->
-              <div class="rounded-3 d-flex flex-column align-items-center justify-content-center gap-2" aria-label="Map placeholder" role="img">
-                <i class="bi bi-map"></i>
-                <span class="text-muted small">Map placeholder</span>
-                <span class="text-muted">Roxas City, Capiz</span>
+              <div class="map-placeholder" aria-label="Map placeholder" role="img">
+                <i class="bi bi-geo-alt"></i>
+                <span class="small fw-semibold">Cheyn Gadgets Location</span>
+                <span class="text-muted small">Roxas City, Capiz</span>
               </div>
             </div>
           </div>

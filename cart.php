@@ -17,13 +17,17 @@ require 'includes/header.php';
     </div>
   </div>
 
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="bi bi-cart3 me-2 cart-page-title-icon"></i>My Cart</h1>
+      <p class="page-subtitle mb-0">Review your selected items and proceed to checkout.</p>
+    </div>
+  </div>
+
   <!-- MAIN CONTENT -->
   <main class="cart-section">
     <div class="container">
-
-      <h1 class="fw-800 mb-4">
-        <i class="bi bi-cart3 me-2 cart-page-title-icon"></i>My Cart
-      </h1>
 
       <!-- EMPTY STATE -->
       <div id="emptyCartState" class="empty-cart d-none">

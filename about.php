@@ -6,7 +6,7 @@ require 'includes/header.php';
 ?>
 
   <!-- BREADCRUMB -->
-  <div class="breadcrumb-bar">
+  <div class="breadcrumb-wrap">
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
@@ -17,12 +17,12 @@ require 'includes/header.php';
     </div>
   </div>
 
-  <!-- HERO SUB-HEADER -->
-  <section class="about-hero text-white text-center" aria-labelledby="aboutHeroHeading">
-    <div class="container position-relative">
+  <!-- PAGE HEADER -->
+  <section class="page-header" aria-labelledby="aboutHeroHeading">
+    <div class="container">
       <span class="hero-badge"><i class="bi bi-geo-alt-fill me-1"></i>Roxas City, Philippines</span>
-      <h1 id="aboutHeroHeading" class="text-white mb-3">About Cheyn Gadgets</h1>
-      <p class="hero-sub mb-0">Connecting Filipinos to the Gadgets They Love</p>
+      <h1 id="aboutHeroHeading">About Cheyn Gadgets</h1>
+      <p class="hero-sub page-subtitle mb-0">Connecting Filipinos to the Gadgets They Love</p>
     </div>
   </section>
 
@@ -31,7 +31,7 @@ require 'includes/header.php';
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-md-6">
-          <span class="pill-badge">OUR STORY</span>
+          <span class="section-label">OUR STORY</span>
           <h2 id="ourStoryHeading" class="fw-bold mb-3">
             Born Local, Built on Trust
           </h2>
@@ -49,9 +49,9 @@ require 'includes/header.php';
           </div>
         </div>
         <div class="col-md-6">
-          <div class="story-img-wrap" role="img" aria-label="Cheyn's Gadgets store illustration">
+          <div class="story-img-wrap" role="img" aria-label="Cheyn Gadgets store illustration">
             <i class="bi bi-phone"></i>
-            <span class="fw-semibold">Cheyn's Gadgets</span>
+            <span class="fw-semibold">Cheyn Gadgets</span>
             <span class="text-muted small">Roxas City, Capiz</span>
           </div>
         </div>
@@ -65,13 +65,13 @@ require 'includes/header.php';
       <div class="row g-0 text-center justify-content-center">
         <div class="col-6 col-md-6">
           <div class="about-stat-box">
-            <div class="stat-number">4</div>
+            <div class="about-stat-num">4</div>
             <div class="about-stat-label">Product Categories</div>
           </div>
         </div>
         <div class="col-6 col-md-6">
           <div class="about-stat-box">
-            <div class="stat-number">3-Day</div>
+            <div class="about-stat-num">3-Day</div>
             <div class="about-stat-label">Average Delivery</div>
           </div>
         </div>
@@ -83,27 +83,27 @@ require 'includes/header.php';
   <section class="py-5 py-lg-6" aria-labelledby="whyHeading">
     <div class="container">
       <div class="text-center mb-5">
-        <span class="pill-badge">WHY CHOOSE US</span>
+        <span class="section-label">WHY CHOOSE US</span>
         <h2 id="whyHeading" class="fw-bold">Shopping at Cheyn Gadgets is Different</h2>
         <p class="text-muted mx-auto">We hold ourselves to a higher standard — because you deserve more than just a transaction.</p>
       </div>
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="why-card card">
+          <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-patch-check-fill"></i></div>
             <h3>Quality Checked</h3>
             <p>Every single unit — pre-owned or refurbished — is tested and inspected before it ever gets listed. Battery health, screen, ports, and camera are all verified.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="why-card card">
+          <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-currency-exchange"></i></div>
             <h3>Honest Pricing</h3>
             <p>What you see is what you pay — no hidden fees, no surprise charges at checkout. We price fairly based on actual market value and unit condition.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="why-card card">
+          <div class="feature-card">
             <div class="feature-icon-wrap"><i class="bi bi-shield-check"></i></div>
             <h3>7-Day Guarantee</h3>
             <p>If your unit shows any defect or issue within 7 days of delivery, we'll replace it — no questions asked. Your peace of mind comes first.</p>
@@ -119,7 +119,7 @@ require 'includes/header.php';
       <div class="row justify-content-center">
         <div class="col-lg-7 text-center">
           <div class="team-icon-wrap mb-4"><i class="bi bi-people-fill"></i></div>
-          <span class="pill-badge">THE TEAM</span>
+          <span class="section-label">THE TEAM</span>
           <h2 id="teamHeading" class="fw-bold mb-3">Small Team, Big Heart</h2>
           <p class="text-muted mb-3">
             Behind Cheyn Gadgets is a small, dedicated team of gadget enthusiasts right here in Roxas City. We're not a big corporation — we're your neighbors, and we genuinely care about every order we pack and every inquiry we receive.

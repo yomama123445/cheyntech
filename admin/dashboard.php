@@ -47,7 +47,7 @@ require '../includes/admin_sidebar.php';
 
       <!-- Welcome -->
       <div class="mb-4">
-        <h4 class="fw-700 mb-1">Welcome back, Admin 👋</h4>
+        <h4 class="fw-700 mb-1">Welcome back, Admin</h4>
         <p class="text-muted mb-0 admin-username">Here's what's happening with your store today.</p>
       </div>
 

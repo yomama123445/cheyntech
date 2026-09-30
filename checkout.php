@@ -18,12 +18,17 @@ require 'includes/header.php';
     </div>
   </div>
 
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1><i class="bi bi-bag-check me-2 checkout-page-icon"></i>Checkout</h1>
+      <p class="page-subtitle mb-0">Provide your delivery details and choose your payment method.</p>
+    </div>
+  </div>
+
   <!-- MAIN -->
   <main class="checkout-section">
     <div class="container">
-      <h1 class="fw-800 mb-4">
-        <i class="bi bi-bag-check me-2 checkout-page-icon"></i>Checkout
-      </h1>
 
       <div class="row g-4 align-items-start">
 
@@ -50,7 +55,7 @@ require 'includes/header.php';
                 <div class="col-md-6">
                   <label for="phone" class="form-label fw-600">Phone Number <span class="text-danger">*</span></label>
                   <div class="input-group">
-                    <span class="input-group-text">&#127477;&#127469;</span>
+                    <span class="input-group-text fw-semibold text-muted">+63</span>
                     <input type="tel" class="form-control" id="phone" name="phone" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
                   </div>
                   <div class="invalid-feedback">Enter a valid PH mobile number (e.g. 09171234567).</div>
@@ -64,7 +69,7 @@ require 'includes/header.php';
                 <i class="bi bi-truck me-2"></i>Fulfillment Method
               </div>
 
-              <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Fulfillment method">
+              <div class="d-flex flex-column gap-3" role="radiogroup" aria-label="Fulfillment method">
 
                 <!-- Pickup -->
                 <label class="radio-card" id="cardPickup">
@@ -73,7 +78,7 @@ require 'includes/header.php';
                   <div>
                     <div class="radio-label">Pickup at Cheyn Gadgets Store</div>
                     <div class="radio-sub">
-                      <i class="bi bi-geo-alt me-1"></i>Cheyn's Gadgets, Roxas City<br>
+                      <i class="bi bi-geo-alt me-1"></i>Cheyn Gadgets, Roxas City<br>
                       Mon&ndash;Sat &bull; 9:00 AM &ndash; 6:00 PM &bull; <span class="fw-600 text-success">Free</span>
                     </div>
                   </div>
@@ -88,8 +93,8 @@ require 'includes/header.php';
                     <div class="radio-sub">Delivery within Roxas City &amp; nearby areas &bull; Fee confirmed after order review</div>
 
                     <!-- Delivery address fields (shown when delivery selected) -->
-                    <div id="deliveryAddressFields" class="d-none">
-                      <div class="row g-2 mt-1">
+                    <div id="deliveryAddressFields" class="delivery-address-wrapper d-none">
+                      <div class="row g-2">
                         <div class="col-12">
                           <input type="text" class="form-control form-control-sm" id="addrStreet" name="addrStreet" placeholder="House No. / Street / Subdivision">
                         </div>
@@ -119,7 +124,7 @@ require 'includes/header.php';
                 <i class="bi bi-credit-card-2-front me-2"></i>Payment Method
               </div>
 
-              <div class="d-flex flex-column gap-2" role="radiogroup" aria-label="Payment method">
+              <div class="d-flex flex-column gap-3" role="radiogroup" aria-label="Payment method">
 
                 <!-- Cash -->
                 <label class="radio-card" id="cardCash">
@@ -218,7 +223,7 @@ require 'includes/header.php';
       <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
         <div class="modal-header border-0 text-white pb-0 modal-gradient-header">
           <div class="w-100 text-center pb-3">
-            <div class="track-emoji">&#127881;</div>
+            <div class="modal-check-badge"><i class="bi bi-check-circle-fill text-success fs-1"></i></div>
             <h4 class="fw-800 mb-1">Order Placed Successfully!</h4>
             <p class="mb-0">We've received your order. Our team will review and confirm it shortly.</p>
           </div>
@@ -237,7 +242,7 @@ require 'includes/header.php';
                 <div class="confirm-row"><span class="cl">Phone</span><span id="confirmPhone" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Fulfillment</span><span id="confirmFulfillment" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Payment</span><span id="confirmPayment" class="fw-600"></span></div>
-                <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600 checkout-page-icon"></span></div>
+                <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600 confirm-total-value"></span></div>
               </div>
             </div>
           </div>
