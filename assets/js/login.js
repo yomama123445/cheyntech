@@ -45,7 +45,42 @@
       loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!loginForm.checkValidity()) { loginForm.classList.add('was-validated'); return; }
-        showToast('Login coming soon. Stay tuned!', 'info');
+
+        var email = document.getElementById('loginEmail').value.trim();
+        var password = document.getElementById('loginPassword').value;
+        var submitBtn = loginForm.querySelector('button[type="submit"]');
+        var originalText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Logging in…';
+
+        fetch('api/auth/login.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, password: password })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.success) {
+            showToast('Welcome back, ' + data.user.name + '!', 'success');
+            setTimeout(function() {
+              if (data.user.role === 'admin') {
+                window.location.href = 'admin/dashboard.php';
+              } else {
+                window.location.href = 'index.php';
+              }
+            }, 800);
+          } else {
+            showToast(data.error || 'Login failed. Please check your credentials.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+        })
+        .catch(function() {
+          showToast('Could not reach authentication server. Check database configuration.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        });
       });
 
       // Register form
@@ -60,7 +95,39 @@
           conf.setCustomValidity('');
         }
         if (!registerForm.checkValidity()) { registerForm.classList.add('was-validated'); return; }
-        showToast('Registration coming soon. Stay tuned!', 'info');
+
+        var name = document.getElementById('regName').value.trim();
+        var email = document.getElementById('regEmail').value.trim();
+        var phone = document.getElementById('regPhone').value.trim();
+        var submitBtn = registerForm.querySelector('button[type="submit"]');
+        var originalText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating account…';
+
+        fetch('api/auth/register.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name: name, email: email, password: pass, phone: phone })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.success) {
+            showToast('Account created successfully! Welcome to Cheyn Gadgets.', 'success');
+            setTimeout(function() {
+              window.location.href = 'index.php';
+            }, 1000);
+          } else {
+            showToast(data.error || 'Registration failed.', 'error');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+        })
+        .catch(function() {
+          showToast('Could not connect to server. Check database configuration.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        });
       });
 
       document.getElementById('regConfirmPassword').addEventListener('input', function () {

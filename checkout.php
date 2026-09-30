@@ -218,13 +218,13 @@ require 'includes/header.php';
   </main>
 
   <!-- ═══ ORDER CONFIRMATION MODAL ═══ -->
-  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
         <div class="modal-header border-0 text-white pb-0 modal-gradient-header">
           <div class="w-100 text-center pb-3">
             <div class="modal-check-badge"><i class="bi bi-check-circle-fill text-success fs-1"></i></div>
-            <h4 class="fw-800 mb-1">Order Placed Successfully!</h4>
+            <h4 class="fw-800 mb-1" id="confirmationModalLabel">Order Placed Successfully!</h4>
             <p class="mb-0">We've received your order. Our team will review and confirm it shortly.</p>
           </div>
         </div>
@@ -253,7 +253,7 @@ require 'includes/header.php';
           </div>
         </div>
         <div class="modal-footer border-0 px-4 pb-4 gap-2 flex-nowrap">
-          <a href="track-order.php" class="btn btn-ct flex-fill">
+          <a href="track-order.php" class="btn btn-ct flex-fill" id="trackOrderModalBtn" autofocus>
             <i class="bi bi-search me-1"></i>Track My Order
           </a>
           <a href="catalog.php" class="btn btn-ct-outline flex-fill">
@@ -266,5 +266,16 @@ require 'includes/header.php';
 
 <?php require 'includes/footer.php'; ?>
   <script src="assets/js/checkout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var modalEl = document.getElementById('confirmationModal');
+      var trackBtn = document.getElementById('trackOrderModalBtn');
+      if (modalEl && trackBtn) {
+        modalEl.addEventListener('shown.bs.modal', function () {
+          trackBtn.focus();
+        });
+      }
+    });
+  </script>
 </body>
 </html>

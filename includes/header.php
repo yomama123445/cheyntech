@@ -19,10 +19,11 @@ $activePage      = $activePage      ?? '';
 <body>
 
   <!-- SEARCH OVERLAY -->
-  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchOverlayTitle">
+    <h2 id="searchOverlayTitle" class="visually-hidden">Search Products</h2>
     <button class="search-close" id="searchClose" aria-label="Close search"><i class="bi bi-x"></i></button>
     <form class="search-inner" id="searchForm" role="search">
-      <input type="search" id="searchInput" placeholder="Search for phones, tablets…" autocomplete="off">
+      <input type="search" id="searchInput" placeholder="Search for phones, tablets…" autocomplete="off" aria-labelledby="searchOverlayTitle">
       <p class="search-hint">Press Enter to search · Esc to close</p>
     </form>
   </div>

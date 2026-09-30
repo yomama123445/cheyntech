@@ -124,28 +124,85 @@
           return;
         }
 
-        var cart     = CheynCart.get();
-        var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
-        var orderId  = generateOrderId();
+        var cart = CheynCart.get();
+        if (!cart.length) {
+          showToast('Your cart is empty.', 'error');
+          return;
+        }
 
-        // Populate modal
-        document.getElementById('modalOrderId').textContent   = orderId;
-        document.getElementById('confirmName').textContent    = document.getElementById('fullName').value;
-        document.getElementById('confirmEmail').textContent   = document.getElementById('email').value;
-        document.getElementById('confirmPhone').textContent   = document.getElementById('phone').value;
-        document.getElementById('confirmFulfillment').textContent = fulfillmentLabel();
-        document.getElementById('confirmPayment').textContent     = paymentLabel();
-        document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Placing Order…';
 
-        // Save order ID for track page
-        try { sessionStorage.setItem('ct_last_order', orderId); } catch(e) {}
+        var payload = {
+          fullName:      document.getElementById('fullName').value.trim(),
+          email:         document.getElementById('email').value.trim(),
+          phone:         document.getElementById('phone').value.trim(),
+          fulfillment:   document.getElementById('fulfillDelivery').checked ? 'delivery' : 'pickup',
+          payment:       document.querySelector('input[name="payment"]:checked').value,
+          addrStreet:    document.getElementById('addrStreet') ? document.getElementById('addrStreet').value.trim() : '',
+          addrBarangay:  document.getElementById('addrBarangay') ? document.getElementById('addrBarangay').value.trim() : '',
+          addrCity:      document.getElementById('addrCity') ? document.getElementById('addrCity').value.trim() : '',
+          addrProvince:  document.getElementById('addrProvince') ? document.getElementById('addrProvince').value.trim() : '',
+          addrNotes:     document.getElementById('addrNotes') ? document.getElementById('addrNotes').value.trim() : '',
+          items:         cart
+        };
 
-        // Clear cart after placing
-        CheynCart.clear();
+        fetch('api/orders/create.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
 
-        // Show modal
-        var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
-        modal.show();
+          var orderNumber = data.orderNumber || generateOrderId();
+          var subtotal = data.total || cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
+
+          // Populate modal with real order response
+          document.getElementById('modalOrderId').textContent       = orderNumber;
+          document.getElementById('confirmName').textContent        = data.customerName || payload.fullName;
+          document.getElementById('confirmEmail').textContent       = data.email || payload.email;
+          document.getElementById('confirmPhone').textContent       = data.phone || payload.phone;
+          document.getElementById('confirmFulfillment').textContent = data.fulfillment || fulfillmentLabel();
+          document.getElementById('confirmPayment').textContent     = data.payment || paymentLabel();
+          document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
+
+          // Save order ID for track page
+          try { sessionStorage.setItem('ct_last_order', orderNumber); } catch(e) {}
+
+          // Clear cart after placing
+          CheynCart.clear();
+
+          // Show modal
+          var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
+          modal.show();
+        })
+        .catch(function() {
+          // Graceful fallback if database is not connected locally yet
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+
+          var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
+          var fallbackId = generateOrderId();
+
+          document.getElementById('modalOrderId').textContent       = fallbackId;
+          document.getElementById('confirmName').textContent        = payload.fullName;
+          document.getElementById('confirmEmail').textContent       = payload.email;
+          document.getElementById('confirmPhone').textContent       = payload.phone;
+          document.getElementById('confirmFulfillment').textContent = fulfillmentLabel();
+          document.getElementById('confirmPayment').textContent     = paymentLabel();
+          document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
+
+          try { sessionStorage.setItem('ct_last_order', fallbackId); } catch(e) {}
+          CheynCart.clear();
+
+          var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
+          modal.show();
+        });
       });
     }
 

@@ -1,1 +1,4 @@
 .DS_Store
+config/database.php
+repomix-output.xml
+test-db.php

@@ -49,10 +49,31 @@ require 'includes/header.php';
               <i class="bi bi-search me-1"></i>Track
             </button>
           </div>
-          <div id="trackError" class="text-danger mt-2">
+          <div id="trackError" class="text-danger mt-2" style="display: none;">
             <i class="bi bi-exclamation-circle me-1"></i>Please enter a valid Order ID (e.g. CT-10493).
           </div>
         </form>
+      </div>
+
+      <!-- ── NOT FOUND ALERT CARD ── -->
+      <div id="trackNotFound" class="d-none" aria-live="polite">
+        <div class="track-not-found-card">
+          <div class="track-not-found-icon">
+            <i class="bi bi-search"></i>
+          </div>
+          <h2 class="h4 fw-800 mb-2">Order Not Found</h2>
+          <p class="text-muted mb-4">
+            We couldn't find an order matching <strong id="notFoundOrderId" class="text-dark"></strong>. Please verify your Order ID and try again, or reach out to our team for assistance.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="contact.php" class="btn btn-ct px-4 py-2">
+              <i class="bi bi-headset me-1"></i> Contact Support
+            </a>
+            <a href="catalog.php" class="btn btn-ct-outline px-4 py-2">
+              <i class="bi bi-arrow-left me-1"></i> Return to Shop
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- ── RESULT SECTION (hidden until search) ── -->

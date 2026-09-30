@@ -141,9 +141,9 @@ require 'includes/header.php';
         </div>
         <a href="catalog.php" class="btn btn-ct-outline btn-sm mb-1">View All <i class="bi bi-arrow-right ms-1"></i></a>
       </div>
-      <div class="row g-3" id="featuredGrid">
+      <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3" id="featuredGrid">
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/iphone13pro-128-graphite.jpg" alt="iPhone 13 Pro 128GB Graphite" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
@@ -162,7 +162,7 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/iphone12-64-blue.jpg" alt="iPhone 12 64GB Blue" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
@@ -181,7 +181,7 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/s22-256-phantom.jpg" alt="Samsung Galaxy S22 256GB Phantom Black" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
@@ -200,7 +200,7 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/ipad9-64-gray.jpg" alt="iPad 9th Gen 64GB Space Gray" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
@@ -219,14 +219,14 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/pixel7-128-obsidian.jpg" alt="Google Pixel 7 128GB Obsidian" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
               <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
-              <p class="product-name">Google Pixel 7 – 128GB Snow</p>
+              <p class="product-name">Google Pixel 7 – 128GB Obsidian</p>
               <p class="product-price">₱24,000</p>
             </div>
             <div class="card-footer">
@@ -238,7 +238,7 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/iphone14-256-midnight.jpg" alt="iPhone 14 256GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
@@ -257,7 +257,7 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/a54-128-violet.jpg" alt="Samsung Galaxy A54 5G 128GB Awesome Violet" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">
@@ -276,7 +276,7 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col-6 col-md-4 col-xl-3">
+        <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
               <img src="/assets/products/iphonese3-128-starlight.jpg" alt="iPhone SE 3rd Gen 128GB Starlight" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fce4ec/e91e8c?text='+encodeURIComponent(this.alt)">

@@ -13,7 +13,7 @@ require '../includes/admin_sidebar.php';
       </button>
       <h5 class="mb-0 me-auto">Orders</h5>
       <div class="d-flex align-items-center gap-3">
-        <button class="btn btn-outline-secondary btn-sm" onclick="exportCSV()">
+        <button class="btn btn-ct-outline btn-sm" onclick="exportCSV()">
           <i class="bi bi-download me-1"></i> Export CSV
         </button>
         <div class="dropdown">

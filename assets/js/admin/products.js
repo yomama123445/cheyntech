@@ -54,7 +54,7 @@ function renderTable(list) {
       <td class="d-none d-lg-table-cell">${statusBadge(p.status, p.stock)}</td>
       <td class="pe-4">
         <div class="d-flex gap-1">
-          <button class="btn btn-sm btn-outline-secondary" onclick="openEditModal(${p.id})" title="Edit"><i class="bi bi-pencil"></i></button>
+          <button class="btn btn-sm btn-ct-outline" onclick="openEditModal(${p.id})" title="Edit"><i class="bi bi-pencil"></i></button>
           <button class="btn btn-sm btn-outline-danger" onclick="openDeleteModal(${p.id})" title="Delete"><i class="bi bi-trash"></i></button>
         </div>
       </td>

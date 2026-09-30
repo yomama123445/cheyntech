@@ -140,7 +140,7 @@ function renderOrders(list) {
         <td class="d-none d-lg-table-cell" >${o.payment}</td>
         <td class="status-cell">${statusBadgeHtml(o.status)}</td>
         <td class="pe-4">
-          <button class="btn btn-sm btn-outline-secondary text-xs" onclick="openOrderModal('${o.id}')">
+          <button class="btn btn-sm btn-ct-outline text-xs" onclick="openOrderModal('${o.id}')">
             <i class="bi bi-eye me-1"></i>View
           </button>
         </td>

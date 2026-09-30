@@ -245,6 +245,60 @@ function initStepper() {
 }
 
 /* =====================================================
+   USER AUTH & HEADER PROFILE
+   ===================================================== */
+function initUserAuth() {
+  var accountLink = document.querySelector('a[aria-label="Account"]');
+  if (!accountLink) return;
+
+  fetch('api/auth/me.php', { headers: { 'Accept': 'application/json' } })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data && data.loggedIn && data.user) {
+        var user = data.user;
+        var initial = (user.name || 'U').charAt(0).toUpperCase();
+
+        var container = document.createElement('div');
+        container.className = 'dropdown d-inline-block';
+        container.innerHTML =
+          '<button class="btn p-0 border-0 bg-transparent d-flex align-items-center" id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false" title="' + user.name + '">' +
+            '<div style="width:32px;height:32px;border-radius:50%;background:var(--ct-primary);color:#fff;font-weight:700;font-size:0.85rem;display:flex;align-items:center;justify-content:center;">' +
+              initial +
+            '</div>' +
+          '</button>' +
+          '<ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenuBtn" style="min-width:200px;font-size:0.88rem;">' +
+            '<li class="px-3 py-2 border-bottom">' +
+              '<div class="fw-bold text-dark text-truncate">' + user.name + '</div>' +
+              '<div class="text-muted small text-truncate">' + user.email + '</div>' +
+            '</li>' +
+            (user.role === 'admin' ? '<li><a class="dropdown-item py-2" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>' : '') +
+            '<li><a class="dropdown-item py-2" href="track-order.php"><i class="bi bi-box-seam me-2"></i>Track Orders</a></li>' +
+            '<li><a class="dropdown-item py-2" href="cart.php"><i class="bi bi-cart3 me-2"></i>My Cart</a></li>' +
+            '<li><hr class="dropdown-divider my-1"></li>' +
+            '<li><a class="dropdown-item py-2 text-danger" href="#" id="globalLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>' +
+          '</ul>';
+
+        accountLink.parentNode.replaceChild(container, accountLink);
+
+        var logoutBtn = document.getElementById('globalLogoutBtn');
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch('api/auth/logout.php')
+              .then(function() {
+                showToast('Logged out successfully', 'info');
+                setTimeout(function() { window.location.reload(); }, 600);
+              });
+          });
+        }
+      }
+    })
+    .catch(function() {
+      // If DB/backend is offline, link stays as standard login.php link
+    });
+}
+
+/* =====================================================
    INIT ALL
    ===================================================== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -256,4 +310,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAdminSidebar();
   initCatalogSearch();
   initStepper();
+  initUserAuth();
 });

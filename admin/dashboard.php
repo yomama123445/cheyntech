@@ -121,7 +121,7 @@ require '../includes/admin_sidebar.php';
                     <td class="td-id">₱58,000</td>
                     <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span></td>
                     <td><span class="badge bg-warning-subtle text-warning-emphasis rounded-pill td-sm-badge">Pending</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-outline-secondary td-sm-badge">View</a></td>
+                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
                   </tr>
                   <tr>
                     <td class="ps-4 td-id">#CT-0090</td>
@@ -130,7 +130,7 @@ require '../includes/admin_sidebar.php';
                     <td class="td-id">₱72,500</td>
                     <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill td-sm-badge">Pickup</span></td>
                     <td><span class="badge rounded-pill td-sm-badge badge-status-processing">Processing</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-outline-secondary td-sm-badge">View</a></td>
+                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
                   </tr>
                   <tr>
                     <td class="ps-4 td-id">#CT-0089</td>
@@ -139,7 +139,7 @@ require '../includes/admin_sidebar.php';
                     <td class="td-id">₱46,200</td>
                     <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span></td>
                     <td><span class="badge rounded-pill td-sm-badge badge-status-ready">Ready</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-outline-secondary td-sm-badge">View</a></td>
+                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
                   </tr>
                   <tr>
                     <td class="ps-4 td-id">#CT-0088</td>
@@ -148,7 +148,7 @@ require '../includes/admin_sidebar.php';
                     <td class="td-id">₱39,000</td>
                     <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill td-sm-badge">Pickup</span></td>
                     <td><span class="badge bg-success-subtle text-success-emphasis rounded-pill td-sm-badge">Completed</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-outline-secondary td-sm-badge">View</a></td>
+                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
                   </tr>
                   <tr>
                     <td class="ps-4 td-id">#CT-0087</td>
@@ -157,7 +157,7 @@ require '../includes/admin_sidebar.php';
                     <td class="td-id">₱29,999</td>
                     <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span></td>
                     <td><span class="badge rounded-pill td-sm-badge badge-status-processing">Processing</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-outline-secondary td-sm-badge">View</a></td>
+                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
                   </tr>
                 </tbody>
               </table>

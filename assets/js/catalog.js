@@ -130,8 +130,8 @@ function buildCardHTML(p) {
         </div>
         <div class="card-body">
           <p class="product-name">${p.name}</p>
-          <p class="product-price">${formatPrice(price)}</p>
           <p class="product-desc">${p.desc}</p>
+          <p class="product-price">${formatPrice(price)}</p>
         </div>
         <div class="card-footer">
           <button class="btn btn-ct btn-ct-sm flex-fill"
@@ -168,8 +168,13 @@ function renderPagination(totalPages) {
   const nav = document.getElementById('paginationNav');
   if (!nav) return;
 
+  if (totalPages <= 1) {
+    nav.innerHTML = '';
+    return;
+  }
+
   const prevDisabled = currentPage === 1;
-  const nextDisabled = currentPage === totalPages || totalPages === 0;
+  const nextDisabled = currentPage === totalPages;
 
   let html = `<ul class="pagination gap-1">`;
 
@@ -207,6 +212,45 @@ function renderPagination(totalPages) {
 }
 
 /* ============================================================
+   CLEAR ALL FILTERS
+   Resets all checkboxes, search inputs, active filter state,
+   and re-renders the complete catalog.
+   ============================================================ */
+function clearAllFilters() {
+  const searchInput = document.getElementById('catalogSearchInput');
+  if (searchInput) searchInput.value = '';
+  const searchInputMobile = document.getElementById('catalogSearchInputMobile');
+  if (searchInputMobile) searchInputMobile.value = '';
+
+  const priceMin = document.getElementById('priceMin');
+  if (priceMin) priceMin.value = '';
+  const priceMax = document.getElementById('priceMax');
+  if (priceMax) priceMax.value = '';
+
+  document.querySelectorAll('input[name="cat"], input[name="variant"], input[name="color"], input[name="condition"]').forEach(cb => {
+    cb.checked = false;
+  });
+
+  activeFilters = {
+    q:        '',
+    cats:     [],
+    variants: [],
+    colors:   [],
+    conds:    [],
+    priceMin: null,
+    priceMax: null,
+  };
+
+  currentPage = 1;
+  window.history.replaceState({}, '', window.location.pathname);
+
+  renderProducts();
+  renderActiveTags();
+}
+
+window.clearAllFilters = clearAllFilters;
+
+/* ============================================================
    MAIN RENDER
    Filters → sorts → paginates.
    ============================================================ */
@@ -225,7 +269,23 @@ function renderProducts() {
 
   grid.innerHTML = pageItems.length
     ? pageItems.map(buildCardHTML).join('')
-    : '<p class="text-muted py-5 text-center col-12">No products match your filters.</p>';
+    : `<div class="col-12 py-4">
+        <div class="empty-state-box">
+          <div class="empty-icon">
+            <i class="bi bi-search"></i>
+          </div>
+          <h3>No matching gadgets found</h3>
+          <p>We couldn't find any products matching your current filters or search terms. Try adjusting your selections or clear your filters to view all gadgets.</p>
+          <button type="button" class="btn btn-ct px-4 py-2" id="clearFiltersBtn" onclick="clearAllFilters()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Clear Filters
+          </button>
+        </div>
+      </div>`;
+
+  const clearBtn = document.getElementById('clearFiltersBtn');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', clearAllFilters);
+  }
 
   renderPagination(totalPages);
   updateFilterCounts(filtered);
@@ -414,6 +474,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const sortEl = document.getElementById('sortSelect');
   if (sortEl) currentSort = sortEl.value;
+
+  document.getElementById('clearAllLink')?.addEventListener('click', e => {
+    e.preventDefault();
+    clearAllFilters();
+  });
 
   renderProducts();
   renderActiveTags();

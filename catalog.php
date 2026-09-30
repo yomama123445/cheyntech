@@ -87,7 +87,7 @@ require 'includes/header.php';
                   <label class="form-check-label" for="var64">64 GB</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="var128" name="variant" value="128gb" checked>
+                  <input class="form-check-input" type="checkbox" id="var128" name="variant" value="128gb">
                   <label class="form-check-label" for="var128">128 GB</label>
                 </div>
                 <div class="form-check">
@@ -139,7 +139,7 @@ require 'includes/header.php';
               <p class="filter-group-label">Condition</p>
               <div class="filter-check">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="condPreowned" name="condition" value="preowned" checked>
+                  <input class="form-check-input" type="checkbox" id="condPreowned" name="condition" value="preowned">
                   <label class="form-check-label" for="condPreowned">Pre-owned</label>
                 </div>
                 <div class="form-check">

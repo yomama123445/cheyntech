@@ -7,6 +7,23 @@
 
   <!-- ========== SIDEBAR ========== -->
   <aside class="admin-sidebar" id="adminSidebar" aria-label="Admin navigation">
+    <style>
+      .admin-sidebar .nav-link:hover {
+        color: var(--ct-primary);
+        background: var(--ct-primary-soft);
+        border-left-color: var(--ct-primary);
+      }
+      .admin-sidebar .nav-link.active {
+        color: var(--ct-primary);
+        background: var(--ct-primary-soft);
+        border-left-color: var(--ct-primary);
+        font-weight: 600;
+      }
+      .admin-sidebar .nav-link:hover i,
+      .admin-sidebar .nav-link.active i {
+        color: var(--ct-primary);
+      }
+    </style>
     <a href="dashboard.php" class="sidebar-brand">
       <img src="../assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
       <span class="brand-name">Cheyn Gadgets</span>
