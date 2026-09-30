@@ -7,13 +7,22 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 header('Content-Type: application/json');
-require_once '../../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'error' => 'Method not allowed']);
     exit;
 }
+
+$clientCsrf  = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+$sessionCsrf = $_SESSION['csrf_token'] ?? '';
+if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'error' => 'Invalid or missing CSRF token.']);
+    exit;
+}
+
+require_once '../../config/database.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
 
@@ -64,12 +73,40 @@ try {
         $orderNumber = 'CT-' . time();
     }
 
-    // Calculate total
+    // Server-side lookup query for prices and stock validation
+    $priceStmt = $pdo->prepare('SELECT price, stock, product_id FROM product_variants WHERE id = ? LIMIT 1');
+
+    $processedItems = [];
     $subtotal = 0.00;
+
     foreach ($items as $item) {
         $qty = max(1, (int)($item['qty'] ?? 1));
-        $price = (float)($item['price'] ?? 0);
-        $subtotal += ($price * $qty);
+        $variantId = $item['id'] ?? '';
+
+        $priceStmt->execute([$variantId]);
+        $variant = $priceStmt->fetch();
+        if (!$variant) {
+            throw new Exception("Product variant {$variantId} no longer exists.");
+        }
+        if ($variant['stock'] < $qty) {
+            throw new Exception("Insufficient stock for variant {$variantId}.");
+        }
+
+        $unitPrice = (float)$variant['price'];
+        $lineTotal = $unitPrice * $qty;
+        $subtotal += $lineTotal;
+
+        $productName = $item['name'] ?? 'Product';
+        $variantInfo = trim(($item['variant'] ?? '') . ' ' . ($item['color'] ?? ''));
+
+        $processedItems[] = [
+            'variantId'   => $variantId,
+            'productName' => $productName,
+            'variantInfo' => $variantInfo ?: null,
+            'unitPrice'   => $unitPrice,
+            'qty'         => $qty,
+            'lineTotal'   => $lineTotal,
+        ];
     }
 
     $userId = $_SESSION['user_id'] ?? null;
@@ -94,7 +131,7 @@ try {
 
     $orderId = (int)$pdo->lastInsertId();
 
-    // Insert order items & decrement stock
+    // Insert order items & decrement stock using server-calculated prices
     $itemStmt = $pdo->prepare('
         INSERT INTO order_items (order_id, variant_id, product_name, variant_info, price, qty, line_total)
         VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -104,27 +141,18 @@ try {
         UPDATE product_variants SET stock = GREATEST(0, stock - ?) WHERE id = ?
     ');
 
-    foreach ($items as $item) {
-        $qty = max(1, (int)($item['qty'] ?? 1));
-        $price = (float)($item['price'] ?? 0);
-        $lineTotal = $price * $qty;
-        $variantId = $item['id'] ?? null;
-        $productName = $item['name'] ?? 'Product';
-        $variantInfo = trim(($item['variant'] ?? '') . ' ' . ($item['color'] ?? ''));
-
+    foreach ($processedItems as $pItem) {
         $itemStmt->execute([
             $orderId,
-            $variantId,
-            $productName,
-            $variantInfo ?: null,
-            $price,
-            $qty,
-            $lineTotal
+            $pItem['variantId'],
+            $pItem['productName'],
+            $pItem['variantInfo'],
+            $pItem['unitPrice'],
+            $pItem['qty'],
+            $pItem['lineTotal']
         ]);
 
-        if ($variantId) {
-            $stockStmt->execute([$qty, $variantId]);
-        }
+        $stockStmt->execute([$pItem['qty'], $pItem['variantId']]);
     }
 
     $pdo->commit();

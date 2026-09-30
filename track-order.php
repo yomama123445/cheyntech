@@ -92,7 +92,7 @@ require 'includes/header.php';
                 <i class="bi bi-calendar3 me-1"></i>Placed on <span id="resultDate">August 12, 2026</span>
               </div>
             </div>
-            <div class="order-info-badge">
+            <div class="order-info-badge result-status-badge">
               <i class="bi bi-bag-check me-1"></i>Ready for Pickup
             </div>
           </div>

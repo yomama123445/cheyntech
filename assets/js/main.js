@@ -239,10 +239,13 @@ function initStepper() {
 
   const completedCount = [...steps].filter(s => s.classList.contains('completed')).length;
   const activeIdx      = [...steps].findIndex(s => s.classList.contains('active'));
-  const progress       = completedCount / (steps.length - 1);
+  const stepIndex      = (activeIdx !== -1 && activeIdx > completedCount) ? activeIdx : completedCount;
+  const maxSteps       = steps.length - 1;
+  const progress       = maxSteps > 0 ? (stepIndex / maxSteps) : 0;
 
-  fillLine.style.width = `${Math.min(progress * 80, 80)}%`;
+  fillLine.style.width = `${Math.min(Math.max(progress * 100, 0), 100)}%`;
 }
+window.initStepper = initStepper;
 
 /* =====================================================
    USER AUTH & HEADER PROFILE
@@ -250,6 +253,12 @@ function initStepper() {
 function initUserAuth() {
   var accountLink = document.querySelector('a[aria-label="Account"]');
   if (!accountLink) return;
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
 
   fetch('api/auth/me.php', { headers: { 'Accept': 'application/json' } })
     .then(function(res) { return res.json(); })
@@ -261,15 +270,15 @@ function initUserAuth() {
         var container = document.createElement('div');
         container.className = 'dropdown d-inline-block';
         container.innerHTML =
-          '<button class="btn p-0 border-0 bg-transparent d-flex align-items-center" id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false" title="' + user.name + '">' +
+          '<button class="btn p-0 border-0 bg-transparent d-flex align-items-center" id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false">' +
             '<div style="width:32px;height:32px;border-radius:50%;background:var(--ct-primary);color:#fff;font-weight:700;font-size:0.85rem;display:flex;align-items:center;justify-content:center;">' +
-              initial +
+              escapeHtml(initial) +
             '</div>' +
           '</button>' +
           '<ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenuBtn" style="min-width:200px;font-size:0.88rem;">' +
             '<li class="px-3 py-2 border-bottom">' +
-              '<div class="fw-bold text-dark text-truncate">' + user.name + '</div>' +
-              '<div class="text-muted small text-truncate">' + user.email + '</div>' +
+              '<div class="fw-bold text-dark text-truncate">' + escapeHtml(user.name) + '</div>' +
+              '<div class="text-muted small text-truncate">' + escapeHtml(user.email) + '</div>' +
             '</li>' +
             (user.role === 'admin' ? '<li><a class="dropdown-item py-2" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>' : '') +
             '<li><a class="dropdown-item py-2" href="track-order.php"><i class="bi bi-box-seam me-2"></i>Track Orders</a></li>' +
@@ -277,6 +286,8 @@ function initUserAuth() {
             '<li><hr class="dropdown-divider my-1"></li>' +
             '<li><a class="dropdown-item py-2 text-danger" href="#" id="globalLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>' +
           '</ul>';
+
+        container.querySelector('#userMenuBtn').setAttribute('title', user.name);
 
         accountLink.parentNode.replaceChild(container, accountLink);
 

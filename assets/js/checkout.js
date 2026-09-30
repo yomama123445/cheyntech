@@ -10,7 +10,7 @@
 
       listEl.innerHTML = cart.map(function(item) {
         return '<div class="summary-item">' +
-          '<img src="' + (item.image || 'https://placehold.co/400x400/fce4ec/e91e8c?text=Product') + '" alt="' + item.name + '" onerror="this.src=\'https://placehold.co/400x400/fce4ec/e91e8c?text=Product\'">' +
+          '<img src="' + (item.image || '/assets/products/placeholder.jpg') + '" alt="' + item.name + '" onerror="this.onerror=null;this.src=\'/assets/products/placeholder.jpg\'">' +
           '<div class="summary-item-info">' +
             '<div class="name">' + item.name + ' &times;' + (item.qty||1) + '</div>' +
             '<div class="variant">' + (item.variant||'') + (item.color ? ' &middot; '+item.color : '') + '</div>' +
@@ -149,9 +149,15 @@
           items:         cart
         };
 
+        var csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
         fetch('api/orders/create.php', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken
+          },
           body: JSON.stringify(payload)
         })
         .then(function(res) { return res.json(); })

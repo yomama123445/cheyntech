@@ -10,7 +10,7 @@
     function buildItemCard(item, index) {
       var lineTotal = item.price * (item.qty || 1);
       return '<div class="cart-item-card" data-index="' + index + '">' +
-        '<img src="' + (item.image || '/assets/products/placeholder.jpg') + '" alt="' + item.name + '" class="cart-item-img" loading="lazy" onerror="this.src=\'/assets/products/placeholder.jpg\'">' +
+        '<img src="' + (item.image || '/assets/products/placeholder.jpg') + '" alt="' + item.name + '" class="cart-item-img" loading="lazy" onerror="this.onerror=null;this.src=\'/assets/products/placeholder.jpg\'">' +
         '<div class="cart-item-info">' +
           '<div class="cart-item-name">' + item.name + '</div>' +
           '<div class="cart-item-variant">' + (item.variant || '') + (item.color ? ' &middot; ' + item.color : '') + '</div>' +

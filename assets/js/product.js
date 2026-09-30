@@ -4,40 +4,42 @@
 
 (function () {
 
-  /* ── Resolve product from URL query param ──────────────────── */
+  /* ── Resolve product id from URL query param ───────────────── */
   var productId = new URLSearchParams(window.location.search).get('id') || '';
-  var product   = cheynFindProduct(productId);
-
-  /* If no matching product, show an error state and bail out */
-  if (!product) {
-    document.addEventListener('DOMContentLoaded', function () {
-      var main = document.querySelector('main');
-      if (main) {
-        main.innerHTML =
-          '<div class="container py-5 text-center">' +
-            '<i class="bi bi-exclamation-triangle text-ct" style="font-size:3rem"></i>' +
-            '<h2 class="mt-3 fw-700">Product Not Found</h2>' +
-            '<p class="text-muted">The product you\'re looking for doesn\'t exist or has been removed.</p>' +
-            '<a href="catalog.php" class="btn btn-ct text-white mt-2">Back to Catalog</a>' +
-          '</div>';
-      }
-      document.title = 'Product Not Found | Cheyn Gadgets';
-    });
-    return;
-  }
-
-  /* ── State ──────────────────────────────────────────────────── */
-  var currentStorage = product.storageOptions[0].label;
-  var currentPrice   = product.storageOptions[0].price;
-  var currentColor   = product.colorOptions[0].label;
+  var fallbackProduct = (typeof cheynFindProduct === 'function') ? cheynFindProduct(productId) : null;
 
   /* ── Helper ─────────────────────────────────────────────────── */
   function fmt(n) {
-    return '\u20B1' + n.toLocaleString('en-PH');
+    return '\u20B1' + Number(n || 0).toLocaleString('en-PH');
   }
 
-  /* ── Populate page on DOMContentLoaded ──────────────────────── */
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ── Render 404 Error State ─────────────────────────────────── */
+  function renderNotFound() {
+    var main = document.querySelector('main');
+    if (main) {
+      main.innerHTML =
+        '<div class="container py-5 text-center">' +
+          '<i class="bi bi-exclamation-triangle text-ct" style="font-size:3rem"></i>' +
+          '<h2 class="mt-3 fw-700">Product Not Found</h2>' +
+          '<p class="text-muted">The product you\'re looking for doesn\'t exist or has been removed.</p>' +
+          '<a href="catalog.php" class="btn btn-ct text-white mt-2">Back to Catalog</a>' +
+        '</div>';
+    }
+    document.title = 'Product Not Found | Cheyn Gadgets';
+  }
+
+  /* ── Render Full Product Details ────────────────────────────── */
+  function renderProductPage(product) {
+    var storageOptions = (product.storageOptions && product.storageOptions.length)
+      ? product.storageOptions
+      : [{ label: 'Standard', price: 0, id: product.id }];
+    var colorOptions = (product.colorOptions && product.colorOptions.length)
+      ? product.colorOptions
+      : [{ label: 'Default', hex: '#000000', border: '' }];
+
+    var currentStorage = storageOptions[0].label;
+    var currentPrice   = storageOptions[0].price;
+    var currentColor   = colorOptions[0].label;
 
     /* --- Page title & meta --- */
     document.title = product.name + ' | Cheyn Gadgets';
@@ -46,48 +48,53 @@
     var bc = document.getElementById('breadcrumbProduct');
     if (bc) bc.textContent = product.name;
 
-    /* --- Main image (first gallery shot) --- */
+    /* --- Main image (first gallery shot or main image) --- */
     var mainImg = document.getElementById('mainProductImg');
-    if (mainImg && product.gallery.length) {
-      mainImg.src = product.gallery[0].src;
+    if (mainImg) {
+      var initialSrc = (product.gallery && product.gallery.length && product.gallery[0].src)
+        ? product.gallery[0].src
+        : (product.image || '/assets/products/placeholder.jpg');
+      mainImg.src = initialSrc;
       mainImg.alt = product.name;
+      mainImg.onerror = function () {
+        this.onerror = null;
+        this.src = '/assets/products/placeholder.jpg';
+      };
     }
 
     /* --- Gallery thumbnails --- */
     var thumbsEl = document.getElementById('galleryThumbs');
-    if (thumbsEl && product.gallery.length) {
-      thumbsEl.innerHTML = product.gallery.map(function (g, i) {
-        return '<button class="gallery-thumb' + (i === 0 ? ' active' : '') + '"' +
-               ' aria-label="' + g.alt + ' view"' +
-               ' data-src="' + g.src + '">' +
-               '<img src="' + g.thumb + '" alt="' + g.alt + '">' +
-               '</button>';
-      }).join('');
+    if (thumbsEl) {
+      if (product.gallery && product.gallery.length > 1) {
+        thumbsEl.innerHTML = product.gallery.map(function (g, i) {
+          return '<button class="gallery-thumb' + (i === 0 ? ' active' : '') + '"' +
+                 ' aria-label="' + (g.alt || product.name) + ' view"' +
+                 ' data-src="' + g.src + '">' +
+                 '<img src="' + (g.thumb || g.src) + '" alt="' + (g.alt || product.name) + '" onerror="this.onerror=null;this.src=\'/assets/products/placeholder.jpg\'">' +
+                 '</button>';
+        }).join('');
 
-      /* Wire thumbnail click events */
-      thumbsEl.querySelectorAll('.gallery-thumb').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var src = btn.dataset.src;
-          if (!src) return;
-          mainImg.src = src;
-          thumbsEl.querySelectorAll('.gallery-thumb').forEach(function (b) {
-            b.classList.remove('active');
+        thumbsEl.querySelectorAll('.gallery-thumb').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var src = btn.dataset.src;
+            if (!src || !mainImg) return;
+            mainImg.src = src;
+            thumbsEl.querySelectorAll('.gallery-thumb').forEach(function (b) {
+              b.classList.remove('active');
+            });
+            btn.classList.add('active');
           });
-          btn.classList.add('active');
         });
-      });
+      } else {
+        thumbsEl.innerHTML = '';
+      }
     }
 
     /* --- Condition badge --- */
     var badgesEl = document.getElementById('conditionBadges');
     if (badgesEl) {
-      var badgeMap = {
-        'badge-refurbished': 'Refurbished',
-        'badge-preowned':    'Pre-owned',
-        'badge-available':   'Brand New',
-      };
       badgesEl.innerHTML =
-        '<span class="badge-ct ' + product.badge + '">' + product.badgeLabel + '</span>' +
+        '<span class="badge-ct ' + (product.badge || 'badge-preowned') + '">' + (product.badgeLabel || product.condition || 'Pre-owned') + '</span>' +
         '<span class="badge-ct badge-available">Available</span>';
     }
 
@@ -104,7 +111,7 @@
     /* --- Storage options --- */
     var storageEl = document.getElementById('storageOptions');
     if (storageEl) {
-      storageEl.innerHTML = product.storageOptions.map(function (opt, i) {
+      storageEl.innerHTML = storageOptions.map(function (opt, i) {
         var isFirst = i === 0;
         return '<button class="btn btn-sm ' + (isFirst ? 'btn-ct storage-btn active' : 'btn-ct-outline storage-btn') + '"' +
                ' data-storage="' + opt.label + '"' +
@@ -124,7 +131,6 @@
           currentStorage = btn.dataset.storage;
           currentPrice   = parseInt(btn.dataset.price, 10);
           if (priceEl) priceEl.textContent = fmt(currentPrice);
-          /* Update specs storage row if present */
           var specStorageEl = document.getElementById('specStorage');
           if (specStorageEl) specStorageEl.textContent = currentStorage;
         });
@@ -135,7 +141,7 @@
     var colorEl      = document.getElementById('colorOptions');
     var colorLabelEl = document.getElementById('selectedColorLabel');
     if (colorEl) {
-      colorEl.innerHTML = product.colorOptions.map(function (c, i) {
+      colorEl.innerHTML = colorOptions.map(function (c, i) {
         var isFirst = i === 0;
         var borderStyle = c.border ? 'border-color:' + c.border + ';' : '';
         return '<label class="color-option-btn' + (isFirst ? ' active' : '') + '" data-color="' + c.label + '">' +
@@ -169,7 +175,6 @@
       specsBodyEl.innerHTML = Object.entries(product.specs).map(function (pair, i) {
         var key = pair[0], val = pair[1];
         var isFirst = i === 0;
-        /* For the Storage row, keep it live-updatable */
         if (key === 'Storage') {
           return '<tr><th class="text-muted fw-600' + (isFirst ? ' col-4' : '') + '">' + key + '</th>' +
                  '<td id="specStorage">' + currentStorage + '</td></tr>';
@@ -188,37 +193,98 @@
     /* --- Add to Cart --- */
     var addBtn = document.getElementById('addToCartBtn');
     if (addBtn) {
-      addBtn.addEventListener('click', function () {
-        /* Find the storage option that matches currentStorage to get its variant id */
-        var storageOpt = product.storageOptions.find(function (o) {
+      addBtn.onclick = function () {
+        var storageOpt = storageOptions.find(function (o) {
           return o.label === currentStorage;
-        }) || product.storageOptions[0];
+        }) || storageOptions[0];
+
+        // Match exact variant by storage + color if available
+        var variantId = storageOpt.id;
+        if (product.variants && product.variants.length) {
+          var exactVariant = product.variants.find(function (v) {
+            return v.storage === currentStorage && v.color === currentColor;
+          });
+          if (exactVariant) {
+            variantId = exactVariant.id;
+          }
+        }
 
         CheynCart.add({
-          id      : storageOpt.id,
+          id      : variantId,
           name    : product.name + ' – ' + currentStorage + ' ' + currentColor,
           price   : currentPrice,
           variant : currentStorage,
           color   : currentColor,
           image   : product.image,
         }, addBtn);
-      });
+      };
     }
 
+    /* --- Related products grid --- */
     var relatedGrid = document.getElementById('relatedGrid');
     if (relatedGrid) {
-      var related = CHEYN_PRODUCTS.filter(function(p) { return p.id !== product.id; }).slice(0, 4);
-      relatedGrid.innerHTML = related.map(function(p) {
-        var opt = p.storageOptions[0];
+      var sourceList = (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) ? CHEYN_PRODUCTS : [];
+      var related = sourceList.filter(function (p) { return p.id !== product.id; }).slice(0, 4);
+      relatedGrid.innerHTML = related.map(function (p) {
+        var opt = (p.storageOptions && p.storageOptions.length) ? p.storageOptions[0] : { price: 0 };
         return '<div class="col-6 col-md-3"><article class="product-card">' +
-          '<div class="card-img-wrap"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'https://placehold.co/400x400/fce4ec/e91e8c?text=\'+encodeURIComponent(this.alt)">' +
-          '<span class="badge-ct ' + p.badge + '">' + p.badgeLabel + '</span></div>' +
-          '<div class="card-body"><p class="product-name">' + p.name + '</p><p class="product-price">' + formatPrice(opt.price) + '</p></div>' +
+          '<div class="card-img-wrap"><img src="' + (p.image || '/assets/products/placeholder.jpg') + '" alt="' + p.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'/assets/products/placeholder.jpg\'">' +
+          '<span class="badge-ct ' + (p.badge || 'badge-preowned') + '">' + (p.badgeLabel || 'Pre-owned') + '</span></div>' +
+          '<div class="card-body"><p class="product-name">' + p.name + '</p><p class="product-price">' + fmt(opt.price) + '</p></div>' +
           '<div class="card-footer"><a href="product.php?id=' + p.id + '" class="btn btn-ct btn-ct-sm flex-grow-1">View</a></div>' +
           '</article></div>';
       }).join('');
     }
+  }
 
-  }); // end DOMContentLoaded
+  /* ── Load Product From API With Offline Fallback ────────────── */
+  async function loadProduct() {
+    if (!productId) {
+      renderNotFound();
+      return;
+    }
+
+    var product = null;
+
+    try {
+      var res = await fetch('api/products/get.php?id=' + encodeURIComponent(productId), {
+        headers: { 'Accept': 'application/json' },
+        cache: 'no-store'
+      });
+      if (res.ok) {
+        var data = await res.json();
+        if (data && data.success && data.product) {
+          product = data.product;
+        } else if (data && data.id) {
+          product = data;
+        }
+      }
+    } catch (err) {
+      console.warn('Could not fetch product from API:', err);
+    }
+
+    // Fall back to static CHEYN_PRODUCTS if API fetch failed or returned nothing
+    if (!product && fallbackProduct) {
+      product = fallbackProduct;
+    } else if (product && fallbackProduct) {
+      // Merge rich static gallery if DB only provided single main image
+      if ((!product.gallery || product.gallery.length <= 1) && fallbackProduct.gallery && fallbackProduct.gallery.length > 1) {
+        product.gallery = fallbackProduct.gallery;
+      }
+    }
+
+    if (!product) {
+      renderNotFound();
+      return;
+    }
+
+    renderProductPage(product);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadProduct);
+  } else {
+    loadProduct();
+  }
 
 })();

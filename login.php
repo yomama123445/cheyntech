@@ -1,4 +1,15 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!empty($_SESSION['user_id'])) {
+    if (($_SESSION['user_role'] ?? '') === 'admin') {
+        header('Location: admin/dashboard.php');
+    } else {
+        header('Location: index.php');
+    }
+    exit;
+}
 $pageTitle       = 'Log In / Register | Cheyn Gadgets';
 $pageDescription = 'Log in or create your Cheyn Gadgets account to start shopping for gadgets.';
 $activePage      = 'login';
@@ -125,6 +136,8 @@ require 'includes/header.php';
         </div>
       </div>
     </div>
+
+    <p class="auth-footer-text text-center">&copy; 2026 Cheyn Gadgets. All Rights Reserved.</p>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

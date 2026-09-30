@@ -1,17 +1,17 @@
 // ====================================================
 // ORDER DATA
 // ====================================================
-const orders = [
+const FALLBACK_ORDERS = [
   {
     id: 'CT-0091', date: '2026-08-27', status: 'Pending',
-    customer: { name:'Maria Santos', email:'maria.santos@email.com', phone:'+63 917 123 4567', address:'456 Rizal St., Makati City, Metro Manila' },
+    customer: { name:'Maria Santos', email:'maria.santos@email.com', phone:'+63 917 123 4567', address:'456 Rizal St., Roxas Avenue, Roxas City, Capiz' },
     items: [{ name:'iPhone 14 Pro 256GB (Deep Purple)', qty:1, price:48000 }],
     fulfillment: 'Delivery', payment: 'GCash', paid: true,
     history: [{ date:'2026-08-27 09:12', status:'Pending', note:'Order placed by customer.' }]
   },
   {
     id: 'CT-0090', date: '2026-08-26', status: 'Processing',
-    customer: { name:'Juan dela Cruz', email:'juan.delacruz@email.com', phone:'+63 918 234 5678', address:'789 Bonifacio Ave., Quezon City, Metro Manila' },
+    customer: { name:'Juan dela Cruz', email:'juan.delacruz@email.com', phone:'+63 918 234 5678', address:'789 Bonifacio Ave., Brgy. Tanque, Roxas City, Capiz' },
     items: [{ name:'Samsung Galaxy S24 Ultra 512GB', qty:1, price:72500 }],
     fulfillment: 'Pickup', payment: 'Bank Transfer', paid: true,
     history: [
@@ -21,7 +21,7 @@ const orders = [
   },
   {
     id: 'CT-0089', date: '2026-08-25', status: 'Ready for Pickup',
-    customer: { name:'Ana Reyes', email:'ana.reyes@email.com', phone:'+63 919 345 6789', address:'123 Katipunan Ave., Quezon City, Metro Manila' },
+    customer: { name:'Ana Reyes', email:'ana.reyes@email.com', phone:'+63 919 345 6789', address:'123 Katipunan Ave., Brgy. Tanque, Roxas City, Capiz' },
     items: [
       { name:'iPad Air M2 256GB (Starlight)', qty:1, price:41999 },
       { name:'AirPods Pro 2nd Gen', qty:1, price:14999 }
@@ -35,7 +35,7 @@ const orders = [
   },
   {
     id: 'CT-0088', date: '2026-08-24', status: 'Completed',
-    customer: { name:'Carlo Mendoza', email:'carlo.mendoza@email.com', phone:'+63 920 456 7890', address:'22 Mabini St., Pasig City, Metro Manila' },
+    customer: { name:'Carlo Mendoza', email:'carlo.mendoza@email.com', phone:'+63 920 456 7890', address:'22 Mabini St., Pueblo de Panay, Roxas City, Capiz' },
     items: [{ name:'iPhone 13 128GB Pre-owned (Midnight)', qty:2, price:19500 }],
     fulfillment: 'Pickup', payment: 'Cash', paid: true,
     history: [
@@ -47,7 +47,7 @@ const orders = [
   },
   {
     id: 'CT-0087', date: '2026-08-24', status: 'Out for Delivery',
-    customer: { name:'Liza Bautista', email:'liza.bautista@email.com', phone:'+63 921 567 8901', address:'67 Taft Ave., Manila City, Metro Manila' },
+    customer: { name:'Liza Bautista', email:'liza.bautista@email.com', phone:'+63 921 567 8901', address:'67 Taft Ave., Brgy. Baybay, Roxas City, Capiz' },
     items: [{ name:'Xiaomi 14T Pro 256GB (Titan Black)', qty:1, price:29999 }],
     fulfillment: 'Delivery', payment: 'GCash', paid: true,
     history: [
@@ -90,6 +90,7 @@ const orders = [
   },
 ];
 
+let orders = [];
 let currentOrderId = null;
 const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
 
@@ -229,13 +230,34 @@ function renderStatusHistory(history) {
 // ====================================================
 // UPDATE STATUS
 // ====================================================
-function updateOrderStatus() {
+async function updateOrderStatus() {
   const o = orders.find(x => x.id === currentOrderId);
   if (!o) return;
   const newStatus = document.getElementById('modalStatusSelect').value;
   if (newStatus === o.status) { showToast('Status unchanged.', ''); return; }
 
+  try {
+    const res = await fetch('../api/admin/orders.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        id: o.order_id || o.id,
+        status: newStatus
+      })
+    });
+    const result = await res.json();
+    if (!res.ok || !result.success) {
+      throw new Error(result.error || 'Failed to update order status');
+    }
+  } catch (err) {
+    console.warn('API update failed, updating in local view:', err);
+  }
+
   const now = new Date().toLocaleString('en-PH', {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).replace(',','');
+  if (!o.history) o.history = [];
   o.history.push({ date: now, status: newStatus, note: `Status updated by admin.` });
   o.status = newStatus;
 
@@ -314,6 +336,39 @@ function showToast(msg, cls='') {
   setTimeout(() => t.className = 'toast-ct', 3200);
 }
 
+// ====================================================
+// LOAD ORDERS FROM API
+// ====================================================
+async function loadOrders() {
+  try {
+    const res = await fetch('../api/admin/orders.php', {
+      headers: { 'Accept': 'application/json' },
+      cache: 'no-store'
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.orders)) {
+        orders = data.orders;
+      }
+    } else {
+      console.warn('Admin orders API returned HTTP ' + res.status);
+    }
+  } catch (err) {
+    console.warn('Failed to fetch orders from API:', err);
+  }
+
+  // Fallback to initial mock orders if offline or API returns empty
+  if (!orders.length && typeof FALLBACK_ORDERS !== 'undefined') {
+    orders = [...FALLBACK_ORDERS];
+  }
+
+  renderOrders(orders);
+  updateCounters();
+}
+
 // Init
-renderOrders(orders);
-updateCounters();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadOrders);
+} else {
+  loadOrders();
+}

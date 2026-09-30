@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#fce4ec"/>
+  <rect x="2" y="2" width="396" height="396" rx="16" fill="none" stroke="#f8bbd0" stroke-width="2"/>
+  <g transform="translate(140, 110)">
+    <!-- Smartphone Outline -->
+    <rect x="15" y="0" width="90" height="150" rx="14" fill="#ffffff" stroke="#e91e8c" stroke-width="3"/>
+    <!-- Screen -->
+    <rect x="23" y="14" width="74" height="114" rx="4" fill="#fdf2f6"/>
+    <!-- Speaker / Notch -->
+    <rect x="48" y="6" width="24" height="3" rx="1.5" fill="#e91e8c"/>
+    <!-- Home indicator -->
+    <circle cx="60" cy="138" r="4" fill="#e91e8c"/>
+  </g>
+  <!-- Brand text -->
+  <text x="200" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#e91e8c" text-anchor="middle">CHEYN GADGETS</text>
+  <text x="200" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#888888" text-anchor="middle">Product Image Coming Soon</text>
+</svg>

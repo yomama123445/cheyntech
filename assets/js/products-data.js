@@ -155,7 +155,7 @@ var CHEYN_PRODUCTS = [
     badgeLabel:  'Refurbished',
     condition:   'Refurbished',
     desc:        'Google Tensor G2 · 50MP main camera · 7-year Android updates',
-    fullDesc:    'Refurbished Google Pixel 7 with Tensor G2 chip. Google's AI-powered camera and call screening features are fully functional. Verified 5G, Wi-Fi, and all sensors.',
+    fullDesc:    'Refurbished Google Pixel 7 with Tensor G2 chip. Google\'s AI-powered camera and call screening features are fully functional. Verified 5G, Wi-Fi, and all sensors.',
     image:       '/assets/products/pixel7-128-obsidian.jpg',
     date:        6,
     storageOptions: [

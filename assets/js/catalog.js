@@ -2,9 +2,8 @@
 
 /* ============================================================
    CATALOG DATA
-   Defined in assets/js/products-data.js (loaded before this script).
    ============================================================ */
-const PRODUCTS = CHEYN_PRODUCTS;
+let PRODUCTS = (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) ? CHEYN_PRODUCTS : [];
 
 
 /* ============================================================
@@ -125,7 +124,7 @@ function buildCardHTML(p) {
     <div class="col">
       <article class="product-card">
         <div class="card-img-wrap">
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
+          <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
           <span class="badge-ct ${p.badge}">${p.badgeLabel}</span>
         </div>
         <div class="card-body">
@@ -465,8 +464,35 @@ document.getElementById('sortSelect')?.addEventListener('change', e => {
 });
 
 /* ============================================================
-   INIT
+   INIT & API FETCH
    ============================================================ */
+async function loadCatalogProducts() {
+  try {
+    const res = await fetch('api/products/get.php', {
+      headers: { 'Accept': 'application/json' },
+      cache: 'no-store'
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+    const data = await res.json();
+    const fetched = Array.isArray(data) ? data : (data && (data.products || data.data));
+    if (Array.isArray(fetched) && fetched.length > 0) {
+      PRODUCTS = fetched;
+    } else if (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
+      PRODUCTS = CHEYN_PRODUCTS;
+    }
+  } catch (err) {
+    console.warn('Unable to load products from API, falling back to static products:', err);
+    if (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
+      PRODUCTS = CHEYN_PRODUCTS;
+    }
+  }
+
+  renderProducts();
+  renderActiveTags();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const pageParam = parseInt(params.get('page'), 10);
@@ -480,6 +506,5 @@ document.addEventListener('DOMContentLoaded', () => {
     clearAllFilters();
   });
 
-  renderProducts();
-  renderActiveTags();
+  loadCatalogProducts();
 });

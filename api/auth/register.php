@@ -7,13 +7,22 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 header('Content-Type: application/json');
-require_once '../../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'error' => 'Method not allowed']);
     exit;
 }
+
+$clientCsrf  = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+$sessionCsrf = $_SESSION['csrf_token'] ?? '';
+if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'error' => 'Invalid or missing CSRF token.']);
+    exit;
+}
+
+require_once '../../config/database.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
 $name = trim($input['name'] ?? '');

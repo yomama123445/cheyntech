@@ -1,4 +1,9 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$_SESSION['csrf_token'] = $_SESSION['csrf_token'] ?? bin2hex(random_bytes(32));
+
 // Set defaults if not defined before including
 $pageTitle       = $pageTitle       ?? 'Cheyn Gadgets | Gadgets You Can Trust';
 $pageDescription = $pageDescription ?? 'Cheyn Gadgets — Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery in Roxas City.';
@@ -10,6 +15,7 @@ $activePage      = $activePage      ?? '';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
+  <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
   <title><?= htmlspecialchars($pageTitle) ?></title>
   <link rel="icon" type="image/png" href="assets/img/favicon-32.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">

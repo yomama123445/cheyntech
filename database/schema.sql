@@ -102,6 +102,20 @@ CREATE TABLE `order_items` (
   CONSTRAINT `fk_oi_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ------------------------------------------------------------
+-- 6. Table: inquiries
+-- ------------------------------------------------------------
+DROP TABLE IF EXISTS `inquiries`;
+CREATE TABLE `inquiries` (
+  `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `product_name` VARCHAR(150) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(150) NOT NULL,
+  `phone` VARCHAR(30) DEFAULT NULL,
+  `message` TEXT NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 -- ============================================================
 -- INITIAL SEED DATA

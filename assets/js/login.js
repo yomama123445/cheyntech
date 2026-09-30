@@ -54,9 +54,15 @@
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Logging in…';
 
+        var csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
         fetch('api/auth/login.php', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken || ''
+          },
           body: JSON.stringify({ email: email, password: password })
         })
         .then(function(res) { return res.json(); })
@@ -105,9 +111,15 @@
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating account…';
 
+        var csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
         fetch('api/auth/register.php', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken || ''
+          },
           body: JSON.stringify({ name: name, email: email, password: pass, phone: phone })
         })
         .then(function(res) { return res.json(); })
