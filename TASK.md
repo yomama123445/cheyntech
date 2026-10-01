@@ -4,7 +4,7 @@ Items tagged [REQ] come straight from the proposal's in-scope list or success me
 
 ## Security (do first; read these diffs yourself before merging)
 
-- [ ] **S1 Stop leaking exception text.** File: api/orders/create.php only (the catch block).
+- [x] **S1 Stop leaking exception text.** File: api/orders/create.php only (the catch block).
   Replace `$e->getMessage()` in the JSON response with a generic message and call
   `error_log($e->getMessage())`. Use a small custom exception class for the deliberate
   out-of-stock and missing-variant errors so those keep a safe, specific message.
