@@ -1,0 +1,38 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [dev]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: ci_root_pw
+          MYSQL_DATABASE: cheyntech_test
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -pci_root_pw"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    env:
+      DB_HOST: 127.0.0.1
+      DB_NAME: cheyntech_test
+      DB_USER: root
+      DB_PASS: ci_root_pw
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_mysql
+      - name: Create test config from example (no secrets)
+        run: cp config/database.example.php config/database.php
+      - name: Load schema into test database
+        run: |
+          mysql -h 127.0.0.1 -uroot -pci_root_pw cheyntech_test < database/schema.sql
+          for f in database/migrations/*.sql; do [ -e "$f" ] && mysql -h 127.0.0.1 -uroot -pci_root_pw cheyntech_test < "$f"; done || true
+      - name: Smoke tests
+        run: bash tests/smoke.sh

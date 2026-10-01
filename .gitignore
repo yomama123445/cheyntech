@@ -2,3 +2,13 @@
 config/database.php
 repomix-output.xml
 test-db.php
+
+# add these lines to .gitignore
+AUDIT.md
+BUILDER_NOTES.md
+LAST_ERRORS.txt
+CHANGES.diff
+STATUS.md
+.err_prev
+.err_now
+REQUIREMENTS.txt
