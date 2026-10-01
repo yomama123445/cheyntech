@@ -12,7 +12,7 @@ BRANCH="agent/$(date +%m%d-%H%M)"
 git checkout dev && git pull origin dev && git checkout -b "$BRANCH" || exit 1
 
 run_agy() { # model, prompt
-  if [ -n "$1" ]; then agy --model "$1" -p "$2"; else agy -p "$2"; fi
+  if [ -n "$1" ]; then agy --dangerously-skip-permissions --model "$1" -p "$2"; else agy --dangerously-skip-permissions -p "$2"; fi
 }
 checks() { bash tests/smoke.sh > LAST_ERRORS.txt 2>&1; bash tests/requirements.sh > REQUIREMENTS.txt 2>&1; }
 
