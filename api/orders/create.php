@@ -2,6 +2,12 @@
 // api/orders/create.php
 declare(strict_types=1);
 
+class OrderException extends Exception {
+    public function getUserMessage(): string {
+        return $this->message;
+    }
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -86,10 +92,10 @@ try {
         $priceStmt->execute([$variantId]);
         $variant = $priceStmt->fetch();
         if (!$variant) {
-            throw new Exception("Product variant {$variantId} no longer exists.");
+            throw new OrderException("Product variant {$variantId} no longer exists.");
         }
         if ($variant['stock'] < $qty) {
-            throw new Exception("Insufficient stock for variant {$variantId}.");
+            throw new OrderException("Insufficient stock for variant {$variantId}.");
         }
 
         $unitPrice = (float)$variant['price'];
@@ -167,10 +173,18 @@ try {
         'fulfillment'  => $fulfillment === 'delivery' ? 'Local Delivery' : 'Pickup at Store',
         'payment'      => ucfirst($paymentMethod)
     ]);
+} catch (OrderException $e) {
+    if ($pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
+    error_log($e->getMessage());
+    http_response_code(400);
+    echo json_encode(['success' => false, 'error' => $e->getUserMessage()]);
 } catch (Exception $e) {
     if ($pdo->inTransaction()) {
         $pdo->rollBack();
     }
+    error_log($e->getMessage());
     http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Failed to place order. ' . $e->getMessage()]);
+    echo json_encode(['success' => false, 'error' => 'Failed to place order. Please try again later.']);
 }
