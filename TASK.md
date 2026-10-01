@@ -4,10 +4,12 @@ Items tagged [REQ] come straight from the proposal's in-scope list or success me
 
 ## Security (do first; read these diffs yourself before merging)
 
-- [ ] **S1 Stop leaking exception text.** config/database.php (catch block), api/orders/create.php
-  (catch block). Replace `$e->getMessage()` in client responses with a generic message plus
-  `error_log()`. Use a small custom exception for "insufficient stock" so that case keeps a safe message.
-  Done when: `grep -n getMessage api config` shows only error_log lines.
+- [ ] **S1 Stop leaking exception text.** File: api/orders/create.php only (the catch block).
+  Replace `$e->getMessage()` in the JSON response with a generic message and call
+  `error_log($e->getMessage())`. Use a small custom exception class for the deliberate
+  out-of-stock and missing-variant errors so those keep a safe, specific message.
+  Do not edit anything in config/.
+  Done when: no `getMessage()` appears inside a json_encode or echo in api/orders/create.php.
 
 - [ ] **S2 Regenerate session on login and register.** api/auth/login.php, api/auth/register.php.
   Call `session_regenerate_id(true)` right after success, before writing $_SESSION. Nothing else.
