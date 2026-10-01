@@ -171,7 +171,7 @@ require 'includes/header.php';
                 <i class="bi bi-check2-circle me-2"></i>Place Order
               </button>
               <p class="text-center mt-2 secure-form-note">
-                By placing your order, you agree to our <a href="#">Terms &amp; Conditions</a>. Orders are subject to manual review.
+                By placing your order, you agree to our <a href="about.php" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a>. Orders are subject to manual review.
               </p>
             </div>
 

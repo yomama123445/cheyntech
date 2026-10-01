@@ -5,7 +5,7 @@
   var productParam = params.get('product');
   var productInput = document.getElementById('productName');
   if (productInput) {
-    productInput.value = productParam ? decodeURIComponent(productParam) : 'iPhone 13 Pro-128GB Graphite';
+    productInput.value = productParam ? decodeURIComponent(productParam) : '';
   }
 
   var form = document.getElementById('inquiryForm');
@@ -28,8 +28,12 @@
         name: (document.getElementById('contactName')?.value || '').trim(),
         email: (document.getElementById('contactEmail')?.value || '').trim(),
         phone: (document.getElementById('contactPhone')?.value || '').trim(),
-        message: (document.getElementById('contactMessage')?.value || '').trim()
+        message: (document.getElementById('contactMessage')?.value || '').trim(),
+        website: (document.getElementById('contactWebsite')?.value || '').trim()
       };
+
+      var csrfMeta = document.querySelector('meta[name="csrf-token"]');
+      var csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
 
       var submitBtn = form.querySelector('button[type="submit"]');
       var origBtnText = submitBtn ? submitBtn.innerHTML : '';
@@ -43,7 +47,8 @@
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken
           },
           body: JSON.stringify(payload)
         });
@@ -63,16 +68,16 @@
           }
         } else {
           var errorMsg = (data && data.error) ? data.error : 'Unable to submit your inquiry. Please try again.';
-          if (typeof alert === 'function') {
-            alert(errorMsg);
+          if (typeof showToast === 'function') {
+            showToast(errorMsg, 'error');
           } else {
             console.error(errorMsg);
           }
         }
       } catch (err) {
         console.error('Contact form submission error:', err);
-        if (typeof alert === 'function') {
-          alert('An error occurred while sending your inquiry. Please try again later.');
+        if (typeof showToast === 'function') {
+          showToast('An error occurred while sending your inquiry. Please try again later.', 'error');
         }
       } finally {
         if (submitBtn) {

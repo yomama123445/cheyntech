@@ -1,12 +1,24 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+require_once __DIR__ . '/includes/session.php';
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    $_SESSION = [];
+    if (ini_get('session.use_cookies')) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params['path'], $params['domain'],
+            $params['secure'], $params['httponly']
+        );
+    }
+    session_destroy();
+    header('Location: login.php');
+    exit;
 }
+
 if (!empty($_SESSION['user_id'])) {
     if (($_SESSION['user_role'] ?? '') === 'admin') {
         header('Location: admin/dashboard.php');
     } else {
-        header('Location: index.php');
+        header('Location: profile.php');
     }
     exit;
 }
@@ -64,7 +76,7 @@ require 'includes/header.php';
                     <input class="form-check-input" type="checkbox" id="rememberMe">
                     <label class="form-check-label small" for="rememberMe">Remember me</label>
                   </div>
-                  <a href="#" class="forgot-link">Forgot your password?</a>
+                  <a href="contact.php?product=Password+Reset+Request" class="forgot-link">Forgot your password?</a>
                 </div>
                 <div class="d-grid mb-3">
                   <button type="submit" class="btn btn-ct btn-lg"><i class="bi bi-box-arrow-in-right me-2"></i>Log In</button>
@@ -120,7 +132,7 @@ require 'includes/header.php';
                 <div class="form-check mb-4">
                   <input class="form-check-input" type="checkbox" id="agreeTerms" required>
                   <label class="form-check-label small terms-label" for="agreeTerms">
-                    I agree to the <a href="#">Terms and Conditions</a>
+                    I agree to the <a href="about.php" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
                   </label>
                   <div class="invalid-feedback">You must agree to the Terms and Conditions.</div>
                 </div>
@@ -141,6 +153,7 @@ require 'includes/header.php';
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
   <script src="assets/js/login.js"></script>
 </body>
 </html>

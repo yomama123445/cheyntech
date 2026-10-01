@@ -57,7 +57,7 @@ require '../includes/admin_sidebar.php';
           <div class="stat-card">
             <div class="stat-icon pink-soft"><i class="bi bi-box-seam"></i></div>
             <div>
-              <div class="stat-value">48</div>
+              <div class="stat-value" id="statTotalProducts">—</div>
               <div class="stat-label">Total Products</div>
             </div>
           </div>
@@ -66,7 +66,7 @@ require '../includes/admin_sidebar.php';
           <div class="stat-card">
             <div class="stat-icon yellow-soft"><i class="bi bi-clock"></i></div>
             <div>
-              <div class="stat-value">12</div>
+              <div class="stat-value" id="statPendingOrders">—</div>
               <div class="stat-label">Pending Orders</div>
             </div>
           </div>
@@ -75,7 +75,7 @@ require '../includes/admin_sidebar.php';
           <div class="stat-card">
             <div class="stat-icon green-soft"><i class="bi bi-check-circle"></i></div>
             <div>
-              <div class="stat-value">89</div>
+              <div class="stat-value" id="statCompletedOrders">—</div>
               <div class="stat-label">Completed Orders</div>
             </div>
           </div>
@@ -84,7 +84,7 @@ require '../includes/admin_sidebar.php';
           <div class="stat-card">
             <div class="stat-icon blue-soft"><i class="bi bi-exclamation-triangle"></i></div>
             <div>
-              <div class="stat-value">5</div>
+              <div class="stat-value" id="statLowStock">—</div>
               <div class="stat-label">Low Stock Items</div>
             </div>
           </div>
@@ -113,7 +113,7 @@ require '../includes/admin_sidebar.php';
                     <th class="pe-4 admin-th">Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="recentOrdersTbody">
                   <tr>
                     <td class="ps-4 td-id">#CT-0091</td>
                     <td class="td-name">Maria Santos</td>
@@ -173,7 +173,7 @@ require '../includes/admin_sidebar.php';
               <a href="products.php" class="btn btn-sm btn-ct-outline">Manage</a>
             </div>
             <div class="card-body px-4 py-2">
-              <ul class="list-unstyled mb-0">
+              <ul class="list-unstyled mb-0" id="lowStockList">
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
                   <div class="d-flex align-items-center gap-3">
                     <div class="low-stock-icon pink"><i class="bi bi-phone"></i></div>

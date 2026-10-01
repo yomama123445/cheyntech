@@ -3,30 +3,32 @@
 declare(strict_types=1);
 
 header('Content-Type: application/json');
-require_once '../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
-$orderNumber = trim($_GET['id'] ?? '');
+$orderNumber   = trim((string)($_GET['id'] ?? $_GET['order_number'] ?? ''));
+$customerEmail = trim((string)($_GET['email'] ?? ''));
 
-if (empty($orderNumber)) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Please provide an Order ID.']);
+// TASK S5: Require order number AND checkout email; same 404 message for both failures.
+if (empty($orderNumber) || empty($customerEmail)) {
+    http_response_code(404);
+    echo json_encode(['success' => false, 'error' => 'Order not found. Please verify your Order ID and email address.']);
     exit;
 }
 
 try {
     $stmt = $pdo->prepare('
-        SELECT o.id, o.order_number, o.customer_name, o.fulfillment, o.payment_method,
+        SELECT o.id, o.order_number, o.customer_name, o.customer_email, o.fulfillment, o.payment_method,
                o.total_amount, o.status, o.created_at
         FROM orders o
-        WHERE o.order_number = ?
+        WHERE o.order_number = ? AND LOWER(o.customer_email) = LOWER(?)
         LIMIT 1
     ');
-    $stmt->execute([$orderNumber]);
+    $stmt->execute([$orderNumber, $customerEmail]);
     $order = $stmt->fetch();
 
     if (!$order) {
         http_response_code(404);
-        echo json_encode(['success' => false, 'error' => 'Order not found. Please double-check your Order ID.']);
+        echo json_encode(['success' => false, 'error' => 'Order not found. Please verify your Order ID and email address.']);
         exit;
     }
 
@@ -72,6 +74,7 @@ try {
         'items'        => $items
     ]);
 } catch (Exception $e) {
+    error_log('Order track error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode(['success' => false, 'error' => 'Database error while retrieving order.']);
 }

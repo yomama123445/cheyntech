@@ -1,11 +1,10 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/session.php';
 if (empty($_SESSION['user_id']) || ($_SESSION['user_role'] ?? '') !== 'admin') {
     header('Location: ../login.php?error=unauthorized');
     exit;
 }
+$_SESSION['csrf_token'] = $_SESSION['csrf_token'] ?? bin2hex(random_bytes(32));
 $pageTitle       = $pageTitle       ?? 'Admin | Cheyn Gadgets';
 $pageDescription = $pageDescription ?? 'Cheyn Gadgets Admin Panel';
 ?>
@@ -14,6 +13,7 @@ $pageDescription = $pageDescription ?? 'Cheyn Gadgets Admin Panel';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
   <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
   <title><?= htmlspecialchars($pageTitle) ?></title>
   <link rel="icon" type="image/png" href="../assets/img/favicon-32.png">

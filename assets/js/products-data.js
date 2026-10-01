@@ -1,441 +1,550 @@
 'use strict';
 /* ============================================================
-   CHEYN GADGETS SHARED PRODUCT DATA
-   Used by: catalog.js, product.js, index.js
-   One entry per product; variants are listed inside storageOptions.
+   CHEYN GADGETS SHARED PRODUCT DATA (STATIC FALLBACK)
+   Synchronized with MariaDB database/migrations/001_seed_inventory.sql
    ============================================================ */
 
 var CHEYN_PRODUCTS = [
   {
-    id:          'iphone13pro',
-    name:        'iPhone 13 Pro',
-    badge:       'badge-refurbished',
-    badgeLabel:  'Refurbished',
-    condition:   'Refurbished',
-    desc:        'A15 Bionic chip · Pro camera system · 120Hz ProMotion display',
-    fullDesc:    'This iPhone 13 Pro has been professionally refurbished by Cheyn Gadgets. The device has been fully cleaned, tested, and any faulty components replaced. The screen, battery, cameras, Face ID sensor, and all ports are in excellent working condition. Comes with a USB-C to Lightning cable and an official Apple 20W USB-C power adapter.',
-    image:       '/assets/products/iphone13pro-128-graphite.jpg',
-    date:        7,
+    id: 'iphonexr',
+    name: 'iPhone XR',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Liquid Retina HD display · A12 Bionic chip · Advanced 12MP camera',
+    fullDesc: 'This iPhone XR is pre-owned, thoroughly inspected and tested by our technicians. All hardware functions, cameras, speakers, and Face ID work perfectly.',
+    image: 'assets/img/iphone_xr.jpeg',
     storageOptions: [
-      { label: '128GB', price: 32500, id: 'iphone13pro-128-graphite' },
-      { label: '256GB', price: 38500, id: 'iphone13pro-256-graphite' },
-      { label: '512GB', price: 45900, id: 'iphone13pro-512-graphite' },
+      { label: '128GB', price: 13500, id: 'iphonexr-128gb-black', stock: 1 }
     ],
     colorOptions: [
-      { label: 'Graphite', hex: '#4a4a4a', border: '' },
-      { label: 'Silver',   hex: '#e2e2e4', border: '#c0c0c0' },
-      { label: 'Gold',     hex: '#f0d58c', border: '' },
-      { label: 'Sierra Blue', hex: '#a8c5d8', border: '' },
+      { label: 'Black', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/iphone13pro-128-graphite.jpg',   thumb: '/assets/products/iphone13pro-128-graphite.jpg',   alt: 'Front' },
-      { src: '/assets/products/iphone13pro-128-graphite.jpg',   thumb: '/assets/products/iphone13pro-128-graphite.jpg',   alt: 'Back' },
-      { src: '/assets/products/iphone13pro-128-graphite.jpg',   thumb: '/assets/products/iphone13pro-128-graphite.jpg',   alt: 'Side' },
-      { src: '/assets/products/iphone13pro-128-graphite.jpg',   thumb: '/assets/products/iphone13pro-128-graphite.jpg',   alt: 'Box' },
+      { src: 'assets/img/iphone_xr.jpeg', thumb: 'assets/img/iphone_xr.jpeg', alt: 'iPhone XR' }
     ],
     specs: {
-      Display:      '6.1″ Super Retina XDR, 120Hz ProMotion',
-      Chip:         'Apple A15 Bionic',
-      'Rear Camera':'Triple 12MP (main, ultrawide, 3× telephoto)',
-      'Front Camera':'12MP TrueDepth with Face ID',
-      Battery:      '3,095 mAh · MagSafe compatible',
-      Connectivity: '5G, Wi-Fi 6, Bluetooth 5.0, NFC, Lightning',
-      OS:           'Upgradeable to iOS 17+',
-      Condition:    'Refurbished — Grade A',
-    },
+      Display: '6.1″ Liquid Retina HD',
+      Chip: 'Apple A12 Bionic',
+      'Rear Camera': '12MP Wide with OIS',
+      'Front Camera': '7MP TrueDepth Face ID',
+      Battery: '2,942 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'iphone12',
-    name:        'iPhone 12',
-    badge:       'badge-preowned',
-    badgeLabel:  'Pre-owned',
-    condition:   'Pre-owned',
-    desc:        'A14 Bionic · 5G capable · Ceramic Shield front glass',
-    fullDesc:    'This iPhone 12 is a pre-owned unit that has been inspected and tested by our team. All core functions — screen, cameras, Face ID, cellular, and Wi-Fi — are fully operational. Minor cosmetic marks may be present.',
-    image:       '/assets/products/iphone12-64-blue.jpg',
-    date:        3,
+    id: 'iphone11',
+    name: 'iPhone 11',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Dual 12MP ultra-wide and wide cameras · A13 Bionic · All-day battery',
+    fullDesc: 'Pre-owned iPhone 11 in excellent tested condition. Verified Face ID, healthy battery life, and pristine display.',
+    image: 'assets/img/iphone_11.jpeg',
     storageOptions: [
-      { label: '64GB',  price: 21800, id: 'iphone12-64-blue' },
-      { label: '128GB', price: 24500, id: 'iphone12-128-blue' },
+      { label: '128GB', price: 18500, id: 'iphone11-128gb-black', stock: 10 },
+      { label: '256GB', price: 21500, id: 'iphone11-256gb-black', stock: 2 }
     ],
     colorOptions: [
-      { label: 'Blue',  hex: '#4b7db7', border: '' },
-      { label: 'Black', hex: '#1c1c1e', border: '' },
-      { label: 'White', hex: '#f5f5f7', border: '#ccc' },
-      { label: 'Red',   hex: '#c3141e', border: '' },
+      { label: 'Black', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/iphone12-64-blue.jpg', thumb: '/assets/products/iphone12-64-blue.jpg', alt: 'Front' },
-      { src: '/assets/products/iphone12-64-blue.jpg', thumb: '/assets/products/iphone12-64-blue.jpg', alt: 'Back' },
-      { src: '/assets/products/iphone12-64-blue.jpg', thumb: '/assets/products/iphone12-64-blue.jpg', alt: 'Side' },
+      { src: 'assets/img/iphone_11.jpeg', thumb: 'assets/img/iphone_11.jpeg', alt: 'iPhone 11' }
     ],
     specs: {
-      Display:      '6.1″ Super Retina XDR',
-      Chip:         'Apple A14 Bionic',
-      'Rear Camera':'Dual 12MP (main, ultrawide)',
-      'Front Camera':'12MP TrueDepth with Face ID',
-      Battery:      '2,815 mAh · MagSafe compatible',
-      Connectivity: '5G, Wi-Fi 6, Bluetooth 5.0, NFC, Lightning',
-      OS:           'Upgradeable to iOS 17+',
-      Condition:    'Pre-owned — Inspected',
-    },
+      Display: '6.1″ Liquid Retina IPS',
+      Chip: 'Apple A13 Bionic',
+      'Rear Camera': 'Dual 12MP (Ultra-Wide, Wide)',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '3,110 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          's22',
-    name:        'Samsung Galaxy S22',
-    badge:       'badge-refurbished',
-    badgeLabel:  'Refurbished',
-    condition:   'Refurbished',
-    desc:        'Snapdragon 8 Gen 1 · 50MP triple camera · 6.1″ Dynamic AMOLED',
-    fullDesc:    'Professionally refurbished Samsung Galaxy S22. Full function test passed — display, cameras, fingerprint sensor, 5G, and charging port all verified. Unit resets to factory before handoff.',
-    image:       '/assets/products/s22-256-phantom.jpg',
-    date:        5,
+    id: 'iphone12',
+    name: 'iPhone 12',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Super Retina XDR OLED · A14 Bionic · Ceramic Shield · 5G speed',
+    fullDesc: 'Pre-owned iPhone 12 tested across all diagnostics. Features vibrant OLED display, MagSafe compatibility, and high-speed 5G.',
+    image: 'assets/img/iPhone_12.jpeg',
     storageOptions: [
-      { label: '128GB', price: 24500, id: 's22-128-phantom' },
-      { label: '256GB', price: 28000, id: 's22-256-phantom' },
+      { label: '128GB', price: 24500, id: 'iphone12-128gb-blue', stock: 5 },
+      { label: '256GB', price: 27500, id: 'iphone12-256gb-blue', stock: 8 }
     ],
     colorOptions: [
-      { label: 'Phantom Black', hex: '#1b1b1b', border: '' },
-      { label: 'Phantom White', hex: '#f0ede8', border: '#ccc' },
-      { label: 'Pink Gold',     hex: '#e8b4a0', border: '' },
+      { label: 'Blue', hex: '#4b7db7', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/s22-256-phantom.jpg', thumb: '/assets/products/s22-256-phantom.jpg', alt: 'Front' },
-      { src: '/assets/products/s22-256-phantom.jpg', thumb: '/assets/products/s22-256-phantom.jpg', alt: 'Back' },
-      { src: '/assets/products/s22-256-phantom.jpg', thumb: '/assets/products/s22-256-phantom.jpg', alt: 'Side' },
+      { src: 'assets/img/iPhone_12.jpeg', thumb: 'assets/img/iPhone_12.jpeg', alt: 'iPhone 12' }
     ],
     specs: {
-      Display:      '6.1″ Dynamic AMOLED 2X, 120Hz',
-      Chip:         'Snapdragon 8 Gen 1',
-      'Rear Camera':'Triple 50MP + 12MP + 10MP',
-      'Front Camera':'10MP',
-      Battery:      '3,700 mAh · 25W wired charging',
-      Connectivity: '5G, Wi-Fi 6E, Bluetooth 5.2, NFC, USB-C',
-      OS:           'Upgradeable to Android 14',
-      Condition:    'Refurbished — Grade A',
-    },
+      Display: '6.1″ Super Retina XDR OLED',
+      Chip: 'Apple A14 Bionic',
+      'Rear Camera': 'Dual 12MP with Night Mode',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '2,815 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'ipad9',
-    name:        'Apple iPad 9th Gen',
-    badge:       'badge-preowned',
-    badgeLabel:  'Pre-owned',
-    condition:   'Pre-owned',
-    desc:        'A13 Bionic · 10.2″ Retina display · All-day battery life',
-    fullDesc:    'Pre-owned iPad 9th Gen in excellent condition. Tested for display, Apple Pencil compatibility, Wi-Fi/cellular, camera, and battery health. iCloud cleared — ready to activate with your Apple ID.',
-    image:       '/assets/products/ipad9-64-gray.jpg',
-    date:        2,
+    id: 'iphone13',
+    name: 'iPhone 13',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Cinematic mode in 1080p · A15 Bionic · Super Retina XDR display',
+    fullDesc: 'Pre-owned iPhone 13 featuring advanced dual-camera system, durable flat-edge design, and extended battery endurance.',
+    image: 'assets/img/iphone_13pro.jpeg',
     storageOptions: [
-      { label: '64GB',  price: 22000, id: 'ipad9-64-gray' },
-      { label: '256GB', price: 29000, id: 'ipad9-256-gray' },
+      { label: '128GB', price: 29500, id: 'iphone13-128gb-midnight', stock: 5 },
+      { label: '256GB', price: 33500, id: 'iphone13-256gb-midnight', stock: 8 }
     ],
     colorOptions: [
-      { label: 'Space Gray', hex: '#86868b', border: '' },
-      { label: 'Silver',     hex: '#e2e2e4', border: '#ccc' },
+      { label: 'Midnight', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/ipad9-64-gray.jpg', thumb: '/assets/products/ipad9-64-gray.jpg', alt: 'Front' },
-      { src: '/assets/products/ipad9-64-gray.jpg', thumb: '/assets/products/ipad9-64-gray.jpg', alt: 'Back' },
+      { src: 'assets/img/iphone_13pro.jpeg', thumb: 'assets/img/iphone_13pro.jpeg', alt: 'iPhone 13' }
     ],
     specs: {
-      Display:      '10.2″ Retina IPS',
-      Chip:         'Apple A13 Bionic',
-      'Front Camera':'12MP ultrawide',
-      'Rear Camera': '8MP',
-      Battery:      'Up to 10 hours',
-      Connectivity: 'Wi-Fi 6, Bluetooth 4.2, Lightning',
-      OS:           'Upgradeable to iPadOS 17+',
-      Condition:    'Pre-owned — Inspected',
-    },
+      Display: '6.1″ Super Retina XDR',
+      Chip: 'Apple A15 Bionic',
+      'Rear Camera': 'Dual 12MP Sensor-shift OIS',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '3,227 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'pixel7',
-    name:        'Google Pixel 7',
-    badge:       'badge-refurbished',
-    badgeLabel:  'Refurbished',
-    condition:   'Refurbished',
-    desc:        'Google Tensor G2 · 50MP main camera · 7-year Android updates',
-    fullDesc:    'Refurbished Google Pixel 7 with Tensor G2 chip. Google\'s AI-powered camera and call screening features are fully functional. Verified 5G, Wi-Fi, and all sensors.',
-    image:       '/assets/products/pixel7-128-obsidian.jpg',
-    date:        6,
+    id: 'iphone12pro',
+    name: 'iPhone 12 Pro',
+    badge: 'badge-refurbished',
+    badgeLabel: 'Refurbished',
+    condition: 'Refurbished',
+    desc: 'Triple 12MP cameras with LiDAR · A14 Bionic · Surgical stainless steel',
+    fullDesc: 'Professionally refurbished iPhone 12 Pro. Fully restored, certified internal components, and polished stainless steel frame.',
+    image: 'assets/img/iPhone_12.jpeg',
     storageOptions: [
-      { label: '128GB', price: 24000, id: 'pixel7-128-obsidian' },
-      { label: '256GB', price: 27500, id: 'pixel7-256-obsidian' },
+      { label: '256GB', price: 29500, id: 'iphone12pro-256gb-graphite', stock: 2 }
     ],
     colorOptions: [
-      { label: 'Obsidian', hex: '#2a2a2a', border: '' },
-      { label: 'Snow',     hex: '#f5f5f0', border: '#ccc' },
-      { label: 'Lemongrass', hex: '#c8c99a', border: '' },
+      { label: 'Graphite', hex: '#4a4a4a', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/pixel7-128-obsidian.jpg', thumb: '/assets/products/pixel7-128-obsidian.jpg', alt: 'Front' },
-      { src: '/assets/products/pixel7-128-obsidian.jpg', thumb: '/assets/products/pixel7-128-obsidian.jpg', alt: 'Back' },
+      { src: 'assets/img/iPhone_12.jpeg', thumb: 'assets/img/iPhone_12.jpeg', alt: 'iPhone 12 Pro' }
     ],
     specs: {
-      Display:      '6.3″ OLED, 90Hz',
-      Chip:         'Google Tensor G2',
-      'Rear Camera':'50MP main + 12MP ultrawide',
-      'Front Camera':'10.8MP',
-      Battery:      '4,355 mAh · 30W wired',
-      Connectivity: '5G, Wi-Fi 6E, Bluetooth 5.3, NFC, USB-C',
-      OS:           'Android — 7-year update guarantee',
-      Condition:    'Refurbished — Grade A',
-    },
+      Display: '6.1″ Super Retina XDR OLED',
+      Chip: 'Apple A14 Bionic',
+      'Rear Camera': 'Triple 12MP with LiDAR Scanner',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '2,815 mAh',
+      Condition: 'Refurbished'
+    }
   },
   {
-    id:          'iphone14',
-    name:        'iPhone 14',
-    badge:       'badge-available',
-    badgeLabel:  'Brand New',
-    condition:   'Brand New',
-    desc:        'A15 Bionic · Crash Detection · Emergency SOS via satellite',
-    fullDesc:    'Brand new sealed iPhone 14 with Apple warranty. Features Crash Detection, Emergency SOS via satellite, and an improved camera system over iPhone 13.',
-    image:       '/assets/products/iphone14-256-midnight.jpg',
-    date:        10,
+    id: 'iphone11promax',
+    name: 'iPhone 11 Pro Max',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Triple camera system · 6.5″ Super Retina XDR OLED · Long battery life',
+    fullDesc: 'Pre-owned iPhone 11 Pro Max offering high-performance triple zoom camera system and large vibrant OLED display.',
+    image: 'assets/img/iphone_11.jpeg',
     storageOptions: [
-      { label: '128GB', price: 41900, id: 'iphone14-128-midnight' },
-      { label: '256GB', price: 44900, id: 'iphone14-256-midnight' },
-      { label: '512GB', price: 54900, id: 'iphone14-512-midnight' },
+      { label: '256GB', price: 24500, id: 'iphone11promax-256gb-spacegray', stock: 2 },
+      { label: '512GB', price: 26900, id: 'iphone11promax-512gb-spacegray', stock: 1 }
     ],
     colorOptions: [
-      { label: 'Midnight', hex: '#1c1c1e', border: '' },
-      { label: 'Starlight', hex: '#f5f0e8', border: '#ccc' },
-      { label: 'Blue',      hex: '#7ba7bc', border: '' },
-      { label: 'Purple',    hex: '#b9b0c8', border: '' },
-      { label: 'Red',       hex: '#c3141e', border: '' },
+      { label: 'Space Gray', hex: '#4a4a4a', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/iphone14-256-midnight.jpg', thumb: '/assets/products/iphone14-256-midnight.jpg', alt: 'Front' },
-      { src: '/assets/products/iphone14-256-midnight.jpg', thumb: '/assets/products/iphone14-256-midnight.jpg', alt: 'Back' },
-      { src: '/assets/products/iphone14-256-midnight.jpg', thumb: '/assets/products/iphone14-256-midnight.jpg', alt: 'Side' },
+      { src: 'assets/img/iphone_11.jpeg', thumb: 'assets/img/iphone_11.jpeg', alt: 'iPhone 11 Pro Max' }
     ],
     specs: {
-      Display:      '6.1″ Super Retina XDR',
-      Chip:         'Apple A15 Bionic',
-      'Rear Camera':'Dual 12MP (main, ultrawide)',
-      'Front Camera':'12MP TrueDepth with Face ID',
-      Battery:      '3,279 mAh · MagSafe compatible',
-      Connectivity: '5G, Wi-Fi 6, Bluetooth 5.3, NFC, Lightning',
-      OS:           'Upgradeable to iOS 17+',
-      Condition:    'Brand New — Sealed',
-    },
+      Display: '6.5″ Super Retina XDR OLED',
+      Chip: 'Apple A13 Bionic',
+      'Rear Camera': 'Triple 12MP (Ultra-Wide, Wide, Telephoto)',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '3,969 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'iphone11',
-    name:        'iPhone 11',
-    badge:       'badge-preowned',
-    badgeLabel:  'Pre-owned',
-    condition:   'Pre-owned',
-    desc:        'A13 Bionic · Dual 12MP ultra-wide cameras · Face ID',
-    fullDesc:    'Pre-owned iPhone 11 fully tested by our team. Face ID, dual cameras, and all connectivity verified. Clean IMEI and iCloud unlocked.',
-    image:       '/assets/products/iphone11-64-white.jpg',
-    date:        1,
+    id: 'iphone12promax',
+    name: 'iPhone 12 Pro Max',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: '6.7″ Super Retina XDR · Sensor-shift optical stabilization · A14 Bionic',
+    fullDesc: 'Pre-owned iPhone 12 Pro Max with max-size screen and studio-grade photography capabilities.',
+    image: 'assets/img/iPhone_12.jpeg',
     storageOptions: [
-      { label: '64GB',  price: 17500, id: 'iphone11-64-white' },
-      { label: '128GB', price: 19500, id: 'iphone11-128-white' },
+      { label: '128GB', price: 31500, id: 'iphone12promax-128gb-pacificblue', stock: 3 }
     ],
     colorOptions: [
-      { label: 'White',       hex: '#f5f5f7', border: '#ccc' },
-      { label: 'Black',       hex: '#1c1c1e', border: '' },
-      { label: 'Green',       hex: '#aec6b0', border: '' },
-      { label: 'Yellow',      hex: '#f5e17a', border: '' },
-      { label: 'Purple',      hex: '#c6b8d7', border: '' },
-      { label: 'Product Red', hex: '#c3141e', border: '' },
+      { label: 'Pacific Blue', hex: '#2d4b68', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/iphone11-64-white.jpg', thumb: '/assets/products/iphone11-64-white.jpg', alt: 'Front' },
-      { src: '/assets/products/iphone11-64-white.jpg', thumb: '/assets/products/iphone11-64-white.jpg', alt: 'Back' },
+      { src: 'assets/img/iPhone_12.jpeg', thumb: 'assets/img/iPhone_12.jpeg', alt: 'iPhone 12 Pro Max' }
     ],
     specs: {
-      Display:      '6.1″ Liquid Retina IPS',
-      Chip:         'Apple A13 Bionic',
-      'Rear Camera':'Dual 12MP (main, ultrawide)',
-      'Front Camera':'12MP TrueDepth with Face ID',
-      Battery:      '3,110 mAh',
-      Connectivity: 'LTE, Wi-Fi 6, Bluetooth 5.0, NFC, Lightning',
-      OS:           'Upgradeable to iOS 16+',
-      Condition:    'Pre-owned — Inspected',
-    },
+      Display: '6.7″ Super Retina XDR OLED',
+      Chip: 'Apple A14 Bionic',
+      'Rear Camera': 'Triple 12MP with LiDAR & Sensor-shift',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '3,687 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'a54',
-    name:        'Samsung Galaxy A54',
-    badge:       'badge-available',
-    badgeLabel:  'Brand New',
-    condition:   'Brand New',
-    desc:        'Exynos 1380 · 50MP OIS camera · 5000mAh battery',
-    fullDesc:    'Brand new Samsung Galaxy A54 5G. Comes with Samsung warranty. Features an impressive triple camera system with OIS, a smooth 120Hz display, and an all-day 5000mAh battery.',
-    image:       '/assets/products/a54-128-violet.jpg',
-    date:        9,
+    id: 'iphone13promax',
+    name: 'iPhone 13 Pro Max',
+    badge: 'badge-refurbished',
+    badgeLabel: 'Refurbished',
+    condition: 'Refurbished',
+    desc: '120Hz ProMotion display · Pro camera system · Massive battery life',
+    fullDesc: 'Refurbished iPhone 13 Pro Max. Super-smooth 120Hz refresh rate, cinematic video, and exceptional battery runtime.',
+    image: 'assets/img/iphone_13pro.jpeg',
     storageOptions: [
-      { label: '128GB', price: 19990, id: 'a54-128-violet' },
-      { label: '256GB', price: 23990, id: 'a54-256-violet' },
+      { label: '256GB', price: 39500, id: 'iphone13promax-256gb-sierrablue', stock: 2 }
     ],
     colorOptions: [
-      { label: 'Awesome Violet',   hex: '#9b8ec4', border: '' },
-      { label: 'Awesome Graphite', hex: '#4a4a4a', border: '' },
-      { label: 'Awesome White',    hex: '#f5f5f0', border: '#ccc' },
-      { label: 'Awesome Lime',     hex: '#b5c86a', border: '' },
+      { label: 'Sierra Blue', hex: '#9bb5ce', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/a54-128-violet.jpg', thumb: '/assets/products/a54-128-violet.jpg', alt: 'Front' },
-      { src: '/assets/products/a54-128-violet.jpg', thumb: '/assets/products/a54-128-violet.jpg', alt: 'Back' },
+      { src: 'assets/img/iphone_13pro.jpeg', thumb: 'assets/img/iphone_13pro.jpeg', alt: 'iPhone 13 Pro Max' }
     ],
     specs: {
-      Display:      '6.4″ Super AMOLED, 120Hz',
-      Chip:         'Exynos 1380',
-      'Rear Camera':'50MP OIS + 12MP ultrawide + 5MP macro',
-      'Front Camera':'32MP',
-      Battery:      '5,000 mAh · 25W wired',
-      Connectivity: '5G, Wi-Fi 6, Bluetooth 5.3, NFC, USB-C',
-      OS:           'Android — 4 years of OS updates',
-      Condition:    'Brand New — Sealed',
-    },
+      Display: '6.7″ Super Retina XDR ProMotion 120Hz',
+      Chip: 'Apple A15 Bionic',
+      'Rear Camera': 'Triple 12MP Pro camera system',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '4,352 mAh',
+      Condition: 'Refurbished'
+    }
   },
   {
-    id:          'iphonese3',
-    name:        'iPhone SE 3rd Gen',
-    badge:       'badge-refurbished',
-    badgeLabel:  'Refurbished',
-    condition:   'Refurbished',
-    desc:        'A15 Bionic · 5G capable · Touch ID · Compact 4.7″ design',
-    fullDesc:    'Refurbished iPhone SE 3rd Generation. The most affordable 5G iPhone with Apple\'s A15 Bionic chip. Touch ID, single camera, and all ports verified by our team.',
-    image:       '/assets/products/iphonese3-128-starlight.jpg',
-    date:        4,
+    id: 'iphone14',
+    name: 'iPhone 14',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'A15 Bionic 5-core GPU · Photonic Engine · Crash Detection safety',
+    fullDesc: 'Pre-owned iPhone 14 in pristine condition. Excellent battery health and full Apple ecosystem integration.',
+    image: 'assets/img/iphone_14.jpeg',
     storageOptions: [
-      { label: '64GB',  price: 20500, id: 'iphonese3-64-starlight' },
-      { label: '128GB', price: 23500, id: 'iphonese3-128-starlight' },
-      { label: '256GB', price: 28500, id: 'iphonese3-256-starlight' },
+      { label: '128GB', price: 34500, id: 'iphone14-128gb-midnight', stock: 1 }
     ],
     colorOptions: [
-      { label: 'Starlight', hex: '#f5f0e8', border: '#ccc' },
-      { label: 'Midnight',  hex: '#1c1c1e', border: '' },
-      { label: 'Red',       hex: '#c3141e', border: '' },
+      { label: 'Midnight', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/iphonese3-128-starlight.jpg', thumb: '/assets/products/iphonese3-128-starlight.jpg', alt: 'Front' },
-      { src: '/assets/products/iphonese3-128-starlight.jpg', thumb: '/assets/products/iphonese3-128-starlight.jpg', alt: 'Back' },
+      { src: 'assets/img/iphone_14.jpeg', thumb: 'assets/img/iphone_14.jpeg', alt: 'iPhone 14' }
     ],
     specs: {
-      Display:      '4.7″ Retina IPS',
-      Chip:         'Apple A15 Bionic',
-      'Rear Camera':'12MP with OIS',
-      'Front Camera':'7MP with Face detection',
-      Battery:      '2,018 mAh',
-      Connectivity: '5G, Wi-Fi 6, Bluetooth 5.0, NFC, Lightning',
-      OS:           'Upgradeable to iOS 17+',
-      Condition:    'Refurbished — Grade A',
-    },
+      Display: '6.1″ Super Retina XDR',
+      Chip: 'Apple A15 Bionic',
+      'Rear Camera': 'Dual 12MP with Photonic Engine',
+      'Front Camera': '12MP with Autofocus',
+      Battery: '3,279 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'rn12pro',
-    name:        'Xiaomi Redmi Note 12 Pro',
-    badge:       'badge-available',
-    badgeLabel:  'Brand New',
-    condition:   'Brand New',
-    desc:        'MediaTek Dimensity 1080 · 200MP camera · 67W turbo charging',
-    fullDesc:    'Brand new Xiaomi Redmi Note 12 Pro with a groundbreaking 200MP main camera. 67W HyperCharge goes from 0–100% in under 46 minutes.',
-    image:       '/assets/products/rn12pro-256-skyblue.jpg',
-    date:        8,
+    id: 'iphone14promax',
+    name: 'iPhone 14 Pro Max',
+    badge: 'badge-refurbished',
+    badgeLabel: 'Refurbished',
+    condition: 'Refurbished',
+    desc: 'Dynamic Island · 48MP main camera · Always-On display · A16 Bionic',
+    fullDesc: 'Refurbished iPhone 14 Pro Max with revolutionary Dynamic Island interface and 48MP photography.',
+    image: 'assets/img/iphone14_pro.jpeg',
     storageOptions: [
-      { label: '128GB', price: 13999, id: 'rn12pro-128-skyblue' },
-      { label: '256GB', price: 16499, id: 'rn12pro-256-skyblue' },
+      { label: '256GB', price: 48500, id: 'iphone14promax-256gb-deeppurple', stock: 1 }
     ],
     colorOptions: [
-      { label: 'Sky Blue',     hex: '#8bb8d4', border: '' },
-      { label: 'Polar White',  hex: '#f5f5f0', border: '#ccc' },
-      { label: 'Onyx Black',   hex: '#1a1a1a', border: '' },
+      { label: 'Deep Purple', hex: '#433d4c', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/rn12pro-256-skyblue.jpg', thumb: '/assets/products/rn12pro-256-skyblue.jpg', alt: 'Front' },
-      { src: '/assets/products/rn12pro-256-skyblue.jpg', thumb: '/assets/products/rn12pro-256-skyblue.jpg', alt: 'Back' },
+      { src: 'assets/img/iphone14_pro.jpeg', thumb: 'assets/img/iphone14_pro.jpeg', alt: 'iPhone 14 Pro Max' }
     ],
     specs: {
-      Display:      '6.67″ AMOLED, 120Hz',
-      Chip:         'MediaTek Dimensity 1080',
-      'Rear Camera':'200MP main + 8MP ultrawide + 2MP macro',
-      'Front Camera':'16MP',
-      Battery:      '5,000 mAh · 67W HyperCharge',
-      Connectivity: '5G, Wi-Fi 6, Bluetooth 5.2, NFC, USB-C',
-      OS:           'Android (MIUI)',
-      Condition:    'Brand New — Sealed',
-    },
+      Display: '6.7″ Super Retina XDR Always-On 120Hz',
+      Chip: 'Apple A16 Bionic',
+      'Rear Camera': '48MP Main + 12MP Ultra Wide + 12MP Telephoto',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '4,323 mAh',
+      Condition: 'Refurbished'
+    }
   },
   {
-    id:          'ipadmini6',
-    name:        'Apple iPad Mini 6th Gen',
-    badge:       'badge-preowned',
-    badgeLabel:  'Pre-owned',
-    condition:   'Pre-owned',
-    desc:        'A15 Bionic · 8.3″ Liquid Retina · USB-C · Touch ID on top',
-    fullDesc:    'Pre-owned iPad Mini 6th Gen with A15 Bionic chip and USB-C port. All-screen design with Touch ID integrated in the power button. Tested for display, connectivity, and camera.',
-    image:       '/assets/products/ipadmini6-64-purple.jpg',
-    date:        11,
+    id: 'iphone15',
+    name: 'iPhone 15',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Dynamic Island · 48MP camera · USB-C · Color-infused back glass',
+    fullDesc: 'Pre-owned iPhone 15 in like-new condition. Fast universal USB-C charging and sharp 48MP photo resolution.',
+    image: 'assets/img/iphone_15.jpeg',
     storageOptions: [
-      { label: '64GB',  price: 29800, id: 'ipadmini6-64-purple' },
-      { label: '256GB', price: 37800, id: 'ipadmini6-256-purple' },
+      { label: '128GB', price: 41500, id: 'iphone15-128gb-black', stock: 2 }
     ],
     colorOptions: [
-      { label: 'Purple',    hex: '#c6b8d7', border: '' },
-      { label: 'Space Gray', hex: '#86868b', border: '' },
-      { label: 'Starlight',  hex: '#f5f0e8', border: '#ccc' },
-      { label: 'Pink',       hex: '#f4b8c1', border: '' },
+      { label: 'Black', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/ipadmini6-64-purple.jpg', thumb: '/assets/products/ipadmini6-64-purple.jpg', alt: 'Front' },
-      { src: '/assets/products/ipadmini6-64-purple.jpg', thumb: '/assets/products/ipadmini6-64-purple.jpg', alt: 'Back' },
+      { src: 'assets/img/iphone_15.jpeg', thumb: 'assets/img/iphone_15.jpeg', alt: 'iPhone 15' }
     ],
     specs: {
-      Display:      '8.3″ Liquid Retina',
-      Chip:         'Apple A15 Bionic',
-      'Rear Camera':'12MP with True Tone flash',
-      'Front Camera':'12MP ultrawide with Center Stage',
-      Battery:      'Up to 10 hours',
-      Connectivity: 'Wi-Fi 6, Bluetooth 5.0, USB-C, Touch ID',
-      OS:           'Upgradeable to iPadOS 17+',
-      Condition:    'Pre-owned — Inspected',
-    },
+      Display: '6.1″ Super Retina XDR with Dynamic Island',
+      Chip: 'Apple A16 Bionic',
+      'Rear Camera': '48MP Main with 2x Telephoto',
+      'Front Camera': '12MP TrueDepth',
+      Battery: '3,349 mAh',
+      Condition: 'Pre-owned'
+    }
   },
   {
-    id:          'op11',
-    name:        'OnePlus 11',
-    badge:       'badge-refurbished',
-    badgeLabel:  'Refurbished',
-    condition:   'Refurbished',
-    desc:        'Snapdragon 8 Gen 2 · Hasselblad camera · 100W SUPERVOOC charging',
-    fullDesc:    'Refurbished OnePlus 11 with Snapdragon 8 Gen 2 and Hasselblad-tuned triple camera. 100W SUPERVOOC charging fills the 5000mAh battery in about 25 minutes. All functions verified.',
-    image:       '/assets/products/op11-256-titan.jpg',
-    date:        12,
+    id: 'samsung-a06',
+    name: 'Samsung Galaxy A06 5G',
+    badge: 'badge-available',
+    badgeLabel: 'Brand New',
+    condition: 'Brand New',
+    desc: '6.7″ HD+ display · 50MP dual camera · 5,000mAh battery',
+    fullDesc: 'Brand new sealed Samsung Galaxy A06. Smooth performance for everyday tasks, media, and long battery life.',
+    image: 'assets/img/samsunggalaxy_A06.jpeg',
     storageOptions: [
-      { label: '128GB', price: 31000, id: 'op11-128-titan' },
-      { label: '256GB', price: 34500, id: 'op11-256-titan' },
+      { label: '128GB', price: 6290, id: 'samsung-a06-128gb-lightblue', stock: 1 }
     ],
     colorOptions: [
-      { label: 'Titan Black',  hex: '#1a1a1a', border: '' },
-      { label: 'Eternal Green', hex: '#2e5440', border: '' },
+      { label: 'Light Blue', hex: '#7ba4cc', border: '' }
     ],
     gallery: [
-      { src: '/assets/products/op11-256-titan.jpg', thumb: '/assets/products/op11-256-titan.jpg', alt: 'Front' },
-      { src: '/assets/products/op11-256-titan.jpg', thumb: '/assets/products/op11-256-titan.jpg', alt: 'Back' },
+      { src: 'assets/img/samsunggalaxy_A06.jpeg', thumb: 'assets/img/samsunggalaxy_A06.jpeg', alt: 'Samsung Galaxy A06' }
     ],
     specs: {
-      Display:      '6.7″ AMOLED, 120Hz LTPO',
-      Chip:         'Snapdragon 8 Gen 2',
-      'Rear Camera':'50MP Hasselblad main + 48MP ultrawide + 32MP 2× tele',
-      'Front Camera':'16MP',
-      Battery:      '5,000 mAh · 100W SUPERVOOC',
-      Connectivity: '5G, Wi-Fi 7, Bluetooth 5.3, NFC, USB-C',
-      OS:           'Android (OxygenOS)',
-      Condition:    'Refurbished — Grade A',
-    },
+      Display: '6.7″ PLS LCD 60Hz',
+      Chip: 'MediaTek Helio G85',
+      'Rear Camera': '50MP Main + 2MP Depth',
+      'Front Camera': '8MP',
+      Battery: '5,000 mAh',
+      Condition: 'Brand New'
+    }
   },
+  {
+    id: 'vivo-y03s',
+    name: 'Vivo Y03s',
+    badge: 'badge-available',
+    badgeLabel: 'Brand New',
+    condition: 'Brand New',
+    desc: '90Hz Sunlight display · 5,000mAh long battery · Sleek modern body',
+    fullDesc: 'Brand new Vivo Y03s. Fluid 90Hz refresh rate and expandable storage support.',
+    image: 'assets/products/placeholder.jpg',
+    storageOptions: [
+      { label: '128GB', price: 5499, id: 'vivo-y03s-128gb-spaceblack', stock: 1 }
+    ],
+    colorOptions: [
+      { label: 'Space Black', hex: '#1c1c1e', border: '' }
+    ],
+    gallery: [
+      { src: 'assets/products/placeholder.jpg', thumb: 'assets/products/placeholder.jpg', alt: 'Vivo Y03s' }
+    ],
+    specs: {
+      Display: '6.56″ 90Hz Sunlight Display',
+      Chip: 'MediaTek Helio G85',
+      'Rear Camera': '13MP Main + Auxiliary',
+      'Front Camera': '5MP',
+      Battery: '5,000 mAh',
+      Condition: 'Brand New'
+    }
+  },
+  {
+    id: 'spark-go3',
+    name: 'Tecno Spark Go 3',
+    badge: 'badge-available',
+    badgeLabel: 'Brand New',
+    condition: 'Brand New',
+    desc: '90Hz eye-care display · Dynamic Port alerts · Dual stereo speakers',
+    fullDesc: 'Brand new Tecno Spark Go 3 featuring clean minimalist styling and loud dual stereo audio.',
+    image: 'assets/products/placeholder.jpg',
+    storageOptions: [
+      { label: '64GB', price: 4299, id: 'spark-go3-64gb-gravityblack', stock: 1 }
+    ],
+    colorOptions: [
+      { label: 'Gravity Black', hex: '#1c1c1e', border: '' }
+    ],
+    gallery: [
+      { src: 'assets/products/placeholder.jpg', thumb: 'assets/products/placeholder.jpg', alt: 'Tecno Spark Go 3' }
+    ],
+    specs: {
+      Display: '6.6″ IPS LCD 90Hz',
+      Chip: 'Unisoc T606 Octa-core',
+      'Rear Camera': '13MP HDR',
+      'Front Camera': '8MP with Dual Flash',
+      Battery: '5,000 mAh',
+      Condition: 'Brand New'
+    }
+  },
+  {
+    id: 'honor-x7c',
+    name: 'Honor X7c',
+    badge: 'badge-available',
+    badgeLabel: 'Brand New',
+    condition: 'Brand New',
+    desc: '108MP ultra-clear camera · 6,000mAh massive battery · IP64 water resistance',
+    fullDesc: 'Brand new Honor X7c equipped with an extraordinary 6,000mAh powerhouse battery and ultra-sharp 108MP camera.',
+    image: 'assets/products/placeholder.jpg',
+    storageOptions: [
+      { label: '128GB', price: 8999, id: 'honor-x7c-128gb-midnightblack', stock: 1 }
+    ],
+    colorOptions: [
+      { label: 'Midnight Black', hex: '#1c1c1e', border: '' }
+    ],
+    gallery: [
+      { src: 'assets/products/placeholder.jpg', thumb: 'assets/products/placeholder.jpg', alt: 'Honor X7c' }
+    ],
+    specs: {
+      Display: '6.77″ 120Hz Eye-Comfort Display',
+      Chip: 'Qualcomm Snapdragon 685',
+      'Rear Camera': '108MP Ultra-Clear + 2MP',
+      'Front Camera': '8MP',
+      Battery: '6,000 mAh',
+      Condition: 'Brand New'
+    }
+  },
+  {
+    id: 'ipad10',
+    name: 'Apple iPad 10th Gen',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: '10.9″ Liquid Retina display · A14 Bionic · USB-C · Touch ID',
+    fullDesc: 'Pre-owned Apple iPad 10th Gen with all-screen front, fast USB-C connectivity, and Apple Pencil support.',
+    image: 'assets/img/ipad_9th_gen.jpeg',
+    storageOptions: [
+      { label: '128GB', price: 23500, id: 'ipad10-128gb-silver', stock: 2 }
+    ],
+    colorOptions: [
+      { label: 'Silver', hex: '#e2e2e4', border: '#c0c0c0' }
+    ],
+    gallery: [
+      { src: 'assets/img/ipad_9th_gen.jpeg', thumb: 'assets/img/ipad_9th_gen.jpeg', alt: 'iPad 10th Gen' }
+    ],
+    specs: {
+      Display: '10.9″ Liquid Retina IPS',
+      Chip: 'Apple A14 Bionic',
+      'Rear Camera': '12MP Wide',
+      'Front Camera': '12MP Landscape Ultra Wide',
+      Battery: 'Up to 10 hours',
+      Condition: 'Pre-owned'
+    }
+  },
+  {
+    id: 'ipadair2',
+    name: 'Apple iPad Air 2',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: '9.7″ Retina display · A8X chip · Ultra-thin lightweight tablet',
+    fullDesc: 'Pre-owned iPad Air 2 in working tested condition. Ideal for lightweight reading, browsing, video streaming, and study.',
+    image: 'assets/img/ipad_9th_gen.jpeg',
+    storageOptions: [
+      { label: '128GB', price: 8900, id: 'ipadair2-128gb-spacegray', stock: 1 }
+    ],
+    colorOptions: [
+      { label: 'Space Gray', hex: '#86868b', border: '' }
+    ],
+    gallery: [
+      { src: 'assets/img/ipad_9th_gen.jpeg', thumb: 'assets/img/ipad_9th_gen.jpeg', alt: 'iPad Air 2' }
+    ],
+    specs: {
+      Display: '9.7″ Retina IPS',
+      Chip: 'Apple A8X with M8 Coprocessor',
+      'Rear Camera': '8MP iSight',
+      'Front Camera': '1.2MP FaceTime HD',
+      Battery: 'Up to 10 hours',
+      Condition: 'Pre-owned'
+    }
+  },
+  {
+    id: 'mxs-kids',
+    name: 'MXS Kids Learning Tablet',
+    badge: 'badge-available',
+    badgeLabel: 'Brand New',
+    condition: 'Brand New',
+    desc: 'Kid-proof protective bumper · Preloaded educational apps · Parental controls',
+    fullDesc: 'Brand new MXS Kids tablet featuring drop-resistant silicone casing and child-friendly learning environment.',
+    image: 'assets/products/placeholder.jpg',
+    storageOptions: [
+      { label: '512MB', price: 2999, id: 'mxs-kids-512mb-blue', stock: 3 }
+    ],
+    colorOptions: [
+      { label: 'Blue', hex: '#4b7db7', border: '' }
+    ],
+    gallery: [
+      { src: 'assets/products/placeholder.jpg', thumb: 'assets/products/placeholder.jpg', alt: 'MXS Kids' }
+    ],
+    specs: {
+      Display: '7.0″ IPS HD',
+      Features: 'Shockproof Silicone Bumper, Parental Controls',
+      Battery: '3,000 mAh',
+      Condition: 'Brand New'
+    }
+  },
+  {
+    id: 'apple-airpods',
+    name: 'Apple AirPods',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'High-fidelity audio · Automatic device switching · Siri voice control',
+    fullDesc: 'Pre-owned authentic Apple AirPods with charging case. Fully sanitized, battery-tested, and sound verified.',
+    image: 'assets/img/apple_airpods.jpeg',
+    storageOptions: [
+      { label: 'Standard', price: 6500, id: 'apple-airpods-white', stock: 10 }
+    ],
+    colorOptions: [
+      { label: 'White', hex: '#f5f5f7', border: '#e2e2e4' }
+    ],
+    gallery: [
+      { src: 'assets/img/apple_airpods.jpeg', thumb: 'assets/img/apple_airpods.jpeg', alt: 'Apple AirPods' }
+    ],
+    specs: {
+      Connectivity: 'Bluetooth 5.0, Apple H1 chip',
+      Battery: 'Up to 5 hours listening time',
+      Case: 'Lightning Charging Case',
+      Condition: 'Pre-owned'
+    }
+  },
+  {
+    id: 'apple-watch',
+    name: 'Apple Watch',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
+    desc: 'Retina OLED display · Heart rate monitoring · Activity & workout tracking',
+    fullDesc: 'Pre-owned Apple Watch thoroughly tested with clean iCloud status, responsive touchscreen, and health sensors.',
+    image: 'assets/img/apple_watch.jpeg',
+    storageOptions: [
+      { label: '44mm', price: 11500, id: 'apple-watch-44mm-midnight', stock: 1 }
+    ],
+    colorOptions: [
+      { label: 'Midnight', hex: '#1c1c1e', border: '' }
+    ],
+    gallery: [
+      { src: 'assets/img/apple_watch.jpeg', thumb: 'assets/img/apple_watch.jpeg', alt: 'Apple Watch' }
+    ],
+    specs: {
+      Display: 'OLED Retina Display',
+      Sensors: 'Optical heart sensor, Accelerometer, Gyroscope',
+      Connectivity: 'Bluetooth, Wi-Fi, GPS',
+      Condition: 'Pre-owned'
+    }
+  }
 ];
 
-/**
- * Look up a product by its stable product id (e.g. "iphone13pro").
- * @param {string} id
- * @returns {object|null}
- */
 function cheynFindProduct(id) {
   if (!id) return null;
   return CHEYN_PRODUCTS.find(function(p) { return p.id === id; }) || null;

@@ -2,9 +2,7 @@
 // api/admin/orders.php
 declare(strict_types=1);
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../../includes/session.php';
 
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, no-store, must-revalidate');
@@ -19,6 +17,16 @@ if (empty($_SESSION['user_id']) || ($_SESSION['user_role'] ?? '') !== 'admin') {
 require_once __DIR__ . '/../../config/database.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
+
+if ($method !== 'GET') {
+    $clientCsrf  = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    $sessionCsrf = $_SESSION['csrf_token'] ?? '';
+    if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
+        http_response_code(403);
+        echo json_encode(['success' => false, 'error' => 'Invalid or missing CSRF token.']);
+        exit;
+    }
+}
 
 // Handle GET: Returns real orders with customer details and line items
 if ($method === 'GET') {
@@ -150,8 +158,9 @@ if ($method === 'GET') {
         exit;
 
     } catch (Exception $e) {
+        error_log('Orders GET error: ' . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Database error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => 'Failed to load orders.']);
         exit;
     }
 }
@@ -192,18 +201,39 @@ if ($method === 'POST' || $method === 'PATCH' || $method === 'PUT') {
     }
 
     try {
-        $findStmt = $pdo->prepare('SELECT id, order_number, status FROM orders WHERE order_number = ? OR id = ? LIMIT 1');
+        $pdo->beginTransaction();
+
+        $findStmt = $pdo->prepare('SELECT id, order_number, status FROM orders WHERE order_number = ? OR id = ? LIMIT 1 FOR UPDATE');
         $findStmt->execute([$orderIdentifier, is_numeric($orderIdentifier) ? (int)$orderIdentifier : 0]);
         $order = $findStmt->fetch();
 
         if (!$order) {
+            $pdo->rollBack();
             http_response_code(404);
             echo json_encode(['success' => false, 'error' => 'Order not found.']);
             exit;
         }
 
+        $previousStatus = (string)$order['status'];
+
         $updateStmt = $pdo->prepare('UPDATE orders SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?');
         $updateStmt->execute([$normalized, $order['id']]);
+
+        // TASK B3: When status changes to cancelled from any non-cancelled state, restore variant stock
+        if ($normalized === 'cancelled' && $previousStatus !== 'cancelled') {
+            $itemsStmt = $pdo->prepare('SELECT variant_id, qty FROM order_items WHERE order_id = ?');
+            $itemsStmt->execute([$order['id']]);
+            $orderItems = $itemsStmt->fetchAll();
+
+            $restockStmt = $pdo->prepare('UPDATE product_variants SET stock = stock + ? WHERE id = ?');
+            foreach ($orderItems as $item) {
+                if (!empty($item['variant_id']) && (int)$item['qty'] > 0) {
+                    $restockStmt->execute([(int)$item['qty'], $item['variant_id']]);
+                }
+            }
+        }
+
+        $pdo->commit();
 
         $statusLabelMap = [
             'pending'          => 'Pending',
@@ -225,8 +255,12 @@ if ($method === 'POST' || $method === 'PATCH' || $method === 'PUT') {
         exit;
 
     } catch (Exception $e) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        error_log('Order status update error: ' . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Database error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => 'Failed to update order status.']);
         exit;
     }
 }

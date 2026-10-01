@@ -1,19 +1,6 @@
 (function () {
   'use strict';
 
-  /* ── Sample order data map (keyed by order ID) ── */
-  var ORDERS = {
-    'CT-10493': {
-      id:              'CT-10493',
-      product:         'iPhone 13 Pro &ndash; 128GB &bull; Pickup at Cheyn Gadgets Store',
-      date:            'August 12, 2026',
-      status:          'Ready for Pickup',
-      badgeIcon:       'bi-bag-check-fill',
-      statusBadgeIcon: 'bi-bag-check-fill',
-      currentStep:     3
-    }
-  };
-
   /* ── Populate result with order data and dynamically render stepper ── */
   function showResult(data) {
     document.getElementById('resultOrderId').textContent = data.id;
@@ -84,7 +71,7 @@
     var infoCards  = document.getElementById('trackInfoCards');
 
     if (resultEl)   resultEl.classList.add('d-none');
-    if (notFoundId) notFoundId.textContent = orderId ? orderId : 'the ID entered';
+    if (notFoundId) notFoundId.textContent = orderId ? orderId : 'the ID and email entered';
     if (notFoundEl) {
       notFoundEl.classList.remove('d-none');
       setTimeout(function () {
@@ -94,10 +81,47 @@
     if (infoCards) infoCards.classList.remove('d-none');
   }
 
+  /* ── Perform order tracking query against API ── */
+  function performTrack(orderId, email) {
+    var errEl      = document.getElementById('trackError');
+    var notFoundEl = document.getElementById('trackNotFound');
+    var resultEl   = document.getElementById('trackResult');
+
+    if (errEl)      errEl.style.display = 'none';
+    if (notFoundEl) notFoundEl.classList.add('d-none');
+
+    var queryUrl = 'api/orders/track.php?id=' + encodeURIComponent(orderId) + '&email=' + encodeURIComponent(email);
+
+    fetch(queryUrl)
+      .then(function (res) {
+        if (res.status === 404) return null;
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.success) {
+          showResult({
+            id:              data.orderNumber,
+            product:         data.productLine || 'Ordered Gadget',
+            date:            data.date,
+            status:          data.statusLabel,
+            badgeIcon:       data.badgeIcon || 'bi-bag-check-fill',
+            statusBadgeIcon: data.badgeIcon || 'bi-bag-check-fill',
+            currentStep:     data.currentStep || 1
+          });
+        } else {
+          showNotFound(orderId);
+        }
+      })
+      .catch(function () {
+        showNotFound(orderId);
+      });
+  }
+
   /* ── Track form handler ── */
   function initTrackForm() {
     var form       = document.getElementById('trackForm');
     var input      = document.getElementById('trackInput');
+    var emailInput = document.getElementById('trackEmail');
     var errEl      = document.getElementById('trackError');
     var notFoundEl = document.getElementById('trackNotFound');
 
@@ -105,119 +129,70 @@
 
     // Pre-fill from sessionStorage (after checkout redirect)
     try {
-      var last = sessionStorage.getItem('ct_last_order');
-      if (last) { input.value = last; }
+      var lastOrder = sessionStorage.getItem('ct_last_order');
+      var lastEmail = sessionStorage.getItem('ct_last_email');
+      if (lastOrder && input)      { input.value = lastOrder; }
+      if (lastEmail && emailInput) { emailInput.value = lastEmail; }
     } catch (e) {}
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var val = input.value.trim().toUpperCase();
-      if (errEl)      errEl.style.display = 'none';
-      if (notFoundEl) notFoundEl.classList.add('d-none');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var val   = (input ? input.value : '').trim().toUpperCase();
+        var email = (emailInput ? emailInput.value : '').trim();
 
-      if (!val) {
-        if (errEl) {
-          errEl.style.display = 'block';
-          errEl.innerHTML = '<i class="bi bi-exclamation-circle me-1"></i>Please enter an Order ID (e.g. CT-10493).';
+        if (errEl)      errEl.style.display = 'none';
+        if (notFoundEl) notFoundEl.classList.add('d-none');
+
+        if (!val || !email) {
+          if (errEl) {
+            errEl.style.display = 'block';
+            errEl.innerHTML = '<i class="bi bi-exclamation-circle me-1"></i>Please enter both your Order ID (e.g. CT-10493) and checkout email.';
+          }
+          if (!val && input) {
+            input.focus();
+          } else if (emailInput) {
+            emailInput.focus();
+          }
+          return;
         }
-        input.focus();
-        return;
-      }
 
-      // Fetch real order from database API with fallback to sample map
-      fetch('api/orders/track.php?id=' + encodeURIComponent(val))
-        .then(function (res) {
-          if (res.status === 404) return null;
-          return res.json();
-        })
-        .then(function (data) {
-          if (data && data.success) {
-            showResult({
-              id:              data.orderNumber,
-              product:         data.productLine || 'Ordered Gadget',
-              date:            data.date,
-              status:          data.statusLabel,
-              badgeIcon:       data.badgeIcon || 'bi-bag-check-fill',
-              statusBadgeIcon: data.badgeIcon || 'bi-bag-check-fill',
-              currentStep:     data.currentStep || 1
-            });
-          } else if (ORDERS[val]) {
-            showResult(ORDERS[val]);
-          } else {
-            showNotFound(val);
-          }
-        })
-        .catch(function () {
-          if (ORDERS[val]) {
-            showResult(ORDERS[val]);
-          } else {
-            showNotFound(val);
-          }
-        });
-    });
+        performTrack(val, email);
+      });
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     initTrackForm();
 
-    // Check URL parameters first (?id= or ?order=)
+    // Check URL parameters first (?id= or ?order= and ?email=)
     var params = new URLSearchParams(window.location.search);
     var queryOrder = params.get('id') || params.get('order');
+    var queryEmail = params.get('email');
 
-    if (queryOrder) {
-      var cleanId = queryOrder.trim().toUpperCase();
-      document.getElementById('trackInput').value = cleanId;
+    var inputEl = document.getElementById('trackInput');
+    var emailEl = document.getElementById('trackEmail');
 
-      fetch('api/orders/track.php?id=' + encodeURIComponent(cleanId))
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          if (data && data.success) {
-            showResult({
-              id:              data.orderNumber,
-              product:         data.productLine,
-              date:            data.date,
-              status:          data.statusLabel,
-              badgeIcon:       data.badgeIcon,
-              statusBadgeIcon: data.badgeIcon,
-              currentStep:     data.currentStep
-            });
-          } else if (ORDERS[cleanId]) {
-            showResult(ORDERS[cleanId]);
-          } else {
-            showNotFound(cleanId);
-          }
-        })
-        .catch(function () {
-          if (ORDERS[cleanId]) {
-            showResult(ORDERS[cleanId]);
-          } else {
-            showNotFound(cleanId);
-          }
-        });
+    if (queryOrder && inputEl) {
+      inputEl.value = queryOrder.trim().toUpperCase();
+    }
+    if (queryEmail && emailEl) {
+      emailEl.value = queryEmail.trim();
+    }
+
+    if (queryOrder && queryEmail) {
+      performTrack(queryOrder.trim().toUpperCase(), queryEmail.trim());
       return;
     }
 
-    // Auto-show result if last_order stored from checkout
+    // Auto-show result if last order and email stored from checkout
     try {
-      var last = sessionStorage.getItem('ct_last_order');
-      if (last) {
-        document.getElementById('trackInput').value = last;
-        fetch('api/orders/track.php?id=' + encodeURIComponent(last))
-          .then(res => res.json())
-          .then(data => {
-            if (data && data.success) {
-              showResult({
-                id:              data.orderNumber,
-                product:         data.productLine,
-                date:            data.date,
-                status:          data.statusLabel,
-                badgeIcon:       data.badgeIcon,
-                statusBadgeIcon: data.badgeIcon,
-                currentStep:     data.currentStep
-              });
-            }
-          })
-          .catch(() => {});
+      var lastOrder = sessionStorage.getItem('ct_last_order');
+      var lastEmail = sessionStorage.getItem('ct_last_email');
+      if (lastOrder && lastEmail) {
+        if (inputEl) inputEl.value = lastOrder;
+        if (emailEl) emailEl.value = lastEmail;
+        performTrack(lastOrder, lastEmail);
       }
     } catch (e) {}
   });

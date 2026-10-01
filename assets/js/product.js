@@ -53,12 +53,13 @@
     if (mainImg) {
       var initialSrc = (product.gallery && product.gallery.length && product.gallery[0].src)
         ? product.gallery[0].src
-        : (product.image || '/assets/products/placeholder.jpg');
+        : (product.image || 'assets/products/placeholder.jpg');
+      if (initialSrc && initialSrc.startsWith('/')) initialSrc = initialSrc.substring(1);
       mainImg.src = initialSrc;
       mainImg.alt = product.name;
       mainImg.onerror = function () {
         this.onerror = null;
-        this.src = '/assets/products/placeholder.jpg';
+        this.src = 'assets/products/placeholder.jpg';
       };
     }
 
@@ -107,6 +108,18 @@
     /* --- Short description --- */
     var shortDescEl = document.getElementById('productShortDesc');
     if (shortDescEl) shortDescEl.textContent = product.desc;
+
+    /* --- Dynamic trust note based on condition --- */
+    var trustNote = document.getElementById('trustNoteText');
+    if (trustNote) {
+      if (product.condition === 'Brand New') {
+        trustNote.innerHTML = 'Full function test passed — battery, screen, cameras, and all connectivity checked. <strong>7-day replacement guarantee</strong> · Comes with charger and original box.';
+      } else if (product.condition === 'Refurbished') {
+        trustNote.innerHTML = 'Professionally refurbished — battery, screen, cameras, and ports all verified. <strong>7-day replacement guarantee</strong> · Comes with a compatible charger.';
+      } else {
+        trustNote.innerHTML = 'Function-tested by our team — screen, cameras, Face ID, and connectivity verified. <strong>7-day replacement guarantee</strong> · Unit only; charger may not be included.';
+      }
+    }
 
     /* --- Storage options --- */
     var storageEl = document.getElementById('storageOptions');
@@ -227,8 +240,9 @@
       var related = sourceList.filter(function (p) { return p.id !== product.id; }).slice(0, 4);
       relatedGrid.innerHTML = related.map(function (p) {
         var opt = (p.storageOptions && p.storageOptions.length) ? p.storageOptions[0] : { price: 0 };
+        var relImg = p.image ? (p.image.startsWith('/') ? p.image.substring(1) : p.image) : 'assets/products/placeholder.jpg';
         return '<div class="col-6 col-md-3"><article class="product-card">' +
-          '<div class="card-img-wrap"><img src="' + (p.image || '/assets/products/placeholder.jpg') + '" alt="' + p.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'/assets/products/placeholder.jpg\'">' +
+          '<div class="card-img-wrap"><img src="' + relImg + '" alt="' + p.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'assets/products/placeholder.jpg\'">' +
           '<span class="badge-ct ' + (p.badge || 'badge-preowned') + '">' + (p.badgeLabel || 'Pre-owned') + '</span></div>' +
           '<div class="card-body"><p class="product-name">' + p.name + '</p><p class="product-price">' + fmt(opt.price) + '</p></div>' +
           '<div class="card-footer"><a href="product.php?id=' + p.id + '" class="btn btn-ct btn-ct-sm flex-grow-1">View</a></div>' +

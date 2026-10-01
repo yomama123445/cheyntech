@@ -2,9 +2,7 @@
 // api/auth/register.php
 declare(strict_types=1);
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../../includes/session.php';
 
 header('Content-Type: application/json');
 
@@ -22,9 +20,15 @@ if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
     exit;
 }
 
-require_once '../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
+if (!is_array($input)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'error' => 'Invalid JSON body.']);
+    exit;
+}
+
 $name = trim($input['name'] ?? '');
 $email = trim($input['email'] ?? '');
 $password = $input['password'] ?? '';
@@ -83,6 +87,7 @@ try {
         ]
     ]);
 } catch (Exception $e) {
+    error_log('Register error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode(['success' => false, 'error' => 'Server error while creating account.']);
 }

@@ -40,6 +40,15 @@
       wirePassToggle('regPassToggle', 'regPassword', 'regPassIcon');
       wirePassToggle('regConfirmPassToggle', 'regConfirmPassword', 'regConfirmPassIcon');
 
+      // Safe toast helper
+      function notify(msg, type) {
+        if (typeof showToast === 'function') {
+          showToast(msg, type);
+        } else {
+          console.log('[' + (type || 'info') + '] ' + msg);
+        }
+      }
+
       // Login form
       var loginForm = document.getElementById('loginForm');
       loginForm.addEventListener('submit', function (e) {
@@ -67,23 +76,21 @@
         })
         .then(function(res) { return res.json(); })
         .then(function(data) {
-          if (data.success) {
-            showToast('Welcome back, ' + data.user.name + '!', 'success');
+          if (data && data.success) {
+            var userName = (data.user && data.user.name) ? data.user.name : '';
+            notify('Welcome back' + (userName ? ', ' + userName : '') + '!', 'success');
+            var target = (data.user && data.user.role === 'admin') ? 'admin/dashboard.php' : 'index.php';
             setTimeout(function() {
-              if (data.user.role === 'admin') {
-                window.location.href = 'admin/dashboard.php';
-              } else {
-                window.location.href = 'index.php';
-              }
-            }, 800);
+              window.location.href = target;
+            }, 600);
           } else {
-            showToast(data.error || 'Login failed. Please check your credentials.', 'error');
+            notify((data && data.error) || 'Login failed. Please check your credentials.', 'error');
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
           }
         })
         .catch(function() {
-          showToast('Could not reach authentication server. Check database configuration.', 'error');
+          notify('Could not reach authentication server. Check database configuration.', 'error');
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
         });
@@ -124,19 +131,19 @@
         })
         .then(function(res) { return res.json(); })
         .then(function(data) {
-          if (data.success) {
-            showToast('Account created successfully! Welcome to Cheyn Gadgets.', 'success');
+          if (data && data.success) {
+            notify('Account created successfully! Welcome to Cheyn Gadgets.', 'success');
             setTimeout(function() {
               window.location.href = 'index.php';
-            }, 1000);
+            }, 600);
           } else {
-            showToast(data.error || 'Registration failed.', 'error');
+            notify((data && data.error) || 'Registration failed.', 'error');
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
           }
         })
         .catch(function() {
-          showToast('Could not connect to server. Check database configuration.', 'error');
+          notify('Could not connect to server. Check database configuration.', 'error');
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
         });

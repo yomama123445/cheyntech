@@ -109,3 +109,105 @@ function showToast(msg, cls = '') {
   t.className = 'toast-ct show ' + cls;
   setTimeout(() => t.className = 'toast-ct', 3200);
 }
+
+// ---- LIVE DASHBOARD DATA ----
+async function loadDashboardStats() {
+  // 1. Load Products & Low Stock
+  try {
+    const res = await fetch('../api/admin/products.php', {
+      headers: { 'Accept': 'application/json' },
+      cache: 'no-store'
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.products)) {
+        const products = data.products;
+        const totalEl = document.getElementById('statTotalProducts');
+        if (totalEl) totalEl.textContent = products.length;
+
+        const lowStock = products.filter(p => Number(p.stock) <= 3);
+        const lowStockEl = document.getElementById('statLowStock');
+        if (lowStockEl) lowStockEl.textContent = lowStock.length;
+
+        const lowStockList = document.getElementById('lowStockList');
+        if (lowStockList) {
+          if (lowStock.length === 0) {
+            lowStockList.innerHTML = '<li class="py-3 text-center text-muted">All products well-stocked.</li>';
+          } else {
+            lowStockList.innerHTML = lowStock.slice(0, 5).map((p, idx) => {
+              const borderClass = idx < Math.min(lowStock.length, 5) - 1 ? 'border-bottom' : '';
+              const iconClass = p.category === 'tablet' ? 'bi-tablet' : p.category === 'android' ? 'bi-phone' : 'bi-phone';
+              return `<li class="d-flex align-items-center justify-content-between py-3 ${borderClass}">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="low-stock-icon pink"><i class="bi ${iconClass}"></i></div>
+                  <div>
+                    <div class="low-stock-name">${p.name}</div>
+                    <div class="low-stock-qty">Only ${p.stock} unit${p.stock === 1 ? '' : 's'} left</div>
+                  </div>
+                </div>
+                <a href="products.php" class="badge-ct badge-preowned text-decoration-none">Restock</a>
+              </li>`;
+            }).join('');
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Could not load products for dashboard:', err);
+  }
+
+  // 2. Load Orders & Status counts
+  try {
+    const res = await fetch('../api/admin/orders.php', {
+      headers: { 'Accept': 'application/json' },
+      cache: 'no-store'
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.success && Array.isArray(data.orders)) {
+        const orders = data.orders;
+        const pendingCount = orders.filter(o => o.status === 'Pending' || o.status === 'Processing').length;
+        const completedCount = orders.filter(o => o.status === 'Completed').length;
+
+        const pendingEl = document.getElementById('statPendingOrders');
+        if (pendingEl) pendingEl.textContent = pendingCount;
+
+        const completedEl = document.getElementById('statCompletedOrders');
+        if (completedEl) completedEl.textContent = completedCount;
+
+        const tbody = document.getElementById('recentOrdersTbody');
+        if (tbody && orders.length > 0) {
+          tbody.innerHTML = orders.slice(0, 5).map(o => {
+            const badgeClass = o.status === 'Pending' ? 'bg-warning-subtle text-warning-emphasis'
+              : o.status === 'Processing' ? 'badge-status-processing'
+              : o.status === 'Ready' || o.status === 'Ready for Pickup' ? 'badge-status-ready'
+              : o.status === 'Completed' ? 'bg-success-subtle text-success-emphasis'
+              : 'bg-secondary-subtle text-secondary-emphasis';
+
+            const itemsDesc = Array.isArray(o.items) && o.items.length
+              ? o.items.map(i => `${i.name} × ${i.qty}`).join(', ')
+              : 'Items ordered';
+
+            return `<tr>
+              <td class="ps-4 td-id">#${o.id}</td>
+              <td class="td-name">${(o.customer && o.customer.name) || 'Customer'}</td>
+              <td class="d-none d-md-table-cell td-meta">${itemsDesc}</td>
+              <td class="td-id">₱${Number(o.total || 0).toLocaleString()}</td>
+              <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">${o.fulfillment || 'Pickup'}</span></td>
+              <td><span class="badge rounded-pill td-sm-badge ${badgeClass}">${o.status}</span></td>
+              <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
+            </tr>`;
+          }).join('');
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Could not load orders for dashboard:', err);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadDashboardStats);
+} else {
+  loadDashboardStats();
+}

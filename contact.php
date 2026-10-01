@@ -41,30 +41,33 @@ require 'includes/header.php';
             </div>
 
             <form id="inquiryForm" novalidate>
+              <div class="d-none" aria-hidden="true">
+                <input type="text" name="website" id="contactWebsite" tabindex="-1" autocomplete="off">
+              </div>
               <div class="mb-3">
                 <label for="productName" class="form-label fw-semibold">Listing / Product Name</label>
-                <input type="text" class="form-control" id="productName" name="productName" placeholder="e.g. iPhone 13 Pro 128GB Graphite" required>
+                <input type="text" class="form-control" id="productName" name="productName" placeholder="e.g. iPhone 13 Pro 128GB Graphite" maxlength="150" required>
                 <div class="invalid-feedback">Please enter the product name.</div>
               </div>
               <div class="mb-3">
                 <label for="contactName" class="form-label fw-semibold">Your Name</label>
-                <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Juan dela Cruz" required>
+                <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Juan dela Cruz" maxlength="100" required>
                 <div class="invalid-feedback">Please enter your name.</div>
               </div>
               <div class="row g-3 mb-3">
                 <div class="col-md-6">
                   <label for="contactEmail" class="form-label fw-semibold">Email Address</label>
-                  <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="you@email.com" required>
+                  <input type="email" class="form-control" id="contactEmail" name="contactEmail" placeholder="you@email.com" maxlength="150" required>
                   <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="contactPhone" class="form-label fw-semibold">Phone Number</label>
-                  <input type="tel" class="form-control" id="contactPhone" name="contactPhone" placeholder="09XX-XXX-XXXX">
+                  <input type="tel" class="form-control" id="contactPhone" name="contactPhone" placeholder="09XX-XXX-XXXX" maxlength="30">
                 </div>
               </div>
               <div class="mb-4">
                 <label for="contactMessage" class="form-label fw-semibold">Your Message</label>
-                <textarea class="form-control" id="contactMessage" name="contactMessage" rows="5" placeholder="Ask about battery health, warranty, delivery to your area..." required></textarea>
+                <textarea class="form-control" id="contactMessage" name="contactMessage" rows="5" placeholder="Ask about battery health, warranty, delivery to your area..." maxlength="2000" required></textarea>
                 <div class="invalid-feedback">Please enter your message.</div>
               </div>
               <div class="d-grid">
@@ -96,7 +99,7 @@ require 'includes/header.php';
                   <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-telephone-fill"></i></span>
                   <div>
                     <div class="contact-info-label">Phone</div>
-                    <div class="contact-info-value"><a href="tel:09XXXXXXXXX" class="text-dark text-decoration-none">09XX-XXX-XXXX</a></div>
+                    <div class="contact-info-value"><span class="text-muted fst-italic">Available via Facebook &amp; Email</span></div>
                   </div>
                 </div>
                 <div class="contact-info-item">
@@ -126,12 +129,17 @@ require 'includes/header.php';
                   <a href="https://www.tiktok.com/@cheyniphonesandgadgets" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
                 </div>
               </div>
-              <!-- Map Placeholder -->
-              <div class="map-placeholder" aria-label="Map placeholder" role="img">
-                <i class="bi bi-geo-alt"></i>
-                <span class="small fw-semibold">Cheyn Gadgets Location</span>
-                <span class="text-muted small">Roxas City, Capiz</span>
-              </div>
+              <!-- Google Maps Embed -->
+              <iframe
+                src="https://www.google.com/maps?q=Roxas+City,+Capiz,+Philippines&output=embed"
+                width="100%"
+                height="200"
+                style="border:0;border-radius:12px;margin-top:1rem;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Cheyn Gadgets store location"
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>

@@ -177,8 +177,11 @@
           document.getElementById('confirmPayment').textContent     = data.payment || paymentLabel();
           document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
 
-          // Save order ID for track page
-          try { sessionStorage.setItem('ct_last_order', orderNumber); } catch(e) {}
+          // Save order ID and email for track page
+          try {
+            sessionStorage.setItem('ct_last_order', orderNumber);
+            sessionStorage.setItem('ct_last_email', payload.email);
+          } catch(e) {}
 
           // Clear cart after placing
           CheynCart.clear();
@@ -203,7 +206,10 @@
           document.getElementById('confirmPayment').textContent     = paymentLabel();
           document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
 
-          try { sessionStorage.setItem('ct_last_order', fallbackId); } catch(e) {}
+          try {
+            sessionStorage.setItem('ct_last_order', fallbackId);
+            sessionStorage.setItem('ct_last_email', payload.email);
+          } catch(e) {}
           CheynCart.clear();
 
           var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });

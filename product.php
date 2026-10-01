@@ -69,7 +69,7 @@ require 'includes/header.php';
           <!-- Trust note -->
           <div class="d-flex align-items-center gap-2 mb-4 p-3 bg-ct-soft rounded-ct-lg">
             <i class="bi bi-patch-check-fill text-ct fs-5 flex-shrink-0"></i>
-            <span class="small">Full function test passed — battery, screen, cameras, and all connectivity checked. <strong>7-day replacement guarantee</strong> · Comes with charger and original box.</span>
+            <span class="small" id="trustNoteText">Full function test passed — battery, screen, cameras, and all connectivity checked. <strong>7-day replacement guarantee</strong> · Comes with charger and original box.</span>
           </div>
 
           <!-- CTA Buttons -->
@@ -148,7 +148,7 @@ require 'includes/header.php';
             </ol>
             <div class="alert alert-info mt-3 small">
               <i class="bi bi-info-circle me-2"></i>
-              Store hours: Mon–Sat, 9:00 AM – 7:00 PM · Questions? <a href="contact.php" class="alert-link">Contact us</a> or message us on Facebook.
+              Store hours: Mon–Sat, 9:00 AM – 6:00 PM · Questions? <a href="contact.php" class="alert-link">Contact us</a> or message us on Facebook.
             </div>
           </div>
 

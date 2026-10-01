@@ -1,0 +1,26 @@
+# CheynTech Apache configuration
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Deny web access to sensitive directories (config, database, docs, wireframes)
+RewriteRule ^(config|database|docs|wireframes)(/.*)?$ - [F,L,NC]
+
+# Deny web access to sensitive file extensions
+<FilesMatch "\.(md|xml|sql|env|log|example)$">
+    Require all denied
+</FilesMatch>
+
+# Explicitly block access to database configuration
+<Files "database.php">
+    Require all denied
+</Files>

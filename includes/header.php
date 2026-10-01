@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/session.php';
 $_SESSION['csrf_token'] = $_SESSION['csrf_token'] ?? bin2hex(random_bytes(32));
 
 // Set defaults if not defined before including
@@ -58,7 +56,26 @@ $activePage      = $activePage      ?? '';
             <i class="bi bi-cart3"></i>
             <span class="cart-badge">0</span>
           </a>
-          <a href="login.php" aria-label="Account"><i class="bi bi-person-circle"></i></a>
+          <?php if (!empty($_SESSION['user_id'])): ?>
+            <div class="dropdown">
+              <a href="profile.php" class="d-flex align-items-center gap-1 text-decoration-none text-dark" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="My Account">
+                <i class="bi bi-person-circle fs-5"></i>
+                <span class="small fw-semibold d-none d-lg-inline">My Account</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="accountDropdown">
+                <li><span class="dropdown-item-text text-muted small">Signed in as<br><strong><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong></span></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="profile.php"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a></li>
+                <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                  <li><a class="dropdown-item" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</a></li>
+                <?php endif; ?>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.php?action=logout" id="navLogoutLink"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>
+              </ul>
+            </div>
+          <?php else: ?>
+            <a href="login.php" aria-label="Account"><i class="bi bi-person-circle"></i></a>
+          <?php endif; ?>
         </div>
       </div>
     </div>

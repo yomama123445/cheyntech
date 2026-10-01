@@ -33,15 +33,18 @@ require 'includes/header.php';
         </div>
         <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
           <div class="hero-img-frame">
-            <img
-              id="heroProductImg"
-              src=""
-              alt=""
-              class="hero-product-img"
-              loading="eager"
-            >
+            <a href="product.php?id=iphone13" class="d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none">
+              <img
+                id="heroProductImg"
+                src="assets/img/iphone_13pro.jpeg"
+                alt="Featured product — iPhone 13"
+                class="hero-product-img"
+                loading="eager"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+              >
+            </a>
           </div>
-          <p class="hero-img-caption" id="heroProductCaption"></p>
+          <p class="hero-img-caption" id="heroProductCaption">iPhone 13 · 128GB · Midnight</p>
         </div>
       </div>
     </div>
@@ -146,18 +149,18 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphone13pro-128-graphite.jpg" alt="iPhone 13 Pro 128GB Graphite" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-refurbished">Refurbished</span>
+              <img src="assets/img/iphone_13pro.jpeg" alt="iPhone 13 128GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
-              <p class="product-name">iPhone 13 Pro – 128GB Graphite</p>
-              <p class="product-price">₱32,500</p>
+              <p class="product-name">iPhone 13 – 128GB Midnight</p>
+              <p class="product-price">₱29,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone13pro-128-graphite',name:'iPhone 13 Pro 128GB Graphite',price:32500,variant:'128GB',color:'Graphite',image:'/assets/products/iphone13pro-128-graphite.jpg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone13-128gb-midnight',name:'iPhone 13 128GB Midnight',price:29500,variant:'128GB',color:'Midnight',image:'assets/img/iphone_13pro.jpeg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php?id=iphone13pro" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=iphone13" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -165,15 +168,15 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphone12-64-blue.jpg" alt="iPhone 12 64GB Blue" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
+              <img src="assets/img/iPhone_12.jpeg" alt="iPhone 12 128GB Blue" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
-              <p class="product-name">iPhone 12 – 64GB Blue</p>
-              <p class="product-price">₱21,800</p>
+              <p class="product-name">iPhone 12 – 128GB Blue</p>
+              <p class="product-price">₱24,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone12-64-blue',name:'iPhone 12 64GB Blue',price:21800,variant:'64GB',color:'Blue',image:'/assets/products/iphone12-64-blue.jpg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone12-128gb-blue',name:'iPhone 12 128GB Blue',price:24500,variant:'128GB',color:'Blue',image:'assets/img/iPhone_12.jpeg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.php?id=iphone12" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -184,72 +187,34 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/s22-256-phantom.jpg" alt="Samsung Galaxy S22 256GB Phantom Black" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-available">Brand New</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">Samsung Galaxy S22 – 256GB Phantom Black</p>
-              <p class="product-price">₱28,000</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'s22-256-phantom',name:'Samsung Galaxy S22 256GB',price:28000,variant:'256GB',color:'Phantom Black',image:'/assets/products/s22-256-phantom.jpg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=s22" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="/assets/products/ipad9-64-gray.jpg" alt="iPad 9th Gen 64GB Space Gray" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-refurbished">Refurbished</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">iPad 9th Gen – 64GB Space Gray</p>
-              <p class="product-price">₱22,000</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'ipad9-64-gray',name:'iPad 9th Gen 64GB',price:22000,variant:'64GB',color:'Space Gray',image:'/assets/products/ipad9-64-gray.jpg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=ipad9" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="/assets/products/pixel7-128-obsidian.jpg" alt="Google Pixel 7 128GB Obsidian" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-available">Brand New</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">Google Pixel 7 – 128GB Obsidian</p>
-              <p class="product-price">₱24,000</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'pixel7-128-obsidian',name:'Google Pixel 7 128GB',price:24000,variant:'128GB',color:'Obsidian',image:'/assets/products/pixel7-128-obsidian.jpg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=pixel7" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="/assets/products/iphone14-256-midnight.jpg" alt="iPhone 14 256GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
+              <img src="assets/img/iphone_11.jpeg" alt="iPhone 11 128GB Black" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
-              <p class="product-name">iPhone 14 – 256GB Midnight</p>
-              <p class="product-price">₱44,900</p>
+              <p class="product-name">iPhone 11 – 128GB Black</p>
+              <p class="product-price">₱18,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone14-256-midnight',name:'iPhone 14 256GB Midnight',price:44900,variant:'256GB',color:'Midnight',image:'/assets/products/iphone14-256-midnight.jpg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone11-128gb-black',name:'iPhone 11 128GB Black',price:18500,variant:'128GB',color:'Black',image:'assets/img/iphone_11.jpeg'}, this)">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php?id=iphone11" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="assets/img/iphone_14.jpeg" alt="iPhone 14 128GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">iPhone 14 – 128GB Midnight</p>
+              <p class="product-price">₱34,500</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone14-128gb-midnight',name:'iPhone 14 128GB Midnight',price:34500,variant:'128GB',color:'Midnight',image:'assets/img/iphone_14.jpeg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.php?id=iphone14" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -260,18 +225,18 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/a54-128-violet.jpg" alt="Samsung Galaxy A54 5G 128GB Awesome Violet" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-available">Brand New</span>
+              <img src="assets/img/iphone_15.jpeg" alt="iPhone 15 128GB Black" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
-              <p class="product-name">Samsung Galaxy A54 5G – 128GB Awesome Violet</p>
-              <p class="product-price">₱19,990</p>
+              <p class="product-name">iPhone 15 – 128GB Black</p>
+              <p class="product-price">₱41,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'a54-128-violet',name:'Samsung Galaxy A54 128GB Awesome Violet',price:19990,variant:'128GB',color:'Awesome Violet',image:'/assets/products/a54-128-violet.jpg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone15-128gb-black',name:'iPhone 15 128GB Black',price:41500,variant:'128GB',color:'Black',image:'assets/img/iphone_15.jpeg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php?id=a54" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=iphone15" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>
@@ -279,18 +244,56 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card">
             <div class="card-img-wrap">
-              <img src="/assets/products/iphonese3-128-starlight.jpg" alt="iPhone SE 3rd Gen 128GB Starlight" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-refurbished">Refurbished</span>
+              <img src="assets/img/samsunggalaxy_A06.jpeg" alt="Samsung Galaxy A06 5G 128GB Light Blue" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <span class="badge-ct badge-available">Brand New</span>
             </div>
             <div class="card-body">
-              <p class="product-name">iPhone SE 3rd Gen – 128GB Starlight</p>
+              <p class="product-name">Samsung Galaxy A06 5G – 128GB</p>
+              <p class="product-price">₱6,290</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'samsung-a06-128gb-lightblue',name:'Samsung Galaxy A06 5G 128GB',price:6290,variant:'128GB',color:'Light Blue',image:'assets/img/samsunggalaxy_A06.jpeg'}, this)">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php?id=samsung-a06" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="assets/img/ipad_9th_gen.jpeg" alt="Apple iPad 10th Gen 128GB Silver" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">Apple iPad 10th Gen – 128GB</p>
               <p class="product-price">₱23,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphonese3-128-starlight',name:'iPhone SE 3rd Gen 128GB Starlight',price:23500,variant:'128GB',color:'Starlight',image:'/assets/products/iphonese3-128-starlight.jpg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'ipad10-128gb-silver',name:'Apple iPad 10th Gen 128GB',price:23500,variant:'128GB',color:'Silver',image:'assets/img/ipad_9th_gen.jpeg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
-              <a href="product.php?id=iphonese3" class="btn btn-ct-outline btn-ct-sm">View</a>
+              <a href="product.php?id=ipad10" class="btn btn-ct-outline btn-ct-sm">View</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="assets/img/apple_watch.jpeg" alt="Apple Watch 44mm Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <span class="badge-ct badge-preowned">Pre-owned</span>
+            </div>
+            <div class="card-body">
+              <p class="product-name">Apple Watch – 44mm Midnight</p>
+              <p class="product-price">₱11,500</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'apple-watch-44mm-midnight',name:'Apple Watch 44mm Midnight',price:11500,variant:'44mm',color:'Midnight',image:'assets/img/apple_watch.jpeg'}, this)">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+              <a href="product.php?id=apple-watch" class="btn btn-ct-outline btn-ct-sm">View</a>
             </div>
           </article>
         </div>

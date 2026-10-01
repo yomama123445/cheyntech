@@ -2,9 +2,7 @@
 // api/admin/products.php
 declare(strict_types=1);
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../../includes/session.php';
 
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, no-store, must-revalidate');
@@ -19,6 +17,16 @@ if (empty($_SESSION['user_id']) || ($_SESSION['user_role'] ?? '') !== 'admin') {
 require_once __DIR__ . '/../../config/database.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
+
+if ($method !== 'GET') {
+    $clientCsrf  = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+    $sessionCsrf = $_SESSION['csrf_token'] ?? '';
+    if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
+        http_response_code(403);
+        echo json_encode(['success' => false, 'error' => 'Invalid or missing CSRF token.']);
+        exit;
+    }
+}
 
 // Helper to normalize category to DB enum ('preowned', 'new', 'android', 'tablet')
 function mapCategoryToEnum(string $cat, string $cond): string {
@@ -99,8 +107,9 @@ if ($method === 'GET') {
         exit;
 
     } catch (Exception $e) {
+        error_log('Admin products GET error: ' . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Database error: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => 'Failed to load products.']);
         exit;
     }
 }
@@ -192,8 +201,9 @@ if ($method === 'POST') {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }
+        error_log('Admin product create error: ' . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Failed to create product: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => 'Failed to create product.']);
         exit;
     }
 }
@@ -298,8 +308,9 @@ if ($method === 'PUT') {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }
+        error_log('Admin product update error: ' . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Failed to update product: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => 'Failed to update product.']);
         exit;
     }
 }
@@ -335,8 +346,9 @@ if ($method === 'DELETE') {
         exit;
 
     } catch (Exception $e) {
+        error_log('Admin product delete error: ' . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Failed to delete product: ' . $e->getMessage()]);
+        echo json_encode(['success' => false, 'error' => 'Failed to delete product.']);
         exit;
     }
 }

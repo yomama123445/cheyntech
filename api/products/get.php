@@ -42,7 +42,8 @@ function formatProductRows(array $rows): array {
                 $specs['Condition'] = $condition;
             }
 
-            $mainImage = !empty($row['main_image']) ? (string)$row['main_image'] : '/assets/products/placeholder.jpg';
+            $rawImage = !empty($row['main_image']) ? (string)preg_replace('/\s+/', '', (string)$row['main_image']) : 'assets/products/placeholder.jpg';
+            $mainImage = ltrim($rawImage, '/');
 
             $products[$pid] = [
                 'id'             => $row['id'],
@@ -175,7 +176,7 @@ try {
         }
 
         $formatted = formatProductRows($rows);
-        $product   = $formatted[0] ?? null;
+        $product   = reset($formatted) ?: null;
 
         if (!$product) {
             http_response_code(404);
@@ -223,22 +224,24 @@ try {
     echo json_encode([
         'success'  => true,
         'count'    => count($products),
-        'products' => $products
+        'products' => array_values($products)
     ]);
     exit;
 
 } catch (PDOException $e) {
+    error_log('Products get error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'error'   => 'Database error: ' . $e->getMessage()
+        'error'   => 'Failed to retrieve products.'
     ]);
     exit;
 } catch (Exception $e) {
+    error_log('Products get error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'error'   => $e->getMessage()
+        'error'   => 'Failed to retrieve products.'
     ]);
     exit;
 }

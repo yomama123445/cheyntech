@@ -1,16 +1,5 @@
-// ====== PRODUCT DATA ======
-let products = [
-  { id:1, name:'iPhone 15 Pro Max', category:'iPhone', condition:'Brand New', storage:'256GB', color:'Titanium Black', price:79999, stock:8, status:'Available', img:'/assets/products/placeholder.jpg' },
-  { id:2, name:'iPhone 14 Pro', category:'iPhone', condition:'Pre-owned', storage:'128GB', color:'Deep Purple', price:48000, stock:5, status:'Available', img:'/assets/products/placeholder.jpg' },
-  { id:3, name:'iPhone 13 mini', category:'iPhone', condition:'Pre-owned', storage:'64GB', color:'Midnight', price:23500, stock:2, status:'Low Stock', img:'/assets/products/placeholder.jpg' },
-  { id:4, name:'Samsung Galaxy S24 Ultra', category:'Android', condition:'Brand New', storage:'512GB', color:'Titanium Gray', price:72500, stock:6, status:'Available', img:'/assets/products/placeholder.jpg' },
-  { id:5, name:'Xiaomi 14T Pro', category:'Android', condition:'Brand New', storage:'256GB', color:'Titan Black', price:29999, stock:10, status:'Available', img:'/assets/products/placeholder.jpg' },
-  { id:6, name:'Samsung Galaxy Tab S9', category:'Tablet', condition:'Refurbished', storage:'128GB', color:'Graphite', price:36000, stock:1, status:'Low Stock', img:'/assets/products/placeholder.jpg' },
-  { id:7, name:'iPad Air (M2)', category:'Tablet', condition:'Brand New', storage:'256GB', color:'Starlight', price:41999, stock:7, status:'Available', img:'/assets/products/placeholder.jpg' },
-  { id:8, name:'AirPods Pro (2nd Gen)', category:'Accessories', condition:'Brand New', storage:'N/A', color:'White', price:14999, stock:3, status:'Low Stock', img:'/assets/products/placeholder.jpg' },
-  { id:9, name:'Apple Watch Series 9', category:'Wearables', condition:'Brand New', storage:'N/A', color:'Midnight Alum.', price:22999, stock:2, status:'Low Stock', img:'/assets/products/placeholder.jpg' },
-  { id:10, name:'Oppo Find X7 Ultra', category:'Android', condition:'Pre-owned', storage:'512GB', color:'Black', price:54000, stock:1, status:'Low Stock', img:'/assets/products/placeholder.jpg' },
-];
+// ====== PRODUCT DATA (Loaded live from api/admin/products.php) ======
+let products = [];
 
 let deleteTargetId = null;
 const productModal = new bootstrap.Modal(document.getElementById('productModal'));
@@ -135,11 +124,17 @@ async function saveProduct() {
   };
   data.status = data.stock === 0 ? 'Out of Stock' : data.stock <= 3 ? 'Low Stock' : 'Available';
 
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
   if (id) {
     try {
       const res = await fetch('../api/admin/products.php', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
         body: JSON.stringify({ id: id, ...data })
       });
       const result = await res.json();
@@ -157,7 +152,11 @@ async function saveProduct() {
     try {
       const res = await fetch('../api/admin/products.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
         body: JSON.stringify(data)
       });
       const result = await res.json();
@@ -190,10 +189,15 @@ function openDeleteModal(id) {
 
 document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
   if (deleteTargetId !== null) {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
     try {
       const res = await fetch('../api/admin/products.php', {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
         body: JSON.stringify({ id: deleteTargetId })
       });
       const result = await res.json();

@@ -36,17 +36,18 @@ function formatPrice(n) {
  * against the UI checkbox values ('preowned' | 'new' | 'android' | 'tablet').
  */
 function productCategories(p) {
-  const name = p.name.toLowerCase();
-  const id   = p.id.toLowerCase();
+  if (p.category) {
+    return [p.category];
+  }
+  const name = (p.name || '').toLowerCase();
+  const id   = (p.id || '').toLowerCase();
   const cats = [];
   if (id.includes('ipad') || name.includes('ipad')) {
     cats.push('tablet');
   } else if (name.includes('iphone')) {
-    if (p.condition === 'Pre-owned')  cats.push('preowned');
+    if (p.condition === 'Pre-owned' || p.condition === 'Refurbished') cats.push('preowned');
     if (p.condition === 'Brand New')  cats.push('new');
-    // Refurbished iPhones don't match the two iPhone cat filters by design
   } else {
-    // Samsung, Google, Xiaomi, OnePlus, etc.
     cats.push('android');
   }
   return cats;
@@ -124,7 +125,7 @@ function buildCardHTML(p) {
     <div class="col">
       <article class="product-card">
         <div class="card-img-wrap">
-          <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
+          <img src="${p.image ? (p.image.startsWith('/') ? p.image.substring(1) : p.image) : 'assets/products/placeholder.jpg'}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
           <span class="badge-ct ${p.badge}">${p.badgeLabel}</span>
         </div>
         <div class="card-body">
@@ -476,7 +477,10 @@ async function loadCatalogProducts() {
       throw new Error(`HTTP error ${res.status}`);
     }
     const data = await res.json();
-    const fetched = Array.isArray(data) ? data : (data && (data.products || data.data));
+    let fetched = Array.isArray(data) ? data : (data && (data.products || data.data));
+    if (fetched && typeof fetched === 'object' && !Array.isArray(fetched)) {
+      fetched = Object.values(fetched);
+    }
     if (Array.isArray(fetched) && fetched.length > 0) {
       PRODUCTS = fetched;
     } else if (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {

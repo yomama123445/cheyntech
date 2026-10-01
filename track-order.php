@@ -35,22 +35,35 @@ require 'includes/header.php';
         <h2 class="h4 fw-700 mb-2">Order Lookup</h2>
         <p class="text-muted small mb-3">Check the status of your delivery or in-store pickup.</p>
         <form id="trackForm" novalidate>
-          <div class="track-input-group d-flex">
-            <input
-              type="text"
-              class="form-control"
-              id="trackInput"
-              placeholder="e.g. CT-10493"
-              aria-label="Order ID"
-              autocomplete="off"
-              required
-            >
-            <button type="submit" class="btn btn-ct">
-              <i class="bi bi-search me-1"></i>Track
-            </button>
+          <div class="row g-2 mb-2">
+            <div class="col-12 col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="trackInput"
+                placeholder="Order ID (e.g. CT-10493)"
+                aria-label="Order ID"
+                autocomplete="off"
+                required
+              >
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                type="email"
+                class="form-control"
+                id="trackEmail"
+                placeholder="Checkout Email (e.g. name@email.com)"
+                aria-label="Checkout Email"
+                autocomplete="email"
+                required
+              >
+            </div>
           </div>
-          <div id="trackError" class="text-danger mt-2" style="display: none;">
-            <i class="bi bi-exclamation-circle me-1"></i>Please enter a valid Order ID (e.g. CT-10493).
+          <button type="submit" class="btn btn-ct w-100 py-2">
+            <i class="bi bi-search me-1"></i>Track Order
+          </button>
+          <div id="trackError" class="text-danger mt-2 text-start" style="display: none;">
+            <i class="bi bi-exclamation-circle me-1"></i>Please enter both your Order ID (e.g. CT-10493) and checkout email.
           </div>
         </form>
       </div>
@@ -165,9 +178,7 @@ require 'includes/header.php';
                   <div class="status-history-note">
                     Your item is ready at <strong>Cheyn Gadgets, Roxas City</strong>.<br>
                     Visit us Mon&ndash;Sat, 9:00 AM&ndash;6:00 PM. Bring a valid ID and your Order ID.<br>
-                    <a href="tel:+639171234567" class="fw-600 track-action-link">
-                      <i class="bi bi-telephone-fill me-1"></i>0917-123-4567
-                    </a>
+                    <span class="fw-600 track-action-link">Contact us via Facebook or email for pickup assistance.</span>
                   </div>
                 </div>
               </div>

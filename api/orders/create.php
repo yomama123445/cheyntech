@@ -8,9 +8,7 @@ class OrderException extends Exception {
     }
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../../includes/session.php';
 
 header('Content-Type: application/json');
 
@@ -28,9 +26,14 @@ if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
     exit;
 }
 
-require_once '../../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
+if (!is_array($input)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'error' => 'Invalid JSON body.']);
+    exit;
+}
 
 $customerName  = trim($input['fullName'] ?? '');
 $customerEmail = trim($input['email'] ?? '');
@@ -61,13 +64,19 @@ if (empty($customerName) || empty($customerEmail) || empty($customerPhone) || em
     exit;
 }
 
+if (count($items) > 20) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'error' => 'Order cannot exceed 20 unique items.']);
+    exit;
+}
+
 try {
     $pdo->beginTransaction();
 
-    // Generate unique human-readable order number: CT-XXXXX
+    // Generate cryptographically secure unique order number: CT-XXXXX
     $orderNumber = '';
     for ($i = 0; $i < 5; $i++) {
-        $candidate = 'CT-' . mt_rand(10000, 99999);
+        $candidate = 'CT-' . random_int(10000, 99999);
         $check = $pdo->prepare('SELECT id FROM orders WHERE order_number = ? LIMIT 1');
         $check->execute([$candidate]);
         if (!$check->fetch()) {
@@ -79,31 +88,40 @@ try {
         $orderNumber = 'CT-' . time();
     }
 
-    // Server-side lookup query for prices and stock validation
-    $priceStmt = $pdo->prepare('SELECT price, stock, product_id FROM product_variants WHERE id = ? LIMIT 1');
+    // Server-side lookup query with row locking for prices and stock validation
+    $priceStmt = $pdo->prepare('
+        SELECT pv.price, pv.stock, pv.storage, pv.color, p.name AS product_name 
+        FROM product_variants pv 
+        JOIN products p ON pv.product_id = p.id 
+        WHERE pv.id = ? 
+        LIMIT 1 
+        FOR UPDATE
+    ');
 
     $processedItems = [];
     $subtotal = 0.00;
 
     foreach ($items as $item) {
-        $qty = max(1, (int)($item['qty'] ?? 1));
+        $qty = min(10, max(1, (int)($item['qty'] ?? 1)));
         $variantId = $item['id'] ?? '';
 
         $priceStmt->execute([$variantId]);
         $variant = $priceStmt->fetch();
         if (!$variant) {
+            http_response_code(400);
             throw new OrderException("Product variant {$variantId} no longer exists.");
         }
         if ($variant['stock'] < $qty) {
-            throw new OrderException("Insufficient stock for variant {$variantId}.");
+            http_response_code(409);
+            throw new OrderException("Insufficient stock for {$variant['product_name']}.");
         }
 
         $unitPrice = (float)$variant['price'];
         $lineTotal = $unitPrice * $qty;
         $subtotal += $lineTotal;
 
-        $productName = $item['name'] ?? 'Product';
-        $variantInfo = trim(($item['variant'] ?? '') . ' ' . ($item['color'] ?? ''));
+        $productName = $variant['product_name'] ?? 'Product';
+        $variantInfo = trim(($variant['storage'] ?? '') . ' ' . ($variant['color'] ?? ''));
 
         $processedItems[] = [
             'variantId'   => $variantId,
@@ -137,14 +155,14 @@ try {
 
     $orderId = (int)$pdo->lastInsertId();
 
-    // Insert order items & decrement stock using server-calculated prices
+    // Insert order items & safely decrement stock guarded against overselling
     $itemStmt = $pdo->prepare('
         INSERT INTO order_items (order_id, variant_id, product_name, variant_info, price, qty, line_total)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     ');
 
     $stockStmt = $pdo->prepare('
-        UPDATE product_variants SET stock = GREATEST(0, stock - ?) WHERE id = ?
+        UPDATE product_variants SET stock = stock - ? WHERE id = ? AND stock >= ?
     ');
 
     foreach ($processedItems as $pItem) {
@@ -158,7 +176,11 @@ try {
             $pItem['lineTotal']
         ]);
 
-        $stockStmt->execute([$pItem['qty'], $pItem['variantId']]);
+        $stockStmt->execute([$pItem['qty'], $pItem['variantId'], $pItem['qty']]);
+        if ($stockStmt->rowCount() === 0) {
+            http_response_code(409);
+            throw new OrderException("Insufficient stock for {$pItem['productName']}.");
+        }
     }
 
     $pdo->commit();
@@ -178,7 +200,9 @@ try {
         $pdo->rollBack();
     }
     error_log($e->getMessage());
-    http_response_code(400);
+    if (http_response_code() === 200) {
+        http_response_code(400);
+    }
     echo json_encode(['success' => false, 'error' => $e->getUserMessage()]);
 } catch (Exception $e) {
     if ($pdo->inTransaction()) {
