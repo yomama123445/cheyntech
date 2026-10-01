@@ -11,7 +11,7 @@ Items tagged [REQ] come straight from the proposal's in-scope list or success me
   Do not edit anything in config/.
   Done when: no `getMessage()` appears inside a json_encode or echo in api/orders/create.php.
 
-- [ ] **S2 Regenerate session on login and register.** api/auth/login.php, api/auth/register.php.
+- [x] **S2 Regenerate session on login and register.** api/auth/login.php, api/auth/register.php.
   Call `session_regenerate_id(true)` right after success, before writing $_SESSION. Nothing else.
   Done when: `grep -n session_regenerate_id api/auth/*.php` lists both files.
 

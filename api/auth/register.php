@@ -67,6 +67,7 @@ try {
     $newId = (int)$pdo->lastInsertId();
 
     // Auto-login newly registered user
+    session_regenerate_id(true);
     $_SESSION['user_id'] = $newId;
     $_SESSION['user_name'] = $name;
     $_SESSION['user_email'] = $email;
