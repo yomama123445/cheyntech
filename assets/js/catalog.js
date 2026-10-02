@@ -320,23 +320,45 @@ function updateFilterCounts(filteredProducts) {
    READ FILTERS FROM DOM
    ============================================================ */
 function collectFiltersFromDOM() {
+  const qDesktop = document.getElementById('catalogSearchInput')?.value.trim() || '';
+  const qMobile  = document.getElementById('catalogSearchInputMobile')?.value.trim() || '';
+  const getChecked = name => [...new Set([...document.querySelectorAll(`input[name="${name}"]:checked`)].map(i => i.value))];
+
   return {
-    q:        document.getElementById('catalogSearchInput')?.value.trim() || '',
-    cats:     [...document.querySelectorAll('input[name="cat"]:checked')].map(i => i.value),
-    variants: [...document.querySelectorAll('input[name="variant"]:checked')].map(i => i.value),
-    colors:   [...document.querySelectorAll('input[name="color"]:checked')].map(i => i.value),
-    conds:    [...document.querySelectorAll('input[name="condition"]:checked')].map(i => i.value),
+    q:        qDesktop || qMobile,
+    cats:     getChecked('cat'),
+    variants: getChecked('variant'),
+    colors:   getChecked('color'),
+    conds:    getChecked('condition'),
     priceMin: parseFloat(document.getElementById('priceMin')?.value) || null,
     priceMax: parseFloat(document.getElementById('priceMax')?.value) || null,
   };
 }
 
 /* ============================================================
-   APPLY FILTERS BUTTON
+   APPLY FILTERS BUTTONS (Desktop + Mobile Offcanvas)
    ============================================================ */
-document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
+function applyFilters() {
   activeFilters = collectFiltersFromDOM();
   currentPage   = 1;
+
+  // Sync search input values across desktop and mobile
+  const searchDesktop = document.getElementById('catalogSearchInput');
+  const searchMobile  = document.getElementById('catalogSearchInputMobile');
+  if (searchDesktop && searchMobile) {
+    if (activeFilters.q) {
+      searchDesktop.value = activeFilters.q;
+      searchMobile.value  = activeFilters.q;
+    }
+  }
+
+  // Synchronize desktop and mobile checkbox sets
+  ['cat', 'variant', 'color', 'condition'].forEach(name => {
+    const list = activeFilters[name === 'cat' ? 'cats' : (name === 'variant' ? 'variants' : (name === 'color' ? 'colors' : 'conds'))] || [];
+    document.querySelectorAll(`input[name="${name}"]`).forEach(cb => {
+      cb.checked = list.includes(cb.value);
+    });
+  });
 
   // Sync URL so the state is shareable / back-navigable
   const params = new URLSearchParams();
@@ -344,7 +366,7 @@ document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
   if (activeFilters.cats.length)     params.set('cat',       activeFilters.cats.join(','));
   if (activeFilters.variants.length) params.set('variant',   activeFilters.variants.join(','));
   if (activeFilters.colors.length)   params.set('color',     activeFilters.colors.join(','));
-  if (activeFilters.conds.length)    params.set('condition',  activeFilters.conds.join(','));
+  if (activeFilters.conds.length)    params.set('condition', activeFilters.conds.join(','));
   if (activeFilters.priceMin)        params.set('priceMin',  activeFilters.priceMin);
   if (activeFilters.priceMax)        params.set('priceMax',  activeFilters.priceMax);
   window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
@@ -352,7 +374,10 @@ document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
   renderProducts();
   renderActiveTags();
   showToast('Filters applied', 'info');
-});
+}
+
+document.getElementById('applyFiltersBtn')?.addEventListener('click', applyFilters);
+document.getElementById('applyFiltersBtnMobile')?.addEventListener('click', applyFilters);
 
 /* ============================================================
    RESTORE CHECKBOXES + SEARCH FROM URL (on page load)
@@ -364,8 +389,9 @@ document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
     const vals = params.get(param);
     if (!vals) return;
     vals.split(',').forEach(v => {
-      const el = document.querySelector(`input[name="${name}"][value="${v}"]`);
-      if (el) el.checked = true;
+      document.querySelectorAll(`input[name="${name}"][value="${v}"]`).forEach(el => {
+        el.checked = true;
+      });
     });
   }
 
@@ -379,6 +405,8 @@ document.getElementById('applyFiltersBtn')?.addEventListener('click', () => {
   if (q) {
     const input = document.getElementById('catalogSearchInput');
     if (input) input.value = q;
+    const inputMobile = document.getElementById('catalogSearchInputMobile');
+    if (inputMobile) inputMobile.value = q;
   }
 
   // Build activeFilters from whatever was just restored
@@ -441,9 +469,12 @@ function renderActiveTags() {
       if (fname === 'q') {
         const input = document.getElementById('catalogSearchInput');
         if (input) input.value = '';
+        const inputMobile = document.getElementById('catalogSearchInputMobile');
+        if (inputMobile) inputMobile.value = '';
       } else {
-        const cb = document.querySelector(`input[name="${fname}"][value="${fval}"]`);
-        if (cb) cb.checked = false;
+        document.querySelectorAll(`input[name="${fname}"][value="${fval}"]`).forEach(cb => {
+          cb.checked = false;
+        });
       }
 
       activeFilters = collectFiltersFromDOM();
@@ -506,6 +537,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sortEl) currentSort = sortEl.value;
 
   document.getElementById('clearAllLink')?.addEventListener('click', e => {
+    e.preventDefault();
+    clearAllFilters();
+  });
+
+  document.getElementById('clearAllLinkMobile')?.addEventListener('click', e => {
     e.preventDefault();
     clearAllFilters();
   });

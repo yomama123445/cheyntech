@@ -230,8 +230,8 @@ require 'includes/header.php';
         </div>
       </div>
       <div class="d-grid gap-2 mt-3">
-        <button type="button" class="btn btn-ct" data-bs-dismiss="offcanvas"><i class="bi bi-funnel-fill me-1"></i> Apply Filters</button>
-        <a href="catalog.php" class="btn btn-ct-outline">Clear All</a>
+        <button type="button" class="btn btn-ct" id="applyFiltersBtnMobile" data-bs-dismiss="offcanvas"><i class="bi bi-funnel-fill me-1"></i> Apply Filters</button>
+        <a href="#" id="clearAllLinkMobile" class="btn btn-ct-outline" data-bs-dismiss="offcanvas">Clear All</a>
       </div>
     </div>
   </div>
