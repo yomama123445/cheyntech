@@ -42,7 +42,7 @@ require 'includes/header.php';
               <span>Face ID &amp; Cameras Passed</span>
             </div>
 
-            <div class="hero-img-frame blueprint-frame">
+            <div class="hero-img-frame spotlight-card">
               <a href="product.php?id=iphone13" class="d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none">
                 <img
                   id="heroProductImg"
@@ -371,70 +371,100 @@ require 'includes/header.php';
     </div>
   </section>
 
-  <!-- THE BENCH PROTOCOL (Artisanal Workshop & Human Inspection) -->
-  <section class="py-5 bench-protocol-section" id="protocol">
+  <!-- INTERACTIVE EDITORIAL SHOWCASE: CERTIFIED HARDWARE TIERS -->
+  <section class="py-5 editorial-tiers-section" id="grades">
     <div class="container">
       <div class="section-header text-center mb-5">
-        <span class="section-label">Roxas City Workshop</span>
-        <h2 class="section-title">The Bench Protocol</h2>
+        <span class="editorial-eyebrow">A Better Standard of Hardware</span>
+        <h2 class="editorial-title">Transparent Grading.<br><span class="highlight">Zero Ambiguity.</span></h2>
         <p class="section-subtitle mx-auto" style="max-width: 580px;">
-          Why we reject 3 out of every 10 pre-owned phones we inspect. Every device that reaches our inventory passes our 4-stage technician bench inspection.
+          Explore real battery health baselines, cosmetic standards, and warranty coverage across our three hardware tiers.
         </p>
       </div>
 
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-          <div class="protocol-card h-100">
-            <div class="protocol-step-num">01 // OPTICS</div>
-            <h5 class="protocol-title">OLED &amp; Sensor Sweep</h5>
-            <p class="protocol-desc">Digital microscope check for hairline micro-cracks, pixel burn-in, TrueTone calibration, and 4K optical image stabilization.</p>
-            <div class="protocol-tag"><i class="bi bi-patch-check text-success"></i> Zero Pixel Defects</div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="protocol-card h-100">
-            <div class="protocol-step-num">02 // POWER</div>
-            <h5 class="protocol-title">Voltage &amp; Thermals</h5>
-            <p class="protocol-desc">Battery cycle count verification and thermal load testing. Units below 85% real-world retention are rejected or repacked.</p>
-            <div class="protocol-tag"><i class="bi bi-battery-charging text-primary"></i> &ge;85% Battery Health</div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="protocol-card h-100">
-            <div class="protocol-step-num">03 // ACOUSTICS</div>
-            <h5 class="protocol-title">Acoustic Frequency</h5>
-            <p class="protocol-desc">Dual stereo speaker and multi-microphone frequency sweep to ensure voice calls and noise cancellation are crystal clear.</p>
-            <div class="protocol-tag"><i class="bi bi-mic text-info"></i> Studio Audio Verified</div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="protocol-card h-100">
-            <div class="protocol-step-num">04 // LEGITIMACY</div>
-            <h5 class="protocol-title">NTC &amp; Carrier Audit</h5>
-            <p class="protocol-desc">Strict carrier blacklist audit, iCloud / Google lock de-registration, and verified clean Philippine NTC status.</p>
-            <div class="protocol-tag"><i class="bi bi-shield-lock text-dark"></i> Factory Unlocked</div>
-          </div>
+      <!-- Segmented Tier Switcher -->
+      <div class="tier-switcher-wrap d-flex justify-content-center mb-4">
+        <div class="tier-nav-pill-group" role="tablist" aria-label="Hardware tiers">
+          <button type="button" class="tier-pill-btn active" data-tier="pristine" role="tab" aria-selected="true" aria-controls="tierShowcaseStage">
+            <i class="bi bi-patch-check-fill text-success me-1"></i> Pristine Grade A
+          </button>
+          <button type="button" class="tier-pill-btn" data-tier="sealed" role="tab" aria-selected="false" aria-controls="tierShowcaseStage">
+            <i class="bi bi-box-seam text-primary me-1"></i> Brand New Sealed
+          </button>
+          <button type="button" class="tier-pill-btn" data-tier="daily" role="tab" aria-selected="false" aria-controls="tierShowcaseStage">
+            <i class="bi bi-phone text-warning me-1"></i> Daily Driver (Grade B)
+          </button>
         </div>
       </div>
 
-      <!-- Workshop Telemetry Metric Bar -->
-      <div class="protocol-metric-bar mt-4">
-        <div class="row text-center gy-3">
-          <div class="col-6 col-md-3">
-            <div class="metric-val">20+</div>
-            <div class="metric-lbl">Hardware Checkpoints</div>
+      <!-- Interactive Spotlight Display Stage -->
+      <div class="spotlight-card tier-showcase-stage" id="tierShowcaseStage">
+        <div class="row align-items-center g-4 p-4 p-lg-5">
+          <!-- Left: Hardware Hero Visual -->
+          <div class="col-lg-5 text-center">
+            <div class="tier-device-preview">
+              <span class="tier-active-badge" id="tierBadge">Grade A · Pristine</span>
+              <div class="tier-img-wrap my-3">
+                <img id="tierImg" src="assets/img/iphone_13pro.jpeg" alt="Pristine Grade A Device" class="img-fluid tier-photo" loading="lazy">
+              </div>
+              <div class="tier-hud-metrics d-flex justify-content-center gap-2 flex-wrap">
+                <span class="tier-spec-chip" id="tierBatteryChip"><i class="bi bi-battery-charging text-primary"></i> ≥85% Battery Health</span>
+                <span class="tier-spec-chip" id="tierCosmeticChip"><i class="bi bi-stars text-warning"></i> Near-Flawless Body</span>
+              </div>
+            </div>
           </div>
-          <div class="col-6 col-md-3">
-            <div class="metric-val">&ge;85%</div>
-            <div class="metric-lbl">Min. Battery Guarantee</div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="metric-val">7 Days</div>
-            <div class="metric-lbl">In-Store Replacement</div>
-          </div>
-          <div class="col-6 col-md-3">
-            <div class="metric-val">100%</div>
-            <div class="metric-lbl">NTC &amp; Carrier Clean</div>
+
+          <!-- Right: Clear Editorial Specifications -->
+          <div class="col-lg-7">
+            <div class="tier-content-panel ps-lg-4">
+              <div class="tier-headline-wrap mb-4">
+                <span class="tier-kicker" id="tierKicker">FLAGSHIP VALUE</span>
+                <h3 class="tier-name mb-2" id="tierHeading">Pristine Grade A</h3>
+                <p class="tier-summary" id="tierSummary">
+                  Indistinguishable from new at arm's length. Carefully selected pre-owned devices with zero screen imperfections and verified original internal components.
+                </p>
+              </div>
+
+              <!-- Comparative Points Grid -->
+              <div class="tier-features-grid row g-3 mb-4">
+                <div class="col-sm-6">
+                  <div class="tier-feature-item">
+                    <div class="tier-feature-label">Cosmetic Standard</div>
+                    <div class="tier-feature-val" id="tierCosmeticVal">Micro-wear only visible under harsh direct light. Screen is 100% scratch-free.</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="tier-feature-item">
+                    <div class="tier-feature-label">Battery Baseline</div>
+                    <div class="tier-feature-val" id="tierBatteryVal">≥85% to 100% genuine health. Never degraded or third-party locked.</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="tier-feature-item">
+                    <div class="tier-feature-label">In The Box</div>
+                    <div class="tier-feature-val" id="tierBoxVal">CheynTech safety case packaging + fast-charging cable + 20W power adapter.</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="tier-feature-item">
+                    <div class="tier-feature-label">Warranty &amp; Support</div>
+                    <div class="tier-feature-val" id="tierWarrantyVal">7-day 1-to-1 in-store replacement + 30-day hardware service warranty.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Bar -->
+              <div class="tier-action-bar d-flex align-items-center justify-content-between flex-wrap gap-3 pt-3 border-top">
+                <div>
+                  <span class="text-muted small d-block">Typical Price Range</span>
+                  <span class="fw-bold fs-5 text-dark" id="tierPriceRange">₱14,500 – ₱34,500</span>
+                </div>
+                <a href="catalog.php?cat=preowned" class="btn btn-ct text-white px-4" id="tierCtaBtn">
+                  Browse Grade A Inventory <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
