@@ -42,7 +42,7 @@ require 'includes/header.php';
               <span>Face ID &amp; Cameras Passed</span>
             </div>
 
-            <div class="hero-img-frame">
+            <div class="hero-img-frame blueprint-frame">
               <a href="product.php?id=iphone13" class="d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none">
                 <img
                   id="heroProductImg"
@@ -368,6 +368,77 @@ require 'includes/header.php';
       <div class="text-center mt-4">
         <a href="catalog.php" class="btn btn-ct text-white px-5">Browse All Products <i class="bi bi-grid ms-1"></i></a>
       </div>
+    </div>
+  </section>
+
+  <!-- THE BENCH PROTOCOL (Artisanal Workshop & Human Inspection) -->
+  <section class="py-5 bench-protocol-section" id="protocol">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <span class="section-label">Roxas City Workshop</span>
+        <h2 class="section-title">The Bench Protocol</h2>
+        <p class="section-subtitle mx-auto" style="max-width: 580px;">
+          Why we reject 3 out of every 10 pre-owned phones we inspect. Every device that reaches our inventory passes our 4-stage technician bench inspection.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="protocol-card h-100">
+            <div class="protocol-step-num">01 // OPTICS</div>
+            <h5 class="protocol-title">OLED &amp; Sensor Sweep</h5>
+            <p class="protocol-desc">Digital microscope check for hairline micro-cracks, pixel burn-in, TrueTone calibration, and 4K optical image stabilization.</p>
+            <div class="protocol-tag"><i class="bi bi-patch-check text-success"></i> Zero Pixel Defects</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="protocol-card h-100">
+            <div class="protocol-step-num">02 // POWER</div>
+            <h5 class="protocol-title">Voltage &amp; Thermals</h5>
+            <p class="protocol-desc">Battery cycle count verification and thermal load testing. Units below 85% real-world retention are rejected or repacked.</p>
+            <div class="protocol-tag"><i class="bi bi-battery-charging text-primary"></i> &ge;85% Battery Health</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="protocol-card h-100">
+            <div class="protocol-step-num">03 // ACOUSTICS</div>
+            <h5 class="protocol-title">Acoustic Frequency</h5>
+            <p class="protocol-desc">Dual stereo speaker and multi-microphone frequency sweep to ensure voice calls and noise cancellation are crystal clear.</p>
+            <div class="protocol-tag"><i class="bi bi-mic text-info"></i> Studio Audio Verified</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="protocol-card h-100">
+            <div class="protocol-step-num">04 // LEGITIMACY</div>
+            <h5 class="protocol-title">NTC &amp; Carrier Audit</h5>
+            <p class="protocol-desc">Strict carrier blacklist audit, iCloud / Google lock de-registration, and verified clean Philippine NTC status.</p>
+            <div class="protocol-tag"><i class="bi bi-shield-lock text-dark"></i> Factory Unlocked</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workshop Telemetry Metric Bar -->
+      <div class="protocol-metric-bar mt-4">
+        <div class="row text-center gy-3">
+          <div class="col-6 col-md-3">
+            <div class="metric-val">20+</div>
+            <div class="metric-lbl">Hardware Checkpoints</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="metric-val">&ge;85%</div>
+            <div class="metric-lbl">Min. Battery Guarantee</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="metric-val">7 Days</div>
+            <div class="metric-lbl">In-Store Replacement</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="metric-val">100%</div>
+            <div class="metric-lbl">NTC &amp; Carrier Clean</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

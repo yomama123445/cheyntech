@@ -149,7 +149,17 @@ function initSearchOverlay() {
   toggleBtn.addEventListener('click', e => { e.preventDefault(); open(); });
   closeBtn  && closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') close();
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      open();
+    }
+    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+      e.preventDefault();
+      open();
+    }
+  });
 
   if (form && input) {
     form.addEventListener('submit', e => {

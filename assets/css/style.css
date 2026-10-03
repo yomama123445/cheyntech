@@ -127,6 +127,38 @@ img { max-width: 100%; }
   background: var(--ct-primary-soft);
 }
 
+.nav-search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.65rem !important;
+  border-radius: var(--ct-radius-sm);
+  background: var(--ct-bg);
+  border: 1px solid var(--ct-border);
+  color: var(--ct-text-secondary) !important;
+  font-size: 0.84rem;
+  text-decoration: none;
+  transition: var(--ct-transition);
+}
+
+.nav-search-btn:hover {
+  background: var(--ct-primary-soft);
+  border-color: var(--ct-primary);
+  color: var(--ct-primary) !important;
+}
+
+.search-kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: #ffffff;
+  border: 1px solid var(--ct-border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--ct-muted);
+  line-height: 1.3;
+}
+
 .cart-badge {
   position: absolute;
   top: -4px;
@@ -752,6 +784,135 @@ img { max-width: 100%; }
   color: #ffffff;
   border-color: #ffffff;
   transform: translateY(-1px);
+}
+
+/* Technical blueprint frame with corner crosshairs */
+.blueprint-frame {
+  position: relative;
+}
+
+.blueprint-frame::before,
+.blueprint-frame::after {
+  content: '+';
+  position: absolute;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 16px;
+  font-weight: 400;
+  color: #94a3b8;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.blueprint-frame::before {
+  top: -8px;
+  left: -8px;
+}
+
+.blueprint-frame::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+/* Tactile button micro-depression */
+.btn-ct:active,
+.btn-ct-outline:active,
+.btn-cta-light:active,
+.quick-pill:active {
+  transform: translateY(1px) scale(0.99) !important;
+}
+
+/* ===================================================
+   THE BENCH PROTOCOL (Artisanal Hardware Workshop)
+   =================================================== */
+.bench-protocol-section {
+  background: #f8fafc;
+  border-top: 1px solid var(--ct-border);
+  border-bottom: 1px solid var(--ct-border);
+  position: relative;
+}
+
+.protocol-card {
+  background: #ffffff;
+  border: 1px solid var(--ct-border);
+  border-radius: var(--ct-radius);
+  padding: 1.75rem 1.4rem;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+  box-shadow: var(--ct-shadow-xs);
+  display: flex;
+  flex-direction: column;
+}
+
+.protocol-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: var(--ct-shadow-md);
+}
+
+.protocol-step-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ct-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.protocol-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ct-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.protocol-desc {
+  font-size: 0.85rem;
+  color: var(--ct-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.protocol-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ct-text);
+  background: var(--ct-bg);
+  border: 1px solid var(--ct-border);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+}
+
+.protocol-metric-bar {
+  background: #ffffff;
+  border: 1px solid var(--ct-border);
+  border-radius: var(--ct-radius);
+  padding: 1.5rem 1rem;
+  box-shadow: var(--ct-shadow-xs);
+}
+
+.protocol-metric-bar .metric-val {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--ct-text);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.protocol-metric-bar .metric-lbl {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ct-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
 }
 
 /* ===================================================

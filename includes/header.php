@@ -51,7 +51,10 @@ $activePage      = $activePage      ?? '';
           <li class="nav-item"><a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" <?= $activePage === 'track-order' ? 'aria-current="page"' : '' ?> href="track-order.php">Track Order</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3 nav-icons">
-          <a href="#" id="searchToggle" aria-label="Search"><i class="bi bi-search"></i></a>
+          <a href="#" id="searchToggle" class="nav-search-btn" aria-label="Search">
+            <i class="bi bi-search"></i>
+            <span class="search-kbd d-none d-md-inline-flex">⌘K</span>
+          </a>
           <a href="cart.php" class="position-relative" aria-label="Shopping cart">
             <i class="bi bi-cart3"></i>
             <span class="cart-badge">0</span>
