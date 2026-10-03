@@ -140,11 +140,26 @@ require 'includes/header.php';
                 <label class="radio-card" id="cardGcash">
                   <input class="form-check-input mt-0" type="radio" name="payment" id="paymentGcash" value="gcash">
                   <div class="radio-icon"><i class="bi bi-phone-fill"></i></div>
-                  <div>
+                  <div class="w-100">
                     <div class="radio-label">GCash</div>
-                    <div class="radio-sub">Send payment via GCash and upload your proof of payment.</div>
-                    <div id="gcashInfo" class="payment-info-box">
-                      <span class="text-muted fst-italic">GCash details will be provided upon order confirmation via SMS or email.</span>
+                    <div class="radio-sub">Send payment via GCash and present proof upon pickup or via message.</div>
+                    <div id="gcashInfo" class="payment-info-box mt-2">
+                      <div class="d-flex flex-wrap align-items-center justify-content-between p-2 rounded bg-white border mb-2">
+                        <div>
+                          <span class="text-muted text-xs d-block">Account Name</span>
+                          <strong class="text-dark">Cheyn's Gadgets</strong>
+                        </div>
+                        <div class="text-end">
+                          <span class="text-muted text-xs d-block">GCash Number</span>
+                          <span class="font-monospace fw-700 text-dark">0917-824-3968</span>
+                          <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 ms-1 copy-btn" data-copy="09178243968" title="Copy Number">
+                            <i class="bi bi-clipboard"></i> Copy
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-muted text-xs">
+                        <i class="bi bi-info-circle me-1 text-ct"></i> Include your <strong>Order ID</strong> in the message field when sending payment.
+                      </div>
                     </div>
                   </div>
                 </label>
@@ -153,11 +168,26 @@ require 'includes/header.php';
                 <label class="radio-card" id="cardBank">
                   <input class="form-check-input mt-0" type="radio" name="payment" id="paymentBank" value="bank">
                   <div class="radio-icon"><i class="bi bi-bank"></i></div>
-                  <div>
+                  <div class="w-100">
                     <div class="radio-label">Bank Transfer (BDO / BPI)</div>
-                    <div class="radio-sub">Transfer to our bank account and send proof of payment.</div>
-                    <div id="bankInfo" class="payment-info-box">
-                      <span class="text-muted fst-italic">Bank transfer details will be provided upon order confirmation via SMS or email.</span>
+                    <div class="radio-sub">Transfer directly to our store bank account and present deposit confirmation.</div>
+                    <div id="bankInfo" class="payment-info-box mt-2">
+                      <div class="d-flex flex-wrap align-items-center justify-content-between p-2 rounded bg-white border mb-2">
+                        <div>
+                          <span class="text-muted text-xs d-block">Bank &amp; Account Name</span>
+                          <strong class="text-dark">BDO &bull; Cheyn's Gadgets</strong>
+                        </div>
+                        <div class="text-end">
+                          <span class="text-muted text-xs d-block">Account Number</span>
+                          <span class="font-monospace fw-700 text-dark">0012-3456-7890</span>
+                          <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 ms-1 copy-btn" data-copy="001234567890" title="Copy Number">
+                            <i class="bi bi-clipboard"></i> Copy
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-muted text-xs">
+                        <i class="bi bi-info-circle me-1 text-ct"></i> Put your <strong>Order ID</strong> in the reference / remarks field for faster verification.
+                      </div>
                     </div>
                   </div>
                 </label>
@@ -244,6 +274,24 @@ require 'includes/header.php';
                 <div class="confirm-row"><span class="cl">Payment</span><span id="confirmPayment" class="fw-600"></span></div>
                 <div class="confirm-row"><span class="cl">Total</span><span id="confirmTotal" class="fw-600 confirm-total-value"></span></div>
               </div>
+            </div>
+          </div>
+
+          <!-- Payment instructions for GCash / Bank Transfer -->
+          <div id="confirmPaymentInstructions" class="d-none alert alert-light border p-3 mb-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <strong class="text-dark"><i class="bi bi-wallet2 me-1 text-ct"></i> Payment Instructions:</strong>
+              <span id="confirmPaymentBadge" class="badge bg-secondary"></span>
+            </div>
+            <p class="text-xs mb-2" id="confirmPaymentText">Please send your manual payment to the store account below:</p>
+            <div class="d-flex flex-wrap align-items-center justify-content-between p-2 rounded bg-white border">
+              <div>
+                <span class="text-muted text-xs d-block" id="confirmAccountLabel">Account Details</span>
+                <span class="fw-700 font-monospace text-dark" id="confirmAccountVal"></span>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" id="confirmCopyBtn" title="Copy Number">
+                <i class="bi bi-clipboard"></i> Copy
+              </button>
             </div>
           </div>
 

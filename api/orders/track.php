@@ -71,6 +71,7 @@ try {
         'badgeIcon'    => $statusInfo['icon'],
         'productLine'  => implode(', ', $itemSummary),
         'total'        => (float)$order['total_amount'],
+        'paymentMethod'=> $order['payment_method'],
         'items'        => $items
     ]);
 } catch (Exception $e) {

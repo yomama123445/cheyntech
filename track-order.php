@@ -93,6 +93,12 @@ require 'includes/header.php';
       <div id="trackResult" class="d-none" aria-live="polite">
         <div class="order-info-card">
 
+          <!-- Print-Only Store Slip Header -->
+          <div class="d-none d-print-block p-3 border-bottom mb-2 text-center">
+            <h4 class="fw-800 text-dark mb-1">Cheyn's Gadgets</h4>
+            <p class="text-muted text-xs mb-0">Roxas City, Capiz &bull; Official Customer Order Slip</p>
+          </div>
+
           <!-- Header -->
           <div class="order-info-header">
             <div>
@@ -105,13 +111,36 @@ require 'includes/header.php';
                 <i class="bi bi-calendar3 me-1"></i>Placed on <span id="resultDate">August 12, 2026</span>
               </div>
             </div>
-            <div class="order-info-badge result-status-badge">
-              <i class="bi bi-bag-check me-1"></i>Ready for Pickup
+            <div class="d-flex flex-column align-items-end gap-2">
+              <div class="order-info-badge result-status-badge">
+                <i class="bi bi-bag-check me-1"></i>Ready for Pickup
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary d-print-none py-1 px-3 text-xs" onclick="window.print()" title="Print this slip for pickup verification">
+                <i class="bi bi-printer me-1"></i> Print Slip
+              </button>
             </div>
           </div>
 
           <!-- Body -->
           <div class="order-info-body">
+
+            <!-- ── Payment Instructions Box (shown if pending and non-cash) ── -->
+            <div id="trackPaymentNotice" class="d-none alert alert-light border p-3 mb-4 rounded-3">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <strong class="text-dark"><i class="bi bi-wallet2 me-1 text-ct"></i> Pending Payment:</strong>
+                <span id="trackPaymentBadge" class="badge bg-primary"></span>
+              </div>
+              <p class="text-xs mb-2 text-muted" id="trackPaymentText"></p>
+              <div class="d-flex flex-wrap align-items-center justify-content-between p-2 rounded bg-white border">
+                <div>
+                  <span class="text-muted text-xs d-block" id="trackAccountLabel">Account Details</span>
+                  <span class="fw-700 font-monospace text-dark" id="trackAccountVal"></span>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" id="trackCopyBtn" title="Copy Number">
+                  <i class="bi bi-clipboard"></i> Copy
+                </button>
+              </div>
+            </div>
 
             <!-- ── Stepper ── -->
             <div class="mb-4">
@@ -204,6 +233,12 @@ require 'includes/header.php';
               <a href="contact.php" class="btn btn-ct-outline btn-ct-sm">
                 <i class="bi bi-chat-dots me-1"></i>Contact Us
               </a>
+            </div>
+
+            <!-- Print-Only Claim Verification Footer -->
+            <div class="d-none d-print-block mt-4 pt-3 border-top text-center text-xs text-muted">
+              <p class="mb-1 fw-700 text-dark">Cheyn's Gadgets &bull; Roxas City Store</p>
+              <p class="mb-0">Mon&ndash;Sat 9:00 AM &ndash; 6:00 PM &bull; Present this slip or your Order ID along with a valid ID upon pickup or delivery confirmation.</p>
             </div>
 
           </div><!-- /order-info-body -->

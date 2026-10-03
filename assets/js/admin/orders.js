@@ -177,7 +177,13 @@ function openOrderModal(id) {
   // Customer
   document.getElementById('modalCustomerName').textContent    = o.customer.name;
   document.getElementById('modalCustomerEmail').textContent   = o.customer.email;
-  document.getElementById('modalCustomerPhone').textContent   = o.customer.phone;
+  const cleanPhone = (o.customer.phone || '').replace(/[^0-9+]/g, '');
+  let phoneHtml = cleanPhone ? `<a href="tel:${cleanPhone}" class="text-decoration-none fw-600"><i class="bi bi-telephone me-1"></i>${o.customer.phone}</a>` : (o.customer.phone || '—');
+  if (cleanPhone && (o.fulfillment === 'Delivery' || o.fulfillment === 'Local Delivery')) {
+    const smsBody = encodeURIComponent(`Hi ${o.customer.name}, this is Cheyn's Gadgets regarding Order #${o.id}. Our staff is coordinating your delivery.`);
+    phoneHtml += ` <a href="sms:${cleanPhone}?body=${smsBody}" class="btn btn-sm btn-outline-success py-0 px-2 ms-2 text-xs" title="Message customer for dispatch"><i class="bi bi-chat-text me-1"></i>SMS</a>`;
+  }
+  document.getElementById('modalCustomerPhone').innerHTML   = phoneHtml;
   document.getElementById('modalCustomerAddress').textContent = o.customer.address;
 
   // Items
@@ -235,6 +241,13 @@ async function updateOrderStatus() {
   if (!o) return;
   const newStatus = document.getElementById('modalStatusSelect').value;
   if (newStatus === o.status) { showToast('Status unchanged.', ''); return; }
+
+  // Safeguard against invalid status transitions
+  if (o.status === 'Cancelled' && newStatus !== 'Cancelled') {
+    showToast('Cancelled orders cannot be reopened directly to preserve stock integrity.', 'toast-warning');
+    document.getElementById('modalStatusSelect').value = 'Cancelled';
+    return;
+  }
 
   try {
     const res = await fetch('../api/admin/orders.php', {

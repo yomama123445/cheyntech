@@ -57,6 +57,37 @@
       initStepper();
     }
 
+    // 5. Render payment notice if order is pending and non-cash
+    var payNotice = document.getElementById('trackPaymentNotice');
+    if (payNotice) {
+      var pMethod = (data.paymentMethod || '').toLowerCase();
+      var isPending = (data.rawStatus === 'pending' || (data.status || '').toLowerCase().includes('pending'));
+      if (isPending && (pMethod === 'gcash' || pMethod === 'bank')) {
+        payNotice.classList.remove('d-none');
+        var badge = document.getElementById('trackPaymentBadge');
+        var text = document.getElementById('trackPaymentText');
+        var label = document.getElementById('trackAccountLabel');
+        var val = document.getElementById('trackAccountVal');
+        var copyBtn = document.getElementById('trackCopyBtn');
+
+        if (pMethod === 'gcash') {
+          if (badge) { badge.textContent = 'GCash'; badge.className = 'badge bg-primary'; }
+          if (text) text.innerHTML = 'Send payment to our verified GCash account and include your Order ID <strong>' + data.id + '</strong> in the notes:';
+          if (label) label.textContent = "Cheyn's Gadgets (GCash)";
+          if (val) val.textContent = '0917-824-3968';
+          if (copyBtn) copyBtn.setAttribute('data-copy', '09178243968');
+        } else if (pMethod === 'bank') {
+          if (badge) { badge.textContent = 'Bank Transfer'; badge.className = 'badge bg-info text-dark'; }
+          if (text) text.innerHTML = 'Deposit to our BDO account and specify your Order ID <strong>' + data.id + '</strong> as reference:';
+          if (label) label.textContent = "BDO • Cheyn's Gadgets";
+          if (val) val.textContent = '0012-3456-7890';
+          if (copyBtn) copyBtn.setAttribute('data-copy', '001234567890');
+        }
+      } else {
+        payNotice.classList.add('d-none');
+      }
+    }
+
     // Smooth scroll to result
     setTimeout(function () {
       resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -104,6 +135,8 @@
             product:         data.productLine || 'Ordered Gadget',
             date:            data.date,
             status:          data.statusLabel,
+            rawStatus:       data.status,
+            paymentMethod:   data.paymentMethod,
             badgeIcon:       data.badgeIcon || 'bi-bag-check-fill',
             statusBadgeIcon: data.badgeIcon || 'bi-bag-check-fill',
             currentStep:     data.currentStep || 1
@@ -195,6 +228,27 @@
         performTrack(lastOrder, lastEmail);
       }
     } catch (e) {}
+
+    // Copy button listener
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      var text = btn.getAttribute('data-copy');
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          var orig = btn.innerHTML;
+          btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+          btn.classList.remove('btn-outline-secondary');
+          btn.classList.add('btn-success');
+          setTimeout(function () {
+            btn.innerHTML = orig;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-outline-secondary');
+          }, 2000);
+        });
+      }
+    });
   });
 
 })();

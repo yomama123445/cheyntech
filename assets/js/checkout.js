@@ -186,6 +186,9 @@
           // Clear cart after placing
           CheynCart.clear();
 
+          // Show payment instructions in modal if GCash/Bank
+          renderConfirmPaymentInstructions(payload.payment);
+
           // Show modal
           var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
           modal.show();
@@ -212,9 +215,64 @@
           } catch(e) {}
           CheynCart.clear();
 
+          // Show payment instructions in modal if GCash/Bank
+          renderConfirmPaymentInstructions(payload.payment);
+
           var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
           modal.show();
         });
+      });
+    }
+
+    /* ── Render payment instructions in confirmation modal ── */
+    function renderConfirmPaymentInstructions(paymentMethod) {
+      var box = document.getElementById('confirmPaymentInstructions');
+      if (!box) return;
+      var badge = document.getElementById('confirmPaymentBadge');
+      var text = document.getElementById('confirmPaymentText');
+      var label = document.getElementById('confirmAccountLabel');
+      var val = document.getElementById('confirmAccountVal');
+      var copyBtn = document.getElementById('confirmCopyBtn');
+
+      if (paymentMethod === 'gcash') {
+        box.classList.remove('d-none');
+        if (badge) { badge.textContent = 'GCash'; badge.className = 'badge bg-primary'; }
+        if (text) text.innerHTML = 'Send payment to our verified GCash account and include your <strong>Order ID</strong> in the message:';
+        if (label) label.textContent = "Cheyn's Gadgets (GCash)";
+        if (val) val.textContent = '0917-824-3968';
+        if (copyBtn) copyBtn.setAttribute('data-copy', '09178243968');
+      } else if (paymentMethod === 'bank') {
+        box.classList.remove('d-none');
+        if (badge) { badge.textContent = 'Bank Transfer'; badge.className = 'badge bg-info text-dark'; }
+        if (text) text.innerHTML = 'Transfer payment to our BDO account and use your <strong>Order ID</strong> as payment reference:';
+        if (label) label.textContent = "BDO • Cheyn's Gadgets";
+        if (val) val.textContent = '0012-3456-7890';
+        if (copyBtn) copyBtn.setAttribute('data-copy', '001234567890');
+      } else {
+        box.classList.add('d-none');
+      }
+    }
+
+    /* ── Global copy-to-clipboard handler ── */
+    function initCopyButtons() {
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.copy-btn');
+        if (!btn) return;
+        var text = btn.getAttribute('data-copy');
+        if (!text) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function() {
+            var orig = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+            btn.classList.remove('btn-outline-secondary');
+            btn.classList.add('btn-success');
+            setTimeout(function() {
+              btn.innerHTML = orig;
+              btn.classList.remove('btn-success');
+              btn.classList.add('btn-outline-secondary');
+            }, 2000);
+          });
+        }
       });
     }
 
@@ -223,6 +281,7 @@
       initRadioCards();
       initFulfillmentToggle();
       initPaymentToggle();
+      initCopyButtons();
       renderSummary();
       initForm();
     });

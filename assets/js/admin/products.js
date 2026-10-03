@@ -13,8 +13,8 @@ function conditionBadge(cond) {
 
 function statusBadge(st, stock) {
   if (stock === 0) return '<span class="badge-ct badge-outofstock">Out of Stock</span>';
-  if (stock <= 3)  return '<span class="badge rounded-pill td-sm-badge">Low Stock</span>';
-  return '<span class="badge-ct badge-available">Available</span>';
+  if (stock <= 3)  return '<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle rounded-pill px-2 py-1"><i class="bi bi-exclamation-triangle-fill me-1"></i>Low Stock</span>';
+  return '<span class="badge-ct badge-available">In Stock</span>';
 }
 
 function renderTable(list) {
@@ -37,7 +37,7 @@ function renderTable(list) {
       <td class="d-none d-lg-table-cell">${conditionBadge(p.condition)}</td>
       <td class="text-sm fw-700 text-ct">₱${Number(p.price || 0).toLocaleString()}</td>
       <td class="d-none d-md-table-cell">
-        <span>${p.stock}</span>
+        <span class="${p.stock <= 3 ? 'fw-700 text-danger' : 'fw-600'}">${p.stock}</span>
       </td>
       <td class="d-none d-lg-table-cell">${statusBadge(p.status, p.stock)}</td>
       <td class="pe-4">
