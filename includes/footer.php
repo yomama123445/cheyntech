@@ -44,10 +44,6 @@
           </div>
         </div>
       </div>
-      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
-        <p class="mb-0">&copy; <?= date('Y') ?> Cheyn Gadgets. All rights reserved. Function-tested hardware in Roxas City.</p>
-        <p class="mb-0">Capiz, Western Visayas, Philippines</p>
-      </div>
     </div>
   </footer>
 
