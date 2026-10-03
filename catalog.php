@@ -237,7 +237,7 @@ require 'includes/header.php';
   </div>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/products-data.js"></script>
-  <script src="assets/js/catalog.js"></script>
+  <script src="<?= asset_url('assets/js/products-data.js') ?>"></script>
+  <script src="<?= asset_url('assets/js/catalog.js') ?>"></script>
 </body>
 </html>

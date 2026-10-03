@@ -19,3 +19,16 @@ if (session_status() === PHP_SESSION_NONE) {
 
     session_start();
 }
+
+/**
+ * Generates cache-busted asset URL based on file modification timestamp.
+ * Prevents aggressive browser/proxy caching from serving stale CSS and JS.
+ */
+if (!function_exists('asset_url')) {
+    function asset_url(string $path): string {
+        $cleanPath = ltrim($path, '/');
+        $fsPath = __DIR__ . '/../' . (str_starts_with($cleanPath, '../') ? substr($cleanPath, 3) : $cleanPath);
+        $v = file_exists($fsPath) ? (string)filemtime($fsPath) : '1.0';
+        return $path . '?v=' . $v;
+    }
+}

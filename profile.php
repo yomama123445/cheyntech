@@ -181,6 +181,6 @@ require 'includes/header.php';
   </main>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/profile.js"></script>
+  <script src="<?= asset_url('assets/js/profile.js') ?>"></script>
 </body>
 </html>

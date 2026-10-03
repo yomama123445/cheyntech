@@ -148,6 +148,6 @@ require 'includes/header.php';
   </main>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/contact.js"></script>
+  <script src="<?= asset_url('assets/js/contact.js') ?>"></script>
 </body>
 </html>

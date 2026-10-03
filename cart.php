@@ -95,6 +95,6 @@ require 'includes/header.php';
   </main>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/cart.js"></script>
+  <script src="<?= asset_url('assets/js/cart.js') ?>"></script>
 </body>
 </html>

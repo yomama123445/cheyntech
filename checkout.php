@@ -313,7 +313,7 @@ require 'includes/header.php';
   </div>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/checkout.js"></script>
+  <script src="<?= asset_url('assets/js/checkout.js') ?>"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var modalEl = document.getElementById('confirmationModal');

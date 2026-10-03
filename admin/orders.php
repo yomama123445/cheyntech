@@ -257,7 +257,7 @@ require '../includes/admin_sidebar.php';
 <div class="toast-ct" id="toastMsg" role="alert" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/admin/orders.js"></script>
+<script src="<?= asset_url('../assets/js/main.js') ?>"></script>
+<script src="<?= asset_url('../assets/js/admin/orders.js') ?>"></script>
 </body>
 </html>

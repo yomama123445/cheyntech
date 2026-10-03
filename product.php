@@ -210,8 +210,8 @@ require 'includes/header.php';
   </aside>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/products-data.js"></script>
-  <script src="assets/js/product.js"></script>
+  <script src="<?= asset_url('assets/js/products-data.js') ?>"></script>
+  <script src="<?= asset_url('assets/js/product.js') ?>"></script>
 </body>
 </html>
 

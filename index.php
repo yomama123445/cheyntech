@@ -408,6 +408,6 @@ require 'includes/header.php';
   </section>
 
 <?php require 'includes/footer.php'; ?>
-  <script src="assets/js/index.js"></script>
+  <script src="<?= asset_url('assets/js/index.js') ?>"></script>
 </body>
 </html>
