@@ -2439,23 +2439,98 @@ img { max-width: 100%; }
 }
 .hero-badge i { color: var(--ct-primary); }
 
-.story-img-wrap {
-  background: var(--ct-primary-soft);
-  border: 1.5px solid var(--ct-primary-light);
+.store-feature-card {
+  background: #ffffff;
+  border: 1px solid var(--ct-border);
   border-radius: var(--ct-radius-lg);
-  padding: 3rem 2rem;
+  overflow: hidden;
+  box-shadow: var(--ct-shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.store-feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ct-shadow-md);
+}
+
+.store-feature-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  background: #f1f5f9;
+}
+
+.store-feature-caption {
+  padding: 1.25rem 1.5rem;
+  background: #ffffff;
+  border-top: 1px solid var(--ct-border-light);
+}
+
+.gallery-card {
+  background: #ffffff;
+  border: 1px solid var(--ct-border);
+  border-radius: var(--ct-radius);
+  overflow: hidden;
+  box-shadow: var(--ct-shadow-xs);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.5rem;
-  min-height: 280px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
-.story-img-wrap i {
-  font-size: 3.5rem;
+
+.gallery-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ct-shadow-md);
+  border-color: #cbd5e1;
+}
+
+.gallery-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover .gallery-img {
+  transform: scale(1.04);
+}
+
+.gallery-body {
+  padding: 1rem 1.25rem;
+  flex: 1;
+}
+
+.gallery-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--ct-primary);
-  margin-bottom: 0.5rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.gallery-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ct-text);
+  margin-bottom: 0.25rem;
+}
+
+.gallery-desc {
+  font-size: 0.84rem;
+  color: var(--ct-text-secondary);
+  line-height: 1.45;
+  margin-bottom: 0;
 }
 
 .mission-box {
@@ -2465,17 +2540,6 @@ img { max-width: 100%; }
   padding: 1.25rem 1.5rem;
   margin-top: 1.5rem;
 }
-
-.about-stat-box      { background: #fff; border: 1.5px solid var(--ct-border); border-radius: var(--ct-radius); padding: 1.5rem; text-align: center; transition: var(--ct-transition); }
-.about-stat-box:hover { border-color: var(--ct-primary); box-shadow: var(--ct-shadow-pink); }
-.about-stat-num      { font-size: 1.85rem; font-weight: 800; color: var(--ct-primary); line-height: 1.1; }
-.about-stat-label    { font-size: 0.85rem; color: var(--ct-muted); margin-top: 0.25rem; }
-
-.about-usp-card      { background: var(--ct-primary-soft); border-radius: var(--ct-radius); padding: 1.5rem; text-align: center; border: 1.5px solid var(--ct-primary-light); height: 100%; transition: var(--ct-transition); }
-.about-usp-card:hover { background: var(--ct-primary); color: #fff; }
-.about-usp-icon      { font-size: 2.2rem; color: var(--ct-primary); margin-bottom: 0.75rem; transition: var(--ct-transition); }
-.about-usp-card:hover .about-usp-icon { color: #fff; }
-.about-usp-title     { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; }
 
 /* ===================================================
    ADMIN — Quick Action cards
