@@ -12,18 +12,27 @@ require 'includes/header.php';
         <div class="col-lg-6 col-md-7">
           <div class="hero-eyebrow">
             <span class="live-dot"></span>
-            <span>Live Roxas City Storefront · In Stock for Pickup</span>
+            <span>Roxas City Storefront · In Stock for Pickup</span>
           </div>
-          <h1>Tested Hardware.<br><span class="highlight">Certified Condition.</span></h1>
-          <p class="lead mt-3">Every phone undergoes 20+ hardware diagnostic checks before listing. Inspected in-store with a 7-day replacement guarantee.</p>
+          <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
+          <p class="lead mt-3">Pre-owned and brand-new smartphones and tablets — inspected in-store and available for pickup or local delivery across Roxas City.</p>
           <div class="d-flex align-items-center gap-3 mt-4 flex-wrap">
             <a href="catalog.php" class="btn btn-ct text-white px-4">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
             <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
           </div>
-          <div class="d-flex gap-2 mt-4 pt-1 flex-wrap">
-            <span class="badge-grade"><i class="bi bi-patch-check-fill text-success"></i> Grade A · Pristine</span>
-            <span class="badge-grade"><i class="bi bi-battery-charging text-primary"></i> ≥85% Battery Health</span>
-            <span class="badge-grade"><i class="bi bi-unlock-fill text-dark"></i> Factory Unlocked</span>
+          <div class="d-flex gap-3 mt-4 pt-1 flex-wrap">
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <i class="bi bi-shield-check text-ct fs-5"></i>
+              <span class="small fw-semibold">7-Day Replacement</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
+              <span class="small fw-semibold">20+ Point Check</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <i class="bi bi-truck text-ct fs-5"></i>
+              <span class="small fw-semibold">Local Roxas City Dispatch</span>
+            </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
@@ -371,106 +380,6 @@ require 'includes/header.php';
     </div>
   </section>
 
-  <!-- INTERACTIVE EDITORIAL SHOWCASE: CERTIFIED HARDWARE TIERS -->
-  <section class="py-5 editorial-tiers-section" id="grades">
-    <div class="container">
-      <div class="section-header text-center mb-5">
-        <span class="editorial-eyebrow">A Better Standard of Hardware</span>
-        <h2 class="editorial-title">Transparent Grading.<br><span class="highlight">Zero Ambiguity.</span></h2>
-        <p class="section-subtitle mx-auto" style="max-width: 580px;">
-          Explore real battery health baselines, cosmetic standards, and warranty coverage across our three hardware tiers.
-        </p>
-      </div>
-
-      <!-- Segmented Tier Switcher -->
-      <div class="tier-switcher-wrap d-flex justify-content-center mb-4">
-        <div class="tier-nav-pill-group" role="tablist" aria-label="Hardware tiers">
-          <button type="button" class="tier-pill-btn active" data-tier="pristine" role="tab" aria-selected="true" aria-controls="tierShowcaseStage">
-            <i class="bi bi-patch-check-fill text-success me-1"></i> Pristine Grade A
-          </button>
-          <button type="button" class="tier-pill-btn" data-tier="sealed" role="tab" aria-selected="false" aria-controls="tierShowcaseStage">
-            <i class="bi bi-box-seam text-primary me-1"></i> Brand New Sealed
-          </button>
-          <button type="button" class="tier-pill-btn" data-tier="daily" role="tab" aria-selected="false" aria-controls="tierShowcaseStage">
-            <i class="bi bi-phone text-warning me-1"></i> Daily Driver (Grade B)
-          </button>
-        </div>
-      </div>
-
-      <!-- Interactive Spotlight Display Stage -->
-      <div class="spotlight-card tier-showcase-stage" id="tierShowcaseStage">
-        <div class="row align-items-center g-4 p-4 p-lg-5">
-          <!-- Left: Hardware Hero Visual -->
-          <div class="col-lg-5 text-center">
-            <div class="tier-device-preview">
-              <span class="tier-active-badge" id="tierBadge">Grade A · Pristine</span>
-              <div class="tier-img-wrap my-3">
-                <img id="tierImg" src="assets/img/iphone_13pro.jpeg" alt="Pristine Grade A Device" class="img-fluid tier-photo" loading="lazy">
-              </div>
-              <div class="tier-hud-metrics d-flex justify-content-center gap-2 flex-wrap">
-                <span class="tier-spec-chip" id="tierBatteryChip"><i class="bi bi-battery-charging text-primary"></i> ≥85% Battery Health</span>
-                <span class="tier-spec-chip" id="tierCosmeticChip"><i class="bi bi-stars text-warning"></i> Near-Flawless Body</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Clear Editorial Specifications -->
-          <div class="col-lg-7">
-            <div class="tier-content-panel ps-lg-4">
-              <div class="tier-headline-wrap mb-4">
-                <span class="tier-kicker" id="tierKicker">FLAGSHIP VALUE</span>
-                <h3 class="tier-name mb-2" id="tierHeading">Pristine Grade A</h3>
-                <p class="tier-summary" id="tierSummary">
-                  Indistinguishable from new at arm's length. Carefully selected pre-owned devices with zero screen imperfections and verified original internal components.
-                </p>
-              </div>
-
-              <!-- Comparative Points Grid -->
-              <div class="tier-features-grid row g-3 mb-4">
-                <div class="col-sm-6">
-                  <div class="tier-feature-item">
-                    <div class="tier-feature-label">Cosmetic Standard</div>
-                    <div class="tier-feature-val" id="tierCosmeticVal">Micro-wear only visible under harsh direct light. Screen is 100% scratch-free.</div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="tier-feature-item">
-                    <div class="tier-feature-label">Battery Baseline</div>
-                    <div class="tier-feature-val" id="tierBatteryVal">≥85% to 100% genuine health. Never degraded or third-party locked.</div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="tier-feature-item">
-                    <div class="tier-feature-label">In The Box</div>
-                    <div class="tier-feature-val" id="tierBoxVal">CheynTech safety case packaging + fast-charging cable + 20W power adapter.</div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="tier-feature-item">
-                    <div class="tier-feature-label">Warranty &amp; Support</div>
-                    <div class="tier-feature-val" id="tierWarrantyVal">7-day 1-to-1 in-store replacement + 30-day hardware service warranty.</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Action Bar -->
-              <div class="tier-action-bar d-flex align-items-center justify-content-between flex-wrap gap-3 pt-3 border-top">
-                <div>
-                  <span class="text-muted small d-block">Typical Price Range</span>
-                  <span class="fw-bold fs-5 text-dark" id="tierPriceRange">₱14,500 – ₱34,500</span>
-                </div>
-                <a href="catalog.php?cat=preowned" class="btn btn-ct text-white px-4" id="tierCtaBtn">
-                  Browse Grade A Inventory <i class="bi bi-arrow-right ms-1"></i>
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- CTA BANNER -->
   <section class="cta-section text-center">
