@@ -496,9 +496,33 @@ document.getElementById('sortSelect')?.addEventListener('change', e => {
 });
 
 /* ============================================================
+   SHIMMER SKELETON PLACEHOLDER
+   ============================================================ */
+function renderSkeletonGrid() {
+  const grid = document.getElementById('productGrid');
+  if (!grid) return;
+  grid.innerHTML = Array.from({ length: 6 }).map(() => `
+    <div class="col">
+      <div class="skeleton-card">
+        <div class="skeleton-box skeleton-img"></div>
+        <div class="skeleton-body">
+          <div class="skeleton-box skeleton-line title"></div>
+          <div class="skeleton-box skeleton-line" style="width: 55%;"></div>
+          <div class="skeleton-box skeleton-line price"></div>
+        </div>
+        <div class="skeleton-footer">
+          <div class="skeleton-box skeleton-btn"></div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
    INIT & API FETCH
    ============================================================ */
 async function loadCatalogProducts() {
+  renderSkeletonGrid();
   try {
     const res = await fetch('api/products/get.php', {
       headers: { 'Accept': 'application/json' },

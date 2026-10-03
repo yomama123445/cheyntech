@@ -66,10 +66,36 @@ require 'includes/header.php';
           <!-- Short description -->
           <p class="text-muted mb-3" id="productShortDesc"></p>
 
-          <!-- Trust note -->
-          <div class="d-flex align-items-center gap-2 mb-4 p-3 bg-ct-soft rounded-ct-lg">
-            <i class="bi bi-patch-check-fill text-ct fs-5 flex-shrink-0"></i>
-            <span class="small" id="trustNoteText">Full function test passed — battery, screen, cameras, and all connectivity checked. <strong>7-day replacement guarantee</strong> · Comes with charger and original box.</span>
+          <!-- Quality Assurance Badges Grid -->
+          <div class="quality-badges-grid mb-4">
+            <div class="quality-badge-item">
+              <i class="bi bi-shield-check"></i>
+              <div>
+                <strong>IMEI &amp; Network Clean</strong>
+                <span>100% factory unlocked</span>
+              </div>
+            </div>
+            <div class="quality-badge-item">
+              <i class="bi bi-battery-charging"></i>
+              <div>
+                <strong>Battery Tested</strong>
+                <span>≥85% health guaranteed</span>
+              </div>
+            </div>
+            <div class="quality-badge-item">
+              <i class="bi bi-arrow-repeat"></i>
+              <div>
+                <strong>7-Day Replacement</strong>
+                <span>30-day service warranty</span>
+              </div>
+            </div>
+            <div class="quality-badge-item">
+              <i class="bi bi-box-seam"></i>
+              <div>
+                <strong>Certified Inclusions</strong>
+                <span>Charger &amp; cord tested</span>
+              </div>
+            </div>
           </div>
 
           <!-- CTA Buttons -->
@@ -166,6 +192,22 @@ require 'includes/header.php';
 
     </div><!-- /container -->
   </main>
+
+  <!-- ═══ STICKY MOBILE BOTTOM BAR ═══ -->
+  <aside class="sticky-mobile-bar d-md-none" id="stickyMobileBar" aria-label="Quick Purchase">
+    <div class="container-fluid px-3 py-1 d-flex align-items-center justify-content-between gap-2">
+      <div class="d-flex align-items-center gap-2 overflow-hidden">
+        <img id="stickyBarImg" src="assets/products/placeholder.jpg" alt="Thumbnail" class="sticky-bar-thumb" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+        <div class="text-truncate">
+          <div class="sticky-bar-title text-truncate" id="stickyBarTitle">Gadget</div>
+          <div class="sticky-bar-price" id="stickyBarPrice">₱0</div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-ct btn-sm py-2 px-3 text-nowrap fw-700" id="stickyBarAddBtn">
+        <i class="bi bi-cart-plus me-1"></i> Add to Cart
+      </button>
+    </div>
+  </aside>
 
 <?php require 'includes/footer.php'; ?>
   <script src="assets/js/products-data.js"></script>

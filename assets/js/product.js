@@ -144,6 +144,8 @@
           currentStorage = btn.dataset.storage;
           currentPrice   = parseInt(btn.dataset.price, 10);
           if (priceEl) priceEl.textContent = fmt(currentPrice);
+          var stickyPriceEl = document.getElementById('stickyBarPrice');
+          if (stickyPriceEl) stickyPriceEl.textContent = fmt(currentPrice);
           var specStorageEl = document.getElementById('specStorage');
           if (specStorageEl) specStorageEl.textContent = currentStorage;
         });
@@ -231,6 +233,37 @@
           image   : product.image,
         }, addBtn);
       };
+    }
+
+    /* --- Sticky Mobile Purchase Bar --- */
+    var stickyBar   = document.getElementById('stickyMobileBar');
+    var stickyTitle = document.getElementById('stickyBarTitle');
+    var stickyPrice = document.getElementById('stickyBarPrice');
+    var stickyImg   = document.getElementById('stickyBarImg');
+    var stickyAdd   = document.getElementById('stickyBarAddBtn');
+
+    if (stickyBar) {
+      if (stickyTitle) stickyTitle.textContent = product.name;
+      if (stickyPrice) stickyPrice.textContent = fmt(currentPrice);
+      if (stickyImg && product.image) {
+        var sImg = product.image.startsWith('/') ? product.image.substring(1) : product.image;
+        stickyImg.src = sImg;
+      }
+      if (stickyAdd && addBtn) {
+        stickyAdd.onclick = function () {
+          addBtn.click();
+        };
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!addBtn) return;
+        var rect = addBtn.getBoundingClientRect();
+        if (rect.bottom < 0) {
+          stickyBar.classList.add('visible');
+        } else {
+          stickyBar.classList.remove('visible');
+        }
+      }, { passive: true });
     }
 
     /* --- Related products grid --- */

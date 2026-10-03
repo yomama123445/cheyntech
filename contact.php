@@ -91,15 +91,15 @@ require 'includes/header.php';
                 <div class="contact-info-item">
                   <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-geo-alt-fill"></i></span>
                   <div>
-                    <div class="contact-info-label">Address</div>
-                    <div class="contact-info-value">Roxas City, Capiz, Philippines</div>
+                    <div class="contact-info-label">Store Location</div>
+                    <div class="contact-info-value">Roxas Avenue, Roxas City, Capiz</div>
                   </div>
                 </div>
                 <div class="contact-info-item">
                   <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-telephone-fill"></i></span>
                   <div>
-                    <div class="contact-info-label">Phone</div>
-                    <div class="contact-info-value"><span class="text-muted fst-italic">Available via Facebook &amp; Email</span></div>
+                    <div class="contact-info-label">Store Hotline / SMS</div>
+                    <div class="contact-info-value"><a href="tel:09178243968" class="text-dark text-decoration-none fw-600">0917-824-3968</a></div>
                   </div>
                 </div>
                 <div class="contact-info-item">
