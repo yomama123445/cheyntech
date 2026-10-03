@@ -51,7 +51,7 @@ $activePage      = $activePage      ?? '';
           <?php if (!empty($_SESSION['user_id'])): ?>
             <li class="nav-item"><a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" <?= $activePage === 'track-order' ? 'aria-current="page"' : '' ?> href="track-order.php">Track Order</a></li>
           <?php else: ?>
-            <li class="nav-item"><a class="nav-link <?= $activePage === 'login'       ? 'active' : '' ?>" <?= $activePage === 'login'       ? 'aria-current="page"' : '' ?> href="login.php">Sign In</a></li>
+            <li class="nav-item"><a class="nav-link <?= $activePage === 'login'       ? 'active' : '' ?>" <?= $activePage === 'login'       ? 'aria-current="page"' : '' ?> href="login.php#register">Sign Up</a></li>
           <?php endif; ?>
         </ul>
         <div class="d-flex align-items-center gap-3 nav-icons">

@@ -21,7 +21,7 @@ require 'includes/header.php';
             <?php if (!empty($_SESSION['user_id'])): ?>
               <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
             <?php else: ?>
-              <a href="login.php" class="btn btn-ct-outline px-4">Sign In</a>
+              <a href="login.php#register" class="btn btn-ct-outline px-4">Sign Up</a>
             <?php endif; ?>
           </div>
           <div class="d-flex gap-3 mt-4 pt-1 flex-wrap">
@@ -401,7 +401,7 @@ require 'includes/header.php';
         <?php if (!empty($_SESSION['user_id'])): ?>
           <a href="track-order.php" class="btn btn-cta-outline-light px-4">Track Order</a>
         <?php else: ?>
-          <a href="login.php" class="btn btn-cta-outline-light px-4">Sign In</a>
+          <a href="login.php#register" class="btn btn-cta-outline-light px-4">Sign Up</a>
         <?php endif; ?>
       </div>
     </div>
