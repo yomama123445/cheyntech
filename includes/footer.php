@@ -7,38 +7,46 @@
             <img src="assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
             <span class="footer-brand-name">Cheyn Gadgets</span>
           </a>
-          <p class="mb-3">Your trusted source for pre-owned, refurbished, and brand-new gadgets in Roxas City.</p>
+          <p class="mb-3">Your trusted electronics storefront in Roxas City. Specializing in function-tested pre-owned, refurbished, and brand-new smartphones, tablets, and wearables.</p>
+          <div class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-3 rounded-pill" style="background:#1e293b;border:1px solid #334155;font-size:0.78rem;color:#cbd5e1;">
+            <i class="bi bi-geo-alt-fill text-danger"></i>
+            <span>Roxas City, Capiz · Tested &amp; Certified Units</span>
+          </div>
           <div class="social-links d-flex gap-2">
             <a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
             <a aria-disabled="true" tabindex="-1" title="Coming soon" aria-label="Instagram (coming soon)" style="opacity:.45;cursor:default;pointer-events:none;"><i class="bi bi-instagram"></i></a>
             <a href="https://www.tiktok.com/@cheyniphonesandgadgets" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
-        <div class="col-6 col-md-3 col-lg-2">
+        <div class="col-6 col-md-3 col-lg-2 offset-lg-1">
           <h6 class="footer-heading">Shop</h6>
           <div class="footer-links">
             <a href="catalog.php?cat=preowned">Pre-owned iPhones</a>
             <a href="catalog.php?cat=new">New iPhones</a>
-            <a href="catalog.php?cat=android">Android</a>
-            <a href="catalog.php?cat=tablet">Tablets</a>
+            <a href="catalog.php?cat=android">Android Devices</a>
+            <a href="catalog.php?cat=tablet">Tablets &amp; iPads</a>
           </div>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
-          <h6 class="footer-heading">Help</h6>
+          <h6 class="footer-heading">Support &amp; Trust</h6>
           <div class="footer-links">
             <a href="track-order.php">Track Order</a>
-            <a href="contact.php">Contact Us</a>
-            <a href="about.php">About Us</a>
+            <a href="contact.php">Store Location &amp; Contact</a>
+            <a href="about.php">Inspection Process</a>
           </div>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
           <h6 class="footer-heading">Account</h6>
           <div class="footer-links">
-            <a href="login.php">Log In</a>
-            <a href="login.php#register">Register</a>
-            <a href="cart.php">My Cart</a>
+            <a href="login.php">Sign In</a>
+            <a href="login.php#register">Create Account</a>
+            <a href="cart.php">Shopping Cart</a>
           </div>
         </div>
+      </div>
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p class="mb-0">&copy; <?= date('Y') ?> Cheyn Gadgets. All rights reserved. Function-tested hardware in Roxas City.</p>
+        <p class="mb-0">Capiz, Western Visayas, Philippines</p>
       </div>
     </div>
   </footer>

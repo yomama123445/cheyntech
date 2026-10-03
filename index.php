@@ -10,24 +10,28 @@ require 'includes/header.php';
     <div class="container">
       <div class="row align-items-center gy-4">
         <div class="col-lg-6 col-md-7">
-          <p class="hero-eyebrow mb-2">Cheyn's Gadgets · Roxas City</p>
-          <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
-          <p class="lead mt-3">Pre-owned, refurbished, and brand-new phones and tablets from Cheyn's Gadgets — graded in-store and available for pickup or delivery in Roxas City.</p>
-          <div class="mt-4">
-            <a href="catalog.php" class="btn btn-ct text-white">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Cheyn's Gadgets · Roxas City Storefront</span>
           </div>
-          <div class="d-flex gap-3 mt-4 flex-wrap">
-            <div class="d-flex align-items-center gap-1 text-muted">
-              <i class="bi bi-shield-fill-check text-ct"></i>
-              <span class="small">7-Day Guarantee</span>
+          <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
+          <p class="lead mt-3">Pre-owned, refurbished, and brand-new smartphones and tablets — graded in-store and available for pickup or local delivery across Roxas City.</p>
+          <div class="d-flex align-items-center gap-3 mt-4 flex-wrap">
+            <a href="catalog.php" class="btn btn-ct text-white px-4">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
+          </div>
+          <div class="d-flex gap-4 mt-4 pt-2 flex-wrap">
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <i class="bi bi-shield-check text-ct fs-5"></i>
+              <span class="small fw-semibold">7-Day Guarantee</span>
             </div>
-            <div class="d-flex align-items-center gap-1 text-muted">
-              <i class="bi bi-truck text-ct"></i>
-              <span class="small">Local Delivery</span>
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <i class="bi bi-truck text-ct fs-5"></i>
+              <span class="small fw-semibold">Roxas City Delivery</span>
             </div>
-            <div class="d-flex align-items-center gap-1 text-muted">
-              <i class="bi bi-patch-check-fill text-ct"></i>
-              <span class="small">Function Tested</span>
+            <div class="d-flex align-items-center gap-2 text-secondary">
+              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
+              <span class="small fw-semibold">20+ Point Inspection</span>
             </div>
           </div>
         </div>
@@ -50,33 +54,44 @@ require 'includes/header.php';
     </div>
   </section>
 
-
-  <!-- FEATURE STRIP -->
+  <!-- FEATURE / CERTIFICATION STRIP -->
   <div class="feature-strip">
     <div class="container">
-      <div class="row row-cols-2 row-cols-md-4 g-3 justify-content-center text-center">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
         <div class="col">
           <div class="feature-strip-item">
-            <i class="bi bi-recycle"></i>
-            <span>Pre-owned, Refurbished &amp; Brand New</span>
+            <i class="bi bi-shield-check"></i>
+            <div class="strip-text">
+              <span class="strip-title">7-Day Replacement</span>
+              <span class="strip-desc">Store warranty on functional defects</span>
+            </div>
           </div>
         </div>
         <div class="col">
           <div class="feature-strip-item">
-            <i class="bi bi-cash-coin"></i>
-            <span>Cash · GCash · Bank Transfer</span>
+            <i class="bi bi-cpu"></i>
+            <div class="strip-text">
+              <span class="strip-title">Hardware Tested</span>
+              <span class="strip-desc">Cameras, screen, battery &amp; speakers</span>
+            </div>
           </div>
         </div>
         <div class="col">
           <div class="feature-strip-item">
             <i class="bi bi-upc-scan"></i>
-            <span>IMEI Verified Units</span>
+            <div class="strip-text">
+              <span class="strip-title">IMEI Verified</span>
+              <span class="strip-desc">Authentic serial &amp; clean status</span>
+            </div>
           </div>
         </div>
         <div class="col">
           <div class="feature-strip-item">
             <i class="bi bi-geo-alt-fill"></i>
-            <span>Roxas City, Capiz</span>
+            <div class="strip-text">
+              <span class="strip-title">Roxas City Storefront</span>
+              <span class="strip-desc">Capiz pickup &amp; local dispatch</span>
+            </div>
           </div>
         </div>
       </div>
@@ -309,13 +324,17 @@ require 'includes/header.php';
 
 
   <!-- CTA BANNER -->
-  <section class="cta-section text-center text-white">
+  <section class="cta-section text-center">
     <div class="container">
-      <h2 class="mb-2">Ready to Find Your Next Gadget?</h2>
-      <p class="mb-4 opacity-75">Shop hundreds of pre-owned, refurbished, and brand-new devices today.</p>
+      <div class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-3 rounded-pill" style="background:#1e293b;border:1px solid #334155;font-size:0.75rem;color:#cbd5e1;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">
+        <i class="bi bi-shield-check text-primary"></i>
+        <span>Certified Electronics Storefront</span>
+      </div>
+      <h2 class="mb-3">Ready to find your next gadget?</h2>
+      <p class="mb-4 mx-auto" style="max-width: 520px; color: #94a3b8; font-size: 1.05rem;">Browse function-tested iPhones, Android smartphones, and tablets. Order online for pickup or fast Roxas City delivery.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="catalog.php" class="btn btn-cta-light">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
-        <a href="about.php" class="btn btn-cta-outline-light">Learn More</a>
+        <a href="catalog.php" class="btn btn-cta-light">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="track-order.php" class="btn btn-cta-outline-light">Track Existing Order</a>
       </div>
     </div>
   </section>

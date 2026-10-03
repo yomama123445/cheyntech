@@ -37,7 +37,7 @@ $activePage      = $activePage      ?? '';
     <div class="container">
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.php">
         <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="38" height="38">
-        <span class="brand-name">Cheyn Gadgets</span>
+        <span class="brand-name">Cheyn Gadgets<span class="brand-dot">.</span></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
               aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
