@@ -130,7 +130,11 @@ function buildCardHTML(p) {
         </div>
         <div class="card-body">
           <p class="product-name">${p.name}</p>
-          <p class="product-desc">${p.desc}</p>
+          <div class="product-spec-row">
+            <span class="spec-chip">${variant}</span>
+            <span class="spec-chip">${p.condition === 'Brand New' ? 'Sealed Box' : 'Grade A'}</span>
+            <span class="spec-chip text-success"><i class="bi bi-shield-check"></i> Verified</span>
+          </div>
           <p class="product-price">${formatPrice(price)}</p>
         </div>
         <div class="card-footer">

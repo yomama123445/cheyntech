@@ -11,42 +11,49 @@ require 'includes/header.php';
       <div class="row align-items-center gy-4">
         <div class="col-lg-6 col-md-7">
           <div class="hero-eyebrow">
-            <span class="eyebrow-dot"></span>
-            <span>Cheyn's Gadgets · Roxas City Storefront</span>
+            <span class="live-dot"></span>
+            <span>Live Roxas City Storefront · In Stock for Pickup</span>
           </div>
-          <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
-          <p class="lead mt-3">Pre-owned, refurbished, and brand-new smartphones and tablets — graded in-store and available for pickup or local delivery across Roxas City.</p>
+          <h1>Tested Hardware.<br><span class="highlight">Certified Condition.</span></h1>
+          <p class="lead mt-3">Every phone undergoes 20+ hardware diagnostic checks before listing. Inspected in-store with a 7-day replacement guarantee.</p>
           <div class="d-flex align-items-center gap-3 mt-4 flex-wrap">
             <a href="catalog.php" class="btn btn-ct text-white px-4">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
             <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
           </div>
-          <div class="d-flex gap-4 mt-4 pt-2 flex-wrap">
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-shield-check text-ct fs-5"></i>
-              <span class="small fw-semibold">7-Day Guarantee</span>
-            </div>
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-truck text-ct fs-5"></i>
-              <span class="small fw-semibold">Roxas City Delivery</span>
-            </div>
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
-              <span class="small fw-semibold">20+ Point Inspection</span>
-            </div>
+          <div class="d-flex gap-2 mt-4 pt-1 flex-wrap">
+            <span class="badge-grade"><i class="bi bi-patch-check-fill text-success"></i> Grade A · Pristine</span>
+            <span class="badge-grade"><i class="bi bi-battery-charging text-primary"></i> ≥85% Battery Health</span>
+            <span class="badge-grade"><i class="bi bi-unlock-fill text-dark"></i> Factory Unlocked</span>
           </div>
         </div>
         <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
-          <div class="hero-img-frame">
-            <a href="product.php?id=iphone13" class="d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none">
-              <img
-                id="heroProductImg"
-                src="assets/img/iphone_13pro.jpeg"
-                alt="Featured product — iPhone 13"
-                class="hero-product-img"
-                loading="eager"
-                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
-              >
-            </a>
+          <div class="hero-device-wrapper">
+            <!-- Floating diagnostic HUD proof chips -->
+            <div class="hud-chip hud-top-left">
+              <i class="bi bi-shield-check text-success fs-6"></i>
+              <span>Clean IMEI · NTC</span>
+            </div>
+            <div class="hud-chip hud-bottom-left">
+              <i class="bi bi-battery-charging text-primary fs-6"></i>
+              <span>89% Battery Health</span>
+            </div>
+            <div class="hud-chip hud-bottom-right">
+              <i class="bi bi-check2-circle text-info fs-6"></i>
+              <span>Face ID &amp; Cameras Passed</span>
+            </div>
+
+            <div class="hero-img-frame">
+              <a href="product.php?id=iphone13" class="d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none">
+                <img
+                  id="heroProductImg"
+                  src="assets/img/iphone_13pro.jpeg"
+                  alt="Featured product — iPhone 13"
+                  class="hero-product-img"
+                  loading="eager"
+                  onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+                >
+              </a>
+            </div>
           </div>
           <p class="hero-img-caption" id="heroProductCaption">iPhone 13 · 128GB · Midnight</p>
         </div>
@@ -54,43 +61,47 @@ require 'includes/header.php';
     </div>
   </section>
 
-  <!-- FEATURE / CERTIFICATION STRIP -->
-  <div class="feature-strip">
+  <!-- 20-POINT DIAGNOSTIC INSPECTION STRIP -->
+  <div class="diagnostic-strip">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
         <div class="col">
-          <div class="feature-strip-item">
-            <i class="bi bi-shield-check"></i>
-            <div class="strip-text">
-              <span class="strip-title">7-Day Replacement</span>
-              <span class="strip-desc">Store warranty on functional defects</span>
+          <div class="diagnostic-item">
+            <div class="diag-icon"><i class="bi bi-display"></i></div>
+            <div class="diag-info">
+              <span class="diag-title">Screen &amp; TrueTone</span>
+              <span class="diag-spec">OLED Touch &amp; Pixels</span>
+              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Passed</span>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="feature-strip-item">
-            <i class="bi bi-cpu"></i>
-            <div class="strip-text">
-              <span class="strip-title">Hardware Tested</span>
-              <span class="strip-desc">Cameras, screen, battery &amp; speakers</span>
+          <div class="diagnostic-item">
+            <div class="diag-icon"><i class="bi bi-battery-charging"></i></div>
+            <div class="diag-info">
+              <span class="diag-title">Battery Health</span>
+              <span class="diag-spec">Capacity ≥85% Guaranteed</span>
+              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Certified</span>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="feature-strip-item">
-            <i class="bi bi-upc-scan"></i>
-            <div class="strip-text">
-              <span class="strip-title">IMEI Verified</span>
-              <span class="strip-desc">Authentic serial &amp; clean status</span>
+          <div class="diagnostic-item">
+            <div class="diag-icon"><i class="bi bi-camera"></i></div>
+            <div class="diag-info">
+              <span class="diag-title">Audio &amp; Cameras</span>
+              <span class="diag-spec">Stereo Mic, 4K &amp; Face ID</span>
+              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Verified</span>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="feature-strip-item">
-            <i class="bi bi-geo-alt-fill"></i>
-            <div class="strip-text">
-              <span class="strip-title">Roxas City Storefront</span>
-              <span class="strip-desc">Capiz pickup &amp; local dispatch</span>
+          <div class="diagnostic-item">
+            <div class="diag-icon"><i class="bi bi-upc-scan"></i></div>
+            <div class="diag-info">
+              <span class="diag-title">Network &amp; IMEI</span>
+              <span class="diag-spec">Factory Unlocked · Clean</span>
+              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> NTC Clean</span>
             </div>
           </div>
         </div>
@@ -169,6 +180,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">iPhone 13 – 128GB Midnight</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip">Grade A</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 89%</span>
+              </div>
               <p class="product-price">₱29,500</p>
             </div>
             <div class="card-footer">
@@ -188,6 +204,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">iPhone 12 – 128GB Blue</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip">Grade A</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 87%</span>
+              </div>
               <p class="product-price">₱24,500</p>
             </div>
             <div class="card-footer">
@@ -207,6 +228,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">iPhone 11 – 128GB Black</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip">Grade A</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 86%</span>
+              </div>
               <p class="product-price">₱18,500</p>
             </div>
             <div class="card-footer">
@@ -226,6 +252,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">iPhone 14 – 128GB Midnight</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip">Grade A+</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 92%</span>
+              </div>
               <p class="product-price">₱34,500</p>
             </div>
             <div class="card-footer">
@@ -245,6 +276,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">iPhone 15 – 128GB Black</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip">Pristine</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 96%</span>
+              </div>
               <p class="product-price">₱41,500</p>
             </div>
             <div class="card-footer">
@@ -264,6 +300,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">Samsung Galaxy A06 5G – 128GB</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip text-primary">Sealed Box</span>
+                <span class="spec-chip"><i class="bi bi-shield-check text-success"></i> NTC</span>
+              </div>
               <p class="product-price">₱6,290</p>
             </div>
             <div class="card-footer">
@@ -283,6 +324,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">Apple iPad 10th Gen – 128GB</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">128GB</span>
+                <span class="spec-chip">Grade A</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 91%</span>
+              </div>
               <p class="product-price">₱23,500</p>
             </div>
             <div class="card-footer">
@@ -302,6 +348,11 @@ require 'includes/header.php';
             </div>
             <div class="card-body">
               <p class="product-name">Apple Watch – 44mm Midnight</p>
+              <div class="product-spec-row">
+                <span class="spec-chip">44mm</span>
+                <span class="spec-chip">Grade A</span>
+                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 90%</span>
+              </div>
               <p class="product-price">₱11,500</p>
             </div>
             <div class="card-footer">
@@ -320,21 +371,20 @@ require 'includes/header.php';
     </div>
   </section>
 
-
-
-
   <!-- CTA BANNER -->
   <section class="cta-section text-center">
     <div class="container">
-      <div class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-3 rounded-pill" style="background:#1e293b;border:1px solid #334155;font-size:0.75rem;color:#cbd5e1;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">
-        <i class="bi bi-shield-check text-primary"></i>
-        <span>Certified Electronics Storefront</span>
+      <h2 class="mb-2">Find your exact device in Roxas City.</h2>
+      <p class="mb-4 mx-auto text-slate-400" style="max-width: 480px; color: #94a3b8;">Filter by budget, brand, or condition for in-store pickup or local delivery.</p>
+      <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+        <a href="catalog.php?cat=preowned" class="quick-pill"><i class="bi bi-phone me-1"></i> Pre-owned iPhones</a>
+        <a href="catalog.php?cat=new" class="quick-pill"><i class="bi bi-box-seam me-1"></i> Brand New Sealed</a>
+        <a href="catalog.php?cat=android" class="quick-pill"><i class="bi bi-grid me-1"></i> Android Phones</a>
+        <a href="catalog.php?cat=tablet" class="quick-pill"><i class="bi bi-tablet me-1"></i> iPads &amp; Tablets</a>
       </div>
-      <h2 class="mb-3">Ready to find your next gadget?</h2>
-      <p class="mb-4 mx-auto" style="max-width: 520px; color: #94a3b8; font-size: 1.05rem;">Browse function-tested iPhones, Android smartphones, and tablets. Order online for pickup or fast Roxas City delivery.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="catalog.php" class="btn btn-cta-light">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
-        <a href="track-order.php" class="btn btn-cta-outline-light">Track Existing Order</a>
+        <a href="catalog.php" class="btn btn-cta-light px-4">Browse All Inventory <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="track-order.php" class="btn btn-cta-outline-light px-4">Track Order</a>
       </div>
     </div>
   </section>
