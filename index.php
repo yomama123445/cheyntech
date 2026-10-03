@@ -18,7 +18,11 @@ require 'includes/header.php';
           <p class="lead mt-3">Pre-owned and brand-new smartphones and tablets — inspected in-store and available for pickup or local delivery across Roxas City.</p>
           <div class="d-flex align-items-center gap-3 mt-4 flex-wrap">
             <a href="catalog.php" class="btn btn-ct text-white px-4">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
-            <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
+            <?php if (!empty($_SESSION['user_id'])): ?>
+              <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
+            <?php else: ?>
+              <a href="login.php" class="btn btn-ct-outline px-4">Sign In</a>
+            <?php endif; ?>
           </div>
           <div class="d-flex gap-3 mt-4 pt-1 flex-wrap">
             <div class="d-flex align-items-center gap-2 text-secondary">
@@ -394,7 +398,11 @@ require 'includes/header.php';
       </div>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
         <a href="catalog.php" class="btn btn-cta-light px-4">Browse All Inventory <i class="bi bi-arrow-right ms-1"></i></a>
-        <a href="track-order.php" class="btn btn-cta-outline-light px-4">Track Order</a>
+        <?php if (!empty($_SESSION['user_id'])): ?>
+          <a href="track-order.php" class="btn btn-cta-outline-light px-4">Track Order</a>
+        <?php else: ?>
+          <a href="login.php" class="btn btn-cta-outline-light px-4">Sign In</a>
+        <?php endif; ?>
       </div>
     </div>
   </section>

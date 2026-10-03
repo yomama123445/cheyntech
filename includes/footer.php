@@ -30,7 +30,11 @@
         <div class="col-6 col-md-3 col-lg-2">
           <h6 class="footer-heading">Support &amp; Trust</h6>
           <div class="footer-links">
-            <a href="track-order.php">Track Order</a>
+            <?php if (!empty($_SESSION['user_id'])): ?>
+              <a href="track-order.php">Track Order</a>
+            <?php else: ?>
+              <a href="login.php">Sign In to Track</a>
+            <?php endif; ?>
             <a href="contact.php">Store Location &amp; Contact</a>
             <a href="about.php">Inspection Process</a>
           </div>
