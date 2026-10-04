@@ -372,39 +372,124 @@ function initUserAuth() {
 }
 
 /* =====================================================
-   APPLE-STYLE NAV TRAY & BACKDROP CONTROLLER
+   APPLE-STYLE NAV TRAY & PERSISTENT HOVER CONTROLLER
    ===================================================== */
-function initNavTrayBackdrop() {
+function initNavTrayController() {
+  const navbar = document.querySelector('.navbar-ct');
   const backdrop = document.getElementById('navBackdrop');
-  const navItems = document.querySelectorAll('.navbar-ct .has-nav-tray');
-  if (!backdrop || !navItems.length) return;
+  const trayItems = document.querySelectorAll('.navbar-ct .has-nav-tray');
+  if (!navbar || !trayItems.length) return;
 
   let closeTimer = null;
+  let activeItem = null;
 
-  function openTray() {
+  function setActive(item) {
     clearTimeout(closeTimer);
-    document.body.classList.add('nav-tray-active');
+    if (activeItem && activeItem !== item) {
+      activeItem.classList.remove('is-active');
+    }
+    activeItem = item;
+    if (item) {
+      item.classList.add('is-active');
+      document.body.classList.add('nav-tray-active');
+      navbar.classList.add('nav-tray-open');
+    }
   }
 
-  function closeTray() {
+  function startCloseTimer() {
     clearTimeout(closeTimer);
     closeTimer = setTimeout(function() {
+      if (activeItem) {
+        activeItem.classList.remove('is-active');
+        activeItem = null;
+      }
       document.body.classList.remove('nav-tray-active');
-    }, 70);
+      navbar.classList.remove('nav-tray-open');
+    }, 220);
   }
 
-  navItems.forEach(function(item) {
-    item.addEventListener('mouseenter', openTray);
-    item.addEventListener('mouseleave', closeTray);
+  function cancelCloseTimer() {
+    clearTimeout(closeTimer);
+  }
+
+  // Hovering on specific nav buttons switches tray immediately
+  trayItems.forEach(function(item) {
+    item.addEventListener('mouseenter', function() {
+      setActive(item);
+    });
+
+    // Also if cursor is inside the tray itself, keep active
+    const trayMenu = item.querySelector('.nav-tray');
+    if (trayMenu) {
+      trayMenu.addEventListener('mouseenter', function() {
+        cancelCloseTimer();
+      });
+      trayMenu.addEventListener('mouseleave', function(e) {
+        const related = e.relatedTarget;
+        if (related && navbar.contains(related)) {
+          cancelCloseTimer();
+          return;
+        }
+        startCloseTimer();
+      });
+    }
   });
 
-  const navbar = document.querySelector('.navbar-ct');
-  if (navbar) {
-    navbar.addEventListener('mouseleave', closeTray);
+  // When hovering anywhere inside the navbar (e.g. empty space to the left of Home):
+  // Keep the current tray active!
+  navbar.addEventListener('mouseenter', function() {
+    cancelCloseTimer();
+  });
+
+  // When the cursor genuinely leaves the navbar:
+  navbar.addEventListener('mouseleave', function(e) {
+    const related = e.relatedTarget;
+    // If moving into an active tray, keep it open!
+    if (related && activeItem && activeItem.contains(related)) {
+      cancelCloseTimer();
+      return;
+    }
+    startCloseTimer();
+  });
+
+  // Clicking the backdrop closes immediately
+  if (backdrop) {
+    backdrop.addEventListener('click', function() {
+      if (activeItem) {
+        activeItem.classList.remove('is-active');
+        activeItem = null;
+      }
+      document.body.classList.remove('nav-tray-active');
+      navbar.classList.remove('nav-tray-open');
+    });
   }
 
-  backdrop.addEventListener('click', function() {
-    document.body.classList.remove('nav-tray-active');
+  // ESC key closes tray
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (activeItem) {
+        activeItem.classList.remove('is-active');
+        activeItem = null;
+      }
+      document.body.classList.remove('nav-tray-active');
+      navbar.classList.remove('nav-tray-open');
+    }
+  });
+
+  // Mobile accordion tap handler (< 992px)
+  trayItems.forEach(function(item) {
+    const link = item.querySelector('.nav-link');
+    const menu = item.querySelector('.dropdown-menu');
+    if (link && menu) {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth < 992) {
+          e.preventDefault();
+          const isOpen = menu.classList.contains('show');
+          document.querySelectorAll('.navbar-ct .dropdown-menu.show').forEach(m => m.classList.remove('show'));
+          if (!isOpen) menu.classList.add('show');
+        }
+      });
+    }
   });
 }
 
@@ -421,5 +506,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCatalogSearch();
   initStepper();
   initUserAuth();
-  initNavTrayBackdrop();
+  initNavTrayController();
 });

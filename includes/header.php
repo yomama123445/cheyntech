@@ -78,8 +78,8 @@ $activePage      = $activePage      ?? '';
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav mx-auto gap-lg-1">
           <!-- Home Dropdown -->
-          <li class="nav-item dropdown has-nav-tray">
-            <a class="nav-link dropdown-toggle <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item has-nav-tray" data-tray="home">
+            <a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php" id="homeDropdown">
               Home
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="homeDropdown">
@@ -117,8 +117,8 @@ $activePage      = $activePage      ?? '';
           </li>
 
           <!-- Apple Dropdown -->
-          <li class="nav-item dropdown has-nav-tray">
-            <a class="nav-link dropdown-toggle" href="catalog.php?cat=preowned" id="appleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item has-nav-tray" data-tray="apple">
+            <a class="nav-link" href="catalog.php?cat=preowned" id="appleDropdown">
               Apple
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="appleDropdown">
@@ -157,8 +157,8 @@ $activePage      = $activePage      ?? '';
           </li>
 
           <!-- Android Dropdown -->
-          <li class="nav-item dropdown has-nav-tray">
-            <a class="nav-link dropdown-toggle" href="catalog.php?cat=android" id="androidDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item has-nav-tray" data-tray="android">
+            <a class="nav-link" href="catalog.php?cat=android" id="androidDropdown">
               Android
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="androidDropdown">
@@ -184,7 +184,7 @@ $activePage      = $activePage      ?? '';
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">Store Standards</span>
                     <ul class="nav-tray-links">
-                      <li><a href="catalog.php?cat=android">Display &amp; Hardware Checked</a></li>
+                      <li><a href="catalog.php?cat=android">Display &amp; Touch Inspected</a></li>
                       <li><a href="catalog.php?cat=android">Clean Battery Cycles</a></li>
                       <li><a href="about.php#warranty">Local Capiz Warranty</a></li>
                       <li><a href="catalog.php?cat=android">In-Store Pickup Available</a></li>
@@ -196,8 +196,8 @@ $activePage      = $activePage      ?? '';
           </li>
 
           <!-- Tablets Dropdown -->
-          <li class="nav-item dropdown has-nav-tray">
-            <a class="nav-link dropdown-toggle" href="catalog.php?cat=tablet" id="tabletsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item has-nav-tray" data-tray="tablets">
+            <a class="nav-link" href="catalog.php?cat=tablet" id="tabletsDropdown">
               Tablets
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="tabletsDropdown">
@@ -232,8 +232,8 @@ $activePage      = $activePage      ?? '';
           </li>
 
           <!-- About Dropdown -->
-          <li class="nav-item dropdown has-nav-tray">
-            <a class="nav-link dropdown-toggle <?= $activePage === 'about' ? 'active' : '' ?>" href="about.php" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item has-nav-tray" data-tray="about">
+            <a class="nav-link <?= $activePage === 'about' ? 'active' : '' ?>" href="about.php" id="aboutDropdown">
               About
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="aboutDropdown">
@@ -268,8 +268,8 @@ $activePage      = $activePage      ?? '';
           </li>
 
           <!-- Track Order Dropdown -->
-          <li class="nav-item dropdown has-nav-tray">
-            <a class="nav-link dropdown-toggle <?= $activePage === 'track-order' ? 'active' : '' ?>" href="track-order.php" id="trackDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item has-nav-tray" data-tray="track">
+            <a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" href="track-order.php" id="trackDropdown">
               Track Order
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="trackDropdown">

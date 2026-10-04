@@ -313,18 +313,16 @@ img { max-width: 100%; }
   color: #64748b !important;
 }
 
+/* Remove dropdown caret arrows everywhere in navbar */
+.navbar-ct .nav-link::after,
+.navbar-ct .dropdown-toggle::after,
 .navbar-ct .nav-link.dropdown-toggle::after {
-  vertical-align: middle;
-  margin-left: 0.35rem;
-  font-size: 0.7rem;
-  transition: transform 0.2s ease;
+  display: none !important;
+  content: none !important;
 }
 
 /* Hover-to-Open Behavior on Desktop */
 @media (min-width: 992px) {
-  .navbar-ct .nav-item.dropdown:hover .nav-link.dropdown-toggle::after {
-    transform: rotate(180deg);
-  }
 
   .navbar-ct .nav-item.dropdown:hover > .dropdown-menu {
     display: block;
@@ -388,20 +386,28 @@ img { max-width: 100%; }
     z-index: 1020;
   }
 
-  .navbar-ct .nav-item.dropdown:hover > .dropdown-menu.nav-tray {
+  /* Active or Hover State for Nav Tray */
+  .navbar-ct .nav-item.has-nav-tray.is-active > .dropdown-menu.nav-tray,
+  .navbar-ct .nav-item.has-nav-tray:hover > .dropdown-menu.nav-tray {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) !important;
     pointer-events: auto;
   }
 
+  .navbar-ct .nav-item.has-nav-tray.is-active > .nav-link,
+  .navbar-ct .nav-item.has-nav-tray:hover > .nav-link {
+    color: #000000 !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+
   .navbar-ct .dropdown-menu.nav-tray::before {
     content: '';
     position: absolute;
-    top: -12px;
+    top: -16px;
     left: 0;
     right: 0;
-    height: 12px;
+    height: 16px;
   }
 
   /* Smooth subtle glide on links when tray opens */
@@ -412,7 +418,8 @@ img { max-width: 100%; }
                 transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .navbar-ct .nav-item.dropdown:hover > .dropdown-menu.nav-tray .nav-tray-col {
+  .navbar-ct .nav-item.has-nav-tray.is-active > .dropdown-menu.nav-tray .nav-tray-col,
+  .navbar-ct .nav-item.has-nav-tray:hover > .dropdown-menu.nav-tray .nav-tray-col {
     opacity: 1;
     transform: translateY(0);
   }
