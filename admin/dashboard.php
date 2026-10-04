@@ -18,25 +18,25 @@ require '../includes/admin_sidebar.php';
         </span>
         <div class="dropdown">
           <button class="btn p-0 d-flex align-items-center gap-2 admin-profile-btn" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="admin-user-avatar">A</div>
-            <span class="fw-600 d-none d-md-inline admin-username">Admin User</span>
+            <div class="admin-user-avatar"><?= strtoupper(substr($_SESSION['user_name'] ?? 'A', 0, 1)) ?></div>
+            <span class="fw-600 d-none d-md-inline admin-username"><?= htmlspecialchars($_SESSION['user_name'] ?? 'Admin') ?></span>
             <i class="bi bi-chevron-down admin-chevron d-none d-md-inline"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end admin-profile-menu" aria-labelledby="profileDropdown">
             <li class="admin-profile-header px-3 py-2">
               <div class="d-flex align-items-center gap-2">
-                <div class="admin-user-avatar">A</div>
+                <div class="admin-user-avatar"><?= strtoupper(substr($_SESSION['user_name'] ?? 'A', 0, 1)) ?></div>
                 <div>
-                  <div class="fw-700 admin-profile-name">Admin User</div>
-                  <div class="text-muted admin-profile-role">Administrator</div>
+                  <div class="fw-700 admin-profile-name"><?= htmlspecialchars($_SESSION['user_name'] ?? 'Admin') ?></div>
+                  <div class="text-muted admin-profile-role"><?= ucfirst(htmlspecialchars($_SESSION['user_role'] ?? 'Administrator')) ?></div>
                 </div>
               </div>
             </li>
             <li><hr class="dropdown-divider my-1"></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>My Profile</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+            <li><a class="dropdown-item" href="../profile.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item" href="settings.php"><i class="bi bi-gear me-2"></i>Settings</a></li>
             <li><hr class="dropdown-divider my-1"></li>
-            <li><a class="dropdown-item text-danger" href="../login.php"><i class="bi bi-box-arrow-left me-2"></i>Logout</a></li>
+            <li><a class="dropdown-item text-danger" href="../login.php?action=logout"><i class="bi bi-box-arrow-left me-2"></i>Logout</a></li>
           </ul>
         </div>
       </div>

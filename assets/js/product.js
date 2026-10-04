@@ -291,6 +291,11 @@
       return;
     }
 
+    // Render immediately if static data exists for instant display
+    if (fallbackProduct) {
+      renderProductPage(fallbackProduct);
+    }
+
     var product = null;
 
     try {
@@ -307,25 +312,18 @@
         }
       }
     } catch (err) {
-      console.warn('Could not fetch product from API:', err);
+      // Background revalidation error silently handled
     }
 
-    // Fall back to static CHEYN_PRODUCTS if API fetch failed or returned nothing
-    if (!product && fallbackProduct) {
-      product = fallbackProduct;
-    } else if (product && fallbackProduct) {
+    if (product) {
       // Merge rich static gallery if DB only provided single main image
-      if ((!product.gallery || product.gallery.length <= 1) && fallbackProduct.gallery && fallbackProduct.gallery.length > 1) {
+      if (fallbackProduct && (!product.gallery || product.gallery.length <= 1) && fallbackProduct.gallery && fallbackProduct.gallery.length > 1) {
         product.gallery = fallbackProduct.gallery;
       }
-    }
-
-    if (!product) {
+      renderProductPage(product);
+    } else if (!fallbackProduct) {
       renderNotFound();
-      return;
     }
-
-    renderProductPage(product);
   }
 
   if (document.readyState === 'loading') {

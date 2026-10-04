@@ -139,7 +139,7 @@ function buildCardHTML(p) {
         </div>
         <div class="card-footer">
           <button class="btn btn-ct btn-ct-sm flex-fill"
-            onclick="CheynCart.add({id:'${defaultStorage.id}',name:'${p.name}',price:${price},variant:'${variant}',color:'${color}',image:'${p.image}'}, this)">
+            onclick="CheynCart.add({id:'${defaultStorage.id}',name:'${p.name.replace(/'/g, "\\'")}',price:${price},variant:'${variant}',color:'${color}',image:'${p.image}'}, this)">
             <i class="bi bi-cart-plus me-1"></i> Add to Cart
           </button>
           <a href="product.php?id=${p.id}" class="btn btn-ct-outline btn-ct-sm" aria-label="View ${p.name}">
@@ -526,7 +526,13 @@ function renderSkeletonGrid() {
    INIT & API FETCH
    ============================================================ */
 async function loadCatalogProducts() {
-  renderSkeletonGrid();
+  if (PRODUCTS.length > 0) {
+    renderProducts();
+    renderActiveTags();
+  } else {
+    renderSkeletonGrid();
+  }
+
   try {
     const res = await fetch('api/products/get.php', {
       headers: { 'Accept': 'application/json' },
@@ -542,18 +548,16 @@ async function loadCatalogProducts() {
     }
     if (Array.isArray(fetched) && fetched.length > 0) {
       PRODUCTS = fetched;
-    } else if (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
-      PRODUCTS = CHEYN_PRODUCTS;
+      renderProducts();
+      renderActiveTags();
     }
   } catch (err) {
-    console.warn('Unable to load products from API, falling back to static products:', err);
-    if (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
+    if (!PRODUCTS.length && typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
       PRODUCTS = CHEYN_PRODUCTS;
+      renderProducts();
+      renderActiveTags();
     }
   }
-
-  renderProducts();
-  renderActiveTags();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

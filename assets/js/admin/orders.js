@@ -326,21 +326,6 @@ function exportCSV() {
 }
 
 // ====================================================
-// SIDEBAR TOGGLE
-// ====================================================
-const sidebarToggle = document.getElementById('sidebarToggle');
-const adminSidebar  = document.getElementById('adminSidebar');
-const overlay       = document.getElementById('sidebarOverlay');
-sidebarToggle && sidebarToggle.addEventListener('click', () => {
-  adminSidebar.classList.toggle('open');
-  overlay.style.display = adminSidebar.classList.contains('open') ? 'block' : 'none';
-});
-overlay && overlay.addEventListener('click', () => {
-  adminSidebar.classList.remove('open');
-  overlay.style.display = 'none';
-});
-
-// ====================================================
 // TOAST
 // ====================================================
 function showToast(msg, cls='') {

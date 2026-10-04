@@ -220,15 +220,47 @@ function formatPrice(amount) {
    ===================================================== */
 function initAdminSidebar() {
   const toggle   = document.getElementById('sidebarToggle');
+  const closeBtn = document.getElementById('sidebarCloseBtn');
   const sidebar  = document.querySelector('.admin-sidebar');
   const overlay  = document.getElementById('sidebarOverlay');
-  if (!toggle || !sidebar) return;
+  if (!sidebar) return;
 
-  const open  = () => { sidebar.classList.add('open');    overlay && overlay.classList.add('active'); };
-  const close = () => { sidebar.classList.remove('open'); overlay && overlay.classList.remove('active'); };
+  const open  = () => {
+    sidebar.classList.add('open');
+    if (overlay) {
+      overlay.classList.add('active');
+      overlay.style.display = 'block';
+    }
+  };
+  const close = () => {
+    sidebar.classList.remove('open');
+    if (overlay) {
+      overlay.classList.remove('active');
+      overlay.style.display = 'none';
+    }
+  };
 
-  toggle.addEventListener('click', () => sidebar.classList.contains('open') ? close() : open());
-  overlay && overlay.addEventListener('click', close);
+  if (toggle) {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      sidebar.classList.contains('open') ? close() : open();
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', e => {
+      e.preventDefault();
+      close();
+    });
+  }
+  if (overlay) {
+    overlay.addEventListener('click', close);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      close();
+    }
+  });
 }
 
 /* =====================================================
