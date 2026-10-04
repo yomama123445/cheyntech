@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Catalog | Cheyn Gadgets';
-$pageDescription = 'Browse pre-owned, refurbished, and brand-new phones and tablets at Cheyn Gadgets — your trusted Roxas City gadget store.';
+$pageTitle       = 'Available Phones & Gadgets | Cheyn Gadgets Roxas City';
+$pageDescription = 'Browse tested pre-owned and new smartphones, tablets, and accessories at Cheyn Gadgets in Roxas City, Capiz. Honest condition and local shop support.';
 $activePage      = 'catalog';
 require 'includes/header.php';
 ?>
@@ -11,19 +11,20 @@ require 'includes/header.php';
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Catalog</li>
+          <li class="breadcrumb-item active" aria-current="page">Inventory</li>
         </ol>
       </nav>
     </div>
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
         <div>
-          <h1>Shop by Category</h1>
-          <p class="page-subtitle result-count mt-1">Showing <strong id="heroResultCount">0</strong> results</p>
+          <span class="apple-section-tag mb-1">Our Inventory</span>
+          <h1 class="h3 fw-semibold text-dark mb-1">All Available Phones &amp; Tech</h1>
+          <p class="text-muted small mb-0">Inspected by hand in Roxas City &middot; Showing <strong id="heroResultCount" class="text-dark">0</strong> items</p>
         </div>
         <button class="btn btn-ct-outline btn-sm filter-mobile-btn d-flex d-lg-none align-items-center gap-2"
           type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"

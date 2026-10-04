@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Checkout | Cheyn Gadgets';
-$pageDescription = 'Complete your order — Cheyn Gadgets Checkout';
+$pageTitle       = 'Order Checkout | Cheyn Gadgets Roxas City';
+$pageDescription = 'Complete your gadget order — Cheyn Gadgets in Roxas City, Capiz.';
 $activePage      = '';
 require 'includes/header.php';
 ?>
@@ -11,7 +11,7 @@ require 'includes/header.php';
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="cart.php">Cart</a></li>
+          <li class="breadcrumb-item"><a href="cart.php">Bag</a></li>
           <li class="breadcrumb-item active" aria-current="page">Checkout</li>
         </ol>
       </nav>
@@ -19,10 +19,10 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1><i class="bi bi-bag-check me-2 checkout-page-icon"></i>Checkout</h1>
-      <p class="page-subtitle mb-0">Provide your delivery details and choose your payment method.</p>
+      <h1 class="h3 fw-semibold text-dark mb-1"><i class="bi bi-bag-check me-2"></i>Checkout</h1>
+      <p class="text-muted small mb-0">Provide your contact info and choose store pickup or local delivery.</p>
     </div>
   </div>
 

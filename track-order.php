@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Track Order | Cheyn Gadgets';
-$pageDescription = 'Track your Cheyn Gadgets order in real time';
+$pageTitle       = 'Track Your Order | Cheyn Gadgets Roxas City';
+$pageDescription = 'Check the status of your phone order or in-store pickup — Cheyn Gadgets in Roxas City, Capiz.';
 $activePage      = 'track-order';
 require 'includes/header.php';
 ?>
@@ -18,10 +18,10 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1>Track Your Order</h1>
-      <p class="page-subtitle mb-0">Enter your Order ID to see real-time status updates on your Cheyn Gadgets purchase.</p>
+      <h1 class="h3 fw-semibold text-dark mb-1"><i class="bi bi-box-seam me-2"></i>Track Your Order</h1>
+      <p class="text-muted small mb-0">Check the preparation status of your store pickup or local delivery.</p>
     </div>
   </div>
 

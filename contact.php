@@ -18,10 +18,11 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1>Contact Us</h1>
-      <p class="page-subtitle mb-0">Have a question about a listing? Want to know more before you buy? We're happy to help!</p>
+      <span class="apple-section-tag mb-1">Get in Touch</span>
+      <h1 class="h3 fw-semibold text-dark mb-1">Contact Us</h1>
+      <p class="text-muted small mb-0">Have a question about a phone or want to visit our shop? We're happy to help.</p>
     </div>
   </div>
 

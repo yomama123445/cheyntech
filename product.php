@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Product Detail | Cheyn Gadgets';
-$pageDescription = 'Browse function-tested phones and tablets at Cheyn Gadgets, Roxas City.';
+$pageTitle       = 'Device Details | Cheyn Gadgets Roxas City';
+$pageDescription = 'Inspected pre-owned and new smartphones at Cheyn Gadgets in Roxas City, Capiz. In-store testing and local warranty.';
 $activePage      = 'catalog';
 require 'includes/header.php';
 ?>
@@ -11,7 +11,7 @@ require 'includes/header.php';
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="catalog.php">Catalog</a></li>
+          <li class="breadcrumb-item"><a href="catalog.php">Inventory</a></li>
           <li class="breadcrumb-item active" aria-current="page" id="breadcrumbProduct">Loading…</li>
         </ol>
       </nav>
@@ -69,31 +69,31 @@ require 'includes/header.php';
           <!-- Quality Assurance Badges Grid -->
           <div class="quality-badges-grid mb-4">
             <div class="quality-badge-item">
-              <i class="bi bi-phone"></i>
+              <i class="bi bi-shield-check"></i>
               <div>
-                <strong>Network &amp; IMEI</strong>
-                <span>Factory unlocked &middot; Openline</span>
+                <strong>Tested in Person</strong>
+                <span>Checked before listing</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-battery-charging"></i>
               <div>
-                <strong>Battery Tested</strong>
-                <span>Tested health capacity</span>
+                <strong>Healthy Battery</strong>
+                <span>85%+ on pre-owned units</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-arrow-repeat"></i>
               <div>
                 <strong>7-Day Replacement</strong>
-                <span>Store warranty included</span>
+                <span>Local shop warranty</span>
               </div>
             </div>
             <div class="quality-badge-item">
-              <i class="bi bi-box-seam"></i>
+              <i class="bi bi-shop"></i>
               <div>
-                <strong>Standard Inclusions</strong>
-                <span>Tested accessories</span>
+                <strong>Roxas City Pickup</strong>
+                <span>Test before you buy</span>
               </div>
             </div>
           </div>
