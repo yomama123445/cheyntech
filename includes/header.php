@@ -38,9 +38,9 @@ $activePage      = $activePage      ?? '';
   <div class="top-utility-bar d-none d-lg-block">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="top-utility-left d-flex align-items-center gap-3">
-        <span class="utility-text"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Roxas City, Capiz</span>
+        <span class="utility-text"><i class="bi bi-geo-alt me-1 text-muted"></i>Roxas City, Capiz</span>
         <span class="utility-divider">|</span>
-        <span class="utility-text"><i class="bi bi-shield-check text-success me-1"></i>Function-Tested &amp; Certified Units</span>
+        <span class="utility-text"><i class="bi bi-check2 me-1 text-muted"></i>Tested Pre-owned &amp; New Devices</span>
       </div>
       <div class="top-utility-right d-flex align-items-center gap-3">
         <a href="about.php" class="utility-link <?= $activePage === 'about' ? 'active' : '' ?>">About</a>
@@ -121,7 +121,7 @@ $activePage      = $activePage      ?? '';
                   <i class="bi bi-box-seam text-ct"></i>
                   <div>
                     <div class="dropdown-item-title fw-semibold">Brand New iPhones</div>
-                    <span class="dropdown-item-desc text-muted">100% Factory sealed</span>
+                    <span class="dropdown-item-desc text-muted">Factory sealed units</span>
                   </div>
                 </a>
               </li>

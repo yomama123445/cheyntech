@@ -8,10 +8,10 @@
             <span class="footer-brand-name">Cheyn Gadgets</span>
           </a>
           <p class="mb-3">Your trusted electronics storefront in Roxas City. Specializing in function-tested pre-owned, refurbished, and brand-new smartphones, tablets, and wearables.</p>
-          <div class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-3 rounded-pill" style="background:#1e293b;border:1px solid #334155;font-size:0.78rem;color:#cbd5e1;">
-            <i class="bi bi-geo-alt-fill text-danger"></i>
-            <span>Roxas City, Capiz · Tested &amp; Certified Units</span>
-          </div>
+          <p class="footer-meta-note d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-geo-alt"></i>
+            <span>Roxas City, Capiz &middot; In-store pickup &amp; delivery</span>
+          </p>
           <div class="social-links d-flex gap-2">
             <a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
             <a aria-disabled="true" tabindex="-1" title="Coming soon" aria-label="Instagram (coming soon)" style="opacity:.45;cursor:default;pointer-events:none;"><i class="bi bi-instagram"></i></a>
@@ -50,7 +50,7 @@
       </div>
       <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
         <p class="mb-0">&copy; <?= date('Y') ?> Cheyn Gadgets. All rights reserved.</p>
-        <p class="mb-0">This website is for educational purposes only.</p>
+        <p class="mb-0 footer-edu-note">This website is for educational purposes only.</p>
       </div>
     </div>
   </footer>

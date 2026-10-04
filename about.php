@@ -166,14 +166,14 @@ require 'includes/header.php';
             <div class="feature-icon-wrap"><i class="bi bi-person-check-fill text-ct"></i></div>
             <h3 class="h5 fw-bold mb-2">Test Before You Pay</h3>
             <p class="text-muted small mb-0">
-              Hold the unit in your hands. Test the camera, check the touchscreen, verify the battery capacity, and ensure you're 100% happy before completing your purchase.
+              Hold the unit in your hands. Test the camera, check the touchscreen, verify the battery capacity, and ensure you're completely satisfied before completing your purchase.
             </p>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="feature-card h-100">
-            <div class="feature-icon-wrap"><i class="bi bi-shield-check text-ct"></i></div>
+            <div class="feature-icon-wrap"><i class="bi bi-arrow-repeat text-ct"></i></div>
             <h3 class="h5 fw-bold mb-2">7-Day Store Replacement</h3>
             <p class="text-muted small mb-0">
               No long waiting periods or complicated return forms. If any functional defect shows up within your first 7 days, bring it back to our Roxas City shop.

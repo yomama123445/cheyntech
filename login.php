@@ -23,7 +23,7 @@ if (!empty($_SESSION['user_id'])) {
     exit;
 }
 $pageTitle       = 'Cheyn ID | Sign In or Create Account';
-$pageDescription = 'Sign in with your Cheyn ID or create an account for fast checkout, certified device tracking, and local support in Roxas City.';
+$pageDescription = 'Sign in with your Cheyn ID or create an account for fast checkout, device & order tracking, and local support in Roxas City.';
 $activePage      = 'login';
 require 'includes/header.php';
 ?>

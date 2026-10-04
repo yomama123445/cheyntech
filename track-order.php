@@ -257,7 +257,7 @@ require 'includes/header.php';
           </div>
           <div class="col-md-4">
             <div class="p-3 rounded-3 track-info-panel">
-              <div class="track-info-icon"><i class="bi bi-shield-check"></i></div>
+              <div class="track-info-icon"><i class="bi bi-check2-circle"></i></div>
               <div class="fw-700 track-info-label">Verified &amp; Inspected</div>
               <p class="mb-0 track-info-text">Every unit is inspected before being released to you.</p>
             </div>
