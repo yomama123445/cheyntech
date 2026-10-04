@@ -24,6 +24,21 @@ $activePage      = $activePage      ?? '';
 </head>
 <body>
 
+<?php if ($activePage === 'login'): ?>
+  <!-- APPLE-STYLE MINIMAL AUTH RIBBON (account.apple.com style) -->
+  <header class="apple-minimal-nav" role="banner">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.php" class="apple-minimal-brand d-flex align-items-center gap-2 text-decoration-none">
+        <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="28" height="28">
+        <span class="apple-minimal-title">Cheyn ID</span>
+      </a>
+      <a href="index.php" class="apple-minimal-back text-decoration-none">
+        <span class="d-none d-sm-inline">Return to </span>Store &rarr;
+      </a>
+    </div>
+  </header>
+<?php else: ?>
+
   <!-- SEARCH OVERLAY -->
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchOverlayTitle">
     <h2 id="searchOverlayTitle" class="visually-hidden">Search Products</h2>
@@ -273,3 +288,4 @@ $activePage      = $activePage      ?? '';
       </div>
     </div>
   </nav>
+<?php endif; ?>

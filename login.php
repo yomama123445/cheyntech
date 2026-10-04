@@ -29,90 +29,36 @@ require 'includes/header.php';
 ?>
 
   <main class="apple-auth-viewport">
-    <div class="container apple-auth-split-container">
-      <div class="row align-items-center g-0 g-lg-5 justify-content-between">
+    <div class="container apple-auth-container">
 
-        <!-- LEFT COLUMN: Brand Identity & Local Account Benefits (Desktop) -->
-        <div class="col-lg-5 d-none d-lg-block apple-auth-showcase">
-          <div class="apple-showcase-glyph mb-4">
+      <!-- Apple Header Emblem & Brand Mark -->
+      <div class="apple-auth-hero text-center mb-4">
+        <div class="apple-hero-glyph-wrap mb-3">
+          <div class="apple-hero-glyph">
             <i class="bi bi-shield-lock-fill"></i>
           </div>
-          <h1 class="apple-showcase-title">One Cheyn ID for everything Cheyn.</h1>
-          <p class="apple-showcase-desc">
-            Sign in or create an account to securely manage your orders, check warranty status, and enjoy express checkout in Roxas City.
-          </p>
-
-          <div class="apple-perks-list mt-4 pt-2">
-            <div class="apple-perk-item d-flex align-items-start gap-3 mb-4">
-              <div class="apple-perk-icon-wrap">
-                <i class="bi bi-lightning-charge"></i>
-              </div>
-              <div>
-                <strong class="apple-perk-title">Fast local checkout</strong>
-                <span class="apple-perk-desc">Save your delivery and pickup preferences for instant ordering.</span>
-              </div>
-            </div>
-
-            <div class="apple-perk-item d-flex align-items-start gap-3 mb-4">
-              <div class="apple-perk-icon-wrap">
-                <i class="bi bi-box-seam"></i>
-              </div>
-              <div>
-                <strong class="apple-perk-title">Live device tracking</strong>
-                <span class="apple-perk-desc">Follow your unit from bench inspection to Roxas City dispatch.</span>
-              </div>
-            </div>
-
-            <div class="apple-perk-item d-flex align-items-start gap-3">
-              <div class="apple-perk-icon-wrap">
-                <i class="bi bi-arrow-repeat"></i>
-              </div>
-              <div>
-                <strong class="apple-perk-title">In-store warranty access</strong>
-                <span class="apple-perk-desc">Quick verification for your 7-day replacement and store service.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="apple-showcase-privacy mt-4 pt-3">
-            <p class="mb-0 text-muted small">
-              <i class="bi bi-lock me-1"></i> Your personal details are protected and used solely to fulfill your orders and support warranty claims.
-            </p>
-          </div>
         </div>
+      </div>
 
-        <!-- RIGHT COLUMN: Interactive Stepped Auth Card -->
-        <div class="col-12 col-lg-7 col-xl-6">
-          <div class="apple-auth-card">
+      <!-- Segmented Mode Control (Sign In / Create Account) -->
+      <div class="apple-segmented-container mb-4">
+        <ul class="nav apple-segmented-pills" id="authTabs" role="tablist">
+          <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link active w-100" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab" aria-controls="loginPane" aria-selected="true">
+              Sign In
+            </button>
+          </li>
+          <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link w-100" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerPane" type="button" role="tab" aria-controls="registerPane" aria-selected="false">
+              Create Account
+            </button>
+          </li>
+        </ul>
+      </div>
 
-            <!-- Mobile glyph (only visible on mobile/tablet) -->
-            <div class="apple-auth-hero text-center mb-3 d-lg-none">
-              <div class="apple-hero-glyph-wrap mb-3">
-                <div class="apple-hero-glyph">
-                  <i class="bi bi-shield-lock-fill"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Segmented Mode Control (Sign In / Create Account) -->
-            <div class="apple-segmented-container mb-4">
-              <ul class="nav apple-segmented-pills" id="authTabs" role="tablist">
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link active w-100" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab" aria-controls="loginPane" aria-selected="true">
-                    Sign In
-                  </button>
-                </li>
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerPane" type="button" role="tab" aria-controls="registerPane" aria-selected="false">
-                    Create Account
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Main Interactive Stage (Takes up full space, one input at a time) -->
-            <div class="apple-auth-stage">
-              <div class="tab-content w-100">
+      <!-- Main Interactive Stage (One input at a time) -->
+      <div class="apple-auth-stage">
+        <div class="tab-content w-100">
 
           <!-- ==============================================
                SIGN IN: ONE INPUT AT A TIME (Apple ID Flow)
@@ -318,22 +264,21 @@ require 'includes/header.php';
         </div>
       </div>
 
-            <!-- Apple-style Muted Footnote -->
-            <div class="apple-auth-footnote text-center mt-4 pt-2">
-              <p class="apple-footnote-text mb-1">
-                Your Cheyn ID is used to sign in and securely manage your purchases. <a href="about.php" class="apple-footnote-link">Privacy Policy</a>
-              </p>
-              <p class="apple-footnote-edu mb-0">
-                This website is for educational purposes only.
-              </p>
-            </div>
-
-          </div><!-- /apple-auth-card -->
-        </div><!-- /col-lg-7 -->
-
-      </div><!-- /row -->
-    </div><!-- /container -->
+    </div>
   </main>
+
+  <!-- Apple Account Minimal Footer -->
+  <footer class="apple-minimal-footer" role="contentinfo">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center text-md-start">
+      <div class="apple-minimal-footer-links d-flex flex-wrap justify-content-center justify-content-md-start align-items-center gap-2 gap-md-3">
+        <span>&copy; <?= date('Y') ?> Cheyn Gadgets. All rights reserved.</span>
+        <a href="about.php">Privacy Policy</a>
+        <a href="about.php">Terms of Use</a>
+        <a href="contact.php">Store Support</a>
+      </div>
+      <p class="apple-minimal-footnote mb-0 text-center text-md-end">This website is for educational purposes only.</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= asset_url('assets/js/main.js') ?>"></script>
