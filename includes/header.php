@@ -34,6 +34,45 @@ $activePage      = $activePage      ?? '';
     </form>
   </div>
 
+  <!-- TOP UTILITY BAR (Secondary Navigation) -->
+  <div class="top-utility-bar d-none d-lg-block">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="top-utility-left d-flex align-items-center gap-3">
+        <span class="utility-text"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Roxas City, Capiz</span>
+        <span class="utility-divider">|</span>
+        <span class="utility-text"><i class="bi bi-shield-check text-success me-1"></i>Function-Tested &amp; Certified Units</span>
+      </div>
+      <div class="top-utility-right d-flex align-items-center gap-3">
+        <a href="about.php" class="utility-link <?= $activePage === 'about' ? 'active' : '' ?>">About</a>
+        <span class="utility-divider">|</span>
+        <a href="track-order.php" class="utility-link <?= $activePage === 'track-order' ? 'active' : '' ?>"><i class="bi bi-box-seam me-1"></i>Track Order</a>
+        <span class="utility-divider">|</span>
+        <?php if (!empty($_SESSION['user_id'])): ?>
+          <div class="dropdown d-inline-block">
+            <a href="profile.php" class="utility-link dropdown-toggle d-inline-flex align-items-center gap-1 text-decoration-none" id="topUserDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i>
+              <span><?= htmlspecialchars($_SESSION['user_name'] ?? 'Account') ?></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="topUserDropdown">
+              <li><span class="dropdown-item-text text-muted small">Signed in as<br><strong class="text-dark"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong></span></li>
+              <li><hr class="dropdown-divider my-1"></li>
+              <li><a class="dropdown-item py-1 small" href="profile.php"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a></li>
+              <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                <li><a class="dropdown-item py-1 small" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>
+              <?php endif; ?>
+              <li><hr class="dropdown-divider my-1"></li>
+              <li><a class="dropdown-item py-1 small text-danger" href="login.php?action=logout"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>
+            </ul>
+          </div>
+        <?php else: ?>
+          <a href="login.php" class="utility-link" aria-label="Account">Sign In</a>
+          <span class="utility-divider">|</span>
+          <a href="login.php#register" class="utility-btn">Sign Up</a>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-ct sticky-top" role="navigation" aria-label="Main navigation">
     <div class="container">
@@ -57,15 +96,136 @@ $activePage      = $activePage      ?? '';
       </div>
 
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav mx-auto gap-1">
-          <li class="nav-item"><a class="nav-link <?= $activePage === 'home'        ? 'active' : '' ?>" <?= $activePage === 'home'        ? 'aria-current="page"' : '' ?> href="index.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link <?= $activePage === 'catalog'     ? 'active' : '' ?>" <?= $activePage === 'catalog'     ? 'aria-current="page"' : '' ?> href="catalog.php">Catalog</a></li>
-          <li class="nav-item"><a class="nav-link <?= $activePage === 'about'       ? 'active' : '' ?>" <?= $activePage === 'about'       ? 'aria-current="page"' : '' ?> href="about.php">About</a></li>
-          <?php if (!empty($_SESSION['user_id'])): ?>
-            <li class="nav-item"><a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" <?= $activePage === 'track-order' ? 'aria-current="page"' : '' ?> href="track-order.php">Track Order</a></li>
-          <?php else: ?>
-            <li class="nav-item"><a class="nav-link <?= $activePage === 'login'       ? 'active' : '' ?>" <?= $activePage === 'login'       ? 'aria-current="page"' : '' ?> href="login.php#register">Sign Up</a></li>
-          <?php endif; ?>
+        <ul class="navbar-nav mx-auto gap-lg-1">
+          <li class="nav-item">
+            <a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" <?= $activePage === 'home' ? 'aria-current="page"' : '' ?> href="index.php">Home</a>
+          </li>
+
+          <!-- Apple Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="catalog.php?cat=preowned" id="appleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Apple
+            </a>
+            <ul class="dropdown-menu shadow-sm" aria-labelledby="appleDropdown">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=preowned">
+                  <i class="bi bi-phone text-ct"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Pre-owned iPhones</div>
+                    <span class="dropdown-item-desc text-muted">Tested battery &amp; Grade A</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=new">
+                  <i class="bi bi-box-seam text-ct"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Brand New iPhones</div>
+                    <span class="dropdown-item-desc text-muted">100% Factory sealed</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?q=Apple">
+                  <i class="bi bi-smartwatch text-ct"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Apple Watches &amp; AirPods</div>
+                    <span class="dropdown-item-desc text-muted">Wearables &amp; sound accessories</span>
+                  </div>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider my-1"></li>
+              <li><a class="dropdown-item small text-muted py-1" href="catalog.php?q=iPhone">View All Apple &rarr;</a></li>
+            </ul>
+          </li>
+
+          <!-- Android Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="catalog.php?cat=android" id="androidDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Android
+            </a>
+            <ul class="dropdown-menu shadow-sm" aria-labelledby="androidDropdown">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Samsung">
+                  <i class="bi bi-phone text-primary"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Samsung</div>
+                    <span class="dropdown-item-desc text-muted">Galaxy series &amp; 5G devices</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Vivo">
+                  <i class="bi bi-phone text-primary"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Vivo</div>
+                    <span class="dropdown-item-desc text-muted">Budget &amp; mid-range phones</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Tecno">
+                  <i class="bi bi-phone text-primary"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Tecno</div>
+                    <span class="dropdown-item-desc text-muted">Spark series &amp; value phones</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Honor">
+                  <i class="bi bi-phone text-primary"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Honor</div>
+                    <span class="dropdown-item-desc text-muted">Sleek durable design</span>
+                  </div>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider my-1"></li>
+              <li><a class="dropdown-item small text-muted py-1" href="catalog.php?cat=android">All Android Devices &rarr;</a></li>
+            </ul>
+          </li>
+
+          <!-- Tablets Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="catalog.php?cat=tablet" id="tabletsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tablets
+            </a>
+            <ul class="dropdown-menu shadow-sm" aria-labelledby="tabletsDropdown">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=tablet&q=iPad">
+                  <i class="bi bi-tablet text-ct"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">iPads</div>
+                    <span class="dropdown-item-desc text-muted">iPad Air, Standard &amp; Pro</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=tablet">
+                  <i class="bi bi-tablet-landscape text-ct"></i>
+                  <div>
+                    <div class="dropdown-item-title fw-semibold">Android Tablets</div>
+                    <span class="dropdown-item-desc text-muted">Kids learning &amp; productivity</span>
+                  </div>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider my-1"></li>
+              <li><a class="dropdown-item small text-muted py-1" href="catalog.php?cat=tablet">Browse All Tablets &rarr;</a></li>
+            </ul>
+          </li>
+
+          <!-- Mobile Only Secondary Links -->
+          <li class="nav-item d-lg-none mt-2 pt-2 border-top">
+            <a class="nav-link <?= $activePage === 'about' ? 'active' : '' ?>" href="about.php">
+              <i class="bi bi-info-circle me-2"></i>About Us
+            </a>
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" href="track-order.php">
+              <i class="bi bi-box-seam me-2"></i>Track Order
+            </a>
+          </li>
         </ul>
 
         <!-- Desktop Nav Icons -->
@@ -78,26 +238,6 @@ $activePage      = $activePage      ?? '';
             <i class="bi bi-cart3"></i>
             <span class="cart-badge">0</span>
           </a>
-          <?php if (!empty($_SESSION['user_id'])): ?>
-            <div class="dropdown">
-              <a href="profile.php" class="d-flex align-items-center gap-1 text-decoration-none text-dark" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="My Account">
-                <i class="bi bi-person-circle fs-5"></i>
-                <span class="small fw-semibold">My Account</span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="accountDropdown">
-                <li><span class="dropdown-item-text text-muted small">Signed in as<br><strong><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong></span></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="profile.php"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a></li>
-                <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
-                  <li><a class="dropdown-item" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</a></li>
-                <?php endif; ?>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-danger" href="login.php?action=logout" id="navLogoutLink"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>
-              </ul>
-            </div>
-          <?php else: ?>
-            <a href="login.php" aria-label="Account"><i class="bi bi-person-circle"></i></a>
-          <?php endif; ?>
         </div>
 
         <!-- Mobile Drawer Account Section -->
