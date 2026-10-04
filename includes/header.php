@@ -82,117 +82,177 @@ $activePage      = $activePage      ?? '';
           </li>
 
           <!-- Apple Dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown has-nav-tray">
             <a class="nav-link dropdown-toggle" href="catalog.php?cat=preowned" id="appleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Apple
             </a>
-            <ul class="dropdown-menu shadow-sm" aria-labelledby="appleDropdown">
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=preowned">
-                  <i class="bi bi-phone text-ct"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Pre-owned iPhones</div>
-                    <span class="dropdown-item-desc text-muted">Tested battery &amp; Grade A</span>
+            <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="appleDropdown">
+              <div class="container">
+                <div class="row g-4 align-items-start">
+                  <div class="col-12 col-lg-5">
+                    <span class="nav-tray-heading">Explore Apple</span>
+                    <div class="d-flex flex-column gap-2">
+                      <a class="nav-tray-item" href="catalog.php?cat=preowned">
+                        <i class="bi bi-phone text-ct"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Pre-owned iPhones</div>
+                          <span class="nav-tray-item-desc">Tested battery &amp; Grade A units</span>
+                        </div>
+                      </a>
+                      <a class="nav-tray-item" href="catalog.php?cat=new">
+                        <i class="bi bi-box-seam text-ct"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Brand New iPhones</div>
+                          <span class="nav-tray-item-desc">Factory sealed official units</span>
+                        </div>
+                      </a>
+                      <a class="nav-tray-item" href="catalog.php?cat=wearable">
+                        <i class="bi bi-smartwatch text-ct"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Apple Watches &amp; AirPods</div>
+                          <span class="nav-tray-item-desc">Wearables &amp; sound accessories</span>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=new">
-                  <i class="bi bi-box-seam text-ct"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Brand New iPhones</div>
-                    <span class="dropdown-item-desc text-muted">Factory sealed units</span>
+                  <div class="col-12 col-lg-3 d-none d-lg-block border-start ps-lg-4">
+                    <span class="nav-tray-heading">Popular Models</span>
+                    <ul class="nav-tray-sublinks">
+                      <li><a href="catalog.php?q=iPhone+11">iPhone 11 Series</a></li>
+                      <li><a href="catalog.php?q=iPhone+12">iPhone 12 / 12 Pro</a></li>
+                      <li><a href="catalog.php?q=iPhone+13">iPhone 13 / 13 Pro</a></li>
+                      <li><a href="catalog.php?q=iPhone+14">iPhone 14 / 14 Pro Max</a></li>
+                      <li><a href="catalog.php?q=iPhone+15">iPhone 15 Series</a></li>
+                    </ul>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=wearable">
-                  <i class="bi bi-smartwatch text-ct"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Apple Watches &amp; AirPods</div>
-                    <span class="dropdown-item-desc text-muted">Wearables &amp; sound accessories</span>
+                  <div class="col-12 col-lg-4 d-none d-lg-block">
+                    <div class="nav-tray-card">
+                      <span class="badge bg-white text-dark border mb-2"><i class="bi bi-geo-alt me-1 text-ct"></i>Roxas City Shop</span>
+                      <div class="fw-semibold small text-dark mb-1">Local Store Warranty</div>
+                      <p class="text-muted text-xs mb-3">Every pre-owned iPhone is physically tested and battery-checked. Backed by our 7-day replacement and 30-day service warranty in Roxas City.</p>
+                      <a href="catalog.php?q=iPhone" class="small fw-semibold text-ct text-decoration-none">
+                        Browse all Apple listings &rarr;
+                      </a>
+                    </div>
                   </div>
-                </a>
-              </li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li><a class="dropdown-item small text-muted py-1" href="catalog.php?q=iPhone">View All Apple &rarr;</a></li>
-            </ul>
+                </div>
+              </div>
+            </div>
           </li>
 
           <!-- Android Dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown has-nav-tray">
             <a class="nav-link dropdown-toggle" href="catalog.php?cat=android" id="androidDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Android
             </a>
-            <ul class="dropdown-menu shadow-sm" aria-labelledby="androidDropdown">
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Samsung">
-                  <i class="bi bi-phone text-primary"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Samsung</div>
-                    <span class="dropdown-item-desc text-muted">Galaxy series &amp; 5G devices</span>
+            <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="androidDropdown">
+              <div class="container">
+                <div class="row g-4 align-items-start">
+                  <div class="col-12 col-lg-5">
+                    <span class="nav-tray-heading">Explore Android</span>
+                    <div class="d-flex flex-column gap-2">
+                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Samsung">
+                        <i class="bi bi-phone text-primary"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Samsung</div>
+                          <span class="nav-tray-item-desc">Galaxy series &amp; 5G smartphones</span>
+                        </div>
+                      </a>
+                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Vivo">
+                        <i class="bi bi-phone text-primary"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Vivo</div>
+                          <span class="nav-tray-item-desc">Budget &amp; everyday mid-range phones</span>
+                        </div>
+                      </a>
+                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Tecno">
+                        <i class="bi bi-phone text-primary"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Tecno</div>
+                          <span class="nav-tray-item-desc">Spark series &amp; high value phones</span>
+                        </div>
+                      </a>
+                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Honor">
+                        <i class="bi bi-phone text-primary"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Honor</div>
+                          <span class="nav-tray-item-desc">Sleek styling &amp; durable builds</span>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Vivo">
-                  <i class="bi bi-phone text-primary"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Vivo</div>
-                    <span class="dropdown-item-desc text-muted">Budget &amp; mid-range phones</span>
+                  <div class="col-12 col-lg-3 d-none d-lg-block border-start ps-lg-4">
+                    <span class="nav-tray-heading">Popular Series</span>
+                    <ul class="nav-tray-sublinks">
+                      <li><a href="catalog.php?cat=android&q=Samsung">Samsung Galaxy A Series</a></li>
+                      <li><a href="catalog.php?cat=android&q=Vivo">Vivo Y &amp; V Series</a></li>
+                      <li><a href="catalog.php?cat=android&q=Tecno">Tecno Spark Series</a></li>
+                      <li><a href="catalog.php?cat=android&q=Honor">Honor X Series</a></li>
+                    </ul>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Tecno">
-                  <i class="bi bi-phone text-primary"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Tecno</div>
-                    <span class="dropdown-item-desc text-muted">Spark series &amp; value phones</span>
+                  <div class="col-12 col-lg-4 d-none d-lg-block">
+                    <div class="nav-tray-card">
+                      <span class="badge bg-white text-dark border mb-2"><i class="bi bi-shield-check me-1 text-ct"></i>Tested &amp; Verified</span>
+                      <div class="fw-semibold small text-dark mb-1">Affordable Everyday Units</div>
+                      <p class="text-muted text-xs mb-3">Pre-owned and value Android devices checked for clean displays, reliable batteries, and fully working cameras.</p>
+                      <a href="catalog.php?cat=android" class="small fw-semibold text-ct text-decoration-none">
+                        Browse all Android devices &rarr;
+                      </a>
+                    </div>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=android&q=Honor">
-                  <i class="bi bi-phone text-primary"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Honor</div>
-                    <span class="dropdown-item-desc text-muted">Sleek durable design</span>
-                  </div>
-                </a>
-              </li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li><a class="dropdown-item small text-muted py-1" href="catalog.php?cat=android">All Android Devices &rarr;</a></li>
-            </ul>
+                </div>
+              </div>
+            </div>
           </li>
 
           <!-- Tablets Dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown has-nav-tray">
             <a class="nav-link dropdown-toggle" href="catalog.php?cat=tablet" id="tabletsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Tablets
             </a>
-            <ul class="dropdown-menu shadow-sm" aria-labelledby="tabletsDropdown">
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=tablet&q=iPad">
-                  <i class="bi bi-tablet text-ct"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">iPads</div>
-                    <span class="dropdown-item-desc text-muted">iPad Air, Standard &amp; Pro</span>
+            <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="tabletsDropdown">
+              <div class="container">
+                <div class="row g-4 align-items-start">
+                  <div class="col-12 col-lg-5">
+                    <span class="nav-tray-heading">Explore Tablets</span>
+                    <div class="d-flex flex-column gap-2">
+                      <a class="nav-tray-item" href="catalog.php?cat=tablet&q=iPad">
+                        <i class="bi bi-tablet text-ct"></i>
+                        <div>
+                          <div class="nav-tray-item-title">iPads</div>
+                          <span class="nav-tray-item-desc">iPad Air, Standard &amp; Pro units</span>
+                        </div>
+                      </a>
+                      <a class="nav-tray-item" href="catalog.php?cat=tablet&q=Android">
+                        <i class="bi bi-tablet-landscape text-ct"></i>
+                        <div>
+                          <div class="nav-tray-item-title">Android Tablets</div>
+                          <span class="nav-tray-item-desc">Kids learning, streaming &amp; POS</span>
+                        </div>
+                      </a>
+                    </div>
                   </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=tablet&q=Android">
-                  <i class="bi bi-tablet-landscape text-ct"></i>
-                  <div>
-                    <div class="dropdown-item-title fw-semibold">Android Tablets</div>
-                    <span class="dropdown-item-desc text-muted">Kids learning &amp; productivity</span>
+                  <div class="col-12 col-lg-3 d-none d-lg-block border-start ps-lg-4">
+                    <span class="nav-tray-heading">Ideal For</span>
+                    <ul class="nav-tray-sublinks">
+                      <li><a href="catalog.php?cat=tablet&q=iPad">Online Class &amp; School</a></li>
+                      <li><a href="catalog.php?cat=tablet">Streaming &amp; Media</a></li>
+                      <li><a href="catalog.php?cat=tablet">Store POS &amp; Business</a></li>
+                    </ul>
                   </div>
-                </a>
-              </li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li><a class="dropdown-item small text-muted py-1" href="catalog.php?cat=tablet">Browse All Tablets &rarr;</a></li>
-            </ul>
+                  <div class="col-12 col-lg-4 d-none d-lg-block">
+                    <div class="nav-tray-card">
+                      <span class="badge bg-white text-dark border mb-2"><i class="bi bi-check2-circle me-1 text-ct"></i>Clean Accounts</span>
+                      <div class="fw-semibold small text-dark mb-1">Ready for Setup</div>
+                      <p class="text-muted text-xs mb-3">All iPads and tablets are factory reset with no locks or account bindings. In-store inspection welcomed before purchase.</p>
+                      <a href="catalog.php?cat=tablet" class="small fw-semibold text-ct text-decoration-none">
+                        Browse all tablets &rarr;
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
 
           <li class="nav-item">
