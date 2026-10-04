@@ -126,7 +126,7 @@ $activePage      = $activePage      ?? '';
                 </a>
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?q=Apple">
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=wearable">
                   <i class="bi bi-smartwatch text-ct"></i>
                   <div>
                     <div class="dropdown-item-title fw-semibold">Apple Watches &amp; AirPods</div>

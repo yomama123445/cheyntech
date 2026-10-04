@@ -32,25 +32,44 @@ function formatPrice(n) {
 }
 
 /**
- * Derive a product's catalog category from its name/id so it can be matched
- * against the UI checkbox values ('preowned' | 'new' | 'android' | 'tablet').
+ * Derive a product's catalog category from its name/id/category so it can be matched
+ * against the UI checkbox values ('preowned' | 'new' | 'android' | 'tablet' | 'wearable').
  */
 function productCategories(p) {
+  const name = (p.name || '').toLowerCase();
+  const id   = (p.id || '').toLowerCase();
+
+  // Wearables & smart accessories (Apple Watch, AirPods, etc.)
+  if (id.includes('watch') || name.includes('watch') || id.includes('airpod') || name.includes('airpod') || p.category === 'wearable') {
+    return ['wearable'];
+  }
+
+  // Tablets (iPads, Android tablets)
+  if (id.includes('ipad') || name.includes('ipad') || id.includes('tablet') || name.includes('tablet') || p.category === 'tablet') {
+    return ['tablet'];
+  }
+
+  // Android smartphones
+  if (p.category === 'android' || name.includes('samsung') || name.includes('vivo') || name.includes('tecno') || name.includes('honor') || name.includes('pixel') || name.includes('oneplus') || name.includes('redmi') || name.includes('xiaomi')) {
+    return ['android'];
+  }
+
+  // iPhones
+  if (name.includes('iphone') || id.includes('iphone')) {
+    const cats = [];
+    if (p.condition === 'Brand New' || p.badge === 'badge-available' || p.category === 'new') {
+      cats.push('new');
+    }
+    if (p.condition === 'Pre-owned' || p.condition === 'Refurbished' || p.category === 'preowned' || !cats.length) {
+      cats.push('preowned');
+    }
+    return cats;
+  }
+
   if (p.category) {
     return [p.category];
   }
-  const name = (p.name || '').toLowerCase();
-  const id   = (p.id || '').toLowerCase();
-  const cats = [];
-  if (id.includes('ipad') || name.includes('ipad')) {
-    cats.push('tablet');
-  } else if (name.includes('iphone')) {
-    if (p.condition === 'Pre-owned' || p.condition === 'Refurbished') cats.push('preowned');
-    if (p.condition === 'Brand New')  cats.push('new');
-  } else {
-    cats.push('android');
-  }
-  return cats;
+  return ['android'];
 }
 
 /** Normalise a condition string to the checkbox value format. */
@@ -76,11 +95,22 @@ function colorSlug(label) {
    ============================================================ */
 function filterProducts() {
   const { q, cats, variants, colors, conds, priceMin, priceMax } = activeFilters;
-  const qLower = q.toLowerCase();
+  const qLower = q.toLowerCase().trim();
 
   return PRODUCTS.filter(p => {
-    // --- Search query against product name ---
-    if (qLower && !p.name.toLowerCase().includes(qLower)) return false;
+    // --- Search query against product name / keywords ---
+    if (qLower) {
+      const pName = (p.name || '').toLowerCase();
+      const pCats = productCategories(p);
+
+      const isWearableQuery = ['wearable', 'wearables', 'smartwatch', 'smart watch', 'watch', 'airpod', 'airpods'].some(w => qLower.includes(w) || w.includes(qLower));
+      const isTabletQuery   = ['tablet', 'tablets', 'ipad', 'ipads'].some(w => qLower.includes(w) || w.includes(qLower));
+
+      const nameMatch     = pName.includes(qLower);
+      const categoryMatch = (isWearableQuery && pCats.includes('wearable')) || (isTabletQuery && pCats.includes('tablet'));
+
+      if (!nameMatch && !categoryMatch) return false;
+    }
 
     // --- Category ---
     if (cats.length) {
@@ -439,7 +469,7 @@ function renderActiveTags() {
   const { q, cats, variants, colors, conds } = activeFilters;
 
   // Human-readable label maps
-  const catLabels  = { preowned: 'Pre-owned iPhones', new: 'New iPhones', android: 'Android', tablet: 'Tablets' };
+  const catLabels  = { preowned: 'Pre-owned iPhones', new: 'New iPhones', android: 'Android', tablet: 'Tablets', wearable: 'Wearables & Smartwatches' };
   const condLabels = { preowned: 'Pre-owned', refurbished: 'Refurbished', brandnew: 'Brand New' };
 
   const tags = [];

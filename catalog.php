@@ -76,6 +76,10 @@ require 'includes/header.php';
                   <input class="form-check-input" type="checkbox" id="catTablet" name="cat" value="tablet" data-filter-count-for="tablet">
                   <label class="form-check-label" for="catTablet">Tablets <span class="filter-count text-muted ms-1" data-count-for="tablet"></span></label>
                 </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="catWearable" name="cat" value="wearable" data-filter-count-for="wearable">
+                  <label class="form-check-label" for="catWearable">Wearables &amp; Watches <span class="filter-count text-muted ms-1" data-count-for="wearable"></span></label>
+                </div>
               </div>
             </div>
 
@@ -215,6 +219,7 @@ require 'includes/header.php';
           <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatNewIphone" name="cat" value="new"><label class="form-check-label" for="mCatNewIphone">New iPhones</label></div>
           <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatAndroid" name="cat" value="android"><label class="form-check-label" for="mCatAndroid">Android</label></div>
           <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatTablet" name="cat" value="tablet"><label class="form-check-label" for="mCatTablet">Tablets</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatWearable" name="cat" value="wearable"><label class="form-check-label" for="mCatWearable">Wearables &amp; Watches</label></div>
         </div>
       </div>
       <div class="filter-group mb-3 pb-3 border-bottom">
