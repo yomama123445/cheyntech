@@ -24,6 +24,21 @@ $activePage      = $activePage      ?? '';
 </head>
 <body>
 
+<?php if ($activePage === 'login'): ?>
+  <!-- APPLE-STYLE MINIMAL AUTH RIBBON (account.apple.com style) -->
+  <header class="apple-minimal-nav" role="banner">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.php" class="apple-minimal-brand d-flex align-items-center gap-2 text-decoration-none">
+        <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="28" height="28">
+        <span class="apple-minimal-title">Cheyn ID</span>
+      </a>
+      <a href="index.php" class="apple-minimal-back text-decoration-none">
+        <span class="d-none d-sm-inline">Return to </span>Store &rarr;
+      </a>
+    </div>
+  </header>
+<?php else: ?>
+
   <!-- SEARCH OVERLAY -->
   <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchOverlayTitle">
     <h2 id="searchOverlayTitle" class="visually-hidden">Search Products</h2>
@@ -38,9 +53,9 @@ $activePage      = $activePage      ?? '';
   <div class="top-utility-bar d-none d-lg-block">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="top-utility-left d-flex align-items-center gap-3">
-        <span class="utility-text"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Roxas City, Capiz</span>
+        <span class="utility-text"><i class="bi bi-geo-alt me-1 text-muted"></i>Roxas City, Capiz</span>
         <span class="utility-divider">|</span>
-        <span class="utility-text"><i class="bi bi-shield-check text-success me-1"></i>Function-Tested &amp; Certified Units</span>
+        <span class="utility-text"><i class="bi bi-check2 me-1 text-muted"></i>Tested Pre-owned &amp; New Devices</span>
       </div>
       <div class="top-utility-right d-flex align-items-center gap-3">
         <a href="about.php" class="utility-link <?= $activePage === 'about' ? 'active' : '' ?>">About</a>
@@ -121,7 +136,7 @@ $activePage      = $activePage      ?? '';
                   <i class="bi bi-box-seam text-ct"></i>
                   <div>
                     <div class="dropdown-item-title fw-semibold">Brand New iPhones</div>
-                    <span class="dropdown-item-desc text-muted">100% Factory sealed</span>
+                    <span class="dropdown-item-desc text-muted">Factory sealed units</span>
                   </div>
                 </a>
               </li>
@@ -273,3 +288,4 @@ $activePage      = $activePage      ?? '';
       </div>
     </div>
   </nav>
+<?php endif; ?>

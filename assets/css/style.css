@@ -1358,6 +1358,18 @@ img { max-width: 100%; }
   color: #64748b;
 }
 
+.footer-edu-note {
+  font-size: 0.72rem;
+  color: #64748b;
+  opacity: 0.8;
+  letter-spacing: -0.01em;
+}
+
+.footer-meta-note {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
 /* ===================================================
    FORMS
    =================================================== */
@@ -2629,22 +2641,80 @@ img { max-width: 100%; }
 .map-placeholder i { font-size: 2rem; color: var(--ct-primary); }
 
 /* ===================================================
-   APPLE ID FULL-PAGE STEPPED AUTH DESIGN
+   APPLE ID DEDICATED MINIMALIST AUTH CANVAS (account.apple.com style)
    =================================================== */
+.apple-minimal-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+}
+.apple-minimal-brand {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+}
+.apple-minimal-brand:hover {
+  color: #000000;
+}
+.apple-minimal-title {
+  color: #1d1d1f;
+}
+.apple-minimal-back {
+  font-size: 0.82rem;
+  color: #0071e3;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+.apple-minimal-back:hover {
+  color: #0077ed;
+  text-decoration: underline !important;
+}
+
 .apple-auth-viewport {
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 48px - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  padding: 3.5rem 1rem 4rem;
+  padding: 3rem 1.25rem;
+  width: 100%;
 }
 
 .apple-auth-container {
-  max-width: 450px;
+  max-width: 440px;
   width: 100%;
   margin: 0 auto;
+}
+
+.apple-minimal-footer {
+  background: #f5f5f7;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1rem 0;
+  font-size: 0.75rem;
+  color: #86868b;
+  width: 100%;
+}
+.apple-minimal-footer-links a {
+  color: #515154;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.apple-minimal-footer-links a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+.apple-minimal-footnote {
+  color: #86868b;
+  font-size: 0.72rem;
 }
 
 /* Header Glyph & Typography */
@@ -3034,6 +3104,7 @@ img { max-width: 100%; }
   color: var(--ct-primary);
 }
 
+
 @media (max-width: 576px) {
   .apple-auth-viewport {
     padding: 2rem 1rem 3rem;
@@ -3421,10 +3492,10 @@ img { max-width: 100%; }
   margin-bottom: 0.75rem;
 }
 .track-emoji              { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.track-info-icon          { font-size: 1.8rem; color: var(--ct-primary); margin-bottom: 0.5rem; }
-.track-info-label         { font-size: 0.9rem; font-weight: 700; }
-.track-info-text          { font-size: 0.78rem; color: var(--ct-muted); margin-top: 0.25rem; }
-.track-info-panel         { background: var(--ct-primary-soft); border: 1.5px solid var(--ct-border); border-radius: var(--ct-radius-sm); padding: 1rem; }
+.track-info-icon          { font-size: 1.35rem; color: #64748b; margin-bottom: 0.4rem; }
+.track-info-label         { font-size: 0.85rem; font-weight: 600; color: #1e293b; }
+.track-info-text          { font-size: 0.76rem; color: #64748b; margin-top: 0.2rem; }
+.track-info-panel         { background: #f8fafc; border: 1px solid var(--ct-border); border-radius: var(--ct-radius-sm); padding: 0.85rem 1rem; }
 .track-action-link        { color: var(--ct-primary); text-decoration: none; font-weight: 600; }
 .track-action-link:hover  { text-decoration: underline; }
 .hist-msg-note            { color: var(--ct-muted); }
@@ -3647,8 +3718,8 @@ img { max-width: 100%; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
-  background: var(--ct-primary-soft);
-  border: 1px solid rgba(216, 27, 96, 0.15);
+  background: #f8fafc;
+  border: 1px solid var(--ct-border);
   border-radius: var(--ct-radius);
   padding: 1rem;
 }
@@ -3660,25 +3731,25 @@ img { max-width: 100%; }
 }
 
 .quality-badge-item i {
-  font-size: 1.35rem;
-  color: var(--ct-primary);
-  line-height: 1.1;
+  font-size: 1.15rem;
+  color: #64748b;
+  line-height: 1.2;
   flex-shrink: 0;
 }
 
 .quality-badge-item strong {
   display: block;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #111;
-  line-height: 1.2;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.25;
 }
 
 .quality-badge-item span {
   display: block;
   font-size: 0.72rem;
-  color: var(--ct-muted);
-  line-height: 1.2;
+  color: #64748b;
+  line-height: 1.25;
 }
 
 /* ===================================================

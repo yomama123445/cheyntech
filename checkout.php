@@ -234,11 +234,11 @@ require 'includes/header.php';
               <span class="value" id="coTotal">&#8369;0</span>
             </div>
 
-            <!-- Security badges -->
-            <div class="security-badges">
-              <span class="sec-badge"><i class="bi bi-shield-lock-fill"></i> Secure Checkout</span>
-              <span class="sec-badge"><i class="bi bi-eye-fill"></i> Manual Review</span>
-              <span class="sec-badge"><i class="bi bi-arrow-counterclockwise"></i> 7-Day Guarantee</span>
+            <!-- Trust notes -->
+            <div class="d-flex align-items-center justify-content-center gap-3 pt-3 text-muted" style="font-size: 0.75rem; border-top: 1px solid #f1f5f9;">
+              <span><i class="bi bi-lock me-1"></i>Manual verification</span>
+              <span>&middot;</span>
+              <span><i class="bi bi-arrow-repeat me-1"></i>7-day replacement</span>
             </div>
           </div>
         </div>

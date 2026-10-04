@@ -85,7 +85,7 @@ require 'includes/header.php';
             </a>
 
             <p class="secure-note">
-              <i class="bi bi-shield-check me-1"></i>Secure checkout &middot; Manual payment confirmation
+              <i class="bi bi-lock me-1"></i>Manual payment confirmation &middot; Cheyn Gadgets
             </p>
           </div>
         </div>

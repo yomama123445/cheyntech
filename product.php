@@ -69,31 +69,31 @@ require 'includes/header.php';
           <!-- Quality Assurance Badges Grid -->
           <div class="quality-badges-grid mb-4">
             <div class="quality-badge-item">
-              <i class="bi bi-shield-check"></i>
+              <i class="bi bi-phone"></i>
               <div>
-                <strong>IMEI &amp; Network Clean</strong>
-                <span>100% factory unlocked</span>
+                <strong>Network &amp; IMEI</strong>
+                <span>Factory unlocked &middot; Openline</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-battery-charging"></i>
               <div>
                 <strong>Battery Tested</strong>
-                <span>≥85% health guaranteed</span>
+                <span>Tested health capacity</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-arrow-repeat"></i>
               <div>
                 <strong>7-Day Replacement</strong>
-                <span>30-day service warranty</span>
+                <span>Store warranty included</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-box-seam"></i>
               <div>
-                <strong>Certified Inclusions</strong>
-                <span>Charger &amp; cord tested</span>
+                <strong>Standard Inclusions</strong>
+                <span>Tested accessories</span>
               </div>
             </div>
           </div>
@@ -111,13 +111,13 @@ require 'includes/header.php';
           <!-- Secondary trust -->
           <div class="d-flex gap-3 flex-wrap">
             <span class="d-flex align-items-center gap-1 small text-muted">
-              <i class="bi bi-shield-check text-ct"></i> 7-Day Guarantee
+              <i class="bi bi-arrow-repeat text-muted"></i> 7-Day Replacement
             </span>
             <span class="d-flex align-items-center gap-1 small text-muted">
-              <i class="bi bi-truck text-ct"></i> Pickup or Delivery
+              <i class="bi bi-truck text-muted"></i> Pickup or Delivery
             </span>
             <span class="d-flex align-items-center gap-1 small text-muted">
-              <i class="bi bi-cash-coin text-ct"></i> GCash / Bank Transfer
+              <i class="bi bi-credit-card text-muted"></i> GCash / Bank Transfer
             </span>
           </div>
 

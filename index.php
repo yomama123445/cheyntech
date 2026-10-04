@@ -24,18 +24,18 @@ require 'includes/header.php';
               <a href="login.php#register" class="btn btn-ct-outline px-4">Sign Up</a>
             <?php endif; ?>
           </div>
-          <div class="d-flex gap-3 mt-4 pt-1 flex-wrap">
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-shield-check text-ct fs-5"></i>
-              <span class="small fw-semibold">7-Day Replacement</span>
+          <div class="d-flex gap-4 mt-4 pt-1 flex-wrap hero-trust-bar">
+            <div class="d-flex align-items-center gap-2 text-muted">
+              <i class="bi bi-arrow-repeat text-muted"></i>
+              <span class="small">7-day store replacement</span>
             </div>
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
-              <span class="small fw-semibold">20+ Point Check</span>
+            <div class="d-flex align-items-center gap-2 text-muted">
+              <i class="bi bi-check2 text-muted"></i>
+              <span class="small">Tested hardware &amp; battery</span>
             </div>
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-truck text-ct fs-5"></i>
-              <span class="small fw-semibold">Local Roxas City Dispatch</span>
+            <div class="d-flex align-items-center gap-2 text-muted">
+              <i class="bi bi-geo-alt text-muted"></i>
+              <span class="small">Roxas City local dispatch</span>
             </div>
           </div>
         </div>
@@ -43,16 +43,16 @@ require 'includes/header.php';
           <div class="hero-device-wrapper">
             <!-- Floating diagnostic HUD proof chips -->
             <div class="hud-chip hud-top-left">
-              <i class="bi bi-shield-check text-success fs-6"></i>
-              <span>Clean IMEI · NTC</span>
+              <i class="bi bi-phone text-muted"></i>
+              <span>Openline · NTC</span>
             </div>
             <div class="hud-chip hud-bottom-left">
-              <i class="bi bi-battery-charging text-primary fs-6"></i>
+              <i class="bi bi-battery-half text-muted"></i>
               <span>89% Battery Health</span>
             </div>
             <div class="hud-chip hud-bottom-right">
-              <i class="bi bi-check2-circle text-info fs-6"></i>
-              <span>Face ID &amp; Cameras Passed</span>
+              <i class="bi bi-check2 text-muted"></i>
+              <span>Hardware Verified</span>
             </div>
 
             <div class="hero-img-frame spotlight-card">
@@ -74,7 +74,7 @@ require 'includes/header.php';
     </div>
   </section>
 
-  <!-- 20-POINT DIAGNOSTIC INSPECTION STRIP -->
+  <!-- DIAGNOSTIC INSPECTION STRIP -->
   <div class="diagnostic-strip">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
@@ -82,9 +82,9 @@ require 'includes/header.php';
           <div class="diagnostic-item">
             <div class="diag-icon"><i class="bi bi-display"></i></div>
             <div class="diag-info">
-              <span class="diag-title">Screen &amp; TrueTone</span>
-              <span class="diag-spec">OLED Touch &amp; Pixels</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Passed</span>
+              <span class="diag-title">Screen &amp; Display</span>
+              <span class="diag-spec">Touch response &amp; pixels</span>
+              <span class="diag-status"><i class="bi bi-check2"></i> Tested</span>
             </div>
           </div>
         </div>
@@ -93,8 +93,8 @@ require 'includes/header.php';
             <div class="diag-icon"><i class="bi bi-battery-charging"></i></div>
             <div class="diag-info">
               <span class="diag-title">Battery Health</span>
-              <span class="diag-spec">Capacity ≥85% Guaranteed</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Certified</span>
+              <span class="diag-spec">Tested capacity &amp; cycles</span>
+              <span class="diag-status"><i class="bi bi-check2"></i> Checked</span>
             </div>
           </div>
         </div>
@@ -103,8 +103,8 @@ require 'includes/header.php';
             <div class="diag-icon"><i class="bi bi-camera"></i></div>
             <div class="diag-info">
               <span class="diag-title">Audio &amp; Cameras</span>
-              <span class="diag-spec">Stereo Mic, 4K &amp; Face ID</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Verified</span>
+              <span class="diag-spec">Stereo mic, 4K &amp; Face ID</span>
+              <span class="diag-status"><i class="bi bi-check2"></i> Verified</span>
             </div>
           </div>
         </div>
@@ -113,8 +113,8 @@ require 'includes/header.php';
             <div class="diag-icon"><i class="bi bi-upc-scan"></i></div>
             <div class="diag-info">
               <span class="diag-title">Network &amp; IMEI</span>
-              <span class="diag-spec">Factory Unlocked · Clean</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> NTC Clean</span>
+              <span class="diag-spec">Factory unlocked · Openline</span>
+              <span class="diag-status"><i class="bi bi-check2"></i> Clean</span>
             </div>
           </div>
         </div>
@@ -316,7 +316,7 @@ require 'includes/header.php';
               <div class="product-spec-row">
                 <span class="spec-chip">128GB</span>
                 <span class="spec-chip text-primary">Sealed Box</span>
-                <span class="spec-chip"><i class="bi bi-shield-check text-success"></i> NTC</span>
+                <span class="spec-chip">NTC Approved</span>
               </div>
               <p class="product-price">₱6,290</p>
             </div>
