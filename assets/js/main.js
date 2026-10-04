@@ -201,11 +201,26 @@ function initNavbarScroll() {
    ACTIVE NAV LINK HIGHLIGHT
    ===================================================== */
 function initActiveNav() {
-  const page = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.navbar-ct .nav-link[href]').forEach(link => {
+  const page = window.location.pathname.split('/').pop() || 'index.php';
+  const urlParams = new URLSearchParams(window.location.search);
+  const cat = (urlParams.get('cat') || '').toLowerCase();
+  const q = (urlParams.get('q') || '').toLowerCase();
+
+  document.querySelectorAll('.navbar-ct .nav-link[href]:not(.dropdown-toggle)').forEach(link => {
     const href = link.getAttribute('href').split('?')[0];
     if (href === page) link.classList.add('active');
   });
+
+  // Highlight specific category dropdown when browsing catalog
+  if (page === 'catalog.php') {
+    if (cat.includes('preowned') || cat.includes('new') || cat.includes('wearable') || q.includes('apple') || q.includes('iphone') || q.includes('watch') || q.includes('airpod')) {
+      document.getElementById('appleDropdown')?.classList.add('active');
+    } else if (cat.includes('android') || q.includes('samsung') || q.includes('vivo') || q.includes('tecno') || q.includes('honor')) {
+      document.getElementById('androidDropdown')?.classList.add('active');
+    } else if (cat.includes('tablet') || q.includes('ipad')) {
+      document.getElementById('tabletsDropdown')?.classList.add('active');
+    }
+  }
 }
 
 /* =====================================================
