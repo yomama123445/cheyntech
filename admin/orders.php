@@ -12,9 +12,9 @@ require '../includes/admin_sidebar.php';
         <i class="bi bi-list fs-5"></i>
       </button>
       <h5 class="mb-0 me-auto">Orders</h5>
-      <div class="d-flex align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2 gap-sm-3">
         <button class="btn btn-ct-outline btn-sm" onclick="exportCSV()">
-          <i class="bi bi-download me-1"></i> Export CSV
+          <i class="bi bi-download me-1"></i> <span class="d-none d-sm-inline">Export </span>CSV
         </button>
         <div class="dropdown">
           <button class="btn p-0 d-flex align-items-center gap-2 admin-profile-btn" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">

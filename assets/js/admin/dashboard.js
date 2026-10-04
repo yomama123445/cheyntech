@@ -124,14 +124,14 @@ async function loadDashboardStats() {
               const borderClass = idx < Math.min(lowStock.length, 5) - 1 ? 'border-bottom' : '';
               const iconClass = p.category === 'tablet' ? 'bi-tablet' : p.category === 'android' ? 'bi-phone' : 'bi-phone';
               return `<li class="d-flex align-items-center justify-content-between py-3 ${borderClass}">
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
                   <div class="low-stock-icon pink"><i class="bi ${iconClass}"></i></div>
-                  <div>
-                    <div class="low-stock-name">${p.name}</div>
+                  <div class="min-w-0">
+                    <div class="low-stock-name text-truncate">${p.name}</div>
                     <div class="low-stock-qty">Only ${p.stock} unit${p.stock === 1 ? '' : 's'} left</div>
                   </div>
                 </div>
-                <a href="products.php" class="badge-ct badge-preowned text-decoration-none">Restock</a>
+                <a href="products.php" class="badge-ct badge-preowned text-decoration-none flex-shrink-0">Restock</a>
               </li>`;
             }).join('');
           }

@@ -941,7 +941,12 @@ img { max-width: 100%; }
 /* ===================================================
    ADMIN SIDEBAR
    =================================================== */
-.admin-layout { display: flex; min-height: 100vh; }
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
 
 .admin-sidebar {
   width: 250px;
@@ -1011,10 +1016,13 @@ img { max-width: 100%; }
 .admin-content {
   margin-left: 250px;
   flex: 1;
+  min-width: 0;
+  max-width: 100%;
   background: #f5f6fa;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .admin-topbar {
@@ -1219,6 +1227,12 @@ img { max-width: 100%; }
    RESPONSIVE TWEAKS
    =================================================== */
 @media (max-width: 991.98px) {
+  .admin-layout {
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
   .admin-sidebar {
     transform: translateX(-100%);
     box-shadow: none;
@@ -1227,8 +1241,18 @@ img { max-width: 100%; }
     transform: translateX(0);
     box-shadow: 0 0 35px rgba(0,0,0,0.55);
   }
-  .admin-content { margin-left: 0; }
-  .admin-topbar { top: 0; }
+  .admin-content {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+  .admin-topbar {
+    top: 0;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
 
   .navbar-ct .navbar-collapse {
     border-top: 1px solid var(--ct-border);
@@ -1248,6 +1272,69 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 767.98px) {
+  .admin-main {
+    padding: 1rem 0.75rem;
+  }
+
+  /* Compact responsive stat-cards on mobile */
+  .stat-card {
+    padding: 0.75rem 0.65rem;
+    gap: 0.55rem;
+  }
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.15rem;
+  }
+  .stat-value {
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  /* Admin table & card responsiveness */
+  .admin-content .card-header.px-4,
+  .admin-content .card-body.px-4,
+  .admin-content .card.px-4,
+  .admin-content .card.p-4 {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+  }
+  .admin-content .card.p-4 {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+  .admin-content .table th.ps-4,
+  .admin-content .table td.ps-4 {
+    padding-left: 0.75rem !important;
+  }
+  .admin-content .table th.pe-4,
+  .admin-content .table td.pe-4 {
+    padding-right: 0.75rem !important;
+  }
+  .admin-content .table .td-name {
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .low-stock-name {
+    font-size: 0.82rem;
+    word-break: break-word;
+  }
+  .low-stock-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .low-stock-icon i {
+    font-size: 1rem;
+  }
+
   .hero-section { padding: 3rem 0; }
   .hero-img-frame { max-width: 300px; }
   .category-card { padding: 1.25rem 0.75rem; }
@@ -1255,6 +1342,37 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 575.98px) {
+  .admin-topbar {
+    padding: 0.65rem 0.75rem;
+  }
+  .admin-topbar h5 {
+    font-size: 0.95rem;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .admin-user-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+  .stat-card {
+    padding: 0.65rem 0.5rem;
+    gap: 0.45rem;
+  }
+  .stat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+  .stat-value {
+    font-size: 1.15rem;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
   .section-header .section-title { font-size: 1.35rem; }
 }
 

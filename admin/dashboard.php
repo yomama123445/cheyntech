@@ -56,8 +56,8 @@ require '../includes/admin_sidebar.php';
         <div class="col-6 col-xl-3">
           <div class="stat-card">
             <div class="stat-icon pink-soft"><i class="bi bi-box-seam"></i></div>
-            <div>
-              <div class="stat-value" id="statTotalProducts">—</div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statTotalProducts">—</div>
               <div class="stat-label">Total Products</div>
             </div>
           </div>
@@ -65,8 +65,8 @@ require '../includes/admin_sidebar.php';
         <div class="col-6 col-xl-3">
           <div class="stat-card">
             <div class="stat-icon yellow-soft"><i class="bi bi-clock"></i></div>
-            <div>
-              <div class="stat-value" id="statPendingOrders">—</div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statPendingOrders">—</div>
               <div class="stat-label">Pending Orders</div>
             </div>
           </div>
@@ -74,8 +74,8 @@ require '../includes/admin_sidebar.php';
         <div class="col-6 col-xl-3">
           <div class="stat-card">
             <div class="stat-icon green-soft"><i class="bi bi-check-circle"></i></div>
-            <div>
-              <div class="stat-value" id="statCompletedOrders">—</div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statCompletedOrders">—</div>
               <div class="stat-label">Completed Orders</div>
             </div>
           </div>
@@ -83,8 +83,8 @@ require '../includes/admin_sidebar.php';
         <div class="col-6 col-xl-3">
           <div class="stat-card">
             <div class="stat-icon blue-soft"><i class="bi bi-exclamation-triangle"></i></div>
-            <div>
-              <div class="stat-value" id="statLowStock">—</div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statLowStock">—</div>
               <div class="stat-label">Low Stock Items</div>
             </div>
           </div>
@@ -175,54 +175,54 @@ require '../includes/admin_sidebar.php';
             <div class="card-body px-4 py-2">
               <ul class="list-unstyled mb-0" id="lowStockList">
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
                     <div class="low-stock-icon pink"><i class="bi bi-phone"></i></div>
-                    <div>
-                      <div class="low-stock-name">iPhone 12 Mini (Pre-owned)</div>
+                    <div class="min-w-0">
+                      <div class="low-stock-name text-truncate">iPhone 12 Mini (Pre-owned)</div>
                       <div class="low-stock-qty">Only 2 units left</div>
                     </div>
                   </div>
-                  <span class="badge-ct badge-preowned">Restock</span>
+                  <span class="badge-ct badge-preowned flex-shrink-0">Restock</span>
                 </li>
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
                     <div class="low-stock-icon blue"><i class="bi bi-tablet"></i></div>
-                    <div>
-                      <div class="low-stock-name">Samsung Galaxy Tab S9</div>
+                    <div class="min-w-0">
+                      <div class="low-stock-name text-truncate">Samsung Galaxy Tab S9</div>
                       <div class="low-stock-qty">Only 1 unit left</div>
                     </div>
                   </div>
-                  <span class="badge-ct badge-preowned">Restock</span>
+                  <span class="badge-ct badge-preowned flex-shrink-0">Restock</span>
                 </li>
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
                     <div class="low-stock-icon yellow"><i class="bi bi-earbuds"></i></div>
-                    <div>
-                      <div class="low-stock-name">AirPods Pro (2nd Gen)</div>
+                    <div class="min-w-0">
+                      <div class="low-stock-name text-truncate">AirPods Pro (2nd Gen)</div>
                       <div class="low-stock-qty">Only 3 units left</div>
                     </div>
                   </div>
-                  <span class="badge-ct badge-refurbished">Restock</span>
+                  <span class="badge-ct badge-refurbished flex-shrink-0">Restock</span>
                 </li>
                 <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
                     <div class="low-stock-icon green"><i class="bi bi-watch"></i></div>
-                    <div>
-                      <div class="low-stock-name">Apple Watch Series 9</div>
+                    <div class="min-w-0">
+                      <div class="low-stock-name text-truncate">Apple Watch Series 9</div>
                       <div class="low-stock-qty">Only 2 units left</div>
                     </div>
                   </div>
-                  <span class="badge-ct badge-available">Restock</span>
+                  <span class="badge-ct badge-available flex-shrink-0">Restock</span>
                 </li>
                 <li class="d-flex align-items-center justify-content-between py-3">
-                  <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
                     <div class="low-stock-icon pink"><i class="bi bi-phone-flip"></i></div>
-                    <div>
-                      <div class="low-stock-name">Oppo Find X7 Ultra</div>
+                    <div class="min-w-0">
+                      <div class="low-stock-name text-truncate">Oppo Find X7 Ultra</div>
                       <div class="low-stock-qty">Only 1 unit left</div>
                     </div>
                   </div>
-                  <span class="badge-ct badge-preowned">Restock</span>
+                  <span class="badge-ct badge-preowned flex-shrink-0">Restock</span>
                 </li>
               </ul>
             </div>

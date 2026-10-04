@@ -12,9 +12,9 @@ require '../includes/admin_sidebar.php';
         <i class="bi bi-list fs-5"></i>
       </button>
       <h5 class="mb-0 me-auto">Products</h5>
-      <div class="d-flex align-items-center gap-3">
-        <button class="btn btn-ct" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
-          <i class="bi bi-plus-lg me-1"></i> Add Product
+      <div class="d-flex align-items-center gap-2 gap-sm-3">
+        <button class="btn btn-ct btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
+          <i class="bi bi-plus-lg me-1"></i> <span class="d-none d-sm-inline">Add </span>Product
         </button>
         <div class="dropdown">
           <button class="btn p-0 d-flex align-items-center gap-2 admin-profile-btn" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
