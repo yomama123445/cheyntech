@@ -303,8 +303,9 @@ function initStepper() {
   const stepIndex      = (activeIdx !== -1 && activeIdx > completedCount) ? activeIdx : completedCount;
   const maxSteps       = steps.length - 1;
   const progress       = maxSteps > 0 ? (stepIndex / maxSteps) : 0;
+  const trackSpan      = maxSteps / steps.length;
 
-  fillLine.style.width = `${Math.min(Math.max(progress * 100, 0), 100)}%`;
+  fillLine.style.width = `${Math.min(Math.max(progress * trackSpan * 100, 0), trackSpan * 100)}%`;
 }
 window.initStepper = initStepper;
 

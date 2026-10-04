@@ -36,7 +36,7 @@ require 'includes/header.php';
             <h2 class="h4 fw-bold mb-1">Ask About a Listing</h2>
             <p class="text-muted small mb-4">Fill in the form below and we'll get back to you as soon as possible.</p>
 
-            <div class="alert alert-success d-flex align-items-center gap-2 rounded-3" id="inquirySuccess" role="alert" aria-live="polite">
+            <div class="alert alert-success d-none align-items-center gap-2 rounded-3" id="inquirySuccess" role="alert" aria-live="polite">
               <i class="bi bi-check-circle-fill flex-shrink-0"></i>
               <span>Your inquiry has been sent! We'll get back to you shortly.</span>
             </div>

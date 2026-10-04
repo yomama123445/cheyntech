@@ -12,7 +12,8 @@
   var successAlert = document.getElementById('inquirySuccess');
 
   if (successAlert) {
-    successAlert.style.display = 'none';
+    successAlert.classList.add('d-none');
+    successAlert.classList.remove('d-flex');
   }
 
   if (form) {
@@ -58,7 +59,8 @@
         // Show the success banner only when the response returns { success: true }
         if (data && data.success) {
           if (successAlert) {
-            successAlert.style.display = 'flex';
+            successAlert.classList.remove('d-none');
+            successAlert.classList.add('d-flex');
             successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
           form.reset();

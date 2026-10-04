@@ -1037,6 +1037,7 @@ img { max-width: 100%; }
 .order-stepper {
   display: flex;
   position: relative;
+  padding-top: 4px;
   padding-bottom: 0.5rem;
 }
 
@@ -1044,9 +1045,9 @@ img { max-width: 100%; }
 .order-stepper::before {
   content: '';
   position: absolute;
-  top: 18px;
-  left: calc(10% + 10px);
-  right: calc(10% + 10px);
+  top: 22px;
+  left: 12.5%;
+  right: 12.5%;
   height: 3px;
   background: var(--ct-border);
   z-index: 0;
@@ -1059,6 +1060,8 @@ img { max-width: 100%; }
   align-items: center;
   position: relative;
   z-index: 1;
+  min-width: 0;
+  padding: 0 4px;
 }
 
 .step-circle {
@@ -1074,6 +1077,7 @@ img { max-width: 100%; }
   margin-bottom: 0.6rem;
   transition: var(--ct-transition);
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .step.completed .step-circle {
@@ -1089,11 +1093,13 @@ img { max-width: 100%; }
 }
 
 .step-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-align: center;
   color: var(--ct-muted);
-  max-width: 75px;
-  line-height: 1.3;
+  max-width: 110px;
+  line-height: 1.25;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .step.completed .step-label,
@@ -1102,12 +1108,13 @@ img { max-width: 100%; }
 /* stepper fill line */
 .order-stepper .step-fill {
   position: absolute;
-  top: 18px;
-  left: 0;
+  top: 22px;
+  left: 12.5%;
   height: 3px;
   background: var(--ct-primary);
   z-index: 0;
   transition: width 0.5s ease;
+  max-width: 75%;
 }
 
 /* ===================================================
@@ -1541,7 +1548,7 @@ img { max-width: 100%; }
   .hero-section { padding: 3rem 0; }
   .hero-img-frame { max-width: 300px; }
   .category-card { padding: 1.25rem 0.75rem; }
-  .order-stepper .step-label { font-size: 0.65rem; max-width: 60px; }
+  .order-stepper .step-label { font-size: 0.7rem; max-width: 85px; word-wrap: break-word; overflow-wrap: break-word; }
 }
 
 @media (max-width: 575.98px) {
@@ -2367,6 +2374,17 @@ img { max-width: 100%; }
 /* ===================================================
    TRACK ORDER PAGE
    =================================================== */
+.track-search-wrap {
+  background: #fff;
+  border: 1px solid var(--ct-border);
+  border-radius: var(--ct-radius-lg);
+  padding: 2.5rem 2rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
 .track-form-card { background: #fff; border: 1.5px solid var(--ct-border); border-radius: var(--ct-radius); padding: 2rem; max-width: 560px; margin: 0 auto; }
 
 .track-result         { display: none; }
@@ -2381,6 +2399,8 @@ img { max-width: 100%; }
   max-width: 600px;
   margin: 0 auto 2.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .track-not-found-icon {
@@ -2399,10 +2419,10 @@ img { max-width: 100%; }
 .order-result-card,
 .order-info-card {
   background: #fff;
-  border: 1.5px solid var(--ct-border);
+  border: 1px solid var(--ct-border);
   border-radius: var(--ct-radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .result-header,
@@ -2424,6 +2444,7 @@ img { max-width: 100%; }
   color: #fff;
   letter-spacing: 0.5px;
   margin-bottom: 0.25rem;
+  word-break: break-all;
 }
 
 .result-product,
@@ -2431,12 +2452,15 @@ img { max-width: 100%; }
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 0.25rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .result-meta,
 .order-info-meta {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.6);
+  word-break: break-word;
 }
 
 .result-status-badge,
@@ -2450,6 +2474,7 @@ img { max-width: 100%; }
   padding: 0.45rem 1rem;
   border-radius: 50px;
   box-shadow: 0 2px 8px rgba(233, 30, 140, 0.35);
+  white-space: nowrap;
 }
 
 .result-body,
@@ -2560,7 +2585,10 @@ img { max-width: 100%; }
 
 .history-info {
   flex: 1;
+  min-width: 0;
   padding-top: 0.2rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .hist-time,
@@ -2577,6 +2605,8 @@ img { max-width: 100%; }
   font-weight: 700;
   color: var(--ct-text);
   margin-bottom: 0.25rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .hist-sub,
@@ -2584,6 +2614,8 @@ img { max-width: 100%; }
   font-size: 0.85rem;
   color: var(--ct-muted);
   line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Help Strip */
@@ -2604,6 +2636,8 @@ img { max-width: 100%; }
   margin: 0;
   font-size: 0.9rem;
   color: var(--ct-text);
+  min-width: 0;
+  word-break: break-word;
 }
 
 /* ===================================================
@@ -3519,7 +3553,7 @@ img { max-width: 100%; }
 .track-action-link        { color: var(--ct-primary); text-decoration: none; font-weight: 600; }
 .track-action-link:hover  { text-decoration: underline; }
 .hist-msg-note            { color: var(--ct-muted); }
-.status-fill-bar          { left: calc(10% + 10px); }
+.status-fill-bar          { left: 12.5%; }
 
 
 /* ===================================================
@@ -4279,6 +4313,10 @@ img { max-width: 100%; }
     align-items: flex-start;
   }
 
+  .order-info-header .align-items-end {
+    align-items: flex-start !important;
+  }
+
   .order-info-id {
     font-size: 1.15rem;
   }
@@ -4293,6 +4331,7 @@ img { max-width: 100%; }
 
   .order-stepper {
     margin: 0.75rem 0 1.75rem !important;
+    padding-top: 2px;
   }
 
   .step-circle {
@@ -4305,13 +4344,20 @@ img { max-width: 100%; }
 
   .order-stepper::before,
   .order-stepper .step-fill {
-    top: 14px;
+    top: 17px;
+    left: 12.5%;
+  }
+
+  .order-stepper::before {
+    right: 12.5%;
   }
 
   .order-stepper .step-label {
-    font-size: 0.62rem;
-    max-width: 55px;
+    font-size: 0.65rem;
+    max-width: 75px;
     line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .history-item,

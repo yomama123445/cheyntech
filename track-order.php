@@ -101,7 +101,7 @@ require 'includes/header.php';
 
           <!-- Header -->
           <div class="order-info-header">
-            <div>
+            <div class="flex-grow-1 min-w-0 me-sm-3 mb-2 mb-sm-0">
               <div class="order-info-id" id="resultOrderId">CT-10493</div>
               <div class="order-info-product">
                 <i class="bi bi-phone me-1"></i>
@@ -111,7 +111,7 @@ require 'includes/header.php';
                 <i class="bi bi-calendar3 me-1"></i>Placed on <span id="resultDate">August 12, 2026</span>
               </div>
             </div>
-            <div class="d-flex flex-column align-items-end gap-2">
+            <div class="d-flex flex-column align-items-start align-items-sm-end gap-2 flex-shrink-0">
               <div class="order-info-badge result-status-badge">
                 <i class="bi bi-bag-check me-1"></i>Ready for Pickup
               </div>
@@ -131,12 +131,12 @@ require 'includes/header.php';
                 <span id="trackPaymentBadge" class="badge bg-primary"></span>
               </div>
               <p class="text-xs mb-2 text-muted" id="trackPaymentText"></p>
-              <div class="d-flex flex-wrap align-items-center justify-content-between p-2 rounded bg-white border">
-                <div>
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-2 rounded bg-white border">
+                <div class="min-w-0">
                   <span class="text-muted text-xs d-block" id="trackAccountLabel">Account Details</span>
-                  <span class="fw-700 font-monospace text-dark" id="trackAccountVal"></span>
+                  <span class="fw-700 font-monospace text-dark text-break" id="trackAccountVal"></span>
                 </div>
-                <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" id="trackCopyBtn" title="Copy Number">
+                <button type="button" class="btn btn-sm btn-outline-secondary copy-btn flex-shrink-0" id="trackCopyBtn" title="Copy Number">
                   <i class="bi bi-clipboard"></i> Copy
                 </button>
               </div>
