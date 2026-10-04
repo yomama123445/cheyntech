@@ -494,6 +494,44 @@ function initNavTrayController() {
 }
 
 /* =====================================================
+   HERO VIDEO CONTROLLER
+   ===================================================== */
+function initHeroVideo() {
+  const video = document.querySelector('.apple-video-frame video');
+  if (!video) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+
+  const tryPlay = () => {
+    const p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => {
+        // Autoplay policy or media loading pending
+      });
+    }
+  };
+
+  if (video.readyState >= 2) {
+    tryPlay();
+  } else {
+    video.addEventListener('loadeddata', tryPlay, { once: true });
+    video.addEventListener('canplay', tryPlay, { once: true });
+  }
+
+  // Fallback trigger on first mobile touch/scroll if browser requires user gesture
+  const resumeOnInteraction = () => {
+    if (video.paused) {
+      tryPlay();
+    }
+    window.removeEventListener('touchstart', resumeOnInteraction);
+    window.removeEventListener('scroll', resumeOnInteraction);
+  };
+  window.addEventListener('touchstart', resumeOnInteraction, { passive: true, once: true });
+  window.addEventListener('scroll', resumeOnInteraction, { passive: true, once: true });
+}
+
+/* =====================================================
    INIT ALL
    ===================================================== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -507,4 +545,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initStepper();
   initUserAuth();
   initNavTrayController();
+  initHeroVideo();
 });
+
