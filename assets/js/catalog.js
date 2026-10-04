@@ -90,6 +90,15 @@ function colorSlug(label) {
   return label.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
+/**
+ * Check if a product is an Apple iPad.
+ */
+function isIpadProduct(p) {
+  const name = (p.name || '').toLowerCase();
+  const id   = (p.id || '').toLowerCase();
+  return id.includes('ipad') || name.includes('ipad') || (p.brand && p.brand.toLowerCase() === 'apple');
+}
+
 /* ============================================================
    FILTER
    ============================================================ */
@@ -101,13 +110,35 @@ function filterProducts() {
     // --- Search query against product name / keywords ---
     if (qLower) {
       const pName = (p.name || '').toLowerCase();
+      const pDesc = (p.desc || '').toLowerCase();
+      const pBrand = (p.brand || '').toLowerCase();
       const pCats = productCategories(p);
+      const isIpad = isIpadProduct(p);
+      const isTablet = pCats.includes('tablet');
 
       const isWearableQuery = ['wearable', 'wearables', 'smartwatch', 'smart watch', 'watch', 'airpod', 'airpods'].some(w => qLower.includes(w) || w.includes(qLower));
-      const isTabletQuery   = ['tablet', 'tablets', 'ipad', 'ipads'].some(w => qLower.includes(w) || w.includes(qLower));
+      const isIpadQuery     = ['ipad', 'ipads'].some(w => qLower === w || qLower.includes(w));
+      const isAndroidQuery  = ['android'].some(w => qLower === w || qLower.includes(w));
+      const isGeneralTabletQuery = (qLower === 'tablet' || qLower === 'tablets');
 
-      const nameMatch     = pName.includes(qLower);
-      const categoryMatch = (isWearableQuery && pCats.includes('wearable')) || (isTabletQuery && pCats.includes('tablet'));
+      // 1. If searching specifically for iPad: must be an iPad
+      if (isIpadQuery && !isIpad) return false;
+
+      // 2. If searching for Android: exclude Apple devices & require Android phone or tablet
+      if (isAndroidQuery) {
+        if (isIpad || pCats.includes('wearable') || pCats.includes('preowned') || pCats.includes('new') || pName.includes('iphone') || pName.includes('apple')) {
+          return false;
+        }
+        const isAndroidDevice = pCats.includes('android') || (isTablet && !isIpad) || pDesc.includes('android') || (p.specs && p.specs.OS && p.specs.OS.toLowerCase().includes('android'));
+        if (!isAndroidDevice) return false;
+      }
+
+      // 3. Name or category match
+      const nameMatch = pName.includes(qLower) || pDesc.includes(qLower) || pBrand.includes(qLower);
+      const categoryMatch = (isWearableQuery && pCats.includes('wearable')) ||
+                            (isGeneralTabletQuery && isTablet) ||
+                            (isIpadQuery && isIpad) ||
+                            (isAndroidQuery && (pCats.includes('android') || (isTablet && !isIpad)));
 
       if (!nameMatch && !categoryMatch) return false;
     }
