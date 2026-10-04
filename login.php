@@ -264,22 +264,14 @@ require 'includes/header.php';
         </div>
       </div>
 
-      <!-- Apple Privacy Strip (Signature Apple Lock + Text) -->
-      <div class="apple-auth-privacy text-center mt-5 pt-3">
-        <div class="d-inline-flex align-items-center gap-2 mb-1">
-          <i class="bi bi-shield-check text-success"></i>
-          <span class="apple-privacy-heading">Your Cheyn Account information is protected</span>
-        </div>
-        <p class="apple-privacy-desc mb-0">
-          Your credentials are encrypted end-to-end and used only to secure your orders and warranty tracking in Roxas City.
+      <!-- Apple-style Muted Footnote -->
+      <div class="apple-auth-footnote text-center mt-5 pt-2">
+        <p class="apple-footnote-text mb-1">
+          Your Cheyn ID is used to sign in and securely manage your purchases. <a href="about.php" class="apple-footnote-link">Privacy Policy</a>
         </p>
-      </div>
-
-      <!-- Educational Disclaimer Pill -->
-      <div class="apple-auth-edu text-center mt-4">
-        <span class="apple-edu-badge">
-          <i class="bi bi-info-circle me-1"></i> This website is for educational purposes only.
-        </span>
+        <p class="apple-footnote-edu mb-0">
+          This website is for educational purposes only.
+        </p>
       </div>
 
     </div>

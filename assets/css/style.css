@@ -2976,35 +2976,30 @@ img { max-width: 100%; }
   margin-top: 0.25rem;
 }
 
-/* Privacy & Educational Badges */
-.apple-auth-privacy {
-  padding-top: 1.5rem;
+/* Apple-style Subtle Footnote */
+.apple-auth-footnote {
+  padding-top: 2rem;
+  max-width: 440px;
+  margin: 0 auto;
 }
-.apple-privacy-heading {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #1d1d1f;
-}
-.apple-privacy-desc {
-  font-size: 0.78rem;
+.apple-footnote-text {
+  font-size: 0.72rem;
   color: #86868b;
   line-height: 1.45;
-  max-width: 420px;
-  margin: 0.25rem auto 0;
+  letter-spacing: -0.01em;
 }
-.apple-auth-edu {
-  margin-top: 1.5rem;
-}
-.apple-edu-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  font-size: 0.76rem;
+.apple-footnote-link {
   color: #6e6e73;
-  font-weight: 500;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+.apple-footnote-link:hover {
+  color: #1d1d1f;
+}
+.apple-footnote-edu {
+  font-size: 0.69rem;
+  color: #a1a1a6;
+  letter-spacing: -0.01em;
 }
 
 /* Legacy & Fallback Support */
