@@ -77,8 +77,43 @@ $activePage      = $activePage      ?? '';
 
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav mx-auto gap-lg-1">
-          <li class="nav-item">
-            <a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" <?= $activePage === 'home' ? 'aria-current="page"' : '' ?> href="index.php">Home</a>
+          <!-- Home Dropdown -->
+          <li class="nav-item dropdown has-nav-tray">
+            <a class="nav-link dropdown-toggle <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="homeDropdown">
+              <div class="container">
+                <div class="row g-4 ps-lg-4">
+                  <div class="col-12 col-lg-4 nav-tray-col">
+                    <span class="nav-tray-label">Explore Store</span>
+                    <a href="index.php" class="nav-tray-link-lg">Store Overview</a>
+                    <a href="catalog.php" class="nav-tray-link-lg">All Phone Listings</a>
+                    <a href="catalog.php?cat=preowned" class="nav-tray-link-lg">Pre-owned Gadgets</a>
+                    <a href="about.php" class="nav-tray-link-lg">Why Cheyn Gadgets</a>
+                  </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Shop by Category</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="catalog.php?cat=preowned">Pre-owned iPhones</a></li>
+                      <li><a href="catalog.php?cat=new">Brand New Factory Sealed</a></li>
+                      <li><a href="catalog.php?cat=android">Android Phones (Samsung &bull; Vivo &bull; Tecno)</a></li>
+                      <li><a href="catalog.php?cat=tablet">Tablets &amp; Apple iPads</a></li>
+                      <li><a href="catalog.php?cat=wearable">Watches &amp; Accessories</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Local Services</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="track-order.php">Track Order Status</a></li>
+                      <li><a href="about.php">Store Location &amp; Hours (Roxas City)</a></li>
+                      <li><a href="about.php#warranty">7-Day Replacement &amp; Service Warranty</a></li>
+                      <li><a href="contact.php">Ask About a Specific Model</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
 
           <!-- Apple Dropdown -->
@@ -88,36 +123,17 @@ $activePage      = $activePage      ?? '';
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="appleDropdown">
               <div class="container">
-                <div class="row g-4 align-items-start">
-                  <div class="col-12 col-lg-5">
-                    <span class="nav-tray-heading">Explore Apple</span>
-                    <div class="d-flex flex-column gap-2">
-                      <a class="nav-tray-item" href="catalog.php?cat=preowned">
-                        <i class="bi bi-phone text-ct"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Pre-owned iPhones</div>
-                          <span class="nav-tray-item-desc">Tested battery &amp; Grade A units</span>
-                        </div>
-                      </a>
-                      <a class="nav-tray-item" href="catalog.php?cat=new">
-                        <i class="bi bi-box-seam text-ct"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Brand New iPhones</div>
-                          <span class="nav-tray-item-desc">Factory sealed official units</span>
-                        </div>
-                      </a>
-                      <a class="nav-tray-item" href="catalog.php?cat=wearable">
-                        <i class="bi bi-smartwatch text-ct"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Apple Watches &amp; AirPods</div>
-                          <span class="nav-tray-item-desc">Wearables &amp; sound accessories</span>
-                        </div>
-                      </a>
-                    </div>
+                <div class="row g-4 ps-lg-4">
+                  <div class="col-12 col-lg-4 nav-tray-col">
+                    <span class="nav-tray-label">Explore Apple</span>
+                    <a href="catalog.php?cat=preowned" class="nav-tray-link-lg">Pre-owned iPhones</a>
+                    <a href="catalog.php?cat=new" class="nav-tray-link-lg">Brand New iPhones</a>
+                    <a href="catalog.php?cat=wearable" class="nav-tray-link-lg">Apple Watch &amp; AirPods</a>
+                    <a href="catalog.php?q=iPhone" class="nav-tray-link-lg">All Apple Listings</a>
                   </div>
-                  <div class="col-12 col-lg-3 d-none d-lg-block border-start ps-lg-4">
-                    <span class="nav-tray-heading">Popular Models</span>
-                    <ul class="nav-tray-sublinks">
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Popular in Store</span>
+                    <ul class="nav-tray-links">
                       <li><a href="catalog.php?q=iPhone+11">iPhone 11 Series</a></li>
                       <li><a href="catalog.php?q=iPhone+12">iPhone 12 / 12 Pro</a></li>
                       <li><a href="catalog.php?q=iPhone+13">iPhone 13 / 13 Pro</a></li>
@@ -125,15 +141,15 @@ $activePage      = $activePage      ?? '';
                       <li><a href="catalog.php?q=iPhone+15">iPhone 15 Series</a></li>
                     </ul>
                   </div>
-                  <div class="col-12 col-lg-4 d-none d-lg-block">
-                    <div class="nav-tray-card">
-                      <span class="badge bg-white text-dark border mb-2"><i class="bi bi-geo-alt me-1 text-ct"></i>Roxas City Shop</span>
-                      <div class="fw-semibold small text-dark mb-1">Local Store Warranty</div>
-                      <p class="text-muted text-xs mb-3">Every pre-owned iPhone is physically tested and battery-checked. Backed by our 7-day replacement and 30-day service warranty in Roxas City.</p>
-                      <a href="catalog.php?q=iPhone" class="small fw-semibold text-ct text-decoration-none">
-                        Browse all Apple listings &rarr;
-                      </a>
-                    </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Store Standards</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="catalog.php?cat=preowned">Battery Health Tested</a></li>
+                      <li><a href="catalog.php?cat=preowned">Grade A Condition Units</a></li>
+                      <li><a href="about.php#warranty">7-Day Replacement Warranty</a></li>
+                      <li><a href="about.php#warranty">30-Day Service Warranty</a></li>
+                      <li><a href="about.php">In-Store Inspection &amp; Pickup</a></li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -147,58 +163,32 @@ $activePage      = $activePage      ?? '';
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="androidDropdown">
               <div class="container">
-                <div class="row g-4 align-items-start">
-                  <div class="col-12 col-lg-5">
-                    <span class="nav-tray-heading">Explore Android</span>
-                    <div class="d-flex flex-column gap-2">
-                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Samsung">
-                        <i class="bi bi-phone text-primary"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Samsung</div>
-                          <span class="nav-tray-item-desc">Galaxy series &amp; 5G smartphones</span>
-                        </div>
-                      </a>
-                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Vivo">
-                        <i class="bi bi-phone text-primary"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Vivo</div>
-                          <span class="nav-tray-item-desc">Budget &amp; everyday mid-range phones</span>
-                        </div>
-                      </a>
-                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Tecno">
-                        <i class="bi bi-phone text-primary"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Tecno</div>
-                          <span class="nav-tray-item-desc">Spark series &amp; high value phones</span>
-                        </div>
-                      </a>
-                      <a class="nav-tray-item" href="catalog.php?cat=android&q=Honor">
-                        <i class="bi bi-phone text-primary"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Honor</div>
-                          <span class="nav-tray-item-desc">Sleek styling &amp; durable builds</span>
-                        </div>
-                      </a>
-                    </div>
+                <div class="row g-4 ps-lg-4">
+                  <div class="col-12 col-lg-4 nav-tray-col">
+                    <span class="nav-tray-label">Explore Android</span>
+                    <a href="catalog.php?cat=android&q=Samsung" class="nav-tray-link-lg">Samsung Galaxy</a>
+                    <a href="catalog.php?cat=android&q=Vivo" class="nav-tray-link-lg">Vivo</a>
+                    <a href="catalog.php?cat=android&q=Tecno" class="nav-tray-link-lg">Tecno</a>
+                    <a href="catalog.php?cat=android&q=Honor" class="nav-tray-link-lg">Honor</a>
+                    <a href="catalog.php?cat=android" class="nav-tray-link-lg">All Android Devices</a>
                   </div>
-                  <div class="col-12 col-lg-3 d-none d-lg-block border-start ps-lg-4">
-                    <span class="nav-tray-heading">Popular Series</span>
-                    <ul class="nav-tray-sublinks">
-                      <li><a href="catalog.php?cat=android&q=Samsung">Samsung Galaxy A Series</a></li>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Popular Series</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="catalog.php?cat=android&q=Samsung">Galaxy A Series 5G</a></li>
                       <li><a href="catalog.php?cat=android&q=Vivo">Vivo Y &amp; V Series</a></li>
                       <li><a href="catalog.php?cat=android&q=Tecno">Tecno Spark Series</a></li>
                       <li><a href="catalog.php?cat=android&q=Honor">Honor X Series</a></li>
                     </ul>
                   </div>
-                  <div class="col-12 col-lg-4 d-none d-lg-block">
-                    <div class="nav-tray-card">
-                      <span class="badge bg-white text-dark border mb-2"><i class="bi bi-shield-check me-1 text-ct"></i>Tested &amp; Verified</span>
-                      <div class="fw-semibold small text-dark mb-1">Affordable Everyday Units</div>
-                      <p class="text-muted text-xs mb-3">Pre-owned and value Android devices checked for clean displays, reliable batteries, and fully working cameras.</p>
-                      <a href="catalog.php?cat=android" class="small fw-semibold text-ct text-decoration-none">
-                        Browse all Android devices &rarr;
-                      </a>
-                    </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Store Standards</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="catalog.php?cat=android">Display &amp; Hardware Checked</a></li>
+                      <li><a href="catalog.php?cat=android">Clean Battery Cycles</a></li>
+                      <li><a href="about.php#warranty">Local Capiz Warranty</a></li>
+                      <li><a href="catalog.php?cat=android">In-Store Pickup Available</a></li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -212,58 +202,104 @@ $activePage      = $activePage      ?? '';
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="tabletsDropdown">
               <div class="container">
-                <div class="row g-4 align-items-start">
-                  <div class="col-12 col-lg-5">
-                    <span class="nav-tray-heading">Explore Tablets</span>
-                    <div class="d-flex flex-column gap-2">
-                      <a class="nav-tray-item" href="catalog.php?cat=tablet&q=iPad">
-                        <i class="bi bi-tablet text-ct"></i>
-                        <div>
-                          <div class="nav-tray-item-title">iPads</div>
-                          <span class="nav-tray-item-desc">iPad Air, Standard &amp; Pro units</span>
-                        </div>
-                      </a>
-                      <a class="nav-tray-item" href="catalog.php?cat=tablet&q=Android">
-                        <i class="bi bi-tablet-landscape text-ct"></i>
-                        <div>
-                          <div class="nav-tray-item-title">Android Tablets</div>
-                          <span class="nav-tray-item-desc">Kids learning, streaming &amp; POS</span>
-                        </div>
-                      </a>
-                    </div>
+                <div class="row g-4 ps-lg-4">
+                  <div class="col-12 col-lg-4 nav-tray-col">
+                    <span class="nav-tray-label">Explore Tablets</span>
+                    <a href="catalog.php?cat=tablet&q=iPad" class="nav-tray-link-lg">Apple iPads</a>
+                    <a href="catalog.php?cat=tablet&q=Android" class="nav-tray-link-lg">Android Tablets</a>
+                    <a href="catalog.php?cat=tablet" class="nav-tray-link-lg">All Tablet Listings</a>
                   </div>
-                  <div class="col-12 col-lg-3 d-none d-lg-block border-start ps-lg-4">
-                    <span class="nav-tray-heading">Ideal For</span>
-                    <ul class="nav-tray-sublinks">
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Ideal For</span>
+                    <ul class="nav-tray-links">
                       <li><a href="catalog.php?cat=tablet&q=iPad">Online Class &amp; School</a></li>
-                      <li><a href="catalog.php?cat=tablet">Streaming &amp; Media</a></li>
+                      <li><a href="catalog.php?cat=tablet">Streaming &amp; Entertainment</a></li>
                       <li><a href="catalog.php?cat=tablet">Store POS &amp; Business</a></li>
                     </ul>
                   </div>
-                  <div class="col-12 col-lg-4 d-none d-lg-block">
-                    <div class="nav-tray-card">
-                      <span class="badge bg-white text-dark border mb-2"><i class="bi bi-check2-circle me-1 text-ct"></i>Clean Accounts</span>
-                      <div class="fw-semibold small text-dark mb-1">Ready for Setup</div>
-                      <p class="text-muted text-xs mb-3">All iPads and tablets are factory reset with no locks or account bindings. In-store inspection welcomed before purchase.</p>
-                      <a href="catalog.php?cat=tablet" class="small fw-semibold text-ct text-decoration-none">
-                        Browse all tablets &rarr;
-                      </a>
-                    </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Store Standards</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="catalog.php?cat=tablet">Clean iCloud / Google Accounts</a></li>
+                      <li><a href="catalog.php?cat=tablet">Battery Tested for Daily Use</a></li>
+                      <li><a href="catalog.php?cat=tablet">Charger Cable Included</a></li>
+                      <li><a href="about.php">In-Store Testing Welcomed</a></li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link <?= $activePage === 'about' ? 'active' : '' ?>" href="about.php">
+          <!-- About Dropdown -->
+          <li class="nav-item dropdown has-nav-tray">
+            <a class="nav-link dropdown-toggle <?= $activePage === 'about' ? 'active' : '' ?>" href="about.php" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               About
             </a>
+            <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="aboutDropdown">
+              <div class="container">
+                <div class="row g-4 ps-lg-4">
+                  <div class="col-12 col-lg-4 nav-tray-col">
+                    <span class="nav-tray-label">About Cheyn Gadgets</span>
+                    <a href="about.php" class="nav-tray-link-lg">Our Story &amp; Shop</a>
+                    <a href="about.php#warranty" class="nav-tray-link-lg">Local Warranty Policy</a>
+                    <a href="about.php#location" class="nav-tray-link-lg">Store Location &amp; Hours</a>
+                  </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">How We Work</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="about.php">In-Store Pickup Guide</a></li>
+                      <li><a href="about.php">Local Delivery in Roxas City</a></li>
+                      <li><a href="about.php">Device Inspection Standards</a></li>
+                      <li><a href="contact.php">Ask a Question</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Get in Touch</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="contact.php">Customer Contact Form</a></li>
+                      <li><a href="contact.php">Inquire on a Specific Model</a></li>
+                      <li><a href="https://facebook.com" target="_blank" rel="noopener">Official Facebook Page &rarr;</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" href="track-order.php">
+
+          <!-- Track Order Dropdown -->
+          <li class="nav-item dropdown has-nav-tray">
+            <a class="nav-link dropdown-toggle <?= $activePage === 'track-order' ? 'active' : '' ?>" href="track-order.php" id="trackDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Track Order
             </a>
+            <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="trackDropdown">
+              <div class="container">
+                <div class="row g-4 ps-lg-4">
+                  <div class="col-12 col-lg-4 nav-tray-col">
+                    <span class="nav-tray-label">Order Status</span>
+                    <a href="track-order.php" class="nav-tray-link-lg">Track an Order</a>
+                    <a href="track-order.php" class="nav-tray-link-lg">Pickup Claim Slip</a>
+                    <a href="contact.php" class="nav-tray-link-lg">Order Support Inquiry</a>
+                  </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Payments</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="track-order.php">GCash Account Transfer</a></li>
+                      <li><a href="track-order.php">BDO Bank Deposit</a></li>
+                      <li><a href="track-order.php">Cash on In-Store Pickup</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
+                    <span class="nav-tray-label">Pickup &amp; Delivery</span>
+                    <ul class="nav-tray-links">
+                      <li><a href="track-order.php">Ready for Pickup Status</a></li>
+                      <li><a href="track-order.php">Store Claim Verification</a></li>
+                      <li><a href="contact.php">Need Help? Message Us</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
 
@@ -333,4 +369,6 @@ $activePage      = $activePage      ?? '';
       </div>
     </div>
   </nav>
+  <!-- Full-screen backdrop blur overlay (Apple-style) -->
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 <?php endif; ?>

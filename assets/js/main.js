@@ -372,6 +372,43 @@ function initUserAuth() {
 }
 
 /* =====================================================
+   APPLE-STYLE NAV TRAY & BACKDROP CONTROLLER
+   ===================================================== */
+function initNavTrayBackdrop() {
+  const backdrop = document.getElementById('navBackdrop');
+  const navItems = document.querySelectorAll('.navbar-ct .has-nav-tray');
+  if (!backdrop || !navItems.length) return;
+
+  let closeTimer = null;
+
+  function openTray() {
+    clearTimeout(closeTimer);
+    document.body.classList.add('nav-tray-active');
+  }
+
+  function closeTray() {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function() {
+      document.body.classList.remove('nav-tray-active');
+    }, 70);
+  }
+
+  navItems.forEach(function(item) {
+    item.addEventListener('mouseenter', openTray);
+    item.addEventListener('mouseleave', closeTray);
+  });
+
+  const navbar = document.querySelector('.navbar-ct');
+  if (navbar) {
+    navbar.addEventListener('mouseleave', closeTray);
+  }
+
+  backdrop.addEventListener('click', function() {
+    document.body.classList.remove('nav-tray-active');
+  });
+}
+
+/* =====================================================
    INIT ALL
    ===================================================== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -384,4 +421,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCatalogSearch();
   initStepper();
   initUserAuth();
+  initNavTrayBackdrop();
 });
