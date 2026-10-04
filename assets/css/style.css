@@ -3086,57 +3086,56 @@ img { max-width: 100%; }
    COMPREHENSIVE MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS
    =================================================== */
 
-/* Prevent horizontal viewport overflow */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-/* Mobile Quick Navigation Buttons */
-.mobile-nav-btn {
-  width: 38px;
-  height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--ct-radius-sm);
-  border: 1px solid var(--ct-border);
-  color: var(--ct-text);
-  background: #ffffff;
-  text-decoration: none;
-  font-size: 1.15rem;
-  transition: var(--ct-transition);
-  position: relative;
-  flex-shrink: 0;
-}
-
-.mobile-nav-btn:hover,
-.mobile-nav-btn:active {
-  color: var(--ct-primary);
-  background: var(--ct-primary-soft);
-  border-color: var(--ct-primary);
-}
-
-.mobile-nav-btn .cart-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--ct-primary);
-  color: #ffffff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #ffffff;
-  line-height: 1;
-}
-
-/* Mobile Navigation Collapse & Drawer Polish */
+/* Tablet & Mobile Screens (< 992px) */
 @media (max-width: 991.98px) {
+  /* Prevent horizontal viewport overflow on mobile devices */
+  html, body {
+    overflow-x: clip;
+  }
+
+  /* Mobile Quick Navigation Buttons */
+  .mobile-nav-btn {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ct-radius-sm);
+    border: 1px solid var(--ct-border);
+    color: var(--ct-text);
+    background: #ffffff;
+    text-decoration: none;
+    font-size: 1.15rem;
+    transition: var(--ct-transition);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav-btn:hover,
+  .mobile-nav-btn:active {
+    color: var(--ct-primary);
+    background: var(--ct-primary-soft);
+    border-color: var(--ct-primary);
+  }
+
+  .mobile-nav-btn .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ct-primary);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+    line-height: 1;
+  }
+
   .navbar-ct .navbar-collapse {
     background: #ffffff;
     border: 1px solid var(--ct-border);
@@ -3323,6 +3322,16 @@ html, body {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  /* Diagnostic strip 2x2 on small mobile */
+  .diagnostic-strip .row {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.5rem;
+  }
+  .diagnostic-strip .col {
+    flex: 0 0 auto;
+    width: 50%;
   }
 
   /* HUD Proof Chips */
