@@ -91,7 +91,7 @@ require 'includes/header.php';
 
       <!-- ── RESULT SECTION (hidden until search) ── -->
       <div id="trackResult" class="d-none" aria-live="polite">
-        <div class="order-info-card">
+        <div class="order-info-card" id="claim-slip">
 
           <!-- Print-Only Store Slip Header -->
           <div class="d-none d-print-block p-3 border-bottom mb-2 text-center">
@@ -126,7 +126,7 @@ require 'includes/header.php';
 
             <!-- ── Payment Instructions Box (shown if pending and non-cash) ── -->
             <div id="trackPaymentNotice" class="d-none alert alert-light border p-3 mb-4 rounded-3">
-              <div class="d-flex align-items-center justify-content-between mb-2">
+              <div class="d-flex align-items-center justify-content-between mb-2" id="payment-methods">
                 <strong class="text-dark"><i class="bi bi-wallet2 me-1 text-ct"></i> Pending Payment:</strong>
                 <span id="trackPaymentBadge" class="badge bg-primary"></span>
               </div>
@@ -143,7 +143,7 @@ require 'includes/header.php';
             </div>
 
             <!-- ── Stepper ── -->
-            <div class="mb-4">
+            <div class="mb-4" id="pickup-status">
               <div class="status-history-title">Order Progress</div>
               <div class="order-stepper" role="list" aria-label="Order status steps">
 

@@ -9,7 +9,7 @@ let PRODUCTS = (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRO
 /* ============================================================
    STATE
    ============================================================ */
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 8;
 let currentPage = 1;
 let currentSort = 'featured';
 
@@ -32,44 +32,52 @@ function formatPrice(n) {
 }
 
 /**
- * Derive a product's catalog category from its name/id/category so it can be matched
- * against the UI checkbox values ('preowned' | 'new' | 'android' | 'tablet' | 'wearable').
+ * Derive a product's catalog category from its name/id/category/brand
+ * so it can be matched against categories: 'apple' | 'android' | 'tablet' | 'wearable' | 'preowned' | 'new'.
  */
 function productCategories(p) {
   const name = (p.name || '').toLowerCase();
   const id   = (p.id || '').toLowerCase();
+  const brand = (p.brand || '').toLowerCase();
+  const cat = (p.category || '').toLowerCase();
+  const cats = [];
+
+  const isApple = brand === 'apple' || cat === 'apple' || name.includes('iphone') || id.includes('iphone') || name.includes('ipad') || id.includes('ipad') || name.includes('airpod') || id.includes('airpod') || name.includes('apple') || id.includes('apple');
+
+  if (isApple) {
+    cats.push('apple');
+  }
 
   // Wearables & smart accessories (Apple Watch, AirPods, etc.)
-  if (id.includes('watch') || name.includes('watch') || id.includes('airpod') || name.includes('airpod') || p.category === 'wearable') {
-    return ['wearable'];
+  if (id.includes('watch') || name.includes('watch') || id.includes('airpod') || name.includes('airpod') || cat === 'wearable') {
+    cats.push('wearable');
   }
 
   // Tablets (iPads, Android tablets)
-  if (id.includes('ipad') || name.includes('ipad') || id.includes('tablet') || name.includes('tablet') || p.category === 'tablet') {
-    return ['tablet'];
+  if (id.includes('ipad') || name.includes('ipad') || id.includes('tablet') || name.includes('tablet') || cat === 'tablet') {
+    cats.push('tablet');
   }
 
   // Android smartphones
-  if (p.category === 'android' || name.includes('samsung') || name.includes('vivo') || name.includes('tecno') || name.includes('honor') || name.includes('pixel') || name.includes('oneplus') || name.includes('redmi') || name.includes('xiaomi')) {
-    return ['android'];
+  if (cat === 'android' || (!isApple && !id.includes('tablet') && !name.includes('tablet') && (name.includes('samsung') || name.includes('vivo') || name.includes('tecno') || name.includes('honor') || name.includes('pixel') || name.includes('oneplus') || name.includes('redmi') || name.includes('xiaomi')))) {
+    cats.push('android');
   }
 
   // iPhones
   if (name.includes('iphone') || id.includes('iphone')) {
-    const cats = [];
-    if (p.condition === 'Brand New' || p.badge === 'badge-available' || p.category === 'new') {
-      cats.push('new');
-    }
-    if (p.condition === 'Pre-owned' || p.condition === 'Refurbished' || p.category === 'preowned' || !cats.length) {
-      cats.push('preowned');
-    }
-    return cats;
+    cats.push('iphone');
   }
 
-  if (p.category) {
-    return [p.category];
+  // Condition mapping
+  if (p.condition === 'Brand New' || p.badge === 'badge-available' || cat === 'new') {
+    cats.push('new');
+    cats.push('brandnew');
   }
-  return ['android'];
+  if (p.condition === 'Pre-owned' || p.condition === 'Refurbished' || cat === 'preowned' || !cats.includes('new')) {
+    cats.push('preowned');
+  }
+
+  return cats;
 }
 
 /** Normalise a condition string to the checkbox value format. */
@@ -107,45 +115,38 @@ function filterProducts() {
   const qLower = q.toLowerCase().trim();
 
   return PRODUCTS.filter(p => {
+    const pCats = productCategories(p);
+    const pName = (p.name || '').toLowerCase();
+    const pDesc = (p.desc || '').toLowerCase();
+    const pBrand = (p.brand || '').toLowerCase();
+    const isIpad = isIpadProduct(p);
+    const isTablet = pCats.includes('tablet');
+
     // --- Search query against product name / keywords ---
     if (qLower) {
-      const pName = (p.name || '').toLowerCase();
-      const pDesc = (p.desc || '').toLowerCase();
-      const pBrand = (p.brand || '').toLowerCase();
-      const pCats = productCategories(p);
-      const isIpad = isIpadProduct(p);
-      const isTablet = pCats.includes('tablet');
+      const words = qLower.split(/\s+/).filter(Boolean);
+      const isApple = pCats.includes('apple');
+      const isAndroid = pCats.includes('android');
 
-      const isWearableQuery = ['wearable', 'wearables', 'smartwatch', 'smart watch', 'watch', 'airpod', 'airpods'].some(w => qLower.includes(w) || w.includes(qLower));
-      const isIpadQuery     = ['ipad', 'ipads'].some(w => qLower === w || qLower.includes(w));
-      const isAndroidQuery  = ['android'].some(w => qLower === w || qLower.includes(w));
-      const isGeneralTabletQuery = (qLower === 'tablet' || qLower === 'tablets');
+      const allMatch = words.every(w => {
+        if (w === 'apple') return isApple;
+        if (w === 'android') return isAndroid;
+        if (w === 'tablet' || w === 'tablets') return isTablet;
+        if (w === 'wearable' || w === 'wearables') return pCats.includes('wearable');
+        if (w === 'iphone' || w === 'iphones') return pCats.includes('iphone');
+        if (w === 'ipad' || w === 'ipads') return isIpad;
 
-      // 1. If searching specifically for iPad: must be an iPad
-      if (isIpadQuery && !isIpad) return false;
+        // Word-boundary aware matching against product name and description
+        const escaped = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp('(\\b|[^a-zA-Z0-9])' + escaped + '(\\b|[^a-zA-Z0-9]|$)', 'i');
+        return re.test(pName) || re.test(pDesc) || re.test(pBrand);
+      });
 
-      // 2. If searching for Android: exclude Apple devices & require Android phone or tablet
-      if (isAndroidQuery) {
-        if (isIpad || pCats.includes('wearable') || pCats.includes('preowned') || pCats.includes('new') || pName.includes('iphone') || pName.includes('apple')) {
-          return false;
-        }
-        const isAndroidDevice = pCats.includes('android') || (isTablet && !isIpad) || pDesc.includes('android') || (p.specs && p.specs.OS && p.specs.OS.toLowerCase().includes('android'));
-        if (!isAndroidDevice) return false;
-      }
-
-      // 3. Name or category match
-      const nameMatch = pName.includes(qLower) || pDesc.includes(qLower) || pBrand.includes(qLower);
-      const categoryMatch = (isWearableQuery && pCats.includes('wearable')) ||
-                            (isGeneralTabletQuery && isTablet) ||
-                            (isIpadQuery && isIpad) ||
-                            (isAndroidQuery && (pCats.includes('android') || (isTablet && !isIpad)));
-
-      if (!nameMatch && !categoryMatch) return false;
+      if (!allMatch) return false;
     }
 
     // --- Category ---
     if (cats.length) {
-      const pCats = productCategories(p);
       if (!cats.some(c => pCats.includes(c))) return false;
     }
 
@@ -154,7 +155,7 @@ function filterProducts() {
 
     // --- Variant (storage) — product must offer at least one matching option ---
     if (variants.length) {
-      const hasVariant = p.storageOptions.some(
+      const hasVariant = (p.storageOptions || []).some(
         o => variants.includes(o.label.toLowerCase().replace(/\s+/g, ''))
       );
       if (!hasVariant) return false;
@@ -162,14 +163,16 @@ function filterProducts() {
 
     // --- Color — product must offer at least one matching color ---
     if (colors.length) {
-      const hasColor = p.colorOptions.some(o => colors.includes(colorSlug(o.label)));
+      const hasColor = (p.colorOptions || []).some(o => colors.includes(colorSlug(o.label)));
       if (!hasColor) return false;
     }
 
     // --- Price range (against the cheapest storage option) ---
-    const basePrice = p.storageOptions[0].price;
-    if (priceMin !== null && basePrice < priceMin) return false;
-    if (priceMax !== null && basePrice > priceMax) return false;
+    if (p.storageOptions && p.storageOptions.length) {
+      const basePrice = p.storageOptions[0].price;
+      if (priceMin !== null && basePrice < priceMin) return false;
+      if (priceMax !== null && basePrice > priceMax) return false;
+    }
 
     return true;
   });
@@ -177,34 +180,39 @@ function filterProducts() {
 
 function buildCardHTML(p) {
   // Use the first storage option as the card's default price/variant
-  const defaultStorage = p.storageOptions[0];
-  const defaultColor   = p.colorOptions[0];
-  const price   = defaultStorage.price;
+  const defaultStorage = (p.storageOptions && p.storageOptions.length) ? p.storageOptions[0] : { label: 'Standard', price: 0, id: p.id };
+  const defaultColor   = (p.colorOptions && p.colorOptions.length) ? p.colorOptions[0] : { label: 'Default' };
+  const price   = defaultStorage.price || 0;
   const variant = defaultStorage.label;
   const color   = defaultColor.label;
+  const imgSrc  = p.image ? (p.image.startsWith('/') ? p.image.substring(1) : p.image) : 'assets/products/placeholder.jpg';
+  const condText = p.condition === 'Brand New' ? 'Brand New Sealed' : (p.condition === 'Refurbished' ? 'Refurbished Grade A' : 'Grade A Pre-owned');
+
   return `
     <div class="col">
       <article class="product-card">
         <div class="card-img-wrap">
-          <img src="${p.image ? (p.image.startsWith('/') ? p.image.substring(1) : p.image) : 'assets/products/placeholder.jpg'}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+          <img src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
           <span class="badge-ct ${p.badge}">${p.badgeLabel}</span>
         </div>
         <div class="card-body">
-          <p class="product-name">${p.name}</p>
+          <h2 class="product-name">
+            <a href="product.php?id=${p.id}" class="text-decoration-none text-dark">${p.name}</a>
+          </h2>
           <div class="product-spec-row">
             <span class="spec-chip">${variant}</span>
-            <span class="spec-chip">${p.condition === 'Brand New' ? 'Sealed Box' : 'Grade A'}</span>
-            <span class="spec-chip text-success"><i class="bi bi-shield-check"></i> Verified</span>
+            <span class="spec-chip">${condText}</span>
+            <span class="spec-chip text-success"><i class="bi bi-shield-check"></i> 7-Day Warranty</span>
           </div>
-          <p class="product-price">${formatPrice(price)}</p>
+          <p class="product-price mb-0">${formatPrice(price)}</p>
         </div>
         <div class="card-footer">
           <button class="btn btn-ct btn-ct-sm flex-fill"
             onclick="CheynCart.add({id:'${defaultStorage.id}',name:'${p.name.replace(/'/g, "\\'")}',price:${price},variant:'${variant}',color:'${color}',image:'${p.image}'}, this)">
-            <i class="bi bi-cart-plus me-1"></i> Add to Cart
+            <i class="bi bi-bag-plus me-1"></i> Add to Bag
           </button>
-          <a href="product.php?id=${p.id}" class="btn btn-ct-outline btn-ct-sm" aria-label="View ${p.name}">
-            <i class="bi bi-eye"></i>
+          <a href="product.php?id=${p.id}" class="btn btn-ct-outline btn-ct-sm px-3" aria-label="View ${p.name}">
+            Details
           </a>
         </div>
       </article>
@@ -311,6 +319,8 @@ function clearAllFilters() {
 
   renderProducts();
   renderActiveTags();
+  updateCategoryPillsUI();
+  updateCatalogHeroHeader();
 }
 
 window.clearAllFilters = clearAllFilters;
@@ -374,11 +384,10 @@ function renderProducts() {
    ============================================================ */
 function extractFilterData(products) {
   const categoryDefinitions = [
-    { id: 'preowned', label: 'Pre-owned iPhones' },
-    { id: 'new',      label: 'New iPhones' },
-    { id: 'android',  label: 'Android Phones' },
+    { id: 'apple',    label: 'Apple iPhones & Tech' },
+    { id: 'android',  label: 'Android Smartphones' },
     { id: 'tablet',   label: 'Tablets & iPads' },
-    { id: 'wearable', label: 'Wearables & Watches' }
+    { id: 'wearable', label: 'Wearables & Tech' }
   ];
 
   const catCounts = {};
@@ -641,6 +650,8 @@ function applyFilters(showToastNotification = true) {
 
   renderProducts();
   renderActiveTags();
+  updateCategoryPillsUI();
+  updateCatalogHeroHeader();
   if (showToastNotification) {
     showToast('Filters applied', 'info');
   }
@@ -694,12 +705,14 @@ document.getElementById('applyFiltersBtnMobile')?.addEventListener('click', () =
    ============================================================ */
 function renderActiveTags() {
   const container = document.getElementById('activeFilters');
+  const wrapper   = document.getElementById('activeFiltersContainer');
+  const badge     = document.getElementById('activeFilterBadge');
   if (!container) return;
 
   const { q, cats, variants, colors, conds } = activeFilters;
 
   // Human-readable label maps
-  const catLabels  = { preowned: 'Pre-owned iPhones', new: 'New iPhones', android: 'Android', tablet: 'Tablets', wearable: 'Wearables & Smartwatches' };
+  const catLabels  = { apple: 'Apple Tech', android: 'Android Phones', tablet: 'Tablets & iPads', wearable: 'Wearables', preowned: 'Pre-owned', new: 'Brand New' };
   const condLabels = { preowned: 'Pre-owned', refurbished: 'Refurbished', brandnew: 'Brand New' };
 
   const tags = [];
@@ -711,13 +724,24 @@ function renderActiveTags() {
                                     name: 'color', value: v }));
   conds.forEach(v    => tags.push({ label: condLabels[v]  || v, name: 'condition', value: v }));
 
+  // Update badge for extra deep filters (storage, color)
+  const deepFilterCount = variants.length + colors.length;
+  if (badge) {
+    if (deepFilterCount > 0) {
+      badge.textContent = deepFilterCount;
+      badge.classList.remove('d-none');
+    } else {
+      badge.classList.add('d-none');
+    }
+  }
+
   if (!tags.length) {
     container.innerHTML = '';
-    container.style.display = 'none';
+    if (wrapper) wrapper.style.display = 'none';
     return;
   }
 
-  container.style.display = '';
+  if (wrapper) wrapper.style.display = 'block';
   container.innerHTML = tags.map(tag =>
     `<span class="filter-tag" data-name="${tag.name}" data-value="${tag.value}">${tag.label} ` +
     `<button type="button" aria-label="Remove ${tag.label} filter"><i class="bi bi-x"></i></button></span>`
@@ -735,22 +759,41 @@ function renderActiveTags() {
         if (input) input.value = '';
         const inputMobile = document.getElementById('catalogSearchInputMobile');
         if (inputMobile) inputMobile.value = '';
-      } else {
-        document.querySelectorAll(`input[name="${fname}"][value="${fval}"]`).forEach(cb => {
-          cb.checked = false;
-        });
+        activeFilters.q = '';
+      } else if (fname === 'cat') {
+        activeFilters.cats = activeFilters.cats.filter(c => c !== fval);
+        document.querySelectorAll(`input[name="cat"][value="${fval}"]`).forEach(cb => { cb.checked = false; });
+      } else if (fname === 'condition') {
+        activeFilters.conds = activeFilters.conds.filter(c => c !== fval);
+        document.querySelectorAll(`input[name="condition"][value="${fval}"]`).forEach(cb => { cb.checked = false; });
+      } else if (fname === 'variant') {
+        activeFilters.variants = activeFilters.variants.filter(v => v !== fval);
+        document.querySelectorAll(`input[name="variant"][value="${fval}"]`).forEach(cb => { cb.checked = false; });
+      } else if (fname === 'color') {
+        activeFilters.colors = activeFilters.colors.filter(c => c !== fval);
+        document.querySelectorAll(`input[name="color"][value="${fval}"]`).forEach(cb => { cb.checked = false; });
       }
 
-      activeFilters = collectFiltersFromDOM();
-      currentPage   = 1;
+      // Sync URL
+      const params = new URLSearchParams();
+      if (activeFilters.q) params.set('q', activeFilters.q);
+      if (activeFilters.cats.length) params.set('cat', activeFilters.cats.join(','));
+      if (activeFilters.variants.length) params.set('variant', activeFilters.variants.join(','));
+      if (activeFilters.colors.length) params.set('color', activeFilters.colors.join(','));
+      if (activeFilters.conds.length) params.set('condition', activeFilters.conds.join(','));
+      window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
+
+      currentPage = 1;
       renderProducts();
       renderActiveTags();
+      updateCategoryPillsUI();
+      updateCatalogHeroHeader();
     });
   });
 }
 
 /* ============================================================
-   SORT EVENT LISTENER (fixed)
+   SORT EVENT LISTENER
    ============================================================ */
 document.getElementById('sortSelect')?.addEventListener('change', e => {
   currentSort = e.target.value;
@@ -765,7 +808,7 @@ document.getElementById('sortSelect')?.addEventListener('change', e => {
 function renderSkeletonGrid() {
   const grid = document.getElementById('productGrid');
   if (!grid) return;
-  grid.innerHTML = Array.from({ length: 6 }).map(() => `
+  grid.innerHTML = Array.from({ length: 8 }).map(() => `
     <div class="col">
       <div class="skeleton-card">
         <div class="skeleton-box skeleton-img"></div>
@@ -783,6 +826,161 @@ function renderSkeletonGrid() {
 }
 
 /* ============================================================
+   DYNAMIC HERO TITLE & SUBTITLE
+   ============================================================ */
+function updateCatalogHeroHeader() {
+  const titleEl = document.getElementById('catalogPageTitle');
+  const subEl   = document.getElementById('catalogPageSubtitle');
+  if (!titleEl || !subEl) return;
+
+  const filteredCount = filterProducts().length;
+  const activeCat = activeFilters.cats.length === 1 ? activeFilters.cats[0] : (activeFilters.cats.length === 0 ? 'all' : 'custom');
+
+  if (activeCat === 'apple') {
+    titleEl.textContent = 'Apple iPhones & Tech';
+    subEl.innerHTML = `Inspected pre-owned and new Apple devices with verified battery health &middot; Showing <strong id="heroResultCount" class="text-dark">${filteredCount}</strong> items`;
+  } else if (activeCat === 'android') {
+    titleEl.textContent = 'Android Smartphones';
+    subEl.innerHTML = `Reliable Samsung, Vivo, Tecno, and Honor devices ready for pickup &middot; Showing <strong id="heroResultCount" class="text-dark">${filteredCount}</strong> items`;
+  } else if (activeCat === 'tablet') {
+    titleEl.textContent = 'Tablets & Apple iPads';
+    subEl.innerHTML = `Clean units for study, streaming, and business with charger included &middot; Showing <strong id="heroResultCount" class="text-dark">${filteredCount}</strong> items`;
+  } else if (activeCat === 'wearable') {
+    titleEl.textContent = 'Wearables & Tech';
+    subEl.innerHTML = `Genuine Apple Watch, AirPods, and accessories backed by shop warranty &middot; Showing <strong id="heroResultCount" class="text-dark">${filteredCount}</strong> items`;
+  } else {
+    titleEl.textContent = 'Available Phones & Gadgets';
+    subEl.innerHTML = `Every unit tested by hand with a 7-day replacement warranty &middot; Showing <strong id="heroResultCount" class="text-dark">${filteredCount}</strong> items`;
+  }
+}
+
+/* ============================================================
+   CATEGORY & CONDITION PILL UI SYNC
+   ============================================================ */
+function updateCategoryPillsUI() {
+  const countAll = PRODUCTS.length;
+  const countApple = PRODUCTS.filter(p => productCategories(p).includes('apple')).length;
+  const countAndroid = PRODUCTS.filter(p => productCategories(p).includes('android')).length;
+  const countTablet = PRODUCTS.filter(p => productCategories(p).includes('tablet')).length;
+  const countWearable = PRODUCTS.filter(p => productCategories(p).includes('wearable')).length;
+
+  const elAll = document.getElementById('countAll');
+  const elApple = document.getElementById('countApple');
+  const elAndroid = document.getElementById('countAndroid');
+  const elTablet = document.getElementById('countTablet');
+  const elWearable = document.getElementById('countWearable');
+
+  if (elAll) elAll.textContent = countAll;
+  if (elApple) elApple.textContent = countApple;
+  if (elAndroid) elAndroid.textContent = countAndroid;
+  if (elTablet) elTablet.textContent = countTablet;
+  if (elWearable) elWearable.textContent = countWearable;
+
+  // Sync category pills active state
+  const currentCat = activeFilters.cats.length === 1 ? activeFilters.cats[0] : (activeFilters.cats.length === 0 ? 'all' : null);
+  document.querySelectorAll('.category-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === currentCat);
+  });
+
+  // Sync condition pills active state
+  const currentCond = activeFilters.conds.length === 1 ? activeFilters.conds[0] : (activeFilters.conds.length === 0 ? 'all' : null);
+  document.querySelectorAll('.btn-condition-pill').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.condition === currentCond);
+  });
+}
+
+/* ============================================================
+   PILL CONTROLLER ATTACHMENT
+   ============================================================ */
+function initPillControllers() {
+  // Category pills
+  document.querySelectorAll('.category-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat;
+      if (cat === 'all') {
+        activeFilters.cats = [];
+      } else {
+        activeFilters.cats = [cat];
+      }
+
+      // Sync checkboxes in offcanvas
+      document.querySelectorAll('input[name="cat"]').forEach(cb => {
+        cb.checked = activeFilters.cats.includes(cb.value);
+      });
+
+      // Sync URL
+      const params = new URLSearchParams(window.location.search);
+      if (activeFilters.cats.length) {
+        params.set('cat', activeFilters.cats.join(','));
+      } else {
+        params.delete('cat');
+      }
+      window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
+
+      currentPage = 1;
+      renderProducts();
+      renderActiveTags();
+      updateCategoryPillsUI();
+      updateCatalogHeroHeader();
+    });
+  });
+
+  // Condition pills
+  document.querySelectorAll('.btn-condition-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cond = btn.dataset.condition;
+      if (cond === 'all') {
+        activeFilters.conds = [];
+      } else {
+        activeFilters.conds = [cond];
+      }
+
+      // Sync checkboxes in offcanvas
+      document.querySelectorAll('input[name="condition"]').forEach(cb => {
+        cb.checked = activeFilters.conds.includes(cb.value);
+      });
+
+      // Sync URL
+      const params = new URLSearchParams(window.location.search);
+      if (activeFilters.conds.length) {
+        params.set('condition', activeFilters.conds.join(','));
+      } else {
+        params.delete('condition');
+      }
+      window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
+
+      currentPage = 1;
+      renderProducts();
+      renderActiveTags();
+      updateCategoryPillsUI();
+    });
+  });
+
+  // Debounced search on desktop toolbar input
+  let searchTimer = null;
+  const searchInput = document.getElementById('catalogSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', e => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        activeFilters.q = e.target.value.trim();
+        const searchMobile = document.getElementById('catalogSearchInputMobile');
+        if (searchMobile) searchMobile.value = activeFilters.q;
+
+        const params = new URLSearchParams(window.location.search);
+        if (activeFilters.q) params.set('q', activeFilters.q); else params.delete('q');
+        window.history.replaceState({}, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
+
+        currentPage = 1;
+        renderProducts();
+        renderActiveTags();
+        updateCatalogHeroHeader();
+      }, 250);
+    });
+  }
+}
+
+/* ============================================================
    INIT & API FETCH
    ============================================================ */
 async function loadCatalogProducts() {
@@ -790,6 +988,8 @@ async function loadCatalogProducts() {
     renderFilterControls(PRODUCTS);
     renderProducts();
     renderActiveTags();
+    updateCategoryPillsUI();
+    updateCatalogHeroHeader();
   } else {
     renderSkeletonGrid();
   }
@@ -812,6 +1012,8 @@ async function loadCatalogProducts() {
       renderFilterControls(PRODUCTS);
       renderProducts();
       renderActiveTags();
+      updateCategoryPillsUI();
+      updateCatalogHeroHeader();
     }
   } catch (err) {
     if (!PRODUCTS.length && typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
@@ -819,6 +1021,8 @@ async function loadCatalogProducts() {
       renderFilterControls(PRODUCTS);
       renderProducts();
       renderActiveTags();
+      updateCategoryPillsUI();
+      updateCatalogHeroHeader();
     }
   }
 }
@@ -841,5 +1045,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearAllFilters();
   });
 
+  initPillControllers();
   loadCatalogProducts();
 });
+

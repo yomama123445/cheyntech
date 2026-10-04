@@ -89,14 +89,14 @@ $activePage      = $activePage      ?? '';
                     <span class="nav-tray-label">Explore Store</span>
                     <a href="index.php" class="nav-tray-link-lg">Store Overview</a>
                     <a href="catalog.php" class="nav-tray-link-lg">All Phone Listings</a>
-                    <a href="catalog.php?cat=preowned" class="nav-tray-link-lg">Pre-owned Gadgets</a>
-                    <a href="about.php" class="nav-tray-link-lg">Why Cheyn Gadgets</a>
+                    <a href="catalog.php?condition=preowned" class="nav-tray-link-lg">Pre-owned Gadgets</a>
+                    <a href="about.php#why-us" class="nav-tray-link-lg">Why Cheyn Gadgets</a>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">Shop by Category</span>
                     <ul class="nav-tray-links">
-                      <li><a href="catalog.php?cat=preowned">Pre-owned iPhones</a></li>
-                      <li><a href="catalog.php?cat=new">Brand New Factory Sealed</a></li>
+                      <li><a href="catalog.php?cat=apple&condition=preowned">Pre-owned iPhones</a></li>
+                      <li><a href="catalog.php?condition=brandnew">Brand New Factory Sealed</a></li>
                       <li><a href="catalog.php?cat=android">Android Phones (Samsung &bull; Vivo &bull; Tecno)</a></li>
                       <li><a href="catalog.php?cat=tablet">Tablets &amp; Apple iPads</a></li>
                       <li><a href="catalog.php?cat=wearable">Watches &amp; Accessories</a></li>
@@ -106,7 +106,7 @@ $activePage      = $activePage      ?? '';
                     <span class="nav-tray-label">Local Services</span>
                     <ul class="nav-tray-links">
                       <li><a href="track-order.php">Track Order Status</a></li>
-                      <li><a href="about.php">Store Location &amp; Hours (Roxas City)</a></li>
+                      <li><a href="about.php#location">Store Location &amp; Hours (Roxas City)</a></li>
                       <li><a href="about.php#warranty">7-Day Replacement &amp; Service Warranty</a></li>
                       <li><a href="contact.php">Ask About a Specific Model</a></li>
                     </ul>
@@ -118,7 +118,7 @@ $activePage      = $activePage      ?? '';
 
           <!-- Apple Dropdown -->
           <li class="nav-item has-nav-tray" data-tray="apple">
-            <a class="nav-link" href="catalog.php?cat=preowned" id="appleDropdown">
+            <a class="nav-link" href="catalog.php?cat=apple" id="appleDropdown">
               Apple
             </a>
             <div class="dropdown-menu nav-tray shadow-sm" aria-labelledby="appleDropdown">
@@ -126,29 +126,29 @@ $activePage      = $activePage      ?? '';
                 <div class="row g-4 ps-lg-4">
                   <div class="col-12 col-lg-4 nav-tray-col">
                     <span class="nav-tray-label">Explore Apple</span>
-                    <a href="catalog.php?cat=preowned" class="nav-tray-link-lg">Pre-owned iPhones</a>
-                    <a href="catalog.php?cat=new" class="nav-tray-link-lg">Brand New iPhones</a>
+                    <a href="catalog.php?cat=apple&condition=preowned" class="nav-tray-link-lg">Pre-owned iPhones</a>
+                    <a href="catalog.php?cat=apple&condition=brandnew" class="nav-tray-link-lg">Brand New iPhones</a>
                     <a href="catalog.php?cat=wearable" class="nav-tray-link-lg">Apple Watch &amp; AirPods</a>
-                    <a href="catalog.php?q=iPhone" class="nav-tray-link-lg">All Apple Listings</a>
+                    <a href="catalog.php?cat=apple" class="nav-tray-link-lg">All Apple Listings</a>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">Popular in Store</span>
                     <ul class="nav-tray-links">
-                      <li><a href="catalog.php?q=iPhone+11">iPhone 11 Series</a></li>
-                      <li><a href="catalog.php?q=iPhone+12">iPhone 12 / 12 Pro</a></li>
-                      <li><a href="catalog.php?q=iPhone+13">iPhone 13 / 13 Pro</a></li>
-                      <li><a href="catalog.php?q=iPhone+14">iPhone 14 / 14 Pro Max</a></li>
-                      <li><a href="catalog.php?q=iPhone+15">iPhone 15 Series</a></li>
+                      <li><a href="catalog.php?cat=apple&q=iPhone+11">iPhone 11 Series</a></li>
+                      <li><a href="catalog.php?cat=apple&q=iPhone+12">iPhone 12 / 12 Pro</a></li>
+                      <li><a href="catalog.php?cat=apple&q=iPhone+13">iPhone 13 / 13 Pro</a></li>
+                      <li><a href="catalog.php?cat=apple&q=iPhone+14">iPhone 14 / 14 Pro Max</a></li>
+                      <li><a href="catalog.php?cat=apple&q=iPhone+15">iPhone 15 Series</a></li>
                     </ul>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">Store Standards</span>
                     <ul class="nav-tray-links">
-                      <li><a href="catalog.php?cat=preowned">Battery Health Tested</a></li>
-                      <li><a href="catalog.php?cat=preowned">Grade A Condition Units</a></li>
+                      <li><a href="catalog.php?cat=apple&condition=preowned">Battery Health Tested</a></li>
+                      <li><a href="catalog.php?cat=apple&condition=preowned">Grade A Condition Units</a></li>
                       <li><a href="about.php#warranty">7-Day Replacement Warranty</a></li>
                       <li><a href="about.php#warranty">30-Day Service Warranty</a></li>
-                      <li><a href="about.php">In-Store Inspection &amp; Pickup</a></li>
+                      <li><a href="about.php#pickup">In-Store Inspection &amp; Pickup</a></li>
                     </ul>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ $activePage      = $activePage      ?? '';
                       <li><a href="catalog.php?cat=android">Display &amp; Touch Inspected</a></li>
                       <li><a href="catalog.php?cat=android">Clean Battery Cycles</a></li>
                       <li><a href="about.php#warranty">Local Capiz Warranty</a></li>
-                      <li><a href="catalog.php?cat=android">In-Store Pickup Available</a></li>
+                      <li><a href="about.php#pickup">In-Store Pickup Available</a></li>
                     </ul>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ $activePage      = $activePage      ?? '';
                   <div class="col-12 col-lg-4 nav-tray-col">
                     <span class="nav-tray-label">Explore Tablets</span>
                     <a href="catalog.php?cat=tablet&q=iPad" class="nav-tray-link-lg">Apple iPads</a>
-                    <a href="catalog.php?cat=tablet&q=Android" class="nav-tray-link-lg">Android Tablets</a>
+                    <a href="catalog.php?cat=tablet&q=Tablet" class="nav-tray-link-lg">Kids &amp; Android Tablets</a>
                     <a href="catalog.php?cat=tablet" class="nav-tray-link-lg">All Tablet Listings</a>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
@@ -223,7 +223,7 @@ $activePage      = $activePage      ?? '';
                       <li><a href="catalog.php?cat=tablet">Clean iCloud / Google Accounts</a></li>
                       <li><a href="catalog.php?cat=tablet">Battery Tested for Daily Use</a></li>
                       <li><a href="catalog.php?cat=tablet">Charger Cable Included</a></li>
-                      <li><a href="about.php">In-Store Testing Welcomed</a></li>
+                      <li><a href="about.php#pickup">In-Store Testing Welcomed</a></li>
                     </ul>
                   </div>
                 </div>
@@ -241,16 +241,16 @@ $activePage      = $activePage      ?? '';
                 <div class="row g-4 ps-lg-4">
                   <div class="col-12 col-lg-4 nav-tray-col">
                     <span class="nav-tray-label">About Cheyn Gadgets</span>
-                    <a href="about.php" class="nav-tray-link-lg">Our Story &amp; Shop</a>
+                    <a href="about.php#story" class="nav-tray-link-lg">Our Story &amp; Shop</a>
                     <a href="about.php#warranty" class="nav-tray-link-lg">Local Warranty Policy</a>
                     <a href="about.php#location" class="nav-tray-link-lg">Store Location &amp; Hours</a>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">How We Work</span>
                     <ul class="nav-tray-links">
-                      <li><a href="about.php">In-Store Pickup Guide</a></li>
-                      <li><a href="about.php">Local Delivery in Roxas City</a></li>
-                      <li><a href="about.php">Device Inspection Standards</a></li>
+                      <li><a href="about.php#pickup">In-Store Pickup Guide</a></li>
+                      <li><a href="about.php#delivery">Local Delivery in Roxas City</a></li>
+                      <li><a href="about.php#inspection">Device Inspection Standards</a></li>
                       <li><a href="contact.php">Ask a Question</a></li>
                     </ul>
                   </div>
@@ -278,22 +278,22 @@ $activePage      = $activePage      ?? '';
                   <div class="col-12 col-lg-4 nav-tray-col">
                     <span class="nav-tray-label">Order Status</span>
                     <a href="track-order.php" class="nav-tray-link-lg">Track an Order</a>
-                    <a href="track-order.php" class="nav-tray-link-lg">Pickup Claim Slip</a>
+                    <a href="track-order.php#claim-slip" class="nav-tray-link-lg">Pickup Claim Slip</a>
                     <a href="contact.php" class="nav-tray-link-lg">Order Support Inquiry</a>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">Payments</span>
                     <ul class="nav-tray-links">
-                      <li><a href="track-order.php">GCash Account Transfer</a></li>
-                      <li><a href="track-order.php">BDO Bank Deposit</a></li>
-                      <li><a href="track-order.php">Cash on In-Store Pickup</a></li>
+                      <li><a href="track-order.php#payment-methods">GCash Account Transfer</a></li>
+                      <li><a href="track-order.php#payment-methods">BDO Bank Deposit</a></li>
+                      <li><a href="track-order.php#payment-methods">Cash on In-Store Pickup</a></li>
                     </ul>
                   </div>
                   <div class="col-12 col-lg-4 d-none d-lg-block nav-tray-col">
                     <span class="nav-tray-label">Pickup &amp; Delivery</span>
                     <ul class="nav-tray-links">
-                      <li><a href="track-order.php">Ready for Pickup Status</a></li>
-                      <li><a href="track-order.php">Store Claim Verification</a></li>
+                      <li><a href="track-order.php#pickup-status">Ready for Pickup Status</a></li>
+                      <li><a href="track-order.php#claim-slip">Store Claim Verification</a></li>
                       <li><a href="contact.php">Need Help? Message Us</a></li>
                     </ul>
                   </div>

@@ -27,7 +27,7 @@ require 'includes/header.php';
   </section>
 
   <!-- OUR STORY & STOREFRONT HIGHLIGHT -->
-  <section class="py-5" aria-labelledby="ourStoryHeading">
+  <section class="py-5" id="story" aria-labelledby="ourStoryHeading">
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-lg-6">
@@ -48,8 +48,8 @@ require 'includes/header.php';
             </p>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="store-feature-card">
+        <div class="col-lg-6" id="location">
+          <div class="store-feature-card" id="pickup">
             <img
               src="assets/img/store/storefront.jpg"
               alt="Cheyn Gadgets storefront in Roxas City"
@@ -107,7 +107,7 @@ require 'includes/header.php';
         </div>
 
         <!-- Photo Card 2: Bench Testing -->
-        <div class="col-md-4">
+        <div class="col-md-4" id="inspection">
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
@@ -127,7 +127,7 @@ require 'includes/header.php';
         </div>
 
         <!-- Photo Card 3: Fresh Stock -->
-        <div class="col-md-4">
+        <div class="col-md-4" id="delivery">
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
@@ -150,7 +150,7 @@ require 'includes/header.php';
   </section>
 
   <!-- WHY BUY LOCALLY -->
-  <section class="py-5" aria-labelledby="whyHeading">
+  <section class="py-5" id="why-us" aria-labelledby="whyHeading">
     <div class="container">
       <div class="section-header text-center mb-5">
         <span class="section-label">WHY BUY LOCALLY</span>
@@ -171,7 +171,7 @@ require 'includes/header.php';
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4" id="warranty">
           <div class="feature-card h-100">
             <div class="feature-icon-wrap"><i class="bi bi-arrow-repeat text-ct"></i></div>
             <h3 class="h5 fw-bold mb-2">7-Day Store Replacement</h3>

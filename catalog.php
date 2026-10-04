@@ -18,139 +18,94 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header py-4 bg-white border-bottom">
+  <header class="catalog-hero py-4 bg-white border-bottom">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
         <div>
-          <span class="apple-section-tag mb-1">Our Inventory</span>
-          <h1 class="h3 fw-semibold text-dark mb-1">All Available Phones &amp; Tech</h1>
-          <p class="text-muted small mb-0">Inspected by hand in Roxas City &middot; Showing <strong id="heroResultCount" class="text-dark">0</strong> items</p>
+          <span class="apple-section-tag mb-1 d-inline-block">Tested Inventory &middot; Roxas City, Capiz</span>
+          <h1 class="h3 fw-semibold text-dark mb-1" id="catalogPageTitle">Available Phones &amp; Gadgets</h1>
+          <p class="text-muted small mb-0" id="catalogPageSubtitle">
+            Every unit tested by hand with a 7-day replacement warranty &middot; Showing <strong id="heroResultCount" class="text-dark">0</strong> items
+          </p>
         </div>
-        <button class="btn btn-ct-outline btn-sm filter-mobile-btn d-flex d-lg-none align-items-center gap-2"
-          type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"
-          aria-label="Open filters">
-          <i class="bi bi-sliders2"></i> Filters
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-ct-outline btn-sm d-flex align-items-center gap-2"
+            type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"
+            aria-label="Open detailed filters">
+            <i class="bi bi-sliders2"></i>
+            <span>Detailed Filters</span>
+            <span class="badge bg-secondary-subtle text-dark rounded-pill ms-1 d-none" id="activeFilterBadge">0</span>
+          </button>
+          <a href="contact.php" class="btn btn-ct btn-sm d-none d-sm-inline-flex align-items-center gap-1">
+            <i class="bi bi-chat-dots"></i> Ask About Stock
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATEGORY PILL NAVIGATION BAR -->
+  <nav class="catalog-category-bar py-2 bg-white border-bottom sticky-top shadow-none" aria-label="Device categories">
+    <div class="container">
+      <div class="category-pills-scroller d-flex align-items-center gap-2 overflow-x-auto py-1">
+        <button type="button" class="category-pill active" data-cat="all">
+          <span>All Devices</span>
+          <span class="pill-count" id="countAll">0</span>
+        </button>
+        <button type="button" class="category-pill" data-cat="apple">
+          <i class="bi bi-apple me-1"></i>
+          <span>Apple iPhones &amp; Tech</span>
+          <span class="pill-count" id="countApple">0</span>
+        </button>
+        <button type="button" class="category-pill" data-cat="android">
+          <i class="bi bi-android2 me-1"></i>
+          <span>Android Phones</span>
+          <span class="pill-count" id="countAndroid">0</span>
+        </button>
+        <button type="button" class="category-pill" data-cat="tablet">
+          <i class="bi bi-tablet me-1"></i>
+          <span>Tablets &amp; iPads</span>
+          <span class="pill-count" id="countTablet">0</span>
+        </button>
+        <button type="button" class="category-pill" data-cat="wearable">
+          <i class="bi bi-smartwatch me-1"></i>
+          <span>Wearables &amp; Tech</span>
+          <span class="pill-count" id="countWearable">0</span>
         </button>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="py-4">
+  <!-- TOOLBAR -->
+  <section class="catalog-toolbar-wrap py-3 bg-light-subtle border-bottom" aria-label="Inventory filters and search">
     <div class="container">
-      <div class="row g-4">
-
-        <!-- LEFT SIDEBAR FILTERS -->
-        <div class="col-lg-3 filter-col" aria-label="Product filters">
-          <div class="filter-card">
-            <div class="filter-title-bar">
-              <span><i class="bi bi-sliders2 me-1"></i> Filters</span>
-              <a href="catalog.php" id="clearAllLink">Clear All</a>
-            </div>
-
-            <div class="active-filters" id="activeFilters"></div>
-
-            <div class="filter-group">
-              <div class="catalog-search-wrap">
-                <input type="search" class="form-control" id="catalogSearchInput"
-                  placeholder="Search products…" aria-label="Search products">
-                <i class="bi bi-search search-icon"></i>
-              </div>
-            </div>
-
-            <div class="filter-group">
-              <p class="filter-group-label">Category</p>
-              <div class="filter-check" id="categoryFilterList">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catPreownedIphone" name="cat" value="preowned" data-filter-count-for="preowned">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="catPreownedIphone"><span>Pre-owned iPhones</span> <span class="filter-count text-muted ms-1" data-count-for="preowned"></span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catNewIphone" name="cat" value="new" data-filter-count-for="new">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="catNewIphone"><span>New iPhones</span> <span class="filter-count text-muted ms-1" data-count-for="new"></span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catAndroid" name="cat" value="android" data-filter-count-for="android">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="catAndroid"><span>Android</span> <span class="filter-count text-muted ms-1" data-count-for="android"></span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catTablet" name="cat" value="tablet" data-filter-count-for="tablet">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="catTablet"><span>Tablets</span> <span class="filter-count text-muted ms-1" data-count-for="tablet"></span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="catWearable" name="cat" value="wearable" data-filter-count-for="wearable">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="catWearable"><span>Wearables &amp; Watches</span> <span class="filter-count text-muted ms-1" data-count-for="wearable"></span></label>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter-group">
-              <p class="filter-group-label">Storage</p>
-              <div class="filter-check" id="storageFilterList">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="var64" name="variant" value="64gb">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="var64"><span>64 GB</span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="var128" name="variant" value="128gb">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="var128"><span>128 GB</span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="var256" name="variant" value="256gb">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="var256"><span>256 GB</span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="var512" name="variant" value="512gb">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="var512"><span>512 GB</span></label>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter-group">
-              <p class="filter-group-label">Color</p>
-              <div class="filter-colors-wrap" id="colorFilterList">
-                <!-- Dynamically populated from real product colors -->
-              </div>
-            </div>
-
-            <div class="filter-group">
-              <p class="filter-group-label">Condition</p>
-              <div class="filter-check" id="conditionFilterList">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="condPreowned" name="condition" value="preowned">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="condPreowned"><span>Pre-owned</span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="condRefurb" name="condition" value="refurbished">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="condRefurb"><span>Refurbished</span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="condNew" name="condition" value="brandnew">
-                  <label class="form-check-label d-flex align-items-center justify-content-between" for="condNew"><span>Brand New</span></label>
-                </div>
-              </div>
-            </div>
-
-            <div class="d-grid">
-              <button type="button" class="btn btn-ct" id="applyFiltersBtn">
-                <i class="bi bi-funnel-fill me-1"></i> Apply Filters
-              </button>
+      <div class="row g-2 align-items-center justify-content-between">
+        <!-- Quick Condition Filter Pills -->
+        <div class="col-12 col-md-auto">
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            <span class="text-xs fw-semibold text-muted text-uppercase tracking-wider">Condition:</span>
+            <div class="btn-group btn-group-sm condition-pill-group" role="group" aria-label="Filter by condition">
+              <button type="button" class="btn btn-condition-pill active" data-condition="all">All</button>
+              <button type="button" class="btn btn-condition-pill" data-condition="preowned">Pre-owned</button>
+              <button type="button" class="btn btn-condition-pill" data-condition="brandnew">Brand New</button>
             </div>
           </div>
         </div>
 
-        <!-- PRODUCT GRID -->
-        <div class="col-lg-9">
-          <div class="sort-bar">
-            <span class="sort-label"><i class="bi bi-grid-3x3-gap me-1"></i> <span id="sortBarCount">0</span> products found</span>
-            <div class="d-flex align-items-center gap-2">
-              <button class="btn btn-ct-outline btn-sm d-inline-flex d-lg-none align-items-center gap-1 py-1 px-2"
-                type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"
-                aria-label="Open filters">
-                <i class="bi bi-sliders2"></i> Filters
-              </button>
-              <label for="sortSelect" class="sort-label mb-0 d-none d-sm-inline">Sort by:</label>
-              <select id="sortSelect" class="form-select form-select-sm" aria-label="Sort products">
+        <!-- Search + Sort -->
+        <div class="col-12 col-md-auto">
+          <div class="d-flex align-items-center gap-2 flex-wrap flex-md-nowrap justify-content-md-end">
+            <!-- Search Pill -->
+            <div class="catalog-search-pill flex-grow-1 flex-md-grow-0">
+              <i class="bi bi-search search-icon"></i>
+              <input type="search" class="form-control form-control-sm" id="catalogSearchInput"
+                placeholder="Search iPhone, Samsung, iPad…" aria-label="Search devices">
+            </div>
+
+            <!-- Sort Select -->
+            <div class="d-flex align-items-center gap-1">
+              <label for="sortSelect" class="text-xs text-muted d-none d-lg-inline mb-0 text-nowrap">Sort:</label>
+              <select id="sortSelect" class="form-select form-select-sm sort-pill-select" aria-label="Sort products">
                 <option value="featured">Featured</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
@@ -159,69 +114,167 @@ require 'includes/header.php';
               </select>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3" id="productGrid">
-            <!-- Products are rendered dynamically by catalog.js -->
-          </div><!-- /productGrid -->
+      <!-- Active Filters Tag Strip -->
+      <div class="active-filters-wrap mt-2 pt-2 border-top border-light" id="activeFiltersContainer" style="display: none;">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div class="active-filters d-flex flex-wrap gap-1 align-items-center" id="activeFilters"></div>
+          <a href="catalog.php" id="clearAllLink" class="text-xs text-muted text-decoration-none">
+            <i class="bi bi-arrow-counterclockwise me-1"></i>Reset All
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <!-- Pagination — rendered dynamically by catalog.js -->
-          <nav id="paginationNav" class="mt-5 d-flex justify-content-center" aria-label="Catalog pagination"></nav>
+  <!-- MAIN CATALOG GRID -->
+  <main class="py-4">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between mb-3 text-muted small">
+        <div>
+          <span id="sortBarCount" class="fw-semibold text-dark">0</span> units verified &amp; available for pickup
+        </div>
+        <div class="text-xs text-muted d-none d-sm-block">
+          <i class="bi bi-geo-alt-fill text-danger me-1"></i>Cheyn Gadgets &middot; Roxas City Store
+        </div>
+      </div>
 
-        </div><!-- /col-lg-9 -->
-      </div><!-- /row -->
+      <!-- Product Cards Grid -->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 g-lg-4" id="productGrid">
+        <!-- Products rendered dynamically by catalog.js -->
+      </div>
+
+      <!-- Pagination -->
+      <nav id="paginationNav" class="mt-5 d-flex justify-content-center" aria-label="Catalog pagination"></nav>
+
     </div><!-- /container -->
   </main>
 
-  <!-- OFF-CANVAS FILTER (Mobile) -->
-  <div class="offcanvas offcanvas-start offcanvas-filter" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="filterOffcanvasLabel"><i class="bi bi-sliders2 me-2"></i>Filters</h5>
+  <!-- DETAILED FILTERS OFFCANVAS (Storage, Color, Price, Condition) -->
+  <div class="offcanvas offcanvas-end offcanvas-filter" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title h6 fw-bold mb-0" id="filterOffcanvasLabel">
+        <i class="bi bi-sliders2 me-2"></i>Filter Options
+      </h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close filters"></button>
     </div>
     <div class="offcanvas-body">
+      <!-- Search inside offcanvas -->
       <div class="filter-group mb-3 pb-3 border-bottom">
-        <p class="filter-group-label">Search</p>
+        <label class="filter-group-label" for="catalogSearchInputMobile">Search Keyword</label>
         <div class="catalog-search-wrap">
-          <input type="search" class="form-control" id="catalogSearchInputMobile" placeholder="Search products…" aria-label="Search products mobile">
+          <input type="search" class="form-control form-control-sm" id="catalogSearchInputMobile"
+            placeholder="e.g. iPhone 13, Samsung, iPad…" aria-label="Search products mobile">
           <i class="bi bi-search search-icon"></i>
         </div>
       </div>
+
+      <!-- Category Filter Checkboxes -->
       <div class="filter-group mb-3 pb-3 border-bottom">
-        <p class="filter-group-label">Category</p>
-        <div class="filter-check" id="mCategoryFilterList">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatPreownedIphone" name="cat" value="preowned"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCatPreownedIphone"><span>Pre-owned iPhones</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatNewIphone" name="cat" value="new"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCatNewIphone"><span>New iPhones</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatAndroid" name="cat" value="android"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCatAndroid"><span>Android</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatTablet" name="cat" value="tablet"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCatTablet"><span>Tablets</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCatWearable" name="cat" value="wearable"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCatWearable"><span>Wearables &amp; Watches</span></label></div>
+        <p class="filter-group-label">Device Type</p>
+        <div class="filter-check" id="categoryFilterList">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="catApple" name="cat" value="apple" data-filter-count-for="apple">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="catApple">
+              <span>Apple (iPhones &amp; Tech)</span>
+              <span class="filter-count text-muted ms-1" data-count-for="apple"></span>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="catAndroid" name="cat" value="android" data-filter-count-for="android">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="catAndroid">
+              <span>Android Smartphones</span>
+              <span class="filter-count text-muted ms-1" data-count-for="android"></span>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="catTablet" name="cat" value="tablet" data-filter-count-for="tablet">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="catTablet">
+              <span>Tablets &amp; iPads</span>
+              <span class="filter-count text-muted ms-1" data-count-for="tablet"></span>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="catWearable" name="cat" value="wearable" data-filter-count-for="wearable">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="catWearable">
+              <span>Wearables &amp; Tech</span>
+              <span class="filter-count text-muted ms-1" data-count-for="wearable"></span>
+            </label>
+          </div>
         </div>
+        <!-- Mobile mirror category list for sync -->
+        <div class="d-none" id="mCategoryFilterList"></div>
       </div>
+
+      <!-- Condition Checkboxes -->
       <div class="filter-group mb-3 pb-3 border-bottom">
-        <p class="filter-group-label">Storage</p>
-        <div class="filter-check" id="mStorageFilterList">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar64" name="variant" value="64gb"><label class="form-check-label d-flex align-items-center justify-content-between" for="mVar64"><span>64 GB</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar128" name="variant" value="128gb"><label class="form-check-label d-flex align-items-center justify-content-between" for="mVar128"><span>128 GB</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar256" name="variant" value="256gb"><label class="form-check-label d-flex align-items-center justify-content-between" for="mVar256"><span>256 GB</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mVar512" name="variant" value="512gb"><label class="form-check-label d-flex align-items-center justify-content-between" for="mVar512"><span>512 GB</span></label></div>
+        <p class="filter-group-label">Unit Condition</p>
+        <div class="filter-check" id="conditionFilterList">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="condPreowned" name="condition" value="preowned">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="condPreowned">
+              <span>Pre-owned (Inspected Grade A)</span>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="condRefurb" name="condition" value="refurbished">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="condRefurb">
+              <span>Refurbished</span>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="condNew" name="condition" value="brandnew">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="condNew">
+              <span>Brand New (Factory Sealed)</span>
+            </label>
+          </div>
         </div>
+        <div class="d-none" id="mConditionFilterList"></div>
       </div>
+
+      <!-- Storage Options -->
       <div class="filter-group mb-3 pb-3 border-bottom">
-        <p class="filter-group-label">Color</p>
-        <div class="filter-colors-wrap" id="mColorFilterList">
-          <!-- Dynamically populated from real product colors -->
+        <p class="filter-group-label">Storage Capacity</p>
+        <div class="filter-check" id="storageFilterList">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="var64" name="variant" value="64gb">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="var64"><span>64 GB</span></label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="var128" name="variant" value="128gb">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="var128"><span>128 GB</span></label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="var256" name="variant" value="256gb">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="var256"><span>256 GB</span></label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="var512" name="variant" value="512gb">
+            <label class="form-check-label d-flex align-items-center justify-content-between" for="var512"><span>512 GB</span></label>
+          </div>
         </div>
+        <div class="d-none" id="mStorageFilterList"></div>
       </div>
+
+      <!-- Color Options -->
       <div class="filter-group mb-3 pb-3 border-bottom">
-        <p class="filter-group-label">Condition</p>
-        <div class="filter-check" id="mConditionFilterList">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondPreowned" name="condition" value="preowned"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCondPreowned"><span>Pre-owned</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondRefurb" name="condition" value="refurbished"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCondRefurb"><span>Refurbished</span></label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="mCondNew" name="condition" value="brandnew"><label class="form-check-label d-flex align-items-center justify-content-between" for="mCondNew"><span>Brand New</span></label></div>
+        <p class="filter-group-label">Color Finish</p>
+        <div class="filter-colors-wrap" id="colorFilterList">
+          <!-- Dynamically populated from inventory -->
         </div>
+        <div class="d-none" id="mColorFilterList"></div>
       </div>
-      <div class="d-grid gap-2 mt-3">
-        <button type="button" class="btn btn-ct" id="applyFiltersBtnMobile" data-bs-dismiss="offcanvas"><i class="bi bi-funnel-fill me-1"></i> Apply Filters</button>
-        <a href="#" id="clearAllLinkMobile" class="btn btn-ct-outline" data-bs-dismiss="offcanvas">Clear All</a>
+
+      <!-- Action Buttons -->
+      <div class="d-grid gap-2 mt-4">
+        <button type="button" class="btn btn-ct" id="applyFiltersBtn" data-bs-dismiss="offcanvas">
+          <i class="bi bi-check2 me-1"></i> Apply Filters
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="clearAllLinkMobile" data-bs-dismiss="offcanvas">
+          Clear All Filters
+        </button>
       </div>
     </div>
   </div>
