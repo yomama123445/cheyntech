@@ -48,6 +48,10 @@
           </div>
         </div>
       </div>
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <p class="mb-0">&copy; <?= date('Y') ?> Cheyn Gadgets. All rights reserved.</p>
+        <p class="mb-0">This website is for educational purposes only.</p>
+      </div>
     </div>
   </footer>
 

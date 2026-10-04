@@ -147,6 +147,7 @@ require 'includes/header.php';
           </div>
         </div>
       </div>
+      <p class="auth-footer-text text-center text-muted small mt-3">This website is for educational purposes only.</p>
     </div>
 
   </main>
