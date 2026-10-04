@@ -22,140 +22,221 @@ if (!empty($_SESSION['user_id'])) {
     }
     exit;
 }
-$pageTitle       = 'Sign In or Create Account | Cheyn Gadgets';
-$pageDescription = 'Sign in or create your Cheyn Gadgets account to manage orders and shop for certified phones and tablets in Roxas City.';
+$pageTitle       = 'Cheyn ID | Sign In or Create Account';
+$pageDescription = 'Sign in with your Cheyn ID or create an account for fast checkout, certified device tracking, and local support in Roxas City.';
 $activePage      = 'login';
 require 'includes/header.php';
 ?>
 
-  <main class="auth-wrapper apple-auth-canvas">
-    <div class="container py-4">
-      <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5" style="max-width: 480px;">
+  <main class="apple-auth-viewport">
+    <div class="container apple-auth-container">
 
-          <!-- Header / Brand Section -->
-          <div class="apple-auth-header text-center mb-4">
-            <div class="apple-auth-badge mb-3">
-              <span class="apple-brand-circle">
-                <i class="bi bi-shield-lock-fill"></i>
-              </span>
-            </div>
-            <h1 class="apple-auth-title">Sign in for faster checkout.</h1>
-            <p class="apple-auth-subtitle">Manage orders, track deliveries, and enjoy seamless shopping with your Cheyn Account.</p>
+      <!-- Apple Header Emblem & Brand Mark -->
+      <div class="apple-auth-hero text-center mb-3">
+        <div class="apple-hero-glyph-wrap mb-3">
+          <div class="apple-hero-glyph">
+            <i class="bi bi-shield-lock-fill"></i>
           </div>
+        </div>
+      </div>
 
-          <!-- Apple Auth Card -->
-          <div class="auth-card apple-auth-card">
-            <!-- Apple Segmented Control Switcher -->
-            <div class="apple-segmented-wrap mb-4">
-              <ul class="nav apple-segmented-control" id="authTabs" role="tablist">
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link active w-100" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab" aria-controls="loginPane" aria-selected="true">
-                    Sign In
-                  </button>
-                </li>
-                <li class="nav-item flex-fill" role="presentation">
-                  <button class="nav-link w-100" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerPane" type="button" role="tab" aria-controls="registerPane" aria-selected="false">
-                    Create Account
-                  </button>
-                </li>
-              </ul>
-            </div>
+      <!-- Segmented Mode Control (Sign In / Create Account) -->
+      <div class="apple-segmented-container mb-4">
+        <ul class="nav apple-segmented-pills" id="authTabs" role="tablist">
+          <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link active w-100" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab" aria-controls="loginPane" aria-selected="true">
+              Sign In
+            </button>
+          </li>
+          <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link w-100" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerPane" type="button" role="tab" aria-controls="registerPane" aria-selected="false">
+              Create Account
+            </button>
+          </li>
+        </ul>
+      </div>
 
-            <div class="tab-content">
-              <!-- SIGN IN PANE -->
-              <div class="tab-pane fade show active" id="loginPane" role="tabpanel" aria-labelledby="login-tab">
-                <div class="apple-pane-heading mb-4 text-center">
-                  <h2 class="h5 fw-bold mb-1 text-dark">Sign In to Your Account</h2>
-                  <p class="apple-pane-desc mb-0">Enter your email and password to continue.</p>
+      <!-- Main Interactive Stage (Takes up full space, one input at a time) -->
+      <div class="apple-auth-stage">
+        <div class="tab-content w-100">
+
+          <!-- ==============================================
+               SIGN IN: ONE INPUT AT A TIME (Apple ID Flow)
+               ============================================== -->
+          <div class="tab-pane show active" id="loginPane" role="tabpanel" aria-labelledby="login-tab">
+            <form id="loginForm" novalidate autocomplete="on">
+
+              <!-- SIGN IN: STEP 1 (Email / Identifier) -->
+              <div class="apple-auth-step" id="loginStep1">
+                <div class="text-center mb-4">
+                  <h1 class="apple-hero-title">Sign in with Cheyn ID</h1>
+                  <p class="apple-hero-subtitle">Enter your email address to continue to your account.</p>
                 </div>
 
-                <form id="loginForm" novalidate>
-                  <div class="apple-form-group mb-3">
-                    <label for="loginEmail" class="apple-form-label">Email Address</label>
-                    <input type="email" class="form-control apple-form-control" id="loginEmail" placeholder="you@email.com" autocomplete="email" required>
-                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                  </div>
-
-                  <div class="apple-form-group mb-3">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <label for="loginPassword" class="apple-form-label mb-0">Password</label>
-                      <a href="contact.php?product=Password+Reset+Request" class="apple-subtle-link">Forgot password?</a>
-                    </div>
-                    <div class="input-group apple-input-group">
-                      <input type="password" class="form-control apple-form-control border-end-0" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
-                      <button class="btn btn-outline-secondary pass-toggle apple-pass-toggle" type="button" id="loginPassToggle" aria-label="Show password">
-                        <i class="bi bi-eye" id="loginPassIcon"></i>
-                      </button>
-                    </div>
-                    <div class="invalid-feedback">Please enter your password.</div>
-                  </div>
-
-                  <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="form-check mb-0">
-                      <input class="form-check-input apple-checkbox" type="checkbox" id="rememberMe">
-                      <label class="form-check-label apple-check-label" for="rememberMe">Stay signed in</label>
-                    </div>
-                  </div>
-
-                  <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-ct apple-btn-primary">
-                      <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                <div class="apple-step-body">
+                  <label for="loginEmail" class="apple-field-label">Email Address</label>
+                  <div class="apple-input-box" id="loginEmailBox">
+                    <input type="email" class="apple-single-input" id="loginEmail" placeholder="name@example.com" autocomplete="email" required>
+                    <button type="button" class="apple-circle-action-btn" id="loginContinueBtn" aria-label="Continue to password">
+                      <i class="bi bi-arrow-right"></i>
                     </button>
                   </div>
+                  <div class="apple-field-error" id="loginEmailError">Please enter a valid email address.</div>
 
-                  <p class="text-center apple-switch-hint mb-0">
-                    Don't have an account? <a href="#" class="apple-accent-link fw-semibold" id="switchToRegister">Create one now</a>
-                  </p>
-                </form>
+                  <div class="d-flex align-items-center justify-content-between mt-4 pt-1">
+                    <div class="form-check mb-0">
+                      <input class="form-check-input apple-checkbox" type="checkbox" id="rememberMe">
+                      <label class="form-check-label apple-check-label" for="rememberMe">Keep me signed in</label>
+                    </div>
+                    <a href="contact.php?product=Password+Reset+Request" class="apple-subtle-link">Forgotten password?</a>
+                  </div>
+
+                  <div class="apple-switch-prompt text-center mt-4 pt-3">
+                    <p class="mb-0 text-muted small">
+                      Don't have a Cheyn ID? <a href="#" class="apple-accent-link fw-semibold" id="switchToRegister">Create yours now</a>
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <!-- CREATE ACCOUNT PANE -->
-              <div class="tab-pane fade" id="registerPane" role="tabpanel" aria-labelledby="register-tab">
-                <div class="apple-pane-heading mb-4 text-center">
-                  <h2 class="h5 fw-bold mb-1 text-dark">Create Cheyn ID</h2>
-                  <p class="apple-pane-desc mb-0">Join Cheyn Gadgets for certified devices &amp; priority support.</p>
+              <!-- SIGN IN: STEP 2 (Password) -->
+              <div class="apple-auth-step d-none" id="loginStep2">
+                <div class="text-center mb-4">
+                  <h2 class="apple-hero-title">Enter your password</h2>
+                  <div class="apple-identity-pill mt-2">
+                    <span class="apple-identity-text" id="loginEmailDisplay"></span>
+                    <button type="button" class="apple-identity-edit-btn" id="loginBackBtn" title="Change email" aria-label="Change email">
+                      <i class="bi bi-pencil-fill"></i>
+                    </button>
+                  </div>
                 </div>
 
-                <form id="registerForm" novalidate>
-                  <div class="apple-form-group mb-3">
-                    <label for="regName" class="apple-form-label">Full Name</label>
-                    <input type="text" class="form-control apple-form-control" id="regName" placeholder="Juan dela Cruz" autocomplete="name" required>
-                    <div class="invalid-feedback">Please enter your full name.</div>
+                <div class="apple-step-body">
+                  <label for="loginPassword" class="apple-field-label">Password</label>
+                  <div class="apple-input-box" id="loginPasswordBox">
+                    <input type="password" class="apple-single-input" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+                    <button type="button" class="apple-eye-btn pass-toggle" id="loginPassToggle" aria-label="Show password">
+                      <i class="bi bi-eye" id="loginPassIcon"></i>
+                    </button>
+                    <button type="submit" class="apple-circle-action-btn apple-submit-btn" id="loginSubmitBtn" aria-label="Sign In">
+                      <i class="bi bi-arrow-right"></i>
+                    </button>
+                  </div>
+                  <div class="apple-field-error" id="loginPasswordError">Please enter your password.</div>
+
+                  <div class="d-flex align-items-center justify-content-between mt-4 pt-1">
+                    <button type="button" class="btn btn-link apple-back-text-btn p-0 text-decoration-none" id="loginBackToEmail">
+                      <i class="bi bi-arrow-left me-1"></i> Use different email
+                    </button>
+                    <a href="contact.php?product=Password+Reset+Request" class="apple-subtle-link">Forgotten password?</a>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- ==============================================
+               CREATE ACCOUNT: STEPPED PROGRESSION (Apple Flow)
+               ============================================== -->
+          <div class="tab-pane" id="registerPane" role="tabpanel" aria-labelledby="register-tab">
+            <form id="registerForm" novalidate autocomplete="on">
+
+              <!-- Stepped Progress Dots -->
+              <div class="apple-step-indicator text-center mb-4">
+                <span class="apple-step-dot active" id="regDot1" title="Step 1: Your Name"></span>
+                <span class="apple-step-dot" id="regDot2" title="Step 2: Contact Info"></span>
+                <span class="apple-step-dot" id="regDot3" title="Step 3: Security &amp; Finish"></span>
+              </div>
+
+              <!-- REGISTER: STEP 1 (Name) -->
+              <div class="apple-auth-step" id="regStep1">
+                <div class="text-center mb-4">
+                  <h1 class="apple-hero-title">Create your Cheyn ID</h1>
+                  <p class="apple-hero-subtitle">Let's start with your full name.</p>
+                </div>
+
+                <div class="apple-step-body">
+                  <label for="regName" class="apple-field-label">Full Name</label>
+                  <div class="apple-input-box" id="regNameBox">
+                    <input type="text" class="apple-single-input" id="regName" placeholder="Juan dela Cruz" autocomplete="name" required>
+                    <button type="button" class="apple-circle-action-btn" id="regStep1Next" aria-label="Continue to contact info">
+                      <i class="bi bi-arrow-right"></i>
+                    </button>
+                  </div>
+                  <div class="apple-field-error" id="regNameError">Please enter your full name.</div>
+
+                  <div class="apple-switch-prompt text-center mt-4 pt-3">
+                    <p class="mb-0 text-muted small">
+                      Already have a Cheyn ID? <a href="#" class="apple-accent-link fw-semibold" id="switchToLogin">Sign in</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- REGISTER: STEP 2 (Email & Phone) -->
+              <div class="apple-auth-step d-none" id="regStep2">
+                <div class="text-center mb-4">
+                  <h2 class="apple-hero-title">Contact Information</h2>
+                  <p class="apple-hero-subtitle">Where can we send order updates and receipts?</p>
+                </div>
+
+                <div class="apple-step-body">
+                  <div class="mb-3">
+                    <label for="regEmail" class="apple-field-label">Email Address</label>
+                    <div class="apple-input-box" id="regEmailBox">
+                      <input type="email" class="apple-single-input" id="regEmail" placeholder="name@example.com" autocomplete="email" required>
+                    </div>
+                    <div class="apple-field-error" id="regEmailError">Please enter a valid email address.</div>
                   </div>
 
-                  <div class="apple-form-group mb-3">
-                    <label for="regEmail" class="apple-form-label">Email Address</label>
-                    <input type="email" class="form-control apple-form-control" id="regEmail" placeholder="you@email.com" autocomplete="email" required>
-                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  <div class="mb-4">
+                    <label for="regPhone" class="apple-field-label">Mobile Number <span class="text-muted fw-normal">(Optional)</span></label>
+                    <div class="apple-input-box" id="regPhoneBox">
+                      <input type="tel" class="apple-single-input" id="regPhone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+                    </div>
                   </div>
 
-                  <div class="apple-form-group mb-3">
-                    <label for="regPhone" class="apple-form-label">Phone Number <span class="text-muted fw-normal">(Optional)</span></label>
-                    <input type="tel" class="form-control apple-form-control" id="regPhone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+                  <div class="d-flex align-items-center justify-content-between mt-4">
+                    <button type="button" class="btn btn-link apple-back-text-btn p-0 text-decoration-none" id="regStep2Back">
+                      <i class="bi bi-arrow-left me-1"></i> Back
+                    </button>
+                    <button type="button" class="btn btn-ct apple-step-pill-btn" id="regStep2Next">
+                      Continue <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
                   </div>
+                </div>
+              </div>
 
-                  <div class="apple-form-group mb-3">
-                    <label for="regPassword" class="apple-form-label">Password</label>
-                    <div class="input-group apple-input-group">
-                      <input type="password" class="form-control apple-form-control border-end-0" id="regPassword" placeholder="Create a strong password" autocomplete="new-password" required minlength="8">
-                      <button class="btn btn-outline-secondary pass-toggle apple-pass-toggle" type="button" id="regPassToggle" aria-label="Show password">
+              <!-- REGISTER: STEP 3 (Password & Terms) -->
+              <div class="apple-auth-step d-none" id="regStep3">
+                <div class="text-center mb-4">
+                  <h2 class="apple-hero-title">Set your password</h2>
+                  <p class="apple-hero-subtitle">Choose a secure password for your Cheyn ID.</p>
+                </div>
+
+                <div class="apple-step-body">
+                  <div class="mb-3">
+                    <label for="regPassword" class="apple-field-label">Password</label>
+                    <div class="apple-input-box" id="regPasswordBox">
+                      <input type="password" class="apple-single-input" id="regPassword" placeholder="Minimum 8 characters" autocomplete="new-password" required minlength="8">
+                      <button type="button" class="apple-eye-btn pass-toggle" id="regPassToggle" aria-label="Show password">
                         <i class="bi bi-eye" id="regPassIcon"></i>
                       </button>
                     </div>
-                    <div class="invalid-feedback">Password must be at least 8 characters.</div>
-                    <div class="form-text apple-form-help">Minimum 8 characters.</div>
+                    <div class="apple-field-error" id="regPasswordError">Password must be at least 8 characters.</div>
+                    <div class="form-text apple-form-help">Must be at least 8 characters.</div>
                   </div>
 
-                  <div class="apple-form-group mb-3">
-                    <label for="regConfirmPassword" class="apple-form-label">Confirm Password</label>
-                    <div class="input-group apple-input-group">
-                      <input type="password" class="form-control apple-form-control border-end-0" id="regConfirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
-                      <button class="btn btn-outline-secondary pass-toggle apple-pass-toggle" type="button" id="regConfirmPassToggle" aria-label="Show confirm password">
+                  <div class="mb-3">
+                    <label for="regConfirmPassword" class="apple-field-label">Confirm Password</label>
+                    <div class="apple-input-box" id="regConfirmPasswordBox">
+                      <input type="password" class="apple-single-input" id="regConfirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
+                      <button type="button" class="apple-eye-btn pass-toggle" id="regConfirmPassToggle" aria-label="Show confirm password">
                         <i class="bi bi-eye" id="regConfirmPassIcon"></i>
                       </button>
                     </div>
-                    <div class="invalid-feedback" id="confirmPassError">Passwords do not match.</div>
+                    <div class="apple-field-error" id="confirmPassError">Passwords do not match.</div>
                   </div>
 
                   <div class="form-check apple-terms-check mb-4">
@@ -163,41 +244,36 @@ require 'includes/header.php';
                     <label class="form-check-label apple-check-label terms-label" for="agreeTerms">
                       I agree to the <a href="about.php" target="_blank" rel="noopener noreferrer" class="apple-accent-link">Terms and Conditions</a> &amp; <a href="about.php" target="_blank" rel="noopener noreferrer" class="apple-accent-link">Privacy Policy</a>
                     </label>
-                    <div class="invalid-feedback">You must agree to the Terms and Conditions.</div>
+                    <div class="apple-field-error" id="agreeTermsError">You must agree to the Terms and Conditions.</div>
                   </div>
 
-                  <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-ct apple-btn-primary">
+                  <div class="d-flex align-items-center justify-content-between mt-4">
+                    <button type="button" class="btn btn-link apple-back-text-btn p-0 text-decoration-none" id="regStep3Back">
+                      <i class="bi bi-arrow-left me-1"></i> Back
+                    </button>
+                    <button type="submit" class="btn btn-ct apple-step-pill-btn" id="regSubmitBtn">
                       <i class="bi bi-person-check me-2"></i>Create Account
                     </button>
                   </div>
-
-                  <p class="text-center apple-switch-hint mb-0">
-                    Already have an account? <a href="#" class="apple-accent-link fw-semibold" id="switchToLogin">Sign in</a>
-                  </p>
-                </form>
+                </div>
               </div>
-            </div>
 
-            <!-- Apple Privacy & Security Badge -->
-            <div class="apple-privacy-strip mt-4 pt-3 border-top text-center">
-              <div class="d-inline-flex align-items-center gap-1 text-muted small mb-1">
-                <i class="bi bi-shield-check text-success"></i>
-                <span class="fw-semibold text-secondary">Apple-grade Privacy &amp; Protection</span>
-              </div>
-              <p class="apple-privacy-text text-muted mb-0">Your account data is encrypted and never shared with third parties.</p>
-            </div>
-          </div>
-
-          <!-- Educational Disclaimer Pill -->
-          <div class="text-center mt-3">
-            <span class="apple-edu-badge">
-              <i class="bi bi-info-circle me-1"></i> This website is for educational purposes only.
-            </span>
+            </form>
           </div>
 
         </div>
       </div>
+
+      <!-- Apple-style Muted Footnote -->
+      <div class="apple-auth-footnote text-center mt-5 pt-2">
+        <p class="apple-footnote-text mb-1">
+          Your Cheyn ID is used to sign in and securely manage your purchases. <a href="about.php" class="apple-footnote-link">Privacy Policy</a>
+        </p>
+        <p class="apple-footnote-edu mb-0">
+          This website is for educational purposes only.
+        </p>
+      </div>
+
     </div>
   </main>
 
