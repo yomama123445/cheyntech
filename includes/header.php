@@ -49,50 +49,15 @@ $activePage      = $activePage      ?? '';
     </form>
   </div>
 
-  <!-- TOP UTILITY BAR (Secondary Navigation) -->
-  <div class="top-utility-bar d-none d-lg-block">
-    <div class="container d-flex align-items-center justify-content-between">
-      <div class="top-utility-left d-flex align-items-center gap-3">
-        <span class="utility-text"><i class="bi bi-geo-alt me-1 text-muted"></i>Roxas City, Capiz</span>
-        <span class="utility-divider">|</span>
-        <span class="utility-text"><i class="bi bi-check2 me-1 text-muted"></i>Tested Pre-owned &amp; New Devices</span>
-      </div>
-      <div class="top-utility-right d-flex align-items-center gap-3">
-        <a href="about.php" class="utility-link <?= $activePage === 'about' ? 'active' : '' ?>">About</a>
-        <span class="utility-divider">|</span>
-        <a href="track-order.php" class="utility-link <?= $activePage === 'track-order' ? 'active' : '' ?>"><i class="bi bi-box-seam me-1"></i>Track Order</a>
-        <span class="utility-divider">|</span>
-        <?php if (!empty($_SESSION['user_id'])): ?>
-          <div class="dropdown d-inline-block">
-            <a href="profile.php" class="utility-link dropdown-toggle d-inline-flex align-items-center gap-1 text-decoration-none" id="topUserDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i>
-              <span><?= htmlspecialchars($_SESSION['user_name'] ?? 'Account') ?></span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="topUserDropdown">
-              <li><span class="dropdown-item-text text-muted small">Signed in as<br><strong class="text-dark"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong></span></li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li><a class="dropdown-item py-1 small" href="profile.php"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a></li>
-              <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
-                <li><a class="dropdown-item py-1 small" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>
-              <?php endif; ?>
-              <li><hr class="dropdown-divider my-1"></li>
-              <li><a class="dropdown-item py-1 small text-danger" href="login.php?action=logout"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>
-            </ul>
-          </div>
-        <?php else: ?>
-          <a href="login.php" class="utility-link" aria-label="Account">Sign In</a>
-          <span class="utility-divider">|</span>
-          <a href="login.php#register" class="utility-btn">Sign Up</a>
-        <?php endif; ?>
-      </div>
-    </div>
+  <!-- TOP UTILITY BAR (Hidden for Apple-grade slim translucent navigation) -->
+  <div class="top-utility-bar d-none">
   </div>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR (Apple-grade slim translucent navbar) -->
   <nav class="navbar navbar-expand-lg navbar-ct sticky-top" role="navigation" aria-label="Main navigation">
-    <div class="container">
+    <div class="container d-flex align-items-center justify-content-between">
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.php">
-        <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="38" height="38">
+        <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="22" height="22">
         <span class="brand-name">Cheyn Gadgets<span class="brand-dot">.</span></span>
       </a>
       <!-- Mobile Quick Actions -->
@@ -101,7 +66,7 @@ $activePage      = $activePage      ?? '';
           <i class="bi bi-search"></i>
         </a>
         <a href="cart.php" class="mobile-nav-btn position-relative" aria-label="Shopping cart">
-          <i class="bi bi-cart3"></i>
+          <i class="bi bi-bag"></i>
           <span class="cart-badge">0</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
@@ -230,29 +195,49 @@ $activePage      = $activePage      ?? '';
             </ul>
           </li>
 
-          <!-- Mobile Only Secondary Links -->
-          <li class="nav-item d-lg-none mt-2 pt-2 border-top">
+          <li class="nav-item">
             <a class="nav-link <?= $activePage === 'about' ? 'active' : '' ?>" href="about.php">
-              <i class="bi bi-info-circle me-2"></i>About Us
+              About
             </a>
           </li>
-          <li class="nav-item d-lg-none">
+          <li class="nav-item">
             <a class="nav-link <?= $activePage === 'track-order' ? 'active' : '' ?>" href="track-order.php">
-              <i class="bi bi-box-seam me-2"></i>Track Order
+              Track Order
             </a>
           </li>
         </ul>
 
-        <!-- Desktop Nav Icons -->
+        <!-- Desktop Nav Icons (Apple-style Search, Bag, User) -->
         <div class="d-none d-lg-flex align-items-center gap-3 nav-icons">
           <a href="#" id="searchToggle" class="nav-search-btn" aria-label="Search">
             <i class="bi bi-search"></i>
             <span class="search-kbd d-none d-md-inline-flex">⌘K</span>
           </a>
-          <a href="cart.php" class="position-relative" aria-label="Shopping cart">
-            <i class="bi bi-cart3"></i>
+          <a href="cart.php" class="position-relative nav-cart-btn" aria-label="Shopping cart">
+            <i class="bi bi-bag"></i>
             <span class="cart-badge">0</span>
           </a>
+          <?php if (!empty($_SESSION['user_id'])): ?>
+            <div class="dropdown">
+              <a href="profile.php" class="nav-user-btn dropdown-toggle text-decoration-none" id="navUserDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account">
+                <i class="bi bi-person"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="navUserDropdown">
+                <li><span class="dropdown-item-text text-muted small">Signed in as<br><strong class="text-dark"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong></span></li>
+                <li><hr class="dropdown-divider my-1"></li>
+                <li><a class="dropdown-item py-1 small" href="profile.php"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a></li>
+                <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                  <li><a class="dropdown-item py-1 small" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>
+                <?php endif; ?>
+                <li><hr class="dropdown-divider my-1"></li>
+                <li><a class="dropdown-item py-1 small text-danger" href="login.php?action=logout"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>
+              </ul>
+            </div>
+          <?php else: ?>
+            <a href="login.php" class="nav-user-btn" aria-label="Sign In" title="Sign In">
+              <i class="bi bi-person"></i>
+            </a>
+          <?php endif; ?>
         </div>
 
         <!-- Mobile Drawer Account Section -->

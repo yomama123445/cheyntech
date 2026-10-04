@@ -14,26 +14,26 @@ require 'includes/header.php';
       <!-- Eyebrow Tag -->
       <div class="apple-hero-eyebrow">
         <span class="apple-live-dot"></span>
-        <span>Cheyn Certified &middot; Roxas City Storefront</span>
+        <span>Cheyn Certified &middot; Roxas City</span>
       </div>
 
       <!-- Main Headline -->
       <h1 class="apple-hero-headline">
-        Function-tested. <span class="apple-gradient-text">Certified.</span><br>Ready for you.
+        iPhone 15
       </h1>
 
       <!-- Subtitle -->
       <p class="apple-hero-subtitle">
-        Every smartphone and tablet is rigorously inspected at our Capiz workbench before listing. Experience premium technology with local in-store pickup or same-day delivery.
+        Titanium design. Certified pre-owned and sealed new.
       </p>
 
-      <!-- Action Buttons -->
+      <!-- Action Links -->
       <div class="apple-hero-actions">
-        <a href="catalog.php" class="btn apple-btn-primary">
-          Browse Inventory <i class="bi bi-arrow-right ms-1"></i>
+        <a href="catalog.php" class="apple-hero-link-primary">
+          Browse Inventory <i class="bi bi-chevron-right"></i>
         </a>
-        <a href="about.php" class="btn apple-btn-secondary">
-          Our Inspection Process
+        <a href="about.php" class="apple-hero-link-secondary">
+          Our Inspection Process <i class="bi bi-chevron-right"></i>
         </a>
       </div>
 
@@ -45,26 +45,26 @@ require 'includes/header.php';
         </video>
       </div>
       <p class="apple-video-caption">
-        iPhone 15 Series &middot; Titanium Design &middot; Function-Tested &amp; Sealed Units
+        iPhone 15 Series &middot; Titanium &middot; In-store pickup in Roxas City
       </p>
 
       <!-- Micro Trust Strip -->
       <div class="apple-hero-trust-strip">
         <div class="apple-hero-trust-item">
           <i class="bi bi-shield-check"></i>
-          <span>7-Day In-Store Replacement</span>
+          <span>7-Day Replacement</span>
         </div>
         <div class="apple-hero-trust-item">
           <i class="bi bi-battery-charging"></i>
-          <span>85%+ Battery Health Certified</span>
+          <span>85%+ Battery Health</span>
         </div>
         <div class="apple-hero-trust-item">
           <i class="bi bi-cpu"></i>
-          <span>50-Point Bench Diagnostic</span>
+          <span>50-Point Diagnostic</span>
         </div>
         <div class="apple-hero-trust-item">
           <i class="bi bi-geo-alt"></i>
-          <span>Roxas City Local Dispatch</span>
+          <span>Roxas City Storefront</span>
         </div>
       </div>
 
