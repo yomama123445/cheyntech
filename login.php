@@ -76,7 +76,7 @@ require 'includes/header.php';
                 <div class="apple-step-body">
                   <label for="loginEmail" class="apple-field-label">Email Address</label>
                   <div class="apple-input-box" id="loginEmailBox">
-                    <input type="email" class="apple-single-input" id="loginEmail" placeholder="name@example.com" autocomplete="email" required>
+                    <input type="email" class="apple-single-input" id="loginEmail" autocomplete="email" required>
                     <button type="button" class="apple-circle-action-btn" id="loginContinueBtn" aria-label="Continue to password">
                       <i class="bi bi-arrow-right"></i>
                     </button>
@@ -114,7 +114,7 @@ require 'includes/header.php';
                 <div class="apple-step-body">
                   <label for="loginPassword" class="apple-field-label">Password</label>
                   <div class="apple-input-box" id="loginPasswordBox">
-                    <input type="password" class="apple-single-input" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+                    <input type="password" class="apple-single-input" id="loginPassword" autocomplete="current-password" required>
                     <button type="button" class="apple-eye-btn pass-toggle" id="loginPassToggle" aria-label="Show password">
                       <i class="bi bi-eye" id="loginPassIcon"></i>
                     </button>
@@ -159,7 +159,7 @@ require 'includes/header.php';
                 <div class="apple-step-body">
                   <label for="regName" class="apple-field-label">Full Name</label>
                   <div class="apple-input-box" id="regNameBox">
-                    <input type="text" class="apple-single-input" id="regName" placeholder="Juan dela Cruz" autocomplete="name" required>
+                    <input type="text" class="apple-single-input" id="regName" autocomplete="name" required>
                     <button type="button" class="apple-circle-action-btn" id="regStep1Next" aria-label="Continue to contact info">
                       <i class="bi bi-arrow-right"></i>
                     </button>
@@ -185,7 +185,7 @@ require 'includes/header.php';
                   <div class="mb-3">
                     <label for="regEmail" class="apple-field-label">Email Address</label>
                     <div class="apple-input-box" id="regEmailBox">
-                      <input type="email" class="apple-single-input" id="regEmail" placeholder="name@example.com" autocomplete="email" required>
+                      <input type="email" class="apple-single-input" id="regEmail" autocomplete="email" required>
                     </div>
                     <div class="apple-field-error" id="regEmailError">Please enter a valid email address.</div>
                   </div>
@@ -193,7 +193,7 @@ require 'includes/header.php';
                   <div class="mb-4">
                     <label for="regPhone" class="apple-field-label">Mobile Number <span class="text-muted fw-normal">(Optional)</span></label>
                     <div class="apple-input-box" id="regPhoneBox">
-                      <input type="tel" class="apple-single-input" id="regPhone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+                      <input type="tel" class="apple-single-input" id="regPhone" autocomplete="tel">
                     </div>
                   </div>
 
@@ -219,7 +219,7 @@ require 'includes/header.php';
                   <div class="mb-3">
                     <label for="regPassword" class="apple-field-label">Password</label>
                     <div class="apple-input-box" id="regPasswordBox">
-                      <input type="password" class="apple-single-input" id="regPassword" placeholder="Minimum 8 characters" autocomplete="new-password" required minlength="8">
+                      <input type="password" class="apple-single-input" id="regPassword" autocomplete="new-password" required minlength="8">
                       <button type="button" class="apple-eye-btn pass-toggle" id="regPassToggle" aria-label="Show password">
                         <i class="bi bi-eye" id="regPassIcon"></i>
                       </button>
@@ -231,7 +231,7 @@ require 'includes/header.php';
                   <div class="mb-3">
                     <label for="regConfirmPassword" class="apple-field-label">Confirm Password</label>
                     <div class="apple-input-box" id="regConfirmPasswordBox">
-                      <input type="password" class="apple-single-input" id="regConfirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
+                      <input type="password" class="apple-single-input" id="regConfirmPassword" autocomplete="new-password" required>
                       <button type="button" class="apple-eye-btn pass-toggle" id="regConfirmPassToggle" aria-label="Show confirm password">
                         <i class="bi bi-eye" id="regConfirmPassIcon"></i>
                       </button>
