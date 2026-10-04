@@ -19,9 +19,9 @@ require 'includes/header.php';
   </div>
 
   <!-- MAIN PRODUCT SECTION -->
-  <main class="py-5">
+  <main class="py-4 py-lg-5">
     <div class="container">
-      <div class="row g-5">
+      <div class="row g-4 g-lg-5">
 
         <!-- LEFT: Image Gallery -->
         <div class="col-lg-6">

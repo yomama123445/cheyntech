@@ -166,7 +166,12 @@ require 'includes/header.php';
           <div class="sort-bar">
             <span class="sort-label"><i class="bi bi-grid-3x3-gap me-1"></i> <span id="sortBarCount">0</span> products found</span>
             <div class="d-flex align-items-center gap-2">
-              <label for="sortSelect" class="sort-label mb-0">Sort by:</label>
+              <button class="btn btn-ct-outline btn-sm d-inline-flex d-lg-none align-items-center gap-1 py-1 px-2"
+                type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas"
+                aria-label="Open filters">
+                <i class="bi bi-sliders2"></i> Filters
+              </button>
+              <label for="sortSelect" class="sort-label mb-0 d-none d-sm-inline">Sort by:</label>
               <select id="sortSelect" class="form-select form-select-sm" aria-label="Sort products">
                 <option value="featured">Featured</option>
                 <option value="price-asc">Price: Low to High</option>

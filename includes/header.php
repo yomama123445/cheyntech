@@ -39,10 +39,21 @@ $activePage      = $activePage      ?? '';
         <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="38" height="38">
         <span class="brand-name">Cheyn Gadgets<span class="brand-dot">.</span></span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
-              aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <!-- Mobile Quick Actions -->
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <a href="#" class="mobile-nav-btn nav-search-trigger" aria-label="Search">
+          <i class="bi bi-search"></i>
+        </a>
+        <a href="cart.php" class="mobile-nav-btn position-relative" aria-label="Shopping cart">
+          <i class="bi bi-cart3"></i>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav mx-auto gap-1">
           <li class="nav-item"><a class="nav-link <?= $activePage === 'home'        ? 'active' : '' ?>" <?= $activePage === 'home'        ? 'aria-current="page"' : '' ?> href="index.php">Home</a></li>
@@ -54,7 +65,9 @@ $activePage      = $activePage      ?? '';
             <li class="nav-item"><a class="nav-link <?= $activePage === 'login'       ? 'active' : '' ?>" <?= $activePage === 'login'       ? 'aria-current="page"' : '' ?> href="login.php#register">Sign Up</a></li>
           <?php endif; ?>
         </ul>
-        <div class="d-flex align-items-center gap-3 nav-icons">
+
+        <!-- Desktop Nav Icons -->
+        <div class="d-none d-lg-flex align-items-center gap-3 nav-icons">
           <a href="#" id="searchToggle" class="nav-search-btn" aria-label="Search">
             <i class="bi bi-search"></i>
             <span class="search-kbd d-none d-md-inline-flex">⌘K</span>
@@ -67,7 +80,7 @@ $activePage      = $activePage      ?? '';
             <div class="dropdown">
               <a href="profile.php" class="d-flex align-items-center gap-1 text-decoration-none text-dark" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="My Account">
                 <i class="bi bi-person-circle fs-5"></i>
-                <span class="small fw-semibold d-none d-lg-inline">My Account</span>
+                <span class="small fw-semibold">My Account</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="accountDropdown">
                 <li><span class="dropdown-item-text text-muted small">Signed in as<br><strong><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong></span></li>
@@ -84,6 +97,37 @@ $activePage      = $activePage      ?? '';
             <a href="login.php" aria-label="Account"><i class="bi bi-person-circle"></i></a>
           <?php endif; ?>
         </div>
+
+        <!-- Mobile Drawer Account Section -->
+        <div class="d-lg-none pt-3 mt-3 border-top mobile-nav-user">
+          <?php if (!empty($_SESSION['user_id'])): ?>
+            <div class="d-flex align-items-center justify-content-between mb-3 px-2">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-person-circle fs-4 text-primary"></i>
+                <div>
+                  <span class="d-block small text-muted">Signed in as</span>
+                  <strong class="d-block text-dark"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong>
+                </div>
+              </div>
+              <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                <span class="badge bg-primary-subtle text-primary">Admin</span>
+              <?php endif; ?>
+            </div>
+            <div class="d-grid gap-2">
+              <a href="profile.php" class="btn btn-sm btn-outline-secondary text-start"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a>
+              <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                <a href="admin/dashboard.php" class="btn btn-sm btn-outline-primary text-start"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</a>
+              <?php endif; ?>
+              <a href="login.php?action=logout" class="btn btn-sm btn-outline-danger text-start"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a>
+            </div>
+          <?php else: ?>
+            <div class="d-grid gap-2">
+              <a href="login.php" class="btn btn-sm btn-outline-secondary"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In</a>
+              <a href="login.php#register" class="btn btn-sm btn-ct"><i class="bi bi-person-plus me-2"></i>Create Account</a>
+            </div>
+          <?php endif; ?>
+        </div>
+
       </div>
     </div>
   </nav>

@@ -119,24 +119,26 @@ function showToast(message, type = 'info', duration = 3000) {
    SEARCH OVERLAY
    ===================================================== */
 function initSearchOverlay() {
-  const toggleBtn = document.getElementById('searchToggle');
-  const overlay   = document.getElementById('searchOverlay');
-  const closeBtn  = document.getElementById('searchClose');
-  const input     = document.getElementById('searchInput');
-  const form      = document.getElementById('searchForm');
+  const toggleBtns = document.querySelectorAll('#searchToggle, .nav-search-trigger');
+  const overlay    = document.getElementById('searchOverlay');
+  const closeBtn   = document.getElementById('searchClose');
+  const input      = document.getElementById('searchInput');
+  const form       = document.getElementById('searchForm');
 
-  if (!toggleBtn) return;
+  if (!toggleBtns.length) return;
 
   /* On the catalog page, skip the modal — just focus the inline search box */
   const onCatalogPage = !!document.getElementById('catalogSearchInput');
   if (onCatalogPage) {
-    toggleBtn.addEventListener('click', e => {
-      e.preventDefault();
-      const catalogInput = document.getElementById('catalogSearchInput');
-      if (catalogInput) {
-        catalogInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => catalogInput.focus(), 300);
-      }
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const catalogInput = document.getElementById('catalogSearchInput');
+        if (catalogInput) {
+          catalogInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => catalogInput.focus(), 300);
+        }
+      });
     });
     return; /* skip overlay wiring on this page */
   }
@@ -146,7 +148,9 @@ function initSearchOverlay() {
   const open  = () => { overlay.classList.add('active');    requestAnimationFrame(() => input && input.focus()); };
   const close = () => overlay.classList.remove('active');
 
-  toggleBtn.addEventListener('click', e => { e.preventDefault(); open(); });
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); open(); });
+  });
   closeBtn  && closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
   document.addEventListener('keydown', e => {

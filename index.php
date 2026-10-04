@@ -38,8 +38,7 @@ require 'includes/header.php';
               <span class="small fw-semibold">Local Roxas City Dispatch</span>
             </div>
           </div>
-        </div>
-        <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
+        <div class="col-lg-6 col-md-5 text-center mt-4 mt-md-0">
           <div class="hero-device-wrapper">
             <!-- Floating diagnostic HUD proof chips -->
             <div class="hud-chip hud-top-left">
@@ -77,7 +76,7 @@ require 'includes/header.php';
   <!-- 20-POINT DIAGNOSTIC INSPECTION STRIP -->
   <div class="diagnostic-strip">
     <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+      <div class="row row-cols-2 row-cols-lg-4 g-2 g-md-3">
         <div class="col">
           <div class="diagnostic-item">
             <div class="diag-icon"><i class="bi bi-display"></i></div>
