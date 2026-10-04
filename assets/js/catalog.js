@@ -336,17 +336,220 @@ function renderProducts() {
    Updates every [data-count-for] span with the number of products
    in the current filtered set that match that category value.
    ============================================================ */
+/* ============================================================
+   REAL-DATA FILTER DERIVATION & RENDERING
+   Derives categories, storages, colors, and conditions directly
+   from the live catalog products dataset.
+   ============================================================ */
+function extractFilterData(products) {
+  const categoryDefinitions = [
+    { id: 'preowned', label: 'Pre-owned iPhones' },
+    { id: 'new',      label: 'New iPhones' },
+    { id: 'android',  label: 'Android Phones' },
+    { id: 'tablet',   label: 'Tablets & iPads' },
+    { id: 'wearable', label: 'Wearables & Watches' }
+  ];
+
+  const catCounts = {};
+  categoryDefinitions.forEach(c => { catCounts[c.id] = 0; });
+
+  products.forEach(p => {
+    const pCats = productCategories(p);
+    pCats.forEach(catId => {
+      if (catCounts[catId] !== undefined) {
+        catCounts[catId]++;
+      }
+    });
+  });
+
+  const categories = categoryDefinitions
+    .map(c => ({ id: c.id, label: c.label, count: catCounts[c.id] || 0 }))
+    .filter(c => c.count > 0 || c.id === 'new');
+
+  // Extract storage options across all products
+  const storageMap = {};
+  products.forEach(p => {
+    (p.storageOptions || []).forEach(opt => {
+      const raw = (opt.label || '').trim();
+      if (!raw) return;
+      const slug = raw.toLowerCase().replace(/\s+/g, '');
+      if (!storageMap[slug]) {
+        storageMap[slug] = {
+          slug: slug,
+          label: raw.toUpperCase().includes('GB') ? raw.replace(/gb/i, ' GB') : raw,
+          pids: new Set()
+        };
+      }
+      storageMap[slug].pids.add(p.id);
+    });
+  });
+
+  const storages = Object.values(storageMap).map(s => ({
+    slug: s.slug,
+    label: s.label,
+    count: s.pids.size
+  }));
+
+  storages.sort((a, b) => {
+    const isGbA = a.slug.endsWith('gb');
+    const isGbB = b.slug.endsWith('gb');
+    if (isGbA && isGbB) {
+      return parseInt(a.slug, 10) - parseInt(b.slug, 10);
+    }
+    if (isGbA && !isGbB) return -1;
+    if (!isGbA && isGbB) return 1;
+    return a.label.localeCompare(b.label);
+  });
+
+  // Extract distinct colors across all products
+  const colorMap = {};
+  products.forEach(p => {
+    (p.colorOptions || []).forEach(opt => {
+      const raw = (opt.label || '').trim();
+      if (!raw) return;
+      const slug = colorSlug(raw);
+      if (!colorMap[slug]) {
+        colorMap[slug] = {
+          slug: slug,
+          label: raw,
+          hex: opt.hex || '#000000',
+          border: opt.border || (['#ffffff', '#fff', '#f5f5f7', '#e2e2e4'].includes((opt.hex || '').toLowerCase()) ? '#c0c0c0' : ''),
+          pids: new Set()
+        };
+      }
+      colorMap[slug].pids.add(p.id);
+    });
+  });
+
+  const colors = Object.values(colorMap).map(c => ({
+    slug: c.slug,
+    label: c.label,
+    hex: c.hex,
+    border: c.border,
+    count: c.pids.size
+  }));
+
+  colors.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+  // Extract conditions across all products
+  const condDefinitions = [
+    { slug: 'preowned',    label: 'Pre-owned' },
+    { slug: 'refurbished', label: 'Refurbished' },
+    { slug: 'brandnew',    label: 'Brand New' }
+  ];
+
+  const conditions = condDefinitions.map(def => {
+    const count = products.filter(p => conditionSlug(p.condition) === def.slug).length;
+    return { slug: def.slug, label: def.label, count };
+  }).filter(c => c.count > 0);
+
+  return { categories, storages, colors, conditions };
+}
+
+/** Render dynamic filter checkboxes and colors from real product data */
+function renderFilterControls(products) {
+  if (!products || !products.length) return;
+  const data = extractFilterData(products);
+
+  // 1. Categories
+  const catContainers = [
+    { el: document.getElementById('categoryFilterList'), prefix: 'cat_' },
+    { el: document.getElementById('mCategoryFilterList'), prefix: 'mCat_' }
+  ];
+  catContainers.forEach(({ el, prefix }) => {
+    if (!el) return;
+    el.innerHTML = data.categories.map(c => `
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="${prefix}${c.id}" name="cat" value="${c.id}"
+          ${activeFilters.cats.includes(c.id) ? 'checked' : ''} data-filter-count-for="${c.id}">
+        <label class="form-check-label d-flex align-items-center justify-content-between" for="${prefix}${c.id}">
+          <span>${c.label}</span>
+          <span class="filter-count text-muted ms-1" data-count-for="${c.id}">(${c.count})</span>
+        </label>
+      </div>
+    `).join('');
+  });
+
+  // 2. Storage
+  const storageContainers = [
+    { el: document.getElementById('storageFilterList'), prefix: 'var_' },
+    { el: document.getElementById('mStorageFilterList'), prefix: 'mVar_' }
+  ];
+  storageContainers.forEach(({ el, prefix }) => {
+    if (!el) return;
+    el.innerHTML = data.storages.map(s => `
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="${prefix}${s.slug}" name="variant" value="${s.slug}"
+          ${activeFilters.variants.includes(s.slug) ? 'checked' : ''}>
+        <label class="form-check-label d-flex align-items-center justify-content-between" for="${prefix}${s.slug}">
+          <span>${s.label}</span>
+          <span class="filter-count text-muted ms-1">(${s.count})</span>
+        </label>
+      </div>
+    `).join('');
+  });
+
+  // 3. Colors
+  const colorContainers = [
+    { el: document.getElementById('colorFilterList'), prefix: 'col_' },
+    { el: document.getElementById('mColorFilterList'), prefix: 'mCol_' }
+  ];
+  colorContainers.forEach(({ el, prefix }) => {
+    if (!el) return;
+    el.innerHTML = data.colors.map(c => `
+      <label class="color-option d-flex align-items-center justify-content-between w-100 mb-2" for="${prefix}${c.slug}">
+        <div class="d-flex align-items-center gap-2">
+          <input class="form-check-input m-0" type="checkbox" id="${prefix}${c.slug}" name="color" value="${c.slug}"
+            ${activeFilters.colors.includes(c.slug) ? 'checked' : ''}>
+          <span class="color-dot" style="background:${c.hex};${c.border ? 'border-color:' + c.border + ';' : ''}"></span>
+          <span class="color-label">${c.label}</span>
+        </div>
+        <span class="filter-count text-muted ms-1">(${c.count})</span>
+      </label>
+    `).join('');
+  });
+
+  // 4. Conditions
+  const condContainers = [
+    { el: document.getElementById('conditionFilterList'), prefix: 'cond_' },
+    { el: document.getElementById('mConditionFilterList'), prefix: 'mCond_' }
+  ];
+  condContainers.forEach(({ el, prefix }) => {
+    if (!el) return;
+    el.innerHTML = data.conditions.map(c => `
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="${prefix}${c.slug}" name="condition" value="${c.slug}"
+          ${activeFilters.conds.includes(c.slug) ? 'checked' : ''}>
+        <label class="form-check-label d-flex align-items-center justify-content-between" for="${prefix}${c.slug}">
+          <span>${c.label}</span>
+          <span class="filter-count text-muted ms-1">(${c.count})</span>
+        </label>
+      </div>
+    `).join('');
+  });
+
+  // Wire auto-update on desktop checkbox change
+  const filterCard = document.querySelector('.filter-card');
+  if (filterCard && !filterCard.dataset.wiredAutoApply) {
+    filterCard.dataset.wiredAutoApply = 'true';
+    filterCard.addEventListener('change', e => {
+      if (e.target.matches('input[type="checkbox"]')) {
+        applyFilters(false);
+      }
+    });
+  }
+}
+
 function updateFilterCounts(filteredProducts) {
+  // Update category data-count-for spans if any present
   document.querySelectorAll('[data-count-for]').forEach(span => {
     const key = span.dataset.countFor;
     let count = 0;
-
     filteredProducts.forEach(p => {
       const pCats = productCategories(p);
       if (pCats.includes(key)) count++;
     });
-
-    span.textContent = count > 0 ? '(' + count + ')' : '';
+    span.textContent = count > 0 ? '(' + count + ')' : '(0)';
   });
 }
 
@@ -372,7 +575,7 @@ function collectFiltersFromDOM() {
 /* ============================================================
    APPLY FILTERS BUTTONS (Desktop + Mobile Offcanvas)
    ============================================================ */
-function applyFilters() {
+function applyFilters(showToastNotification = true) {
   activeFilters = collectFiltersFromDOM();
   currentPage   = 1;
 
@@ -407,44 +610,35 @@ function applyFilters() {
 
   renderProducts();
   renderActiveTags();
-  showToast('Filters applied', 'info');
+  if (showToastNotification) {
+    showToast('Filters applied', 'info');
+  }
 }
 
-document.getElementById('applyFiltersBtn')?.addEventListener('click', applyFilters);
-document.getElementById('applyFiltersBtnMobile')?.addEventListener('click', applyFilters);
+document.getElementById('applyFiltersBtn')?.addEventListener('click', () => applyFilters(true));
+document.getElementById('applyFiltersBtnMobile')?.addEventListener('click', () => applyFilters(true));
 
 /* ============================================================
    RESTORE CHECKBOXES + SEARCH FROM URL (on page load)
    ============================================================ */
 (function () {
   const params = new URLSearchParams(window.location.search);
+  const getParamVals = param => (params.get(param) || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
 
-  function restoreCheckboxes(name, param) {
-    const vals = params.get(param);
-    if (!vals) return;
-    vals.split(',').forEach(v => {
-      document.querySelectorAll(`input[name="${name}"][value="${v}"]`).forEach(el => {
-        el.checked = true;
-      });
-    });
-  }
-
-  restoreCheckboxes('cat',       'cat');
-  restoreCheckboxes('variant',   'variant');
-  restoreCheckboxes('color',     'color');
-  restoreCheckboxes('condition', 'condition');
+  activeFilters.cats     = getParamVals('cat');
+  activeFilters.variants = getParamVals('variant');
+  activeFilters.colors   = getParamVals('color');
+  activeFilters.conds    = getParamVals('condition');
 
   // Populate search input from ?q= and store in activeFilters
   const q = params.get('q') || '';
   if (q) {
+    activeFilters.q = q;
     const input = document.getElementById('catalogSearchInput');
     if (input) input.value = q;
     const inputMobile = document.getElementById('catalogSearchInputMobile');
     if (inputMobile) inputMobile.value = q;
   }
-
-  // Build activeFilters from whatever was just restored
-  activeFilters = collectFiltersFromDOM();
 
   // Price range
   const priceMin = params.get('priceMin');
@@ -456,6 +650,11 @@ document.getElementById('applyFiltersBtnMobile')?.addEventListener('click', appl
   if (priceMax) {
     const el = document.getElementById('priceMax');
     if (el) { el.value = priceMax; activeFilters.priceMax = parseFloat(priceMax); }
+  }
+
+  // Initial render of filter controls with static product data
+  if (typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS) && CHEYN_PRODUCTS.length > 0) {
+    renderFilterControls(CHEYN_PRODUCTS);
   }
 })();
 
@@ -557,6 +756,7 @@ function renderSkeletonGrid() {
    ============================================================ */
 async function loadCatalogProducts() {
   if (PRODUCTS.length > 0) {
+    renderFilterControls(PRODUCTS);
     renderProducts();
     renderActiveTags();
   } else {
@@ -578,12 +778,14 @@ async function loadCatalogProducts() {
     }
     if (Array.isArray(fetched) && fetched.length > 0) {
       PRODUCTS = fetched;
+      renderFilterControls(PRODUCTS);
       renderProducts();
       renderActiveTags();
     }
   } catch (err) {
     if (!PRODUCTS.length && typeof CHEYN_PRODUCTS !== 'undefined' && Array.isArray(CHEYN_PRODUCTS)) {
       PRODUCTS = CHEYN_PRODUCTS;
+      renderFilterControls(PRODUCTS);
       renderProducts();
       renderActiveTags();
     }

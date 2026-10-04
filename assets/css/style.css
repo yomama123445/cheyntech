@@ -2067,6 +2067,10 @@ img { max-width: 100%; }
 .color-option { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.35rem; cursor: pointer; }
 .color-dot    { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.12); display: inline-block; flex-shrink: 0; }
 .color-label  { font-size: 0.87rem; }
+.filter-colors-wrap { max-height: 220px; overflow-y: auto; padding-right: 4px; }
+.filter-colors-wrap::-webkit-scrollbar { width: 4px; }
+.filter-colors-wrap::-webkit-scrollbar-thumb { background: var(--ct-border); border-radius: 4px; }
+.filter-count { font-size: 0.78rem; font-weight: 500; }
 
 .price-inputs { display: flex; align-items: center; gap: 0.5rem; }
 .price-inputs .form-control { font-size: 0.85rem; border-radius: var(--ct-radius-sm); padding: 0.35rem 0.6rem; }
