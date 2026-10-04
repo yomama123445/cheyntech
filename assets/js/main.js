@@ -215,10 +215,10 @@ function initActiveNav() {
   if (page === 'catalog.php') {
     if (cat.includes('preowned') || cat.includes('new') || cat.includes('wearable') || q.includes('apple') || q.includes('iphone') || q.includes('watch') || q.includes('airpod')) {
       document.getElementById('appleDropdown')?.classList.add('active');
+    } else if (cat.includes('tablet') || q.includes('tablet') || q.includes('ipad')) {
+      document.getElementById('tabletsDropdown')?.classList.add('active');
     } else if (cat.includes('android') || q.includes('samsung') || q.includes('vivo') || q.includes('tecno') || q.includes('honor')) {
       document.getElementById('androidDropdown')?.classList.add('active');
-    } else if (cat.includes('tablet') || q.includes('ipad')) {
-      document.getElementById('tabletsDropdown')?.classList.add('active');
     }
   }
 }

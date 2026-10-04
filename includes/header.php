@@ -202,7 +202,7 @@ $activePage      = $activePage      ?? '';
                 </a>
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=tablet">
+                <a class="dropdown-item d-flex align-items-center gap-2" href="catalog.php?cat=tablet&q=Android">
                   <i class="bi bi-tablet-landscape text-ct"></i>
                   <div>
                     <div class="dropdown-item-title fw-semibold">Android Tablets</div>

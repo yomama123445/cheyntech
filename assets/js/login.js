@@ -19,7 +19,19 @@
       document.getElementById('switchToLogin').addEventListener('click', function (e) {
         e.preventDefault();
         bootstrap.Tab.getOrCreateInstance(document.getElementById('login-tab')).show();
-        history.replaceState(null, '', window.location.pathname);
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      });
+
+      // Keep URL hash in sync on direct tab click
+      document.getElementById('register-tab')?.addEventListener('shown.bs.tab', function () {
+        if (window.location.hash !== '#register') {
+          history.replaceState(null, '', '#register');
+        }
+      });
+      document.getElementById('login-tab')?.addEventListener('shown.bs.tab', function () {
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
       });
 
       // Password toggle helper
