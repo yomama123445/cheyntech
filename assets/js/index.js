@@ -42,16 +42,28 @@ function initHero() {
 
 /* ─── Subtle Ambient Cursor Spotlight on Hardware Cards ─────────────────── */
 function initSpotlight() {
+  if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    return;
+  }
   const cards = document.querySelectorAll('.spotlight-card, .product-card');
   cards.forEach(card => {
+    let rafId = null;
     card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    });
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+        rafId = null;
+      });
+    }, { passive: true });
     card.addEventListener('mouseleave', () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
       card.style.setProperty('--mouse-x', '-500px');
       card.style.setProperty('--mouse-y', '-500px');
     });

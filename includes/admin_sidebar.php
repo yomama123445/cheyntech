@@ -24,10 +24,15 @@
         color: var(--ct-primary);
       }
     </style>
-    <a href="dashboard.php" class="sidebar-brand">
-      <img src="../assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
-      <span class="brand-name">Cheyn Gadgets</span>
-    </a>
+    <div class="sidebar-brand d-flex align-items-center justify-content-between">
+      <a href="dashboard.php" class="d-flex align-items-center gap-2 text-decoration-none">
+        <img src="../assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
+        <span class="brand-name">Cheyn Gadgets</span>
+      </a>
+      <button type="button" class="btn btn-sm btn-link text-white-50 d-lg-none p-0 ms-2" id="sidebarCloseBtn" aria-label="Close sidebar">
+        <i class="bi bi-x-lg fs-5"></i>
+      </button>
+    </div>
 
     <div class="sidebar-section-label">Main Menu</div>
     <nav>
@@ -40,20 +45,17 @@
       <a href="orders.php" class="nav-link <?= $adminActivePage === 'orders' ? 'active' : '' ?>" <?= $adminActivePage === 'orders' ? 'aria-current="page"' : '' ?>>
         <i class="bi bi-receipt"></i> Orders
       </a>
-      <a href="#" class="nav-link">
-        <i class="bi bi-people"></i> Customers
-      </a>
     </nav>
 
     <div class="sidebar-section-label mt-2">System</div>
     <nav>
-      <a href="#" class="nav-link sidebar-disabled" aria-disabled="true">
+      <a href="settings.php" class="nav-link <?= $adminActivePage === 'settings' ? 'active' : '' ?>" <?= $adminActivePage === 'settings' ? 'aria-current="page"' : '' ?>>
         <i class="bi bi-gear"></i> Settings
       </a>
     </nav>
 
     <div class="mt-auto p-3 border-top border-white border-opacity-10">
-      <a href="../login.php" class="nav-link sidebar-logout">
+      <a href="../login.php?action=logout" class="nav-link sidebar-logout">
         <i class="bi bi-box-arrow-left"></i> Logout
       </a>
     </div>

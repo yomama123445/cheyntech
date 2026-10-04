@@ -5,20 +5,6 @@ if (todayEl) {
   todayEl.textContent = d.toLocaleDateString('en-PH', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-// Sidebar toggle (mobile)
-const sidebarToggle = document.getElementById('sidebarToggle');
-const adminSidebar  = document.getElementById('adminSidebar');
-const overlay       = document.getElementById('sidebarOverlay');
-
-sidebarToggle && sidebarToggle.addEventListener('click', () => {
-  adminSidebar.classList.toggle('open');
-  overlay.style.display = adminSidebar.classList.contains('open') ? 'block' : 'none';
-});
-overlay && overlay.addEventListener('click', () => {
-  adminSidebar.classList.remove('open');
-  overlay.style.display = 'none';
-});
-
 // Real CSV generation and export
 async function exportOrdersCSV() {
   try {
