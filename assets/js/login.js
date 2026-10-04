@@ -65,44 +65,70 @@
     });
   }
 
-  function activateTabFromHash() {
-    if (window.location.hash === '#register') {
-      var regTab = document.getElementById('register-tab');
-      if (regTab) bootstrap.Tab.getOrCreateInstance(regTab).show();
+  function switchAuthTab(targetTabId) {
+    var isRegister = targetTabId === 'register-tab';
+    var loginPane = document.getElementById('loginPane');
+    var registerPane = document.getElementById('registerPane');
+    var loginTab = document.getElementById('login-tab');
+    var registerTab = document.getElementById('register-tab');
+
+    if (isRegister) {
+      loginTab?.classList.remove('active');
+      loginTab?.setAttribute('aria-selected', 'false');
+      registerTab?.classList.add('active');
+      registerTab?.setAttribute('aria-selected', 'true');
+
+      loginPane?.classList.remove('active', 'show');
+      registerPane?.classList.add('active', 'show');
+      resetRegisterForm();
+      if (window.location.hash !== '#register') {
+        history.replaceState(null, '', '#register');
+      }
+      setTimeout(function () { document.getElementById('regName')?.focus(); }, 80);
+    } else {
+      registerTab?.classList.remove('active');
+      registerTab?.setAttribute('aria-selected', 'false');
+      loginTab?.classList.add('active');
+      loginTab?.setAttribute('aria-selected', 'true');
+
+      registerPane?.classList.remove('active', 'show');
+      loginPane?.classList.add('active', 'show');
+      resetLoginForm();
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      setTimeout(function () { document.getElementById('loginEmail')?.focus(); }, 80);
     }
   }
-  activateTabFromHash();
-  window.addEventListener('hashchange', activateTabFromHash);
+
+  function activateTabFromHash() {
+    if (window.location.hash === '#register') {
+      switchAuthTab('register-tab');
+    }
+  }
+
+  document.getElementById('register-tab')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    switchAuthTab('register-tab');
+  });
+
+  document.getElementById('login-tab')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    switchAuthTab('login-tab');
+  });
 
   document.getElementById('switchToRegister')?.addEventListener('click', function (e) {
     e.preventDefault();
-    var regTab = document.getElementById('register-tab');
-    if (regTab) bootstrap.Tab.getOrCreateInstance(regTab).show();
-    history.replaceState(null, '', '#register');
+    switchAuthTab('register-tab');
   });
 
   document.getElementById('switchToLogin')?.addEventListener('click', function (e) {
     e.preventDefault();
-    var logTab = document.getElementById('login-tab');
-    if (logTab) bootstrap.Tab.getOrCreateInstance(logTab).show();
-    history.replaceState(null, '', window.location.pathname + window.location.search);
+    switchAuthTab('login-tab');
   });
 
-  document.getElementById('register-tab')?.addEventListener('shown.bs.tab', function () {
-    resetRegisterForm();
-    if (window.location.hash !== '#register') {
-      history.replaceState(null, '', '#register');
-    }
-    setTimeout(function () { document.getElementById('regName')?.focus(); }, 150);
-  });
-
-  document.getElementById('login-tab')?.addEventListener('shown.bs.tab', function () {
-    resetLoginForm();
-    if (window.location.hash) {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
-    setTimeout(function () { document.getElementById('loginEmail')?.focus(); }, 150);
-  });
+  activateTabFromHash();
+  window.addEventListener('hashchange', activateTabFromHash);
 
   // ============================================================
   // PASSWORD VISIBILITY TOGGLES

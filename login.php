@@ -63,7 +63,7 @@ require 'includes/header.php';
           <!-- ==============================================
                SIGN IN: ONE INPUT AT A TIME (Apple ID Flow)
                ============================================== -->
-          <div class="tab-pane fade show active" id="loginPane" role="tabpanel" aria-labelledby="login-tab">
+          <div class="tab-pane show active" id="loginPane" role="tabpanel" aria-labelledby="login-tab">
             <form id="loginForm" novalidate autocomplete="on">
 
               <!-- SIGN IN: STEP 1 (Email / Identifier) -->
@@ -139,7 +139,7 @@ require 'includes/header.php';
           <!-- ==============================================
                CREATE ACCOUNT: STEPPED PROGRESSION (Apple Flow)
                ============================================== -->
-          <div class="tab-pane fade" id="registerPane" role="tabpanel" aria-labelledby="register-tab">
+          <div class="tab-pane" id="registerPane" role="tabpanel" aria-labelledby="register-tab">
             <form id="registerForm" novalidate autocomplete="on">
 
               <!-- Stepped Progress Dots -->

@@ -2721,6 +2721,13 @@ img { max-width: 100%; }
 .apple-auth-stage {
   width: 100%;
 }
+.apple-auth-stage .tab-pane {
+  display: none;
+}
+.apple-auth-stage .tab-pane.active {
+  display: block !important;
+  opacity: 1 !important;
+}
 @keyframes appleFadeSlideIn {
   from {
     opacity: 0;
