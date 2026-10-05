@@ -483,10 +483,14 @@ function initNavTrayController() {
     if (link && menu) {
       link.addEventListener('click', function(e) {
         if (window.innerWidth < 992) {
-          e.preventDefault();
           const isOpen = menu.classList.contains('show');
+          if (isOpen) {
+            // If already expanded, second tap navigates to target link directly
+            return;
+          }
+          e.preventDefault();
           document.querySelectorAll('.navbar-ct .dropdown-menu.show').forEach(m => m.classList.remove('show'));
-          if (!isOpen) menu.classList.add('show');
+          menu.classList.add('show');
         }
       });
     }

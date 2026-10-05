@@ -2283,12 +2283,20 @@ img { max-width: 100%; }
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 90;
+  z-index: 1010;
+}
+
+.catalog-category-bar.sticky-top {
+  top: 44px !important;
 }
 
 .category-pills-scroller {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
 }
 .category-pills-scroller::-webkit-scrollbar {
   display: none;
@@ -4194,8 +4202,10 @@ img { max-width: 100%; }
 
   /* Mobile Quick Navigation Buttons */
   .mobile-nav-btn {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -4204,7 +4214,7 @@ img { max-width: 100%; }
     color: #1d1d1f;
     background: rgba(0, 0, 0, 0.03);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.02rem;
     transition: all 0.15s ease;
     position: relative;
     flex-shrink: 0;
@@ -4219,20 +4229,31 @@ img { max-width: 100%; }
 
   .mobile-nav-btn .cart-badge {
     position: absolute;
-    top: -4px;
-    right: -4px;
-    width: 15px;
-    height: 15px;
+    top: -3px;
+    right: -3px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--ct-primary);
     color: #ffffff;
-    font-size: 0.58rem;
+    font-size: 0.6rem;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1.5px solid #ffffff;
     line-height: 1;
+  }
+
+  .navbar-ct .navbar-toggler {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 
   .navbar-ct .navbar-collapse {
@@ -5211,6 +5232,14 @@ img { max-width: 100%; }
   .apple-storefront-card {
     padding: 2.25rem 1.25rem;
     border-radius: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .apple-hero-trust-strip {
+    flex-direction: column;
+    gap: 0.55rem;
+    align-items: center;
   }
 }
 
