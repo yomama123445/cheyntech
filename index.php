@@ -6,7 +6,7 @@ require 'includes/header.php';
 ?>
 
   <!-- ==============================================
-       QUIET, HUMBLE HERO SECTION WITH VIDEO
+       APPLE-GRADE SEAMLESS CINEMA HERO STAGE
        ============================================== -->
   <section class="apple-hero-video-section" aria-label="Welcome to Cheyn Gadgets">
     <div class="container">
@@ -14,7 +14,7 @@ require 'includes/header.php';
       <!-- Eyebrow Tag -->
       <div class="apple-hero-eyebrow">
         <span class="apple-live-dot"></span>
-        <span>Cheyn Gadgets &middot; Roxas City, Capiz</span>
+        <span>Cheyn Gadgets &middot; Roxas City Storefront</span>
       </div>
 
       <!-- Main Headline -->
@@ -37,34 +37,35 @@ require 'includes/header.php';
         </a>
       </div>
 
-      <!-- Cinematic Looping Video Stage -->
+      <!-- Cinematic Borderless Video Showcase -->
       <div class="apple-video-frame">
         <video class="w-100" autoplay loop muted playsinline poster="assets/img/iphone_15.jpeg">
           <source src="assets/video/iphone15_video.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
       </div>
-      <p class="apple-video-caption">
-        Clean units in stock &middot; In-store checking and pickup in Roxas City
-      </p>
 
-      <!-- Micro Trust Strip -->
-      <div class="apple-hero-trust-strip">
-        <div class="apple-hero-trust-item">
-          <i class="bi bi-hand-thumbs-up"></i>
-          <span>Tested by hand</span>
+      <!-- Integrated Hardware Inspection HUD -->
+      <div class="apple-hero-hud">
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">85%+</div>
+          <div class="apple-hud-label">Battery Health</div>
+          <div class="apple-hud-sub">Maintained on all pre-owned units</div>
         </div>
-        <div class="apple-hero-trust-item">
-          <i class="bi bi-battery-charging"></i>
-          <span>85%+ battery health</span>
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">Tested by Hand</div>
+          <div class="apple-hud-label">In-Person Verification</div>
+          <div class="apple-hud-sub">Screen, camera, mics &amp; network</div>
         </div>
-        <div class="apple-hero-trust-item">
-          <i class="bi bi-shield-check"></i>
-          <span>7-day shop replacement</span>
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">7 Days</div>
+          <div class="apple-hud-label">Shop Replacement</div>
+          <div class="apple-hud-sub">Hassle-free local storefront swap</div>
         </div>
-        <div class="apple-hero-trust-item">
-          <i class="bi bi-geo-alt"></i>
-          <span>Roxas City storefront</span>
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">Roxas City</div>
+          <div class="apple-hud-label">Local Storefront</div>
+          <div class="apple-hud-sub">In-store testing before you buy</div>
         </div>
       </div>
 
