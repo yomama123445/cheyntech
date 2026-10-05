@@ -260,7 +260,14 @@
       if (data && data.success) {
         var userName = (data.user && data.user.name) ? data.user.name : '';
         notify('Welcome back' + (userName ? ', ' + userName : '') + '!', 'success');
-        var target = (data.user && data.user.role === 'admin') ? 'admin/dashboard.php' : 'index.php';
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectParam = urlParams.get('redirect');
+        var target = 'index.php';
+        if (data.user && data.user.role === 'admin') {
+          target = 'admin/dashboard.php';
+        } else if (redirectParam && redirectParam.startsWith('checkout')) {
+          target = redirectParam;
+        }
         setTimeout(function () {
           window.location.href = target;
         }, 600);
@@ -478,8 +485,11 @@
     .then(function (data) {
       if (data && data.success) {
         notify('Account created successfully! Welcome to Cheyn Gadgets.', 'success');
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectParam = urlParams.get('redirect');
+        var target = (redirectParam && redirectParam.startsWith('checkout')) ? redirectParam : 'index.php';
         setTimeout(function () {
-          window.location.href = 'index.php';
+          window.location.href = target;
         }, 600);
       } else {
         var msg = (data && data.error) || 'Registration failed.';

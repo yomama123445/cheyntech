@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/includes/session.php';
+
+if (empty($_SESSION['user_id'])) {
+    header('Location: login.php?redirect=checkout.php');
+    exit;
+}
+
 $pageTitle       = 'Order Checkout | Cheyn Gadgets Roxas City';
 $pageDescription = 'Complete your gadget order — Cheyn Gadgets in Roxas City, Capiz.';
 $activePage      = '';
@@ -44,19 +51,19 @@ require 'includes/header.php';
               <div class="row g-3">
                 <div class="col-12">
                   <label for="fullName" class="form-label fw-600">Full Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g. Maria Santos" required autocomplete="name">
+                  <input type="text" class="form-control" id="fullName" name="fullName" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" placeholder="e.g. Maria Santos" required autocomplete="name">
                   <div class="invalid-feedback">Please enter your full name.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="email" class="form-label fw-600">Email Address <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+                  <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($_SESSION['user_email'] ?? '') ?>" placeholder="you@email.com" required autocomplete="email">
                   <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="phone" class="form-label fw-600">Phone Number <span class="text-danger">*</span></label>
                   <div class="input-group">
                     <span class="input-group-text fw-semibold text-muted">+63</span>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
+                    <input type="tel" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($_SESSION['user_phone'] ?? '') ?>" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
                   </div>
                   <div class="invalid-feedback">Enter a valid PH mobile number (e.g. 09171234567).</div>
                 </div>

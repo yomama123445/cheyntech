@@ -160,12 +160,36 @@
           },
           body: JSON.stringify(payload)
         })
-        .then(function(res) { return res.json(); })
+        .then(function(res) {
+          if (res.status === 401) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            showToast('Please sign in or create an account to complete your order.', 'error');
+            setTimeout(function() {
+              window.location.href = 'login.php?redirect=checkout.php';
+            }, 1200);
+            return null;
+          }
+          return res.json();
+        })
         .then(function(data) {
+          if (!data) return;
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
 
-          var orderNumber = data.orderNumber || generateOrderId();
+          if (!data.success) {
+            if (data.requireLogin) {
+              showToast(data.error || 'Please sign in to place an order.', 'error');
+              setTimeout(function() {
+                window.location.href = 'login.php?redirect=checkout.php';
+              }, 1200);
+              return;
+            }
+            showToast(data.error || 'Unable to place order. Please review your details and try again.', 'error');
+            return;
+          }
+
+          var orderNumber = data.orderNumber;
           var subtotal = data.total || cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
 
           // Populate modal with real order response
@@ -194,32 +218,9 @@
           modal.show();
         })
         .catch(function() {
-          // Graceful fallback if database is not connected locally yet
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
-
-          var subtotal = cart.reduce(function(s,i){ return s + i.price*(i.qty||1); }, 0);
-          var fallbackId = generateOrderId();
-
-          document.getElementById('modalOrderId').textContent       = fallbackId;
-          document.getElementById('confirmName').textContent        = payload.fullName;
-          document.getElementById('confirmEmail').textContent       = payload.email;
-          document.getElementById('confirmPhone').textContent       = payload.phone;
-          document.getElementById('confirmFulfillment').textContent = fulfillmentLabel();
-          document.getElementById('confirmPayment').textContent     = paymentLabel();
-          document.getElementById('confirmTotal').textContent       = formatPrice(subtotal);
-
-          try {
-            sessionStorage.setItem('ct_last_order', fallbackId);
-            sessionStorage.setItem('ct_last_email', payload.email);
-          } catch(e) {}
-          CheynCart.clear();
-
-          // Show payment instructions in modal if GCash/Bank
-          renderConfirmPaymentInstructions(payload.payment);
-
-          var modal = new bootstrap.Modal(document.getElementById('confirmationModal'), { backdrop: 'static' });
-          modal.show();
+          showToast('An unexpected connection error occurred. Please try again.', 'error');
         });
       });
     }

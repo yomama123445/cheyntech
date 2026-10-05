@@ -80,13 +80,22 @@ require 'includes/header.php';
               <span class="value" id="summaryTotal">&#8369;0</span>
             </div>
 
-            <a href="checkout.php" class="btn btn-ct w-100 mt-4 py-3 checkout-btn" id="checkoutBtn">
+            <?php
+            $checkoutHref = !empty($_SESSION['user_id']) ? 'checkout.php' : 'login.php?redirect=checkout.php';
+            ?>
+            <a href="<?= $checkoutHref ?>" class="btn btn-ct w-100 mt-4 py-3 checkout-btn" id="checkoutBtn">
               <i class="bi bi-lock-fill me-2"></i>Proceed to Checkout
             </a>
 
-            <p class="secure-note">
-              <i class="bi bi-lock me-1"></i>Manual payment confirmation &middot; Cheyn Gadgets
-            </p>
+            <?php if (empty($_SESSION['user_id'])): ?>
+              <p class="secure-note text-center mt-2 mb-0">
+                <i class="bi bi-person-lock me-1"></i>Sign in or create a Cheyn ID to checkout
+              </p>
+            <?php else: ?>
+              <p class="secure-note text-center mt-2 mb-0">
+                <i class="bi bi-shield-check me-1"></i>Signed in as <?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?>
+              </p>
+            <?php endif; ?>
           </div>
         </div>
 

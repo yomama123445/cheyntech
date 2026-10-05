@@ -15,6 +15,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 }
 
 if (!empty($_SESSION['user_id'])) {
+    $redirect = $_GET['redirect'] ?? '';
+    if (!empty($redirect) && str_starts_with($redirect, 'checkout')) {
+        header('Location: ' . $redirect);
+        exit;
+    }
     if (($_SESSION['user_role'] ?? '') === 'admin') {
         header('Location: admin/dashboard.php');
     } else {
@@ -39,6 +44,14 @@ require 'includes/header.php';
           </div>
         </div>
       </div>
+
+      <!-- Checkout Redirect Notice -->
+      <?php if (!empty($_GET['redirect']) && str_starts_with($_GET['redirect'], 'checkout')): ?>
+        <div class="alert alert-light border shadow-sm d-flex align-items-center gap-2 mb-4 py-2 px-3 rounded-3" role="status">
+          <i class="bi bi-bag-check text-primary fs-5 flex-shrink-0"></i>
+          <span class="small text-muted">Please sign in or create a Cheyn ID to proceed with your checkout.</span>
+        </div>
+      <?php endif; ?>
 
       <!-- Segmented Mode Control (Sign In / Create Account) -->
       <div class="apple-segmented-container mb-4">

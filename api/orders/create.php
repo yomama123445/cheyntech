@@ -26,6 +26,18 @@ if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
     exit;
 }
 
+if (empty($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo json_encode([
+        'success'      => false,
+        'error'        => 'Please sign in or create an account to place an order.',
+        'requireLogin' => true
+    ]);
+    exit;
+}
+
+$userId = (int)$_SESSION['user_id'];
+
 require_once __DIR__ . '/../../config/database.php';
 
 $input = json_decode(file_get_contents('php://input'), true);
@@ -132,8 +144,6 @@ try {
             'lineTotal'   => $lineTotal,
         ];
     }
-
-    $userId = $_SESSION['user_id'] ?? null;
 
     $orderStmt = $pdo->prepare('
         INSERT INTO orders (
