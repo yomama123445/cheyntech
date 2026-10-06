@@ -102,7 +102,7 @@ require '../includes/admin_sidebar.php';
                 <th class="admin-th">Price</th>
                 <th class="admin-th d-none d-md-table-cell">Stock</th>
                 <th class="admin-th d-none d-lg-table-cell">Status</th>
-                <th class="pe-4 admin-th">Actions</th>
+                <th class="pe-4 admin-th text-end">Actions</th>
               </tr>
             </thead>
             <tbody id="productsTbody">
@@ -241,6 +241,35 @@ require '../includes/admin_sidebar.php';
       <div class="modal-footer border-0 pt-0">
         <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-danger btn-sm" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADJUST STOCK MODAL (TASK F3) -->
+<div class="modal fade" id="adjustStockModal" tabindex="-1" aria-labelledby="adjustStockModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0 pb-0">
+        <h6 class="modal-title fw-700" id="adjustStockModalLabel"><i class="bi bi-box-seam me-2 text-ct"></i>Adjust Stock</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body py-3">
+        <div class="small text-muted mb-2 text-truncate" id="adjustStockProductName"></div>
+        <input type="hidden" id="adjustStockProductId">
+        <label class="form-label small fw-600 mb-1" for="adjustStockInput">New Available Units</label>
+        <div class="input-group">
+          <button class="btn btn-outline-secondary" type="button" onclick="stepAdjustStock(-1)"><i class="bi bi-dash"></i></button>
+          <input type="number" class="form-control text-center fw-700" id="adjustStockInput" min="0" value="0">
+          <button class="btn btn-outline-secondary" type="button" onclick="stepAdjustStock(1)"><i class="bi bi-plus"></i></button>
+        </div>
+        <div class="form-text text-xs mt-1">Directly syncs physical in-store count to store database.</div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-ct btn-sm" id="confirmAdjustStockBtn" onclick="submitAdjustStock()">
+          <i class="bi bi-check2 me-1"></i> Save Stock
+        </button>
       </div>
     </div>
   </div>

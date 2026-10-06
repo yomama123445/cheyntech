@@ -134,14 +134,7 @@ require '../includes/admin_sidebar.php';
           </table>
         </div>
         <div class="card-footer bg-white border-0 py-3 px-4 d-flex align-items-center justify-content-between">
-          <p class="text-muted mb-0">Showing <span id="orderCount">8</span> orders</p>
-          <nav aria-label="Orders pagination">
-            <ul class="pagination pagination-sm mb-0">
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
-            </ul>
-          </nav>
+          <p class="text-muted mb-0">Showing <span id="orderCount">0</span> orders</p>
         </div>
       </div>
 

@@ -2,8 +2,70 @@
 let products = [];
 
 let deleteTargetId = null;
-const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-const deleteModal  = new bootstrap.Modal(document.getElementById('deleteModal'));
+const productModal     = new bootstrap.Modal(document.getElementById('productModal'));
+const deleteModal      = new bootstrap.Modal(document.getElementById('deleteModal'));
+const adjustStockModal = new bootstrap.Modal(document.getElementById('adjustStockModal'));
+
+function openAdjustStockModal(id) {
+  const p = products.find(x => String(x.id) === String(id));
+  if (!p) return;
+  document.getElementById('adjustStockProductId').value = p.id;
+  document.getElementById('adjustStockProductName').textContent = `${p.name} (${p.storage && p.storage !== 'N/A' ? p.storage + ' · ' : ''}${p.color || ''})`;
+  document.getElementById('adjustStockInput').value = p.stock || 0;
+  adjustStockModal.show();
+}
+
+function stepAdjustStock(step) {
+  const inp = document.getElementById('adjustStockInput');
+  const current = parseInt(inp.value, 10) || 0;
+  inp.value = Math.max(0, current + step);
+}
+
+async function submitAdjustStock() {
+  const id = document.getElementById('adjustStockProductId').value;
+  const newStock = Math.max(0, parseInt(document.getElementById('adjustStockInput').value, 10) || 0);
+  const p = products.find(x => String(x.id) === String(id));
+  if (!p) return;
+
+  const btn = document.getElementById('confirmAdjustStockBtn');
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Saving...';
+
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
+  try {
+    const res = await fetch('../api/admin/products.php', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      body: JSON.stringify({
+        id: p.id,
+        stock: newStock
+      })
+    });
+    const result = await res.json();
+    if (!res.ok || !result.success) {
+      throw new Error(result.error || 'Failed to update stock');
+    }
+
+    p.stock = newStock;
+    p.status = (newStock === 0) ? 'Out of Stock' : (newStock <= 3 ? 'Low Stock' : 'Available');
+
+    showToast(`Stock for ${p.name} updated to ${newStock} units.`, 'toast-success');
+    adjustStockModal.hide();
+    renderTable(products);
+  } catch (err) {
+    console.error('Adjust stock error:', err);
+    showToast(err.message || 'Error updating stock.', 'toast-error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+  }
+}
 
 function conditionBadge(cond) {
   if (cond === 'Pre-owned')  return '<span class="badge-ct badge-preowned">Pre-owned</span>';
@@ -40,8 +102,11 @@ function renderTable(list) {
         <span class="${p.stock <= 3 ? 'fw-700 text-danger' : 'fw-600'}">${p.stock}</span>
       </td>
       <td class="d-none d-lg-table-cell">${statusBadge(p.status, p.stock)}</td>
-      <td class="pe-4">
-        <div class="d-flex gap-1">
+      <td class="pe-4 text-end">
+        <div class="d-flex gap-1 justify-content-end">
+          <button class="btn btn-sm btn-outline-primary" onclick="openAdjustStockModal('${p.id}')" title="Adjust Stock">
+            <i class="bi bi-box-seam me-1"></i>Stock
+          </button>
           <button class="btn btn-sm btn-ct-outline" onclick="openEditModal('${p.id}')" title="Edit"><i class="bi bi-pencil"></i></button>
           <button class="btn btn-sm btn-outline-danger" onclick="openDeleteModal('${p.id}')" title="Delete"><i class="bi bi-trash"></i></button>
         </div>

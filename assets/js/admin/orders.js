@@ -58,7 +58,7 @@ const FALLBACK_ORDERS = [
   },
   {
     id: 'CT-0086', date: '2026-08-23', status: 'Completed',
-    customer: { name:'Ricky Torres', email:'ricky.torres@email.com', phone:'+63 922 678 9012', address:'15 Shaw Blvd., Mandaluyong City, Metro Manila' },
+    customer: { name:'Ricky Torres', email:'ricky.torres@email.com', phone:'+63 922 678 9012', address:'Block 4, Villa San Antonio, Brgy. Lawaan, Roxas City, Capiz' },
     items: [{ name:'Apple Watch Series 9 45mm (Midnight)', qty:1, price:22999 }],
     fulfillment: 'Delivery', payment: 'PayMaya', paid: true,
     history: [
@@ -70,7 +70,7 @@ const FALLBACK_ORDERS = [
   },
   {
     id: 'CT-0085', date: '2026-08-22', status: 'Processing',
-    customer: { name:'Grace Villanueva', email:'grace.v@email.com', phone:'+63 923 789 0123', address:'8 EDSA, Caloocan City, Metro Manila' },
+    customer: { name:'Grace Villanueva', email:'grace.v@email.com', phone:'+63 923 789 0123', address:'San Roque Extension, Brgy. Tiza, Roxas City, Capiz' },
     items: [
       { name:'Oppo Find X7 Ultra 512GB', qty:1, price:54000 },
       { name:'Oppo Smart Tag', qty:2, price:999 }
@@ -83,7 +83,7 @@ const FALLBACK_ORDERS = [
   },
   {
     id: 'CT-0084', date: '2026-08-21', status: 'Pending',
-    customer: { name:'Ben Aquino', email:'ben.aquino@email.com', phone:'+63 924 890 1234', address:'5 Dapitan St., Sampaloc, Manila' },
+    customer: { name:'Ben Aquino', email:'ben.aquino@email.com', phone:'+63 924 890 1234', address:'Plaridel St., Brgy. Inzo Arnaldo, Roxas City, Capiz' },
     items: [{ name:'Samsung Galaxy Tab S9 128GB (Refurbished)', qty:1, price:36000 }],
     fulfillment: 'Pickup', payment: 'COD', paid: false,
     history: [{ date:'2026-08-21 17:30', status:'Pending', note:'Order placed. Awaiting confirmation.' }]
