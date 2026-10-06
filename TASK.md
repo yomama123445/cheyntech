@@ -28,7 +28,7 @@ Items tagged [REQ] come straight from the proposal's in-scope list or success me
   Require order number AND checkout email; same 404 message for both failures. Use `random_int` instead of
   `mt_rand` in api/orders/create.php for order numbers.
 
-- [ ] **S6 Rate limit** login, register, contact, track: migration for a `rate_limit` table plus
+- [x] **S6 Rate limit** login, register, contact, track: migration for a `rate_limit` table plus
   includes/rate_limit.php keyed by IP + endpoint (10 per 10 min auth/track, 5 per 10 min contact). Return 429.
 
 - [ ] **S7 [REQ] HTTPS and security headers.** Add BOTH `.htaccess` (force HTTPS, HSTS, X-Content-Type-Options,

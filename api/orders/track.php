@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 header('Content-Type: application/json');
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../includes/rate_limit.php';
+
+// TASK S6: 10 lookups per 10 minutes (600s)
+check_rate_limit($pdo, 'track', 10, 600);
 
 $orderNumber   = trim((string)($_GET['id'] ?? $_GET['order_number'] ?? ''));
 $customerEmail = trim((string)($_GET['email'] ?? ''));
