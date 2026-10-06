@@ -91,13 +91,13 @@ Items tagged [REQ] come straight from the proposal's in-scope list or success me
 
 ## Polish (fixes.md; run a few rounds, then review by eye)
 
-- [ ] **P1 Location wording.** Roxas City already appears in several files. List every remaining reference to
+- [x] **P1 Location wording.** Roxas City already appears in several files. List every remaining reference to
   another place (e.g. "Capiz" in index.php line 76 and contact.php line 92) and confirm with the owner whether
   each should stay. Text-only changes.
-- [ ] **P2 Remove emojis and unprofessional symbols** from pages and JS strings.
-- [ ] **P3 Brand-styled toasts and dialogs** instead of native alert/confirm.
-- [ ] **P4 Catalog filter button flexbox bug** (fixes.md).
-- [ ] **P5 Dead buttons** (fixes.md): list every `<button>` and CTA without a handler or link, then fix or remove.
+- [x] **P2 Remove emojis and unprofessional symbols** from pages and JS strings.
+- [x] **P3 Brand-styled toasts and dialogs** instead of native alert/confirm.
+- [x] **P4 Catalog filter button flexbox bug** (fixes.md).
+- [x] **P5 Dead buttons** (fixes.md): list every `<button>` and CTA without a handler or link, then fix or remove.
 
 ## Final QA against proposal success metrics (human, not agent)
 Lighthouse mobile performance >= 80 and accessibility >= 90; layouts checked at 375, 768, 1440 px;
