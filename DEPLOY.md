@@ -28,7 +28,9 @@ This guide covers deploying CheynTech (`cheyngadgets.site`) on a VPS running **H
 4. Click **phpMyAdmin** link in HestiaCP.
 5. Select your newly created database.
 6. Go to the **Import** tab &rarr; choose `database/schema.sql` from the repository &rarr; click **Go**.
-7. If there are any SQL files in `database/migrations/`, import them in ascending order (`001_...sql`, `002_...sql`).
+7. In phpMyAdmin, import the database migrations in order:
+   - `database/migrations/001_seed_inventory.sql` (Seeds full inventory of 20 devices and 24 variants)
+   - `database/migrations/002_create_rate_limits.sql` (Initializes IP rate limiter table for security)
 
 ---
 
