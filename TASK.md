@@ -68,7 +68,7 @@ Items tagged [REQ] come straight from the proposal's in-scope list or success me
   stats and low-stock list from api/admin/products.php and api/admin/orders.php. Low stock means stock <= 3
   (same rule as api/admin/products.php).
 
-- [ ] **F3 [REQ] Manual stock adjustment in admin.** assets/js/admin/products.js contains a hardcoded sample
+- [x] **F3 [REQ] Manual stock adjustment in admin.** assets/js/admin/products.js contains a hardcoded sample
   product array. Remove it and load from api/admin/products.php. Add an "Adjust stock" control that PUTs the
   new stock value (CSRF protected, admin only).
 
