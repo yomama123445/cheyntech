@@ -34,8 +34,8 @@ require 'includes/header.php';
         <div class="empty-icon">
           <i class="bi bi-cart-x"></i>
         </div>
-        <h3>Your cart is empty</h3>
-        <p>Looks like you haven't added any items yet.<br>Browse our gadgets and find your next favorite!</p>
+        <h3>Your bag is empty</h3>
+        <p>Looks like you haven't added any items to your bag yet.<br>Browse our gadgets and find your next favorite!</p>
         <a href="catalog.php" class="btn btn-ct px-4">
           <i class="bi bi-grid me-2"></i>Browse Products
         </a>

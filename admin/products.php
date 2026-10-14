@@ -80,12 +80,11 @@ require '../includes/admin_sidebar.php';
         </div>
       </div>
 
-      <!-- Products Count -->
-      <div class="d-flex align-items-center justify-content-between mb-3">
+      <!-- Products Count & Info -->
+      <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
         <p class="text-muted mb-0">Showing <span id="productCount">0</span> products</p>
-        <div class="d-flex gap-2">
-          <button class="btn btn-sm btn-outline-secondary" title="Grid view" id="viewGrid"><i class="bi bi-grid-3x3-gap"></i></button>
-          <button class="btn btn-sm btn-secondary" title="Table view" id="viewTable"><i class="bi bi-table"></i></button>
+        <div class="text-xs text-muted d-none d-sm-inline">
+          <i class="bi bi-box-seam me-1 text-ct"></i>Use <strong>Stock</strong> to adjust on-hand inventory counts
         </div>
       </div>
 
@@ -112,15 +111,9 @@ require '../includes/admin_sidebar.php';
         </div>
       </div>
 
-      <!-- Pagination -->
-      <nav aria-label="Products pagination">
-        <ul class="pagination justify-content-center" id="pagination">
-          <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><i class="bi bi-chevron-left"></i></a></li>
-          <li class="page-item active"><a class="page-link" href="#" onclick="changePage(1,event)">1</a></li>
-          <li class="page-item"><a class="page-link" href="#" onclick="changePage(2,event)">2</a></li>
-          <li class="page-item"><a class="page-link" href="#" onclick="changePage(3,event)">3</a></li>
-          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><i class="bi bi-chevron-right"></i></a></li>
-        </ul>
+      <!-- Dynamic Pagination Container -->
+      <nav aria-label="Products pagination" class="my-3">
+        <ul class="pagination justify-content-center" id="pagination"></ul>
       </nav>
 
     </main>
