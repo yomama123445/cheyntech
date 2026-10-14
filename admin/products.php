@@ -82,7 +82,7 @@ require '../includes/admin_sidebar.php';
 
       <!-- Products Count -->
       <div class="d-flex align-items-center justify-content-between mb-3">
-        <p class="text-muted mb-0">Showing <span id="productCount">10</span> products</p>
+        <p class="text-muted mb-0">Showing <span id="productCount">0</span> products</p>
         <div class="d-flex gap-2">
           <button class="btn btn-sm btn-outline-secondary" title="Grid view" id="viewGrid"><i class="bi bi-grid-3x3-gap"></i></button>
           <button class="btn btn-sm btn-secondary" title="Table view" id="viewTable"><i class="bi bi-table"></i></button>

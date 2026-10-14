@@ -154,13 +154,39 @@ function formatDate(d) {
 }
 
 // ====================================================
-// FILTER TABS
+// FILTER TABS & SEARCH
 // ====================================================
+let activeStatusFilter = 'All';
+let activeSearchQuery  = '';
+
+function applyFilters() {
+  const q = activeSearchQuery.trim().toLowerCase();
+  const filtered = orders.filter(o => {
+    const matchStatus = (activeStatusFilter === 'All') || (o.status === activeStatusFilter);
+    if (!matchStatus) return false;
+    if (!q) return true;
+    const haystack = [
+      o.id,
+      (o.customer && o.customer.name) || '',
+      (o.customer && o.customer.phone) || '',
+      (o.customer && o.customer.email) || '',
+      (o.customer && o.customer.address) || ''
+    ].join(' ').toLowerCase();
+    return haystack.includes(q);
+  });
+  renderOrders(filtered);
+}
+
 function filterOrders(status, btn) {
   document.querySelectorAll('#orderTabs .nav-link').forEach(el => el.classList.remove('active'));
   btn.classList.add('active');
-  const filtered = status === 'All' ? orders : orders.filter(o => o.status === status);
-  renderOrders(filtered);
+  activeStatusFilter = status;
+  applyFilters();
+}
+
+function searchOrders(query) {
+  activeSearchQuery = query;
+  applyFilters();
 }
 
 // ====================================================

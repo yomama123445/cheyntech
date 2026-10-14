@@ -48,47 +48,47 @@ require '../includes/admin_sidebar.php';
       <!-- Summary stat mini-cards -->
       <div class="row g-3 mb-4">
         <div class="col-6 col-lg-2">
-          <div class="card border-0 shadow-sm text-center py-3 px-2">
-            <div class="stat-count-sm" id="countAll">8</div>
+          <div class="order-count-card">
+            <div class="stat-count-sm" id="countAll">—</div>
             <div class="stat-label-sm">All Orders</div>
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <div class="card border-0 shadow-sm text-center py-3 px-2">
-            <div class="stat-count-sm" id="countPending">2</div>
+          <div class="order-count-card">
+            <div class="stat-count-sm" id="countPending">—</div>
             <div class="stat-label-sm">Pending</div>
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <div class="card border-0 shadow-sm text-center py-3 px-2">
-            <div class="stat-count-sm" id="countProcessing">2</div>
+          <div class="order-count-card">
+            <div class="stat-count-sm" id="countProcessing">—</div>
             <div class="stat-label-sm">Processing</div>
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <div class="card border-0 shadow-sm text-center py-3 px-2">
-            <div class="stat-count-sm" id="countReady">1</div>
+          <div class="order-count-card">
+            <div class="stat-count-sm" id="countReady">—</div>
             <div class="stat-label-sm">Ready</div>
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <div class="card border-0 shadow-sm text-center py-3 px-2">
-            <div class="stat-count-sm" id="countOutForDelivery">1</div>
+          <div class="order-count-card">
+            <div class="stat-count-sm" id="countOutForDelivery">—</div>
             <div class="stat-label-sm">Out for Delivery</div>
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <div class="card border-0 shadow-sm text-center py-3 px-2">
-            <div class="stat-count-sm" id="countCompleted">2</div>
+          <div class="order-count-card">
+            <div class="stat-count-sm" id="countCompleted">—</div>
             <div class="stat-label-sm">Completed</div>
           </div>
         </div>
       </div>
 
-      <!-- Filter Tabs -->
+      <!-- Filter & Search Controls -->
       <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body py-0 px-3">
-          <ul class="nav nav-tabs border-0" id="orderTabs" role="tablist" aria-label="Order status filters">
+        <div class="card-body py-2 px-3 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+          <ul class="nav nav-pills border-0" id="orderTabs" role="tablist" aria-label="Order status filters">
             <li class="nav-item" role="presentation">
               <button class="nav-link active fw-600 px-3" id="tab-all" data-filter="All" type="button" onclick="filterOrders('All', this)">All</button>
             </li>
@@ -108,6 +108,13 @@ require '../includes/admin_sidebar.php';
               <button class="nav-link fw-600 px-3" data-filter="Completed" type="button" onclick="filterOrders('Completed', this)">Completed</button>
             </li>
           </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <div class="input-group input-group-sm" style="min-width: 250px;">
+              <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+              <input type="search" id="orderSearch" class="form-control border-start-0 ps-0" placeholder="Search order ID, customer, phone…" aria-label="Search orders" oninput="searchOrders(this.value)">
+            </div>
+          </div>
         </div>
       </div>
 

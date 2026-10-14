@@ -53,7 +53,34 @@ require '../includes/admin_sidebar.php';
 
       <!-- STAT CARDS -->
       <div class="row g-3 mb-4">
-        <div class="col-6 col-xl-3">
+        <div class="col-6 col-lg-4 col-xl">
+          <div class="stat-card">
+            <div class="stat-icon green-soft"><i class="bi bi-wallet2"></i></div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statTotalRevenue">₱0</div>
+              <div class="stat-label">Total Revenue</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-4 col-xl">
+          <div class="stat-card">
+            <div class="stat-icon yellow-soft"><i class="bi bi-clock-history"></i></div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statPendingOrders">—</div>
+              <div class="stat-label">Pending Orders</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-4 col-xl">
+          <div class="stat-card">
+            <div class="stat-icon blue-soft"><i class="bi bi-check2-circle"></i></div>
+            <div class="min-w-0 flex-grow-1">
+              <div class="stat-value text-truncate" id="statCompletedOrders">—</div>
+              <div class="stat-label">Completed Orders</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-6 col-xl">
           <div class="stat-card">
             <div class="stat-icon pink-soft"><i class="bi bi-box-seam"></i></div>
             <div class="min-w-0 flex-grow-1">
@@ -62,27 +89,9 @@ require '../includes/admin_sidebar.php';
             </div>
           </div>
         </div>
-        <div class="col-6 col-xl-3">
+        <div class="col-12 col-lg-6 col-xl">
           <div class="stat-card">
-            <div class="stat-icon yellow-soft"><i class="bi bi-clock"></i></div>
-            <div class="min-w-0 flex-grow-1">
-              <div class="stat-value text-truncate" id="statPendingOrders">—</div>
-              <div class="stat-label">Pending Orders</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-xl-3">
-          <div class="stat-card">
-            <div class="stat-icon green-soft"><i class="bi bi-check-circle"></i></div>
-            <div class="min-w-0 flex-grow-1">
-              <div class="stat-value text-truncate" id="statCompletedOrders">—</div>
-              <div class="stat-label">Completed Orders</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6 col-xl-3">
-          <div class="stat-card">
-            <div class="stat-icon blue-soft"><i class="bi bi-exclamation-triangle"></i></div>
+            <div class="stat-icon yellow-soft"><i class="bi bi-exclamation-triangle"></i></div>
             <div class="min-w-0 flex-grow-1">
               <div class="stat-value text-truncate" id="statLowStock">—</div>
               <div class="stat-label">Low Stock Items</div>
@@ -115,49 +124,10 @@ require '../includes/admin_sidebar.php';
                 </thead>
                 <tbody id="recentOrdersTbody">
                   <tr>
-                    <td class="ps-4 td-id">#CT-0091</td>
-                    <td class="td-name">Maria Santos</td>
-                    <td class="d-none d-md-table-cell td-meta">iPhone 14 Pro × 1</td>
-                    <td class="td-id">₱58,000</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span></td>
-                    <td><span class="badge bg-warning-subtle text-warning-emphasis rounded-pill td-sm-badge">Pending</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
-                  </tr>
-                  <tr>
-                    <td class="ps-4 td-id">#CT-0090</td>
-                    <td class="td-name">Juan dela Cruz</td>
-                    <td class="d-none d-md-table-cell td-meta">Samsung S24 Ultra × 1</td>
-                    <td class="td-id">₱72,500</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill td-sm-badge">Pickup</span></td>
-                    <td><span class="badge rounded-pill td-sm-badge badge-status-processing">Processing</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
-                  </tr>
-                  <tr>
-                    <td class="ps-4 td-id">#CT-0089</td>
-                    <td class="td-name">Ana Reyes</td>
-                    <td class="d-none d-md-table-cell td-meta">iPad Air (M2) × 1, AirPods × 1</td>
-                    <td class="td-id">₱46,200</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span></td>
-                    <td><span class="badge rounded-pill td-sm-badge badge-status-ready">Ready</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
-                  </tr>
-                  <tr>
-                    <td class="ps-4 td-id">#CT-0088</td>
-                    <td class="td-name">Carlo Mendoza</td>
-                    <td class="d-none d-md-table-cell td-meta">iPhone 13 Pre-owned × 2</td>
-                    <td class="td-id">₱39,000</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-secondary-subtle text-secondary-emphasis rounded-pill td-sm-badge">Pickup</span></td>
-                    <td><span class="badge bg-success-subtle text-success-emphasis rounded-pill td-sm-badge">Completed</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
-                  </tr>
-                  <tr>
-                    <td class="ps-4 td-id">#CT-0087</td>
-                    <td class="td-name">Liza Bautista</td>
-                    <td class="d-none d-md-table-cell td-meta">Xiaomi 14T Pro × 1</td>
-                    <td class="td-id">₱29,999</td>
-                    <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">Delivery</span></td>
-                    <td><span class="badge rounded-pill td-sm-badge badge-status-processing">Processing</span></td>
-                    <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
+                    <td colspan="7" class="text-center py-4 text-muted">
+                      <div class="spinner-border spinner-border-sm text-ct me-2" role="status"></div>
+                      Loading recent orders…
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -169,60 +139,14 @@ require '../includes/admin_sidebar.php';
         <div class="col-12 col-xl-4">
           <div class="card border-0 shadow-sm">
             <div class="card-header bg-white border-0 d-flex align-items-center justify-content-between py-3 px-4">
-              <h6 class="fw-700 mb-0"><i class="bi bi-exclamation-triangle me-2 alert-icon-blue"></i>Low Stock Alerts</h6>
+              <h6 class="fw-700 mb-0"><i class="bi bi-exclamation-triangle me-2 text-warning"></i>Low Stock Alerts</h6>
               <a href="products.php" class="btn btn-sm btn-ct-outline">Manage</a>
             </div>
             <div class="card-body px-4 py-2">
               <ul class="list-unstyled mb-0" id="lowStockList">
-                <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
-                    <div class="low-stock-icon pink"><i class="bi bi-phone"></i></div>
-                    <div class="min-w-0">
-                      <div class="low-stock-name text-truncate">iPhone 12 Mini (Pre-owned)</div>
-                      <div class="low-stock-qty">Only 2 units left</div>
-                    </div>
-                  </div>
-                  <span class="badge-ct badge-preowned flex-shrink-0">Restock</span>
-                </li>
-                <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
-                    <div class="low-stock-icon blue"><i class="bi bi-tablet"></i></div>
-                    <div class="min-w-0">
-                      <div class="low-stock-name text-truncate">Samsung Galaxy Tab S9</div>
-                      <div class="low-stock-qty">Only 1 unit left</div>
-                    </div>
-                  </div>
-                  <span class="badge-ct badge-preowned flex-shrink-0">Restock</span>
-                </li>
-                <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
-                    <div class="low-stock-icon yellow"><i class="bi bi-earbuds"></i></div>
-                    <div class="min-w-0">
-                      <div class="low-stock-name text-truncate">AirPods Pro (2nd Gen)</div>
-                      <div class="low-stock-qty">Only 3 units left</div>
-                    </div>
-                  </div>
-                  <span class="badge-ct badge-refurbished flex-shrink-0">Restock</span>
-                </li>
-                <li class="d-flex align-items-center justify-content-between py-3 border-bottom">
-                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
-                    <div class="low-stock-icon green"><i class="bi bi-watch"></i></div>
-                    <div class="min-w-0">
-                      <div class="low-stock-name text-truncate">Apple Watch Series 9</div>
-                      <div class="low-stock-qty">Only 2 units left</div>
-                    </div>
-                  </div>
-                  <span class="badge-ct badge-available flex-shrink-0">Restock</span>
-                </li>
-                <li class="d-flex align-items-center justify-content-between py-3">
-                  <div class="d-flex align-items-center gap-2 gap-sm-3 min-w-0 me-2">
-                    <div class="low-stock-icon pink"><i class="bi bi-phone-flip"></i></div>
-                    <div class="min-w-0">
-                      <div class="low-stock-name text-truncate">Oppo Find X7 Ultra</div>
-                      <div class="low-stock-qty">Only 1 unit left</div>
-                    </div>
-                  </div>
-                  <span class="badge-ct badge-preowned flex-shrink-0">Restock</span>
+                <li class="py-4 text-center text-muted">
+                  <div class="spinner-border spinner-border-sm text-ct me-2" role="status"></div>
+                  Checking inventory levels…
                 </li>
               </ul>
             </div>
