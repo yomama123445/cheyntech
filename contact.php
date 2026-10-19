@@ -47,7 +47,7 @@ require 'includes/header.php';
               </div>
               <div class="mb-3">
                 <label for="productName" class="form-label fw-semibold">Listing / Product Name</label>
-                <input type="text" class="form-control" id="productName" name="productName" placeholder="e.g. iPhone 13 Pro 128GB Graphite" maxlength="150" required>
+                <input type="text" class="form-control" id="productName" name="productName" value="<?= htmlspecialchars($_GET['product'] ?? '') ?>" placeholder="e.g. iPhone 13 Pro 128GB Graphite" maxlength="150" required>
                 <div class="invalid-feedback">Please enter the product name.</div>
               </div>
               <div class="mb-3">

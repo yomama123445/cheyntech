@@ -310,66 +310,119 @@ function initStepper() {
 window.initStepper = initStepper;
 
 /* =====================================================
-   USER AUTH & HEADER PROFILE
+   USER AUTH & HEADER / FOOTER PROFILE SYNC
    ===================================================== */
 function initUserAuth() {
-  var accountLink = document.querySelector('a[aria-label="Account"]');
-  if (!accountLink) return;
-
   function escapeHtml(str) {
     var div = document.createElement('div');
     div.textContent = str || '';
     return div.innerHTML;
   }
 
+  function updateFooterLinks(user) {
+    var footerAccount = document.getElementById('footerAccountLinks');
+    var footerSupport = document.getElementById('footerSupportLinks');
+
+    if (footerAccount) {
+      if (user) {
+        var html = '<a href="profile.php" id="footerAccountLink">My Account</a>';
+        if (user.role === 'admin') {
+          html += '<a href="admin/dashboard.php" id="footerAdminLink">Admin Dashboard</a>';
+        }
+        html += '<a href="cart.php">Shopping Bag</a>';
+        html += '<a href="login.php?action=logout" id="footerLogoutLink">Sign Out</a>';
+        footerAccount.innerHTML = html;
+      } else {
+        footerAccount.innerHTML =
+          '<a href="login.php" id="footerSignInLink">Sign In</a>' +
+          '<a href="login.php#register" id="footerRegisterLink">Create Account</a>' +
+          '<a href="cart.php">Shopping Bag</a>';
+      }
+    }
+
+    if (footerSupport) {
+      var trackLink = footerSupport.querySelector('a[href="track-order.php"], a[href="login.php"]');
+      if (trackLink) {
+        if (user) {
+          trackLink.href = 'track-order.php';
+          trackLink.textContent = 'Track Order';
+        } else {
+          trackLink.href = 'login.php';
+          trackLink.textContent = 'Sign In to Track';
+        }
+      }
+    }
+  }
+
   fetch('api/auth/me.php', { headers: { 'Accept': 'application/json' } })
     .then(function(res) { return res.json(); })
     .then(function(data) {
-      if (data && data.loggedIn && data.user) {
-        var user = data.user;
-        var initial = (user.name || 'U').charAt(0).toUpperCase();
+      var user = (data && data.loggedIn && data.user) ? data.user : null;
+      updateFooterLinks(user);
 
-        var container = document.createElement('div');
-        container.className = 'dropdown d-inline-block';
-        container.innerHTML =
-          '<button class="btn p-0 border-0 bg-transparent d-flex align-items-center" id="userMenuBtn" data-bs-toggle="dropdown" aria-expanded="false">' +
-            '<div style="width:32px;height:32px;border-radius:50%;background:var(--ct-primary);color:#fff;font-weight:700;font-size:0.85rem;display:flex;align-items:center;justify-content:center;">' +
-              escapeHtml(initial) +
+      if (user) {
+        // 1. Desktop Nav User Button
+        var accountLink = document.querySelector('.nav-icons a.nav-user-btn[href="login.php"]');
+        if (accountLink) {
+          var container = document.createElement('div');
+          container.className = 'dropdown';
+          container.innerHTML =
+            '<a href="profile.php" class="nav-user-btn dropdown-toggle text-decoration-none" id="navUserDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account">' +
+              '<i class="bi bi-person"></i>' +
+            '</a>' +
+            '<ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" aria-labelledby="navUserDropdown">' +
+              '<li><span class="dropdown-item-text text-muted small">Signed in as<br><strong class="text-dark">' + escapeHtml(user.name) + '</strong></span></li>' +
+              '<li><hr class="dropdown-divider my-1"></li>' +
+              '<li><a class="dropdown-item py-1 small" href="profile.php"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a></li>' +
+              (user.role === 'admin' ? '<li><a class="dropdown-item py-1 small" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>' : '') +
+              '<li><hr class="dropdown-divider my-1"></li>' +
+              '<li><a class="dropdown-item py-1 small text-danger" href="login.php?action=logout"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>' +
+            '</ul>';
+          accountLink.parentNode.replaceChild(container, accountLink);
+        }
+
+        // 2. Mobile Nav Drawer
+        var mobileUser = document.querySelector('.mobile-nav-user');
+        if (mobileUser && mobileUser.querySelector('a[href="login.php"]')) {
+          mobileUser.innerHTML =
+            '<div class="d-flex align-items-center justify-content-between mb-3 px-2">' +
+              '<div class="d-flex align-items-center gap-2">' +
+                '<i class="bi bi-person-circle fs-4 text-primary"></i>' +
+                '<div>' +
+                  '<span class="d-block small text-muted">Signed in as</span>' +
+                  '<strong class="d-block text-dark">' + escapeHtml(user.name) + '</strong>' +
+                '</div>' +
+              '</div>' +
+              (user.role === 'admin' ? '<span class="badge bg-primary-subtle text-primary">Admin</span>' : '') +
             '</div>' +
-          '</button>' +
-          '<ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenuBtn" style="min-width:200px;font-size:0.88rem;">' +
-            '<li class="px-3 py-2 border-bottom">' +
-              '<div class="fw-bold text-dark text-truncate">' + escapeHtml(user.name) + '</div>' +
-              '<div class="text-muted small text-truncate">' + escapeHtml(user.email) + '</div>' +
-            '</li>' +
-            (user.role === 'admin' ? '<li><a class="dropdown-item py-2" href="admin/dashboard.php"><i class="bi bi-speedometer2 me-2 text-ct"></i>Admin Dashboard</a></li>' : '') +
-            '<li><a class="dropdown-item py-2" href="track-order.php"><i class="bi bi-box-seam me-2"></i>Track Orders</a></li>' +
-            '<li><a class="dropdown-item py-2" href="cart.php"><i class="bi bi-cart3 me-2"></i>My Cart</a></li>' +
-            '<li><hr class="dropdown-divider my-1"></li>' +
-            '<li><a class="dropdown-item py-2 text-danger" href="#" id="globalLogoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a></li>' +
-          '</ul>';
-
-        container.querySelector('#userMenuBtn').setAttribute('title', user.name);
-
-        accountLink.parentNode.replaceChild(container, accountLink);
-
-        var logoutBtn = document.getElementById('globalLogoutBtn');
-        if (logoutBtn) {
-          logoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            fetch('api/auth/logout.php')
-              .then(function() {
-                showToast('Logged out successfully', 'info');
-                setTimeout(function() { window.location.reload(); }, 600);
-              });
-          });
+            '<div class="d-grid gap-2">' +
+              '<a href="profile.php" class="btn btn-sm btn-outline-secondary text-start"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a>' +
+              (user.role === 'admin' ? '<a href="admin/dashboard.php" class="btn btn-sm btn-outline-primary text-start"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</a>' : '') +
+              '<a href="login.php?action=logout" class="btn btn-sm btn-outline-danger text-start"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a>' +
+            '</div>';
         }
       }
     })
     .catch(function() {
-      // If DB/backend is offline, link stays as standard login.php link
+      // Offline fallback: keep server-rendered state
     });
 }
+window.refreshAuth = initUserAuth;
+
+document.addEventListener('click', function(e) {
+  var logoutTarget = e.target.closest('#footerLogoutLink, #globalLogoutBtn');
+  if (logoutTarget) {
+    e.preventDefault();
+    fetch('api/auth/logout.php')
+      .then(function() {
+        showToast('Logged out successfully', 'info');
+        setTimeout(function() { window.location.href = 'login.php'; }, 400);
+      })
+      .catch(function() {
+        window.location.href = 'login.php?action=logout';
+      });
+  }
+});
 
 /* =====================================================
    APPLE-STYLE NAV TRAY & PERSISTENT HOVER CONTROLLER
