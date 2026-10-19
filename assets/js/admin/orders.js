@@ -58,7 +58,7 @@ const FALLBACK_ORDERS = [
   },
   {
     id: 'CT-0086', date: '2026-08-23', status: 'Completed',
-    customer: { name:'Ricky Torres', email:'ricky.torres@email.com', phone:'+63 922 678 9012', address:'15 Shaw Blvd., Mandaluyong City, Metro Manila' },
+    customer: { name:'Ricky Torres', email:'ricky.torres@email.com', phone:'+63 922 678 9012', address:'Block 4, Villa San Antonio, Brgy. Lawaan, Roxas City, Capiz' },
     items: [{ name:'Apple Watch Series 9 45mm (Midnight)', qty:1, price:22999 }],
     fulfillment: 'Delivery', payment: 'PayMaya', paid: true,
     history: [
@@ -70,7 +70,7 @@ const FALLBACK_ORDERS = [
   },
   {
     id: 'CT-0085', date: '2026-08-22', status: 'Processing',
-    customer: { name:'Grace Villanueva', email:'grace.v@email.com', phone:'+63 923 789 0123', address:'8 EDSA, Caloocan City, Metro Manila' },
+    customer: { name:'Grace Villanueva', email:'grace.v@email.com', phone:'+63 923 789 0123', address:'San Roque Extension, Brgy. Tiza, Roxas City, Capiz' },
     items: [
       { name:'Oppo Find X7 Ultra 512GB', qty:1, price:54000 },
       { name:'Oppo Smart Tag', qty:2, price:999 }
@@ -83,7 +83,7 @@ const FALLBACK_ORDERS = [
   },
   {
     id: 'CT-0084', date: '2026-08-21', status: 'Pending',
-    customer: { name:'Ben Aquino', email:'ben.aquino@email.com', phone:'+63 924 890 1234', address:'5 Dapitan St., Sampaloc, Manila' },
+    customer: { name:'Ben Aquino', email:'ben.aquino@email.com', phone:'+63 924 890 1234', address:'Plaridel St., Brgy. Inzo Arnaldo, Roxas City, Capiz' },
     items: [{ name:'Samsung Galaxy Tab S9 128GB (Refurbished)', qty:1, price:36000 }],
     fulfillment: 'Pickup', payment: 'COD', paid: false,
     history: [{ date:'2026-08-21 17:30', status:'Pending', note:'Order placed. Awaiting confirmation.' }]
@@ -118,16 +118,77 @@ function fulfillmentBadgeHtml(f) {
 }
 
 // ====================================================
-// RENDER TABLE
+// PAGINATION STATE & RENDER
 // ====================================================
-function renderOrders(list) {
-  const tbody = document.getElementById('ordersTbody');
-  document.getElementById('orderCount').textContent = list.length;
-  if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="9" class="text-center py-5 text-muted">No orders found for this filter.</td></tr>';
+const PAGE_SIZE = 10;
+let currentPage = 1;
+let currentFilteredOrders = [];
+
+function renderPagination() {
+  const paginationEl = document.getElementById('pagination');
+  if (!paginationEl) return;
+  const total = currentFilteredOrders.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+
+  if (totalPages <= 1) {
+    paginationEl.innerHTML = '';
     return;
   }
-  tbody.innerHTML = list.map(o => {
+
+  let html = '';
+  const prevDisabled = currentPage === 1 ? 'disabled' : '';
+  html += `<li class="page-item ${prevDisabled}"><a class="page-link" href="#" onclick="changePage(${currentPage - 1}, event)" aria-label="Previous"><i class="bi bi-chevron-left"></i></a></li>`;
+
+  for (let p = 1; p <= totalPages; p++) {
+    const active = p === currentPage ? 'active' : '';
+    html += `<li class="page-item ${active}"><a class="page-link" href="#" onclick="changePage(${p}, event)">${p}</a></li>`;
+  }
+
+  const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+  html += `<li class="page-item ${nextDisabled}"><a class="page-link" href="#" onclick="changePage(${currentPage + 1}, event)" aria-label="Next"><i class="bi bi-chevron-right"></i></a></li>`;
+
+  paginationEl.innerHTML = html;
+}
+
+function changePage(p, e) {
+  if (e) e.preventDefault();
+  const totalPages = Math.ceil(currentFilteredOrders.length / PAGE_SIZE) || 1;
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
+  renderCurrentPage();
+}
+window.changePage = changePage;
+
+function renderCurrentPage() {
+  const tbody = document.getElementById('ordersTbody');
+  const countEl = document.getElementById('orderCount');
+  const total = currentFilteredOrders.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, total);
+  const paged = currentFilteredOrders.slice(start, end);
+
+  if (countEl) {
+    if (total === 0) {
+      countEl.textContent = '0';
+    } else if (total <= PAGE_SIZE) {
+      countEl.textContent = total;
+    } else {
+      countEl.textContent = `${start + 1}–${end} of ${total}`;
+    }
+  }
+
+  if (!paged.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="text-center py-5 text-muted">No orders found for this filter.</td></tr>';
+    renderPagination();
+    return;
+  }
+
+  tbody.innerHTML = paged.map(o => {
     const itemSummary = o.items.map(i => `${i.name} ×${i.qty}`).join(', ');
     const total = o.items.reduce((sum, i) => sum + i.price * i.qty, 0);
     return `
@@ -147,6 +208,16 @@ function renderOrders(list) {
         </td>
       </tr>`;
   }).join('');
+
+  renderPagination();
+}
+
+// ====================================================
+// RENDER TABLE
+// ====================================================
+function renderOrders(list) {
+  currentFilteredOrders = list;
+  renderCurrentPage();
 }
 
 function formatDate(d) {
@@ -154,13 +225,40 @@ function formatDate(d) {
 }
 
 // ====================================================
-// FILTER TABS
+// FILTER TABS & SEARCH
 // ====================================================
+let activeStatusFilter = 'All';
+let activeSearchQuery  = '';
+
+function applyFilters() {
+  const q = activeSearchQuery.trim().toLowerCase();
+  currentPage = 1;
+  const filtered = orders.filter(o => {
+    const matchStatus = (activeStatusFilter === 'All') || (o.status === activeStatusFilter);
+    if (!matchStatus) return false;
+    if (!q) return true;
+    const haystack = [
+      o.id,
+      (o.customer && o.customer.name) || '',
+      (o.customer && o.customer.phone) || '',
+      (o.customer && o.customer.email) || '',
+      (o.customer && o.customer.address) || ''
+    ].join(' ').toLowerCase();
+    return haystack.includes(q);
+  });
+  renderOrders(filtered);
+}
+
 function filterOrders(status, btn) {
   document.querySelectorAll('#orderTabs .nav-link').forEach(el => el.classList.remove('active'));
   btn.classList.add('active');
-  const filtered = status === 'All' ? orders : orders.filter(o => o.status === status);
-  renderOrders(filtered);
+  activeStatusFilter = status;
+  applyFilters();
+}
+
+function searchOrders(query) {
+  activeSearchQuery = query;
+  applyFilters();
 }
 
 // ====================================================

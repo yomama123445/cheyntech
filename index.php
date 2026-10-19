@@ -1,192 +1,255 @@
 <?php
-$pageTitle   = 'Cheyn Gadgets | Function-Tested Phones in Roxas City';
-$pageDescription = 'Every phone function-tested before listing. Pre-owned, refurbished, and brand-new phones and tablets from Cheyn\'s Gadgets, Roxas City — order online for pickup or local delivery.';
-$activePage  = 'home';
+$pageTitle       = 'Cheyn Gadgets | Pre-owned Phones in Roxas City';
+$pageDescription = 'Carefully inspected pre-owned smartphones and gadgets in Roxas City, Capiz. Tested in person, honest battery health, and local shop support.';
+$activePage      = 'home';
 require 'includes/header.php';
 ?>
 
-  <!-- HERO -->
-  <section class="hero-section" aria-label="Hero">
+  <!-- ==============================================
+       APPLE-GRADE SEAMLESS CINEMA HERO STAGE
+       ============================================== -->
+  <section class="apple-hero-video-section" aria-label="Welcome to Cheyn Gadgets">
     <div class="container">
-      <div class="row align-items-center gy-4">
-        <div class="col-lg-6 col-md-7">
-          <div class="hero-eyebrow">
-            <span class="live-dot"></span>
-            <span>Roxas City Storefront · In Stock for Pickup</span>
-          </div>
-          <h1>Every phone <span class="highlight">function-tested</span> before it reaches you.</h1>
-          <p class="lead mt-3">Pre-owned and brand-new smartphones and tablets — inspected in-store and available for pickup or local delivery across Roxas City.</p>
-          <div class="d-flex align-items-center gap-3 mt-4 flex-wrap">
-            <a href="catalog.php" class="btn btn-ct text-white px-4">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
-            <?php if (!empty($_SESSION['user_id'])): ?>
-              <a href="track-order.php" class="btn btn-ct-outline px-4">Track Order</a>
-            <?php else: ?>
-              <a href="login.php#register" class="btn btn-ct-outline px-4">Sign Up</a>
-            <?php endif; ?>
-          </div>
-          <div class="d-flex gap-3 mt-4 pt-1 flex-wrap">
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-shield-check text-ct fs-5"></i>
-              <span class="small fw-semibold">7-Day Replacement</span>
-            </div>
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-patch-check-fill text-ct fs-5"></i>
-              <span class="small fw-semibold">20+ Point Check</span>
-            </div>
-            <div class="d-flex align-items-center gap-2 text-secondary">
-              <i class="bi bi-truck text-ct fs-5"></i>
-              <span class="small fw-semibold">Local Roxas City Dispatch</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-5 text-center d-none d-md-block">
-          <div class="hero-device-wrapper">
-            <!-- Floating diagnostic HUD proof chips -->
-            <div class="hud-chip hud-top-left">
-              <i class="bi bi-shield-check text-success fs-6"></i>
-              <span>Clean IMEI · NTC</span>
-            </div>
-            <div class="hud-chip hud-bottom-left">
-              <i class="bi bi-battery-charging text-primary fs-6"></i>
-              <span>89% Battery Health</span>
-            </div>
-            <div class="hud-chip hud-bottom-right">
-              <i class="bi bi-check2-circle text-info fs-6"></i>
-              <span>Face ID &amp; Cameras Passed</span>
-            </div>
 
-            <div class="hero-img-frame spotlight-card">
-              <a href="product.php?id=iphone13" class="d-flex align-items-center justify-content-center w-100 h-100 text-decoration-none">
-                <img
-                  id="heroProductImg"
-                  src="assets/img/iphone_13pro.jpeg"
-                  alt="Featured product — iPhone 13"
-                  class="hero-product-img"
-                  loading="eager"
-                  onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
-                >
-              </a>
-            </div>
-          </div>
-          <p class="hero-img-caption" id="heroProductCaption">iPhone 13 · 128GB · Midnight</p>
+      <!-- Eyebrow Tag -->
+      <div class="apple-hero-eyebrow">
+        <span class="apple-live-dot"></span>
+        <span>Cheyn Gadgets &middot; Roxas City Storefront</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="apple-hero-headline">
+        Pre-owned phones you can count on.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="apple-hero-subtitle">
+        Every phone is checked by hand at our local shop before listing. Honest battery health, clean condition, and 7-day replacement support.
+      </p>
+
+      <!-- Action Links -->
+      <div class="apple-hero-actions">
+        <a href="catalog.php" class="apple-hero-link-primary">
+          View available phones <i class="bi bi-chevron-right"></i>
+        </a>
+        <a href="about.php" class="apple-hero-link-secondary">
+          How we test our phones <i class="bi bi-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Cinematic Borderless Video Showcase -->
+      <div class="apple-video-frame">
+        <video class="w-100" autoplay loop muted playsinline poster="assets/img/iphone_15.jpeg">
+          <source src="assets/video/iphone15_video.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+      <!-- Integrated Hardware Inspection HUD -->
+      <div class="apple-hero-hud">
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">85%+</div>
+          <div class="apple-hud-label">Battery Health</div>
+          <div class="apple-hud-sub">Maintained on all pre-owned units</div>
+        </div>
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">Tested by Hand</div>
+          <div class="apple-hud-label">In-Person Verification</div>
+          <div class="apple-hud-sub">Screen, camera, mics &amp; network</div>
+        </div>
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">7 Days</div>
+          <div class="apple-hud-label">Shop Replacement</div>
+          <div class="apple-hud-sub">Hassle-free local storefront swap</div>
+        </div>
+        <div class="apple-hud-card">
+          <div class="apple-hud-stat">Roxas City</div>
+          <div class="apple-hud-label">Local Storefront</div>
+          <div class="apple-hud-sub">In-store testing before you buy</div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- 20-POINT DIAGNOSTIC INSPECTION STRIP -->
-  <div class="diagnostic-strip">
+  <!-- ==============================================
+       DEVICE CATEGORY RIBBON
+       ============================================== -->
+  <section class="apple-category-section" id="categories">
     <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
-        <div class="col">
-          <div class="diagnostic-item">
-            <div class="diag-icon"><i class="bi bi-display"></i></div>
-            <div class="diag-info">
-              <span class="diag-title">Screen &amp; TrueTone</span>
-              <span class="diag-spec">OLED Touch &amp; Pixels</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Passed</span>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="diagnostic-item">
-            <div class="diag-icon"><i class="bi bi-battery-charging"></i></div>
-            <div class="diag-info">
-              <span class="diag-title">Battery Health</span>
-              <span class="diag-spec">Capacity ≥85% Guaranteed</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Certified</span>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="diagnostic-item">
-            <div class="diag-icon"><i class="bi bi-camera"></i></div>
-            <div class="diag-info">
-              <span class="diag-title">Audio &amp; Cameras</span>
-              <span class="diag-spec">Stereo Mic, 4K &amp; Face ID</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> Verified</span>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="diagnostic-item">
-            <div class="diag-icon"><i class="bi bi-upc-scan"></i></div>
-            <div class="diag-info">
-              <span class="diag-title">Network &amp; IMEI</span>
-              <span class="diag-spec">Factory Unlocked · Clean</span>
-              <span class="diag-status"><i class="bi bi-check-circle-fill"></i> NTC Clean</span>
-            </div>
-          </div>
-        </div>
+      <div class="apple-section-header text-center">
+        <span class="apple-section-tag">Categories</span>
+        <h2 class="apple-section-title">Browse our selection.</h2>
+        <p class="apple-section-subtitle mx-auto">
+          From carefully tested pre-owned iPhones to Android devices, tablets, and accessories.
+        </p>
       </div>
-    </div>
-  </div>
 
-  <!-- SHOP BY CATEGORY -->
-  <section class="py-5" id="categories">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-label">Browse</span>
-        <h2 class="section-title">Shop by Category</h2>
-        <p class="section-subtitle">Find the right device for every need and budget</p>
-      </div>
-      <div class="row g-3 justify-content-center">
-        <div class="col-6 col-md-3">
-          <a href="catalog.php?cat=preowned" class="category-card h-100">
-            <div class="cat-img-wrap">
-              <i class="bi bi-phone cat-icon"></i>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3 justify-content-center">
+        <!-- 1. Pre-owned iPhones -->
+        <div class="col">
+          <a href="catalog.php?cat=preowned" class="apple-category-card">
+            <span class="apple-category-pill">Pre-owned</span>
+            <div class="apple-category-img-wrap">
+              <img src="assets/img/iphone_13pro.jpeg" alt="Pre-owned iPhones" class="apple-category-img" loading="lazy">
             </div>
-            <p class="cat-name mb-0">Pre-owned iPhones</p>
-            <span class="cat-count">Quality-checked units</span>
+            <h3 class="apple-category-name">Pre-owned iPhone</h3>
+            <p class="apple-category-desc">Tested battery &amp; clean body</p>
+            <span class="apple-category-price">From ₱17,500</span>
           </a>
         </div>
-        <div class="col-6 col-md-3">
-          <a href="catalog.php?cat=new" class="category-card h-100">
-            <div class="cat-img-wrap">
-              <i class="bi bi-phone-fill cat-icon"></i>
+
+        <!-- 2. Brand New iPhones -->
+        <div class="col">
+          <a href="catalog.php?cat=new" class="apple-category-card">
+            <span class="apple-category-pill">Brand New</span>
+            <div class="apple-category-img-wrap">
+              <img src="assets/img/iphone_14.jpeg" alt="Brand New iPhones" class="apple-category-img" loading="lazy">
             </div>
-            <p class="cat-name mb-0">New iPhones</p>
-            <span class="cat-count">Brand-new sealed units</span>
+            <h3 class="apple-category-name">New iPhone</h3>
+            <p class="apple-category-desc">Factory sealed with warranty</p>
+            <span class="apple-category-price">From ₱41,900</span>
           </a>
         </div>
-        <div class="col-6 col-md-3">
-          <a href="catalog.php?cat=android" class="category-card h-100">
-            <div class="cat-img-wrap">
-              <i class="bi bi-grid cat-icon"></i>
+
+        <!-- 3. Android Flagships -->
+        <div class="col">
+          <a href="catalog.php?cat=android" class="apple-category-card">
+            <span class="apple-category-pill">Android</span>
+            <div class="apple-category-img-wrap">
+              <img src="assets/img/samsung_galaxy_s22.jpeg" alt="Android Phones" class="apple-category-img" loading="lazy">
             </div>
-            <p class="cat-name mb-0">Android</p>
-            <span class="cat-count">Samsung, Pixel &amp; more</span>
+            <h3 class="apple-category-name">Android</h3>
+            <p class="apple-category-desc">Samsung, Pixel &amp; more</p>
+            <span class="apple-category-price">From ₱6,290</span>
           </a>
         </div>
-        <div class="col-6 col-md-3">
-          <a href="catalog.php?cat=tablet" class="category-card h-100">
-            <div class="cat-img-wrap">
-              <i class="bi bi-tablet cat-icon"></i>
+
+        <!-- 4. Tablets & iPads -->
+        <div class="col">
+          <a href="catalog.php?cat=tablet" class="apple-category-card">
+            <span class="apple-category-pill">Tablets</span>
+            <div class="apple-category-img-wrap">
+              <img src="assets/img/ipad_9th_gen.jpeg" alt="iPads and Tablets" class="apple-category-img" loading="lazy">
             </div>
-            <p class="cat-name mb-0">Tablets</p>
-            <span class="cat-count">iPad &amp; Android tablets</span>
+            <h3 class="apple-category-name">iPad &amp; Tablets</h3>
+            <p class="apple-category-desc">For study, work, and family</p>
+            <span class="apple-category-price">From ₱22,000</span>
+          </a>
+        </div>
+
+        <!-- 5. Audio & Wearables -->
+        <div class="col">
+          <a href="catalog.php?cat=wearable" class="apple-category-card">
+            <span class="apple-category-pill">Accessories</span>
+            <div class="apple-category-img-wrap">
+              <img src="assets/img/apple_watch.jpeg" alt="Apple Watch & Audio" class="apple-category-img" loading="lazy">
+            </div>
+            <h3 class="apple-category-name">Wearables</h3>
+            <p class="apple-category-desc">Apple Watch &amp; sound</p>
+            <span class="apple-category-price">From ₱11,500</span>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- FEATURED PRODUCTS -->
-  <section class="py-5 bg-ct-soft" id="featured">
+  <!-- ==============================================
+       HONEST & HUMBLE BENTO GRID (How we work)
+       ============================================== -->
+  <section class="apple-bento-section" id="standards">
     <div class="container">
-      <div class="section-header d-flex align-items-end justify-content-between flex-wrap gap-2">
+      <div class="apple-section-header text-center mb-5">
+        <span class="apple-section-tag">How we work</span>
+        <h2 class="apple-section-title">A few things you can count on.</h2>
+        <p class="apple-section-subtitle mx-auto">
+          Buying second-hand shouldn't feel like a gamble. Here is how we check each phone before it reaches your hands.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Bento Tile 1: Checked in person (Wide 8-col) -->
+        <div class="col-lg-8">
+          <div class="apple-bento-card">
+            <div class="apple-bento-icon">
+              <i class="bi bi-phone"></i>
+            </div>
+            <h3 class="apple-bento-title">Tested in person before listing</h3>
+            <p class="apple-bento-text">
+              We check the essentials on every phone: touchscreen response, cameras, microphones, stereo speakers, Face ID or Touch ID, buttons, and network signal.
+            </p>
+            <div class="apple-diag-pills">
+              <span class="apple-diag-pill"><i class="bi bi-display"></i> Screen &amp; Touch</span>
+              <span class="apple-diag-pill"><i class="bi bi-person-bounding-box"></i> Face ID / Touch ID</span>
+              <span class="apple-diag-pill"><i class="bi bi-camera"></i> Front &amp; Back Cameras</span>
+              <span class="apple-diag-pill"><i class="bi bi-speaker"></i> Speakers &amp; Mic</span>
+              <span class="apple-diag-pill"><i class="bi bi-broadcast-pin"></i> Openline Signal</span>
+              <span class="apple-diag-pill"><i class="bi bi-check-circle"></i> Clean iCloud &amp; Google</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento Tile 2: Battery Health (4-col) -->
+        <div class="col-lg-4">
+          <div class="apple-bento-card">
+            <div class="apple-bento-icon">
+              <i class="bi bi-battery-charging"></i>
+            </div>
+            <div class="apple-bento-metric">85%+</div>
+            <span class="apple-bento-metric-label mb-3 d-block">Minimum Battery Health</span>
+            <p class="apple-bento-text mb-0">
+              No worn-out batteries. Every pre-owned unit maintains at least 85% battery health so it comfortably gets you through the day.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Tile 3: 7-Day Replacement (6-col) -->
+        <div class="col-lg-6">
+          <div class="apple-bento-card">
+            <div class="apple-bento-icon">
+              <i class="bi bi-arrow-repeat"></i>
+            </div>
+            <h3 class="apple-bento-title">7-Day shop replacement</h3>
+            <p class="apple-bento-text mb-0">
+              If you run into an unexpected hardware defect after purchasing, just bring the phone back to our Roxas City storefront and we will swap it or take care of it.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Tile 4: Roxas City Local Presence (6-col) -->
+        <div class="col-lg-6">
+          <div class="apple-bento-card">
+            <div class="apple-bento-icon">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <h3 class="apple-bento-title">A real shop in Roxas City</h3>
+            <p class="apple-bento-text mb-0">
+              We are not an anonymous online seller. Come visit us, hold the phone in your hand, and test everything at your own pace before deciding.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       FEATURED HARDWARE SHOWCASE
+       ============================================== -->
+  <section class="py-5 bg-white" id="featured">
+    <div class="container">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
         <div>
-          <span class="section-label">Hot Picks</span>
-          <h2 class="section-title">Featured Products</h2>
+          <span class="apple-section-tag">In the shop</span>
+          <h2 class="apple-section-title mb-0">Recently added.</h2>
         </div>
-        <a href="catalog.php" class="btn btn-ct-outline btn-sm mb-1">View All <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="catalog.php" class="btn btn-ct-outline btn-sm">View All Phones <i class="bi bi-arrow-right ms-1"></i></a>
       </div>
+
       <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-3" id="featuredGrid">
 
+        <!-- Product 1 -->
         <div class="col">
-          <article class="product-card">
+          <article class="product-card spotlight-card">
             <div class="card-img-wrap">
               <img src="assets/img/iphone_13pro.jpeg" alt="iPhone 13 128GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
@@ -209,8 +272,9 @@ require 'includes/header.php';
           </article>
         </div>
 
+        <!-- Product 2 -->
         <div class="col">
-          <article class="product-card">
+          <article class="product-card spotlight-card">
             <div class="card-img-wrap">
               <img src="assets/img/iPhone_12.jpeg" alt="iPhone 12 128GB Blue" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
@@ -233,8 +297,9 @@ require 'includes/header.php';
           </article>
         </div>
 
+        <!-- Product 3 -->
         <div class="col">
-          <article class="product-card">
+          <article class="product-card spotlight-card">
             <div class="card-img-wrap">
               <img src="assets/img/iphone_11.jpeg" alt="iPhone 11 128GB Black" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
@@ -257,8 +322,9 @@ require 'includes/header.php';
           </article>
         </div>
 
+        <!-- Product 4 -->
         <div class="col">
-          <article class="product-card">
+          <article class="product-card spotlight-card">
             <div class="card-img-wrap">
               <img src="assets/img/iphone_14.jpeg" alt="iPhone 14 128GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
@@ -281,131 +347,44 @@ require 'includes/header.php';
           </article>
         </div>
 
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="assets/img/iphone_15.jpeg" alt="iPhone 15 128GB Black" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-preowned">Pre-owned</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">iPhone 15 – 128GB Black</p>
-              <div class="product-spec-row">
-                <span class="spec-chip">128GB</span>
-                <span class="spec-chip">Pristine</span>
-                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 96%</span>
-              </div>
-              <p class="product-price">₱41,500</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone15-128gb-black',name:'iPhone 15 128GB Black',price:41500,variant:'128GB',color:'Black',image:'assets/img/iphone_15.jpeg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=iphone15" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
+      </div>
 
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="assets/img/samsunggalaxy_A06.jpeg" alt="Samsung Galaxy A06 5G 128GB Light Blue" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-available">Brand New</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">Samsung Galaxy A06 5G – 128GB</p>
-              <div class="product-spec-row">
-                <span class="spec-chip">128GB</span>
-                <span class="spec-chip text-primary">Sealed Box</span>
-                <span class="spec-chip"><i class="bi bi-shield-check text-success"></i> NTC</span>
-              </div>
-              <p class="product-price">₱6,290</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'samsung-a06-128gb-lightblue',name:'Samsung Galaxy A06 5G 128GB',price:6290,variant:'128GB',color:'Light Blue',image:'assets/img/samsunggalaxy_A06.jpeg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=samsung-a06" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="assets/img/ipad_9th_gen.jpeg" alt="Apple iPad 10th Gen 128GB Silver" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-preowned">Pre-owned</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">Apple iPad 10th Gen – 128GB</p>
-              <div class="product-spec-row">
-                <span class="spec-chip">128GB</span>
-                <span class="spec-chip">Grade A</span>
-                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 91%</span>
-              </div>
-              <p class="product-price">₱23,500</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'ipad10-128gb-silver',name:'Apple iPad 10th Gen 128GB',price:23500,variant:'128GB',color:'Silver',image:'assets/img/ipad_9th_gen.jpeg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=ipad10" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col">
-          <article class="product-card">
-            <div class="card-img-wrap">
-              <img src="assets/img/apple_watch.jpeg" alt="Apple Watch 44mm Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
-              <span class="badge-ct badge-preowned">Pre-owned</span>
-            </div>
-            <div class="card-body">
-              <p class="product-name">Apple Watch – 44mm Midnight</p>
-              <div class="product-spec-row">
-                <span class="spec-chip">44mm</span>
-                <span class="spec-chip">Grade A</span>
-                <span class="spec-chip text-success"><i class="bi bi-battery-charging"></i> 90%</span>
-              </div>
-              <p class="product-price">₱11,500</p>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'apple-watch-44mm-midnight',name:'Apple Watch 44mm Midnight',price:11500,variant:'44mm',color:'Midnight',image:'assets/img/apple_watch.jpeg'}, this)">
-                <i class="bi bi-cart-plus me-1"></i>Add
-              </button>
-              <a href="product.php?id=apple-watch" class="btn btn-ct-outline btn-ct-sm">View</a>
-            </div>
-          </article>
-        </div>
-
-      </div><!-- /row -->
-      <div class="text-center mt-4">
-        <a href="catalog.php" class="btn btn-ct text-white px-5">Browse All Products <i class="bi bi-grid ms-1"></i></a>
+      <div class="text-center mt-5">
+        <a href="catalog.php" class="btn apple-btn-primary px-4">
+          Browse All Available Phones <i class="bi bi-arrow-right ms-1"></i>
+        </a>
       </div>
     </div>
   </section>
 
-
-  <!-- CTA BANNER -->
-  <section class="cta-section text-center">
+  <!-- ==============================================
+       PHYSICAL STOREFRONT PRESENCE (Roxas City)
+       ============================================== -->
+  <section class="apple-storefront-section">
     <div class="container">
-      <h2 class="mb-2">Find your exact device in Roxas City.</h2>
-      <p class="mb-4 mx-auto text-slate-400" style="max-width: 480px; color: #94a3b8;">Filter by budget, brand, or condition for in-store pickup or local delivery.</p>
-      <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
-        <a href="catalog.php?cat=preowned" class="quick-pill"><i class="bi bi-phone me-1"></i> Pre-owned iPhones</a>
-        <a href="catalog.php?cat=new" class="quick-pill"><i class="bi bi-box-seam me-1"></i> Brand New Sealed</a>
-        <a href="catalog.php?cat=android" class="quick-pill"><i class="bi bi-grid me-1"></i> Android Phones</a>
-        <a href="catalog.php?cat=tablet" class="quick-pill"><i class="bi bi-tablet me-1"></i> iPads &amp; Tablets</a>
-      </div>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="catalog.php" class="btn btn-cta-light px-4">Browse All Inventory <i class="bi bi-arrow-right ms-1"></i></a>
-        <?php if (!empty($_SESSION['user_id'])): ?>
-          <a href="track-order.php" class="btn btn-cta-outline-light px-4">Track Order</a>
-        <?php else: ?>
-          <a href="login.php#register" class="btn btn-cta-outline-light px-4">Sign Up</a>
-        <?php endif; ?>
+      <div class="apple-storefront-card">
+        <span class="apple-section-tag">Roxas City Shop</span>
+        <h2 class="apple-section-title mb-3">Drop by the shop.</h2>
+        <p class="apple-section-subtitle mx-auto mb-4">
+          Have questions or want to see a phone in person? Visit our store in Roxas City, Capiz. You can inspect screens, compare battery percentages, and test features with no pressure.
+        </p>
+        <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+          <a href="contact.php" class="btn apple-btn-primary">
+            Store Location &amp; Hours <i class="bi bi-geo-alt ms-1"></i>
+          </a>
+          <a href="about.php" class="btn btn-ct-outline">
+            About Cheyn Gadgets
+          </a>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Invisible anchors for JS backward-compatibility -->
+  <div class="d-none" aria-hidden="true">
+    <img id="heroProductImg" src="assets/img/iphone_13pro.jpeg" alt="Hero">
+    <span id="heroProductCaption"></span>
+  </div>
 
 <?php require 'includes/footer.php'; ?>
   <script src="<?= asset_url('assets/js/index.js') ?>"></script>

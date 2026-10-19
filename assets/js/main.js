@@ -215,10 +215,10 @@ function initActiveNav() {
   if (page === 'catalog.php') {
     if (cat.includes('preowned') || cat.includes('new') || cat.includes('wearable') || q.includes('apple') || q.includes('iphone') || q.includes('watch') || q.includes('airpod')) {
       document.getElementById('appleDropdown')?.classList.add('active');
+    } else if (cat.includes('tablet') || q.includes('tablet') || q.includes('ipad')) {
+      document.getElementById('tabletsDropdown')?.classList.add('active');
     } else if (cat.includes('android') || q.includes('samsung') || q.includes('vivo') || q.includes('tecno') || q.includes('honor')) {
       document.getElementById('androidDropdown')?.classList.add('active');
-    } else if (cat.includes('tablet') || q.includes('ipad')) {
-      document.getElementById('tabletsDropdown')?.classList.add('active');
     }
   }
 }
@@ -303,8 +303,9 @@ function initStepper() {
   const stepIndex      = (activeIdx !== -1 && activeIdx > completedCount) ? activeIdx : completedCount;
   const maxSteps       = steps.length - 1;
   const progress       = maxSteps > 0 ? (stepIndex / maxSteps) : 0;
+  const trackSpan      = maxSteps / steps.length;
 
-  fillLine.style.width = `${Math.min(Math.max(progress * 100, 0), 100)}%`;
+  fillLine.style.width = `${Math.min(Math.max(progress * trackSpan * 100, 0), trackSpan * 100)}%`;
 }
 window.initStepper = initStepper;
 
@@ -371,6 +372,170 @@ function initUserAuth() {
 }
 
 /* =====================================================
+   APPLE-STYLE NAV TRAY & PERSISTENT HOVER CONTROLLER
+   ===================================================== */
+function initNavTrayController() {
+  const navbar = document.querySelector('.navbar-ct');
+  const backdrop = document.getElementById('navBackdrop');
+  const trayItems = document.querySelectorAll('.navbar-ct .has-nav-tray');
+  if (!navbar || !trayItems.length) return;
+
+  let closeTimer = null;
+  let activeItem = null;
+
+  function setActive(item) {
+    clearTimeout(closeTimer);
+    if (activeItem && activeItem !== item) {
+      activeItem.classList.remove('is-active');
+    }
+    activeItem = item;
+    if (item) {
+      item.classList.add('is-active');
+      document.body.classList.add('nav-tray-active');
+      navbar.classList.add('nav-tray-open');
+    }
+  }
+
+  function startCloseTimer() {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function() {
+      if (activeItem) {
+        activeItem.classList.remove('is-active');
+        activeItem = null;
+      }
+      document.body.classList.remove('nav-tray-active');
+      navbar.classList.remove('nav-tray-open');
+    }, 220);
+  }
+
+  function cancelCloseTimer() {
+    clearTimeout(closeTimer);
+  }
+
+  // Hovering on specific nav buttons switches tray immediately
+  trayItems.forEach(function(item) {
+    item.addEventListener('mouseenter', function() {
+      setActive(item);
+    });
+
+    // Also if cursor is inside the tray itself, keep active
+    const trayMenu = item.querySelector('.nav-tray');
+    if (trayMenu) {
+      trayMenu.addEventListener('mouseenter', function() {
+        cancelCloseTimer();
+      });
+      trayMenu.addEventListener('mouseleave', function(e) {
+        const related = e.relatedTarget;
+        if (related && navbar.contains(related)) {
+          cancelCloseTimer();
+          return;
+        }
+        startCloseTimer();
+      });
+    }
+  });
+
+  // When hovering anywhere inside the navbar (e.g. empty space to the left of Home):
+  // Keep the current tray active!
+  navbar.addEventListener('mouseenter', function() {
+    cancelCloseTimer();
+  });
+
+  // When the cursor genuinely leaves the navbar:
+  navbar.addEventListener('mouseleave', function(e) {
+    const related = e.relatedTarget;
+    // If moving into an active tray, keep it open!
+    if (related && activeItem && activeItem.contains(related)) {
+      cancelCloseTimer();
+      return;
+    }
+    startCloseTimer();
+  });
+
+  // Clicking the backdrop closes immediately
+  if (backdrop) {
+    backdrop.addEventListener('click', function() {
+      if (activeItem) {
+        activeItem.classList.remove('is-active');
+        activeItem = null;
+      }
+      document.body.classList.remove('nav-tray-active');
+      navbar.classList.remove('nav-tray-open');
+    });
+  }
+
+  // ESC key closes tray
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (activeItem) {
+        activeItem.classList.remove('is-active');
+        activeItem = null;
+      }
+      document.body.classList.remove('nav-tray-active');
+      navbar.classList.remove('nav-tray-open');
+    }
+  });
+
+  // Mobile accordion tap handler (< 992px)
+  trayItems.forEach(function(item) {
+    const link = item.querySelector('.nav-link');
+    const menu = item.querySelector('.dropdown-menu');
+    if (link && menu) {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth < 992) {
+          const isOpen = menu.classList.contains('show');
+          if (isOpen) {
+            // If already expanded, second tap navigates to target link directly
+            return;
+          }
+          e.preventDefault();
+          document.querySelectorAll('.navbar-ct .dropdown-menu.show').forEach(m => m.classList.remove('show'));
+          menu.classList.add('show');
+        }
+      });
+    }
+  });
+}
+
+/* =====================================================
+   HERO VIDEO CONTROLLER
+   ===================================================== */
+function initHeroVideo() {
+  const video = document.querySelector('.apple-video-frame video');
+  if (!video) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+
+  const tryPlay = () => {
+    const p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => {
+        // Autoplay policy or media loading pending
+      });
+    }
+  };
+
+  if (video.readyState >= 2) {
+    tryPlay();
+  } else {
+    video.addEventListener('loadeddata', tryPlay, { once: true });
+    video.addEventListener('canplay', tryPlay, { once: true });
+  }
+
+  // Fallback trigger on first mobile touch/scroll if browser requires user gesture
+  const resumeOnInteraction = () => {
+    if (video.paused) {
+      tryPlay();
+    }
+    window.removeEventListener('touchstart', resumeOnInteraction);
+    window.removeEventListener('scroll', resumeOnInteraction);
+  };
+  window.addEventListener('touchstart', resumeOnInteraction, { passive: true, once: true });
+  window.addEventListener('scroll', resumeOnInteraction, { passive: true, once: true });
+}
+
+/* =====================================================
    INIT ALL
    ===================================================== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -383,4 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCatalogSearch();
   initStepper();
   initUserAuth();
+  initNavTrayController();
+  initHeroVideo();
 });
+

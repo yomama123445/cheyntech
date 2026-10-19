@@ -21,6 +21,10 @@ if (empty($sessionCsrf) || !hash_equals($sessionCsrf, $clientCsrf)) {
 }
 
 require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../../includes/rate_limit.php';
+
+// TASK S6: 10 attempts per 10 minutes (600s)
+check_rate_limit($pdo, 'auth_login', 10, 600);
 
 $input = json_decode(file_get_contents('php://input'), true);
 if (!is_array($input)) {

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CheynTech Pre-Defense Presentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/simple.min.css" id="theme">
+  <!-- Google Font import (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* CheynTech Custom Branding from assets/css/style.css */
+    :root {
+      --ct-primary:       #d81b60; /* Cheyn signature berry */
+      --ct-primary-dark:  #ad1457;
+      --ct-primary-light: #fce4ec;
+      --ct-primary-soft:  #fdf2f8; /* Ultra-soft subtle berry wash */
+      --ct-text:          #0f172a; /* Slate-900 crisp, high-contrast text */
+      --ct-text-secondary:#334155; /* Slate-700 readable secondary */
+      --ct-bg:            #f8fafc; /* Slate-50 modern neutral canvas */
+      --ct-muted:         #64748b; /* Slate-500 neutral captions */
+    }
+    
+    .reveal {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ct-text);
+      background: var(--ct-bg);
+    }
+    
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--ct-text);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+    
+    .reveal h1 { color: var(--ct-primary); font-size: 2.5em; }
+    .reveal h2 { color: var(--ct-primary-dark); font-size: 1.8em; margin-bottom: 30px; }
+    
+    .reveal p, .reveal li {
+      font-weight: 400;
+      color: var(--ct-text-secondary);
+      line-height: 1.4;
+      font-size: 0.85em;
+    }
+    
+    .reveal ul {
+      display: block;
+      margin: 0 auto;
+      text-align: left;
+      max-width: 90%;
+    }
+    
+    .reveal li {
+      margin-bottom: 12px;
+    }
+    
+    .highlight {
+      color: var(--ct-primary);
+      font-weight: 700;
+    }
+    
+    .members-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .member-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      text-align: center;
+      width: 170px;
+    }
+    
+    .member-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--ct-primary-light);
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--ct-primary);
+      font-size: 1.2em;
+    }
+    
+    .member-name {
+      font-weight: 700;
+      font-size: 0.95em;
+      color: var(--ct-text);
+      margin-bottom: 5px;
+    }
+    
+    .member-role {
+      font-size: 0.75em;
+      color: var(--ct-primary);
+      font-weight: 600;
+    }
+    
+    /* Progress bar */
+    .reveal .progress span {
+      background: var(--ct-primary);
+    }
+    
+    /* Controls */
+    .reveal .controls {
+      color: var(--ct-primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <!-- Slide 1: TITLE OF WEBSITE -->
+      <section>
+        <h1>CheynTech</h1>
+        <h3>Online Ordering and Delivery Management System for Cheyn’s Gadgets</h3>
+        <p style="margin-top: 50px; font-size: 0.8em; font-weight: 500;">Group 3 | AY 2026–2027</p>
+      </section>
+
+      <!-- Slide 2: PROBLEM STATEMENT -->
+      <section>
+        <h2>Problem Statement</h2>
+        <ul>
+          <li><span class="highlight">No online sales channel</span> and lack of systemized inventory tracking.</li>
+          <li><span class="highlight">No digital product catalog</span>, making it difficult for customers to browse remotely.</li>
+          <li><span class="highlight">No remote purchasing</span> or official delivery options.</li>
+          <li><span class="highlight">Untracked stockouts</span> due to informal inventory management.</li>
+          <li><span class="highlight">Missing transaction records</span> causing difficult financial tracking.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3: OBJECTIVE -->
+      <section>
+        <h2>Objective</h2>
+        <ul>
+          <li>Develop a <span class="highlight">fully functional, live-deployed web platform</span> for ordering and delivery.</li>
+          <li>Provide a <span class="highlight">customer-facing storefront</span> for browsing and checkout.</li>
+          <li>Offer <span class="highlight">order fulfillment</span> via in-store pickup or local delivery.</li>
+          <li>Implement <span class="highlight">real-time inventory tracking</span> and status updates.</li>
+          <li>Equip the owner with an <span class="highlight">admin dashboard</span> for product and order management.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 4: LIST OF MEMBERS -->
+      <section>
+        <h2>Meet the Team</h2>
+        <div class="members-grid">
+          <div class="member-card">
+            <div class="member-photo">MA</div>
+            <div class="member-name">Marvin A.</div>
+            <div class="member-role">Project Manager / Scripting</div>
+          </div>
+          <div class="member-card">
+            <div class="member-photo">JG</div>
+            <div class="member-name">Jayro G.</div>
+            <div class="member-role">UI/UX Designer</div>
+          </div>
+          <div class="member-card">
+            <div class="member-photo">NC</div>
+            <div class="member-name">Neo C.</div>
+            <div class="member-role">Front-end Developer</div>
+          </div>
+          <div class="member-card">
+            <div class="member-photo">TD</div>
+            <div class="member-name">Troy D.</div>
+            <div class="member-role">Database Administrator</div>
+          </div>
+          <div class="member-card">
+            <div class="member-photo">KB</div>
+            <div class="member-name">Kim B.</div>
+            <div class="member-role">Tester / QA</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: EVIDENCES OF RESEARCH -->
+      <section>
+        <h2>Evidences of Research</h2>
+        <ul>
+          <li><span class="highlight">IEEE Literature Review:</span> Detailed technical research on e-commerce solutions.</li>
+          <li><span class="highlight">Work Breakdown Structure (WBS):</span> Comprehensive breakdown of project tasks.</li>
+          <li><span class="highlight">Gantt Chart:</span> Strict timeline mapping from wireframing to live deployment.</li>
+          <li><span class="highlight">Figma Prototyping:</span> Validating UI/UX design via hi-fi prototypes.</li>
+        </ul>
+      </section>
+
+      <!-- Final Slide -->
+      <section>
+        <h2>Thank You!</h2>
+        <p>Any questions?</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'fade', 
+      center: true
+    });
+  </script>
+</body>
+</html>

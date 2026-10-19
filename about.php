@@ -27,7 +27,7 @@ require 'includes/header.php';
   </section>
 
   <!-- OUR STORY & STOREFRONT HIGHLIGHT -->
-  <section class="py-5" aria-labelledby="ourStoryHeading">
+  <section class="py-5" id="story" aria-labelledby="ourStoryHeading">
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-lg-6">
@@ -48,14 +48,14 @@ require 'includes/header.php';
             </p>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="store-feature-card">
+        <div class="col-lg-6" id="location">
+          <div class="store-feature-card" id="pickup">
             <img
-              src="assets/img/store/storefront.jpg"
+              src="assets/img/hero-product.jpg"
               alt="Cheyn Gadgets storefront in Roxas City"
               class="store-feature-img"
               loading="lazy"
-              onerror="this.onerror=null;this.src='assets/img/hero-product.jpg'"
+              onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
             >
             <div class="store-feature-caption">
               <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
@@ -91,11 +91,11 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/store/customer-1.jpg"
+                src="assets/img/iphone15_promax.jpeg"
                 alt="Happy customer pickup at Cheyn Gadgets"
                 class="gallery-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/img/iphone15_promax.jpeg'"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">
@@ -107,15 +107,15 @@ require 'includes/header.php';
         </div>
 
         <!-- Photo Card 2: Bench Testing -->
-        <div class="col-md-4">
+        <div class="col-md-4" id="inspection">
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/store/testing.jpg"
+                src="assets/img/iphone_13pro.jpeg"
                 alt="Device diagnostic check in store"
                 class="gallery-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/img/iphone_13pro.jpeg'"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">
@@ -127,15 +127,15 @@ require 'includes/header.php';
         </div>
 
         <!-- Photo Card 3: Fresh Stock -->
-        <div class="col-md-4">
+        <div class="col-md-4" id="delivery">
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/store/inventory.jpg"
+                src="assets/img/iPhone_12.jpeg"
                 alt="Fresh gadget stock ready for pickup"
                 class="gallery-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/img/iPhone_12.jpeg'"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">
@@ -150,7 +150,7 @@ require 'includes/header.php';
   </section>
 
   <!-- WHY BUY LOCALLY -->
-  <section class="py-5" aria-labelledby="whyHeading">
+  <section class="py-5" id="why-us" aria-labelledby="whyHeading">
     <div class="container">
       <div class="section-header text-center mb-5">
         <span class="section-label">WHY BUY LOCALLY</span>
@@ -166,14 +166,14 @@ require 'includes/header.php';
             <div class="feature-icon-wrap"><i class="bi bi-person-check-fill text-ct"></i></div>
             <h3 class="h5 fw-bold mb-2">Test Before You Pay</h3>
             <p class="text-muted small mb-0">
-              Hold the unit in your hands. Test the camera, check the touchscreen, verify the battery capacity, and ensure you're 100% happy before completing your purchase.
+              Hold the unit in your hands. Test the camera, check the touchscreen, verify the battery capacity, and ensure you're completely satisfied before completing your purchase.
             </p>
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4" id="warranty">
           <div class="feature-card h-100">
-            <div class="feature-icon-wrap"><i class="bi bi-shield-check text-ct"></i></div>
+            <div class="feature-icon-wrap"><i class="bi bi-arrow-repeat text-ct"></i></div>
             <h3 class="h5 fw-bold mb-2">7-Day Store Replacement</h3>
             <p class="text-muted small mb-0">
               No long waiting periods or complicated return forms. If any functional defect shows up within your first 7 days, bring it back to our Roxas City shop.

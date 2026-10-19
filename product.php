@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Product Detail | Cheyn Gadgets';
-$pageDescription = 'Browse function-tested phones and tablets at Cheyn Gadgets, Roxas City.';
+$pageTitle       = 'Device Details | Cheyn Gadgets Roxas City';
+$pageDescription = 'Inspected pre-owned and new smartphones at Cheyn Gadgets in Roxas City, Capiz. In-store testing and local warranty.';
 $activePage      = 'catalog';
 require 'includes/header.php';
 ?>
@@ -11,7 +11,7 @@ require 'includes/header.php';
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="catalog.php">Catalog</a></li>
+          <li class="breadcrumb-item"><a href="catalog.php">Inventory</a></li>
           <li class="breadcrumb-item active" aria-current="page" id="breadcrumbProduct">Loading…</li>
         </ol>
       </nav>
@@ -71,29 +71,29 @@ require 'includes/header.php';
             <div class="quality-badge-item">
               <i class="bi bi-shield-check"></i>
               <div>
-                <strong>IMEI &amp; Network Clean</strong>
-                <span>100% factory unlocked</span>
+                <strong>Tested in Person</strong>
+                <span>Checked before listing</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-battery-charging"></i>
               <div>
-                <strong>Battery Tested</strong>
-                <span>≥85% health guaranteed</span>
+                <strong>Healthy Battery</strong>
+                <span>85%+ on pre-owned units</span>
               </div>
             </div>
             <div class="quality-badge-item">
               <i class="bi bi-arrow-repeat"></i>
               <div>
                 <strong>7-Day Replacement</strong>
-                <span>30-day service warranty</span>
+                <span>Local shop warranty</span>
               </div>
             </div>
             <div class="quality-badge-item">
-              <i class="bi bi-box-seam"></i>
+              <i class="bi bi-shop"></i>
               <div>
-                <strong>Certified Inclusions</strong>
-                <span>Charger &amp; cord tested</span>
+                <strong>Roxas City Pickup</strong>
+                <span>Test before you buy</span>
               </div>
             </div>
           </div>
@@ -111,13 +111,13 @@ require 'includes/header.php';
           <!-- Secondary trust -->
           <div class="d-flex gap-3 flex-wrap">
             <span class="d-flex align-items-center gap-1 small text-muted">
-              <i class="bi bi-shield-check text-ct"></i> 7-Day Guarantee
+              <i class="bi bi-arrow-repeat text-muted"></i> 7-Day Replacement
             </span>
             <span class="d-flex align-items-center gap-1 small text-muted">
-              <i class="bi bi-truck text-ct"></i> Pickup or Delivery
+              <i class="bi bi-truck text-muted"></i> Pickup or Delivery
             </span>
             <span class="d-flex align-items-center gap-1 small text-muted">
-              <i class="bi bi-cash-coin text-ct"></i> GCash / Bank Transfer
+              <i class="bi bi-credit-card text-muted"></i> GCash / Bank Transfer
             </span>
           </div>
 

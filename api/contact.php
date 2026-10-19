@@ -74,6 +74,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/rate_limit.php';
+
+// TASK S6: 5 inquiries per 10 minutes (600s)
+check_rate_limit($pdo, 'contact', 5, 600);
 
 try {
     $stmt = $pdo->prepare('

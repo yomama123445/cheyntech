@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'My Cart | Cheyn Gadgets';
-$pageDescription = 'Review your cart and proceed to checkout — Cheyn Gadgets Online Store';
+$pageTitle       = 'Shopping Bag | Cheyn Gadgets';
+$pageDescription = 'Review your selected items and proceed to checkout — Cheyn Gadgets Roxas City';
 $activePage      = '';
 require 'includes/header.php';
 ?>
@@ -11,17 +11,17 @@ require 'includes/header.php';
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Cart</li>
+          <li class="breadcrumb-item active" aria-current="page">Bag</li>
         </ol>
       </nav>
     </div>
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1><i class="bi bi-cart3 me-2 cart-page-title-icon"></i>My Cart</h1>
-      <p class="page-subtitle mb-0">Review your selected items and proceed to checkout.</p>
+      <h1 class="h3 fw-semibold text-dark mb-1"><i class="bi bi-bag me-2"></i>Shopping Bag</h1>
+      <p class="text-muted small mb-0">Review your selected items before choosing pickup or delivery.</p>
     </div>
   </div>
 
@@ -34,8 +34,8 @@ require 'includes/header.php';
         <div class="empty-icon">
           <i class="bi bi-cart-x"></i>
         </div>
-        <h3>Your cart is empty</h3>
-        <p>Looks like you haven't added any items yet.<br>Browse our gadgets and find your next favorite!</p>
+        <h3>Your bag is empty</h3>
+        <p>Looks like you haven't added any items to your bag yet.<br>Browse our gadgets and find your next favorite!</p>
         <a href="catalog.php" class="btn btn-ct px-4">
           <i class="bi bi-grid me-2"></i>Browse Products
         </a>
@@ -80,13 +80,22 @@ require 'includes/header.php';
               <span class="value" id="summaryTotal">&#8369;0</span>
             </div>
 
-            <a href="checkout.php" class="btn btn-ct w-100 mt-4 py-3 checkout-btn" id="checkoutBtn">
+            <?php
+            $checkoutHref = !empty($_SESSION['user_id']) ? 'checkout.php' : 'login.php?redirect=checkout.php';
+            ?>
+            <a href="<?= $checkoutHref ?>" class="btn btn-ct w-100 mt-4 py-3 checkout-btn" id="checkoutBtn">
               <i class="bi bi-lock-fill me-2"></i>Proceed to Checkout
             </a>
 
-            <p class="secure-note">
-              <i class="bi bi-shield-check me-1"></i>Secure checkout &middot; Manual payment confirmation
-            </p>
+            <?php if (empty($_SESSION['user_id'])): ?>
+              <p class="secure-note text-center mt-2 mb-0">
+                <i class="bi bi-person-lock me-1"></i>Sign in or create a Cheyn ID to checkout
+              </p>
+            <?php else: ?>
+              <p class="secure-note text-center mt-2 mb-0">
+                <i class="bi bi-shield-check me-1"></i>Signed in as <?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?>
+              </p>
+            <?php endif; ?>
           </div>
         </div>
 

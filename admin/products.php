@@ -80,12 +80,11 @@ require '../includes/admin_sidebar.php';
         </div>
       </div>
 
-      <!-- Products Count -->
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <p class="text-muted mb-0">Showing <span id="productCount">10</span> products</p>
-        <div class="d-flex gap-2">
-          <button class="btn btn-sm btn-outline-secondary" title="Grid view" id="viewGrid"><i class="bi bi-grid-3x3-gap"></i></button>
-          <button class="btn btn-sm btn-secondary" title="Table view" id="viewTable"><i class="bi bi-table"></i></button>
+      <!-- Products Count & Info -->
+      <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+        <p class="text-muted mb-0">Showing <span id="productCount">0</span> products</p>
+        <div class="text-xs text-muted d-none d-sm-inline">
+          <i class="bi bi-box-seam me-1 text-ct"></i>Use <strong>Stock</strong> to adjust on-hand inventory counts
         </div>
       </div>
 
@@ -102,7 +101,7 @@ require '../includes/admin_sidebar.php';
                 <th class="admin-th">Price</th>
                 <th class="admin-th d-none d-md-table-cell">Stock</th>
                 <th class="admin-th d-none d-lg-table-cell">Status</th>
-                <th class="pe-4 admin-th">Actions</th>
+                <th class="pe-4 admin-th text-end">Actions</th>
               </tr>
             </thead>
             <tbody id="productsTbody">
@@ -112,15 +111,9 @@ require '../includes/admin_sidebar.php';
         </div>
       </div>
 
-      <!-- Pagination -->
-      <nav aria-label="Products pagination">
-        <ul class="pagination justify-content-center" id="pagination">
-          <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><i class="bi bi-chevron-left"></i></a></li>
-          <li class="page-item active"><a class="page-link" href="#" onclick="changePage(1,event)">1</a></li>
-          <li class="page-item"><a class="page-link" href="#" onclick="changePage(2,event)">2</a></li>
-          <li class="page-item"><a class="page-link" href="#" onclick="changePage(3,event)">3</a></li>
-          <li class="page-item"><a class="page-link" href="#" aria-label="Next"><i class="bi bi-chevron-right"></i></a></li>
-        </ul>
+      <!-- Dynamic Pagination Container -->
+      <nav aria-label="Products pagination" class="my-3">
+        <ul class="pagination justify-content-center" id="pagination"></ul>
       </nav>
 
     </main>
@@ -241,6 +234,35 @@ require '../includes/admin_sidebar.php';
       <div class="modal-footer border-0 pt-0">
         <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-danger btn-sm" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADJUST STOCK MODAL (TASK F3) -->
+<div class="modal fade" id="adjustStockModal" tabindex="-1" aria-labelledby="adjustStockModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0 pb-0">
+        <h6 class="modal-title fw-700" id="adjustStockModalLabel"><i class="bi bi-box-seam me-2 text-ct"></i>Adjust Stock</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body py-3">
+        <div class="small text-muted mb-2 text-truncate" id="adjustStockProductName"></div>
+        <input type="hidden" id="adjustStockProductId">
+        <label class="form-label small fw-600 mb-1" for="adjustStockInput">New Available Units</label>
+        <div class="input-group">
+          <button class="btn btn-outline-secondary" type="button" onclick="stepAdjustStock(-1)"><i class="bi bi-dash"></i></button>
+          <input type="number" class="form-control text-center fw-700" id="adjustStockInput" min="0" value="0">
+          <button class="btn btn-outline-secondary" type="button" onclick="stepAdjustStock(1)"><i class="bi bi-plus"></i></button>
+        </div>
+        <div class="form-text text-xs mt-1">Directly syncs physical in-store count to store database.</div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-ct btn-sm" id="confirmAdjustStockBtn" onclick="submitAdjustStock()">
+          <i class="bi bi-check2 me-1"></i> Save Stock
+        </button>
       </div>
     </div>
   </div>

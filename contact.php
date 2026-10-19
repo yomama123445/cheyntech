@@ -18,10 +18,11 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1>Contact Us</h1>
-      <p class="page-subtitle mb-0">Have a question about a listing? Want to know more before you buy? We're happy to help!</p>
+      <span class="apple-section-tag mb-1">Get in Touch</span>
+      <h1 class="h3 fw-semibold text-dark mb-1">Contact Us</h1>
+      <p class="text-muted small mb-0">Have a question about a phone or want to visit our shop? We're happy to help.</p>
     </div>
   </div>
 
@@ -35,7 +36,7 @@ require 'includes/header.php';
             <h2 class="h4 fw-bold mb-1">Ask About a Listing</h2>
             <p class="text-muted small mb-4">Fill in the form below and we'll get back to you as soon as possible.</p>
 
-            <div class="alert alert-success d-flex align-items-center gap-2 rounded-3" id="inquirySuccess" role="alert" aria-live="polite">
+            <div class="alert alert-success d-none align-items-center gap-2 rounded-3" id="inquirySuccess" role="alert" aria-live="polite">
               <i class="bi bi-check-circle-fill flex-shrink-0"></i>
               <span>Your inquiry has been sent! We'll get back to you shortly.</span>
             </div>
@@ -46,7 +47,7 @@ require 'includes/header.php';
               </div>
               <div class="mb-3">
                 <label for="productName" class="form-label fw-semibold">Listing / Product Name</label>
-                <input type="text" class="form-control" id="productName" name="productName" placeholder="e.g. iPhone 13 Pro 128GB Graphite" maxlength="150" required>
+                <input type="text" class="form-control" id="productName" name="productName" value="<?= htmlspecialchars($_GET['product'] ?? '') ?>" placeholder="e.g. iPhone 13 Pro 128GB Graphite" maxlength="150" required>
                 <div class="invalid-feedback">Please enter the product name.</div>
               </div>
               <div class="mb-3">

@@ -1,6 +1,13 @@
 <?php
-$pageTitle       = 'Checkout | Cheyn Gadgets';
-$pageDescription = 'Complete your order — Cheyn Gadgets Checkout';
+require_once __DIR__ . '/includes/session.php';
+
+if (empty($_SESSION['user_id'])) {
+    header('Location: login.php?redirect=checkout.php');
+    exit;
+}
+
+$pageTitle       = 'Order Checkout | Cheyn Gadgets Roxas City';
+$pageDescription = 'Complete your gadget order — Cheyn Gadgets in Roxas City, Capiz.';
 $activePage      = '';
 require 'includes/header.php';
 ?>
@@ -11,7 +18,7 @@ require 'includes/header.php';
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="cart.php">Cart</a></li>
+          <li class="breadcrumb-item"><a href="cart.php">Bag</a></li>
           <li class="breadcrumb-item active" aria-current="page">Checkout</li>
         </ol>
       </nav>
@@ -19,10 +26,10 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1><i class="bi bi-bag-check me-2 checkout-page-icon"></i>Checkout</h1>
-      <p class="page-subtitle mb-0">Provide your delivery details and choose your payment method.</p>
+      <h1 class="h3 fw-semibold text-dark mb-1"><i class="bi bi-bag-check me-2"></i>Checkout</h1>
+      <p class="text-muted small mb-0">Provide your contact info and choose store pickup or local delivery.</p>
     </div>
   </div>
 
@@ -44,19 +51,19 @@ require 'includes/header.php';
               <div class="row g-3">
                 <div class="col-12">
                   <label for="fullName" class="form-label fw-600">Full Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g. Maria Santos" required autocomplete="name">
+                  <input type="text" class="form-control" id="fullName" name="fullName" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" placeholder="e.g. Maria Santos" required autocomplete="name">
                   <div class="invalid-feedback">Please enter your full name.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="email" class="form-label fw-600">Email Address <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+                  <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($_SESSION['user_email'] ?? '') ?>" placeholder="you@email.com" required autocomplete="email">
                   <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="phone" class="form-label fw-600">Phone Number <span class="text-danger">*</span></label>
                   <div class="input-group">
                     <span class="input-group-text fw-semibold text-muted">+63</span>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
+                    <input type="tel" class="form-control" id="phone" name="phone" value="<?= htmlspecialchars($_SESSION['user_phone'] ?? '') ?>" placeholder="09XX XXX XXXX" required autocomplete="tel" pattern="^(09|\+639)\d{9}$">
                   </div>
                   <div class="invalid-feedback">Enter a valid PH mobile number (e.g. 09171234567).</div>
                 </div>
@@ -234,11 +241,11 @@ require 'includes/header.php';
               <span class="value" id="coTotal">&#8369;0</span>
             </div>
 
-            <!-- Security badges -->
-            <div class="security-badges">
-              <span class="sec-badge"><i class="bi bi-shield-lock-fill"></i> Secure Checkout</span>
-              <span class="sec-badge"><i class="bi bi-eye-fill"></i> Manual Review</span>
-              <span class="sec-badge"><i class="bi bi-arrow-counterclockwise"></i> 7-Day Guarantee</span>
+            <!-- Trust notes -->
+            <div class="d-flex align-items-center justify-content-center gap-3 pt-3 text-muted" style="font-size: 0.75rem; border-top: 1px solid #f1f5f9;">
+              <span><i class="bi bi-lock me-1"></i>Manual verification</span>
+              <span>&middot;</span>
+              <span><i class="bi bi-arrow-repeat me-1"></i>7-day replacement</span>
             </div>
           </div>
         </div>

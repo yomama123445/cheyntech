@@ -1,9 +1,74 @@
 // ====== PRODUCT DATA (Loaded live from api/admin/products.php) ======
 let products = [];
+const PAGE_SIZE = 10;
+let currentPage = 1;
+let currentFilteredProducts = [];
 
 let deleteTargetId = null;
-const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-const deleteModal  = new bootstrap.Modal(document.getElementById('deleteModal'));
+const productModal     = new bootstrap.Modal(document.getElementById('productModal'));
+const deleteModal      = new bootstrap.Modal(document.getElementById('deleteModal'));
+const adjustStockModal = new bootstrap.Modal(document.getElementById('adjustStockModal'));
+
+function openAdjustStockModal(id) {
+  const p = products.find(x => String(x.id) === String(id));
+  if (!p) return;
+  document.getElementById('adjustStockProductId').value = p.id;
+  document.getElementById('adjustStockProductName').textContent = `${p.name} (${p.storage && p.storage !== 'N/A' ? p.storage + ' · ' : ''}${p.color || ''})`;
+  document.getElementById('adjustStockInput').value = p.stock || 0;
+  adjustStockModal.show();
+}
+
+function stepAdjustStock(step) {
+  const inp = document.getElementById('adjustStockInput');
+  const current = parseInt(inp.value, 10) || 0;
+  inp.value = Math.max(0, current + step);
+}
+
+async function submitAdjustStock() {
+  const id = document.getElementById('adjustStockProductId').value;
+  const newStock = Math.max(0, parseInt(document.getElementById('adjustStockInput').value, 10) || 0);
+  const p = products.find(x => String(x.id) === String(id));
+  if (!p) return;
+
+  const btn = document.getElementById('confirmAdjustStockBtn');
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Saving...';
+
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
+  try {
+    const res = await fetch('../api/admin/products.php', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      body: JSON.stringify({
+        id: p.id,
+        stock: newStock
+      })
+    });
+    const result = await res.json();
+    if (!res.ok || !result.success) {
+      throw new Error(result.error || 'Failed to update stock');
+    }
+
+    p.stock = newStock;
+    p.status = (newStock === 0) ? 'Out of Stock' : (newStock <= 3 ? 'Low Stock' : 'Available');
+
+    showToast(`Stock for ${p.name} updated to ${newStock} units.`, 'toast-success');
+    adjustStockModal.hide();
+    renderTable(products);
+  } catch (err) {
+    console.error('Adjust stock error:', err);
+    showToast(err.message || 'Error updating stock.', 'toast-error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+  }
+}
 
 function conditionBadge(cond) {
   if (cond === 'Pre-owned')  return '<span class="badge-ct badge-preowned">Pre-owned</span>';
@@ -17,43 +82,102 @@ function statusBadge(st, stock) {
   return '<span class="badge-ct badge-available">In Stock</span>';
 }
 
-function renderTable(list) {
-  const tbody = document.getElementById('productsTbody');
-  document.getElementById('productCount').textContent = list.length;
-  if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-5 text-muted">No products found.</td></tr>';
+function renderPagination() {
+  const paginationEl = document.getElementById('pagination');
+  if (!paginationEl) return;
+  const total = currentFilteredProducts.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+
+  if (totalPages <= 1) {
+    paginationEl.innerHTML = '';
     return;
   }
-  tbody.innerHTML = list.map(p => `
+
+  let html = '';
+  const prevDisabled = currentPage === 1 ? 'disabled' : '';
+  html += `<li class="page-item ${prevDisabled}"><a class="page-link" href="#" onclick="changePage(${currentPage - 1}, event)" aria-label="Previous"><i class="bi bi-chevron-left"></i></a></li>`;
+
+  for (let p = 1; p <= totalPages; p++) {
+    const active = p === currentPage ? 'active' : '';
+    html += `<li class="page-item ${active}"><a class="page-link" href="#" onclick="changePage(${p}, event)">${p}</a></li>`;
+  }
+
+  const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+  html += `<li class="page-item ${nextDisabled}"><a class="page-link" href="#" onclick="changePage(${currentPage + 1}, event)" aria-label="Next"><i class="bi bi-chevron-right"></i></a></li>`;
+
+  paginationEl.innerHTML = html;
+}
+
+function renderCurrentPage() {
+  const tbody = document.getElementById('productsTbody');
+  const countEl = document.getElementById('productCount');
+  const total = currentFilteredProducts.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, total);
+  const paged = currentFilteredProducts.slice(start, end);
+
+  if (countEl) {
+    if (total === 0) {
+      countEl.textContent = '0';
+    } else if (total <= PAGE_SIZE) {
+      countEl.textContent = total;
+    } else {
+      countEl.textContent = `${start + 1}–${end} of ${total}`;
+    }
+  }
+
+  if (!paged.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-5 text-muted">No products found.</td></tr>';
+    renderPagination();
+    return;
+  }
+
+  tbody.innerHTML = paged.map(p => `
     <tr data-id="${p.id}" data-category="${p.category}" data-condition="${p.condition}">
       <td class="ps-4">
-        <img src="${p.img || '/assets/products/placeholder.jpg'}" alt="${p.name}" width="48" height="48" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
+        <img src="${p.img || '/assets/products/placeholder.jpg'}" alt="${p.name}" width="48" height="48" class="rounded border" style="object-fit:cover;" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
       </td>
       <td>
-        <div>${p.name}</div>
+        <div class="fw-600 text-dark">${p.name}</div>
         <div class="text-xs text-muted">${p.storage && p.storage !== 'N/A' ? p.storage + ' · ' : ''}${p.color || ''}</div>
       </td>
-      <td class="d-none d-md-table-cell">${p.category}</td>
+      <td class="d-none d-md-table-cell text-muted">${p.category}</td>
       <td class="d-none d-lg-table-cell">${conditionBadge(p.condition)}</td>
       <td class="text-sm fw-700 text-ct">₱${Number(p.price || 0).toLocaleString()}</td>
       <td class="d-none d-md-table-cell">
         <span class="${p.stock <= 3 ? 'fw-700 text-danger' : 'fw-600'}">${p.stock}</span>
       </td>
       <td class="d-none d-lg-table-cell">${statusBadge(p.status, p.stock)}</td>
-      <td class="pe-4">
-        <div class="d-flex gap-1">
+      <td class="pe-4 text-end">
+        <div class="d-flex gap-1 justify-content-end">
+          <button class="btn btn-sm btn-outline-primary" onclick="openAdjustStockModal('${p.id}')" title="Adjust Stock">
+            <i class="bi bi-box-seam me-1"></i>Stock
+          </button>
           <button class="btn btn-sm btn-ct-outline" onclick="openEditModal('${p.id}')" title="Edit"><i class="bi bi-pencil"></i></button>
           <button class="btn btn-sm btn-outline-danger" onclick="openDeleteModal('${p.id}')" title="Delete"><i class="bi bi-trash"></i></button>
         </div>
       </td>
     </tr>
   `).join('');
+
+  renderPagination();
+}
+
+function renderTable(list) {
+  currentFilteredProducts = list;
+  renderCurrentPage();
 }
 
 function applyFilters() {
   const q     = document.getElementById('productSearch').value.toLowerCase().trim();
   const cat   = document.getElementById('filterCategory').value;
   const cond  = document.getElementById('filterCondition').value;
+  currentPage = 1;
   const list  = products.filter(p => {
     const matchQ    = !q    || p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
     const matchCat  = !cat  || p.category === cat;
@@ -67,7 +191,16 @@ function resetFilters() {
   document.getElementById('productSearch').value = '';
   document.getElementById('filterCategory').value = '';
   document.getElementById('filterCondition').value = '';
+  currentPage = 1;
   renderTable(products);
+}
+
+function changePage(p, e) {
+  if (e) e.preventDefault();
+  const totalPages = Math.ceil(currentFilteredProducts.length / PAGE_SIZE) || 1;
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
+  renderCurrentPage();
 }
 
 document.getElementById('productSearch').addEventListener('input', applyFilters);
@@ -232,12 +365,6 @@ document.getElementById('pImages').addEventListener('change', function () {
   });
 });
 
-// ---- PAGINATION STUB ----
-function changePage(p, e) {
-  e.preventDefault();
-  document.querySelectorAll('#pagination .page-item').forEach(li => li.classList.remove('active'));
-  e.currentTarget.parentElement.classList.add('active');
-}
 
 // ---- TOAST ----
 function showToast(msg, cls='') {

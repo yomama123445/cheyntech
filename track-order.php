@@ -1,6 +1,6 @@
 <?php
-$pageTitle       = 'Track Order | Cheyn Gadgets';
-$pageDescription = 'Track your Cheyn Gadgets order in real time';
+$pageTitle       = 'Track Your Order | Cheyn Gadgets Roxas City';
+$pageDescription = 'Check the status of your phone order or in-store pickup — Cheyn Gadgets in Roxas City, Capiz.';
 $activePage      = 'track-order';
 require 'includes/header.php';
 ?>
@@ -18,10 +18,10 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <div class="page-header">
+  <div class="page-header py-4 bg-white border-bottom">
     <div class="container">
-      <h1>Track Your Order</h1>
-      <p class="page-subtitle mb-0">Enter your Order ID to see real-time status updates on your Cheyn Gadgets purchase.</p>
+      <h1 class="h3 fw-semibold text-dark mb-1"><i class="bi bi-box-seam me-2"></i>Track Your Order</h1>
+      <p class="text-muted small mb-0">Check the preparation status of your store pickup or local delivery.</p>
     </div>
   </div>
 
@@ -91,7 +91,7 @@ require 'includes/header.php';
 
       <!-- ── RESULT SECTION (hidden until search) ── -->
       <div id="trackResult" class="d-none" aria-live="polite">
-        <div class="order-info-card">
+        <div class="order-info-card" id="claim-slip">
 
           <!-- Print-Only Store Slip Header -->
           <div class="d-none d-print-block p-3 border-bottom mb-2 text-center">
@@ -101,7 +101,7 @@ require 'includes/header.php';
 
           <!-- Header -->
           <div class="order-info-header">
-            <div>
+            <div class="flex-grow-1 min-w-0 me-sm-3 mb-2 mb-sm-0">
               <div class="order-info-id" id="resultOrderId">CT-10493</div>
               <div class="order-info-product">
                 <i class="bi bi-phone me-1"></i>
@@ -111,7 +111,7 @@ require 'includes/header.php';
                 <i class="bi bi-calendar3 me-1"></i>Placed on <span id="resultDate">August 12, 2026</span>
               </div>
             </div>
-            <div class="d-flex flex-column align-items-end gap-2">
+            <div class="d-flex flex-column align-items-start align-items-sm-end gap-2 flex-shrink-0">
               <div class="order-info-badge result-status-badge">
                 <i class="bi bi-bag-check me-1"></i>Ready for Pickup
               </div>
@@ -126,24 +126,24 @@ require 'includes/header.php';
 
             <!-- ── Payment Instructions Box (shown if pending and non-cash) ── -->
             <div id="trackPaymentNotice" class="d-none alert alert-light border p-3 mb-4 rounded-3">
-              <div class="d-flex align-items-center justify-content-between mb-2">
+              <div class="d-flex align-items-center justify-content-between mb-2" id="payment-methods">
                 <strong class="text-dark"><i class="bi bi-wallet2 me-1 text-ct"></i> Pending Payment:</strong>
                 <span id="trackPaymentBadge" class="badge bg-primary"></span>
               </div>
               <p class="text-xs mb-2 text-muted" id="trackPaymentText"></p>
-              <div class="d-flex flex-wrap align-items-center justify-content-between p-2 rounded bg-white border">
-                <div>
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-2 rounded bg-white border">
+                <div class="min-w-0">
                   <span class="text-muted text-xs d-block" id="trackAccountLabel">Account Details</span>
-                  <span class="fw-700 font-monospace text-dark" id="trackAccountVal"></span>
+                  <span class="fw-700 font-monospace text-dark text-break" id="trackAccountVal"></span>
                 </div>
-                <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" id="trackCopyBtn" title="Copy Number">
+                <button type="button" class="btn btn-sm btn-outline-secondary copy-btn flex-shrink-0" id="trackCopyBtn" title="Copy Number">
                   <i class="bi bi-clipboard"></i> Copy
                 </button>
               </div>
             </div>
 
             <!-- ── Stepper ── -->
-            <div class="mb-4">
+            <div class="mb-4" id="pickup-status">
               <div class="status-history-title">Order Progress</div>
               <div class="order-stepper" role="list" aria-label="Order status steps">
 
@@ -257,7 +257,7 @@ require 'includes/header.php';
           </div>
           <div class="col-md-4">
             <div class="p-3 rounded-3 track-info-panel">
-              <div class="track-info-icon"><i class="bi bi-shield-check"></i></div>
+              <div class="track-info-icon"><i class="bi bi-check2-circle"></i></div>
               <div class="fw-700 track-info-label">Verified &amp; Inspected</div>
               <p class="mb-0 track-info-text">Every unit is inspected before being released to you.</p>
             </div>

@@ -154,6 +154,12 @@ async function loadDashboardStats() {
         const orders = data.orders;
         const pendingCount = orders.filter(o => o.status === 'Pending' || o.status === 'Processing').length;
         const completedCount = orders.filter(o => o.status === 'Completed').length;
+        const totalRevenue = orders
+          .filter(o => o.status === 'Completed')
+          .reduce((sum, o) => sum + Number(o.total || 0), 0);
+
+        const revenueEl = document.getElementById('statTotalRevenue');
+        if (revenueEl) revenueEl.textContent = '₱' + totalRevenue.toLocaleString();
 
         const pendingEl = document.getElementById('statPendingOrders');
         if (pendingEl) pendingEl.textContent = pendingCount;
@@ -162,28 +168,32 @@ async function loadDashboardStats() {
         if (completedEl) completedEl.textContent = completedCount;
 
         const tbody = document.getElementById('recentOrdersTbody');
-        if (tbody && orders.length > 0) {
-          tbody.innerHTML = orders.slice(0, 5).map(o => {
-            const badgeClass = o.status === 'Pending' ? 'bg-warning-subtle text-warning-emphasis'
-              : o.status === 'Processing' ? 'badge-status-processing'
-              : o.status === 'Ready' || o.status === 'Ready for Pickup' ? 'badge-status-ready'
-              : o.status === 'Completed' ? 'bg-success-subtle text-success-emphasis'
-              : 'bg-secondary-subtle text-secondary-emphasis';
+        if (tbody) {
+          if (orders.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="text-center py-4 text-muted">No orders yet.</td></tr>';
+          } else {
+            tbody.innerHTML = orders.slice(0, 5).map(o => {
+              const badgeClass = o.status === 'Pending' ? 'bg-warning-subtle text-warning-emphasis'
+                : o.status === 'Processing' ? 'badge-status-processing'
+                : o.status === 'Ready' || o.status === 'Ready for Pickup' ? 'badge-status-ready'
+                : o.status === 'Completed' ? 'bg-success-subtle text-success-emphasis'
+                : 'bg-secondary-subtle text-secondary-emphasis';
 
-            const itemsDesc = Array.isArray(o.items) && o.items.length
-              ? o.items.map(i => `${i.name} × ${i.qty}`).join(', ')
-              : 'Items ordered';
+              const itemsDesc = Array.isArray(o.items) && o.items.length
+                ? o.items.map(i => `${i.name} × ${i.qty}`).join(', ')
+                : 'Items ordered';
 
-            return `<tr>
-              <td class="ps-4 td-id">#${o.id}</td>
-              <td class="td-name">${(o.customer && o.customer.name) || 'Customer'}</td>
-              <td class="d-none d-md-table-cell td-meta">${itemsDesc}</td>
-              <td class="td-id">₱${Number(o.total || 0).toLocaleString()}</td>
-              <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">${o.fulfillment || 'Pickup'}</span></td>
-              <td><span class="badge rounded-pill td-sm-badge ${badgeClass}">${o.status}</span></td>
-              <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
-            </tr>`;
-          }).join('');
+              return `<tr>
+                <td class="ps-4 td-id">#${o.id}</td>
+                <td class="td-name">${(o.customer && o.customer.name) || 'Customer'}</td>
+                <td class="d-none d-md-table-cell td-meta">${itemsDesc}</td>
+                <td class="td-id">₱${Number(o.total || 0).toLocaleString()}</td>
+                <td class="d-none d-lg-table-cell"><span class="badge bg-info-subtle text-info-emphasis rounded-pill td-sm-badge">${o.fulfillment || 'Pickup'}</span></td>
+                <td><span class="badge rounded-pill td-sm-badge ${badgeClass}">${o.status}</span></td>
+                <td class="pe-4"><a href="orders.php" class="btn btn-sm btn-ct-outline td-sm-badge">View</a></td>
+              </tr>`;
+            }).join('');
+          }
         }
       }
     }
