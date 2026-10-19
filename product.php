@@ -64,7 +64,8 @@ require 'includes/header.php';
           </div>
 
           <!-- Short description -->
-          <p class="text-muted mb-3" id="productShortDesc"></p>
+          <p class="text-muted mb-2" id="productShortDesc"></p>
+          <p class="small text-muted mb-3" id="trustNoteText"></p>
 
           <!-- Quality Assurance Badges Grid -->
           <div class="quality-badges-grid mb-4">

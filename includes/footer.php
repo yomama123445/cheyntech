@@ -29,7 +29,7 @@
         </div>
         <div class="col-6 col-md-3 col-lg-2">
           <h6 class="footer-heading">Support &amp; Trust</h6>
-          <div class="footer-links">
+          <div class="footer-links" id="footerSupportLinks">
             <?php if (!empty($_SESSION['user_id'])): ?>
               <a href="track-order.php">Track Order</a>
             <?php else: ?>
@@ -41,10 +41,19 @@
         </div>
         <div class="col-6 col-md-3 col-lg-2">
           <h6 class="footer-heading">Account</h6>
-          <div class="footer-links">
-            <a href="login.php">Sign In</a>
-            <a href="login.php#register">Create Account</a>
-            <a href="cart.php">Shopping Cart</a>
+          <div class="footer-links" id="footerAccountLinks">
+            <?php if (!empty($_SESSION['user_id'])): ?>
+              <a href="profile.php" id="footerAccountLink">My Account</a>
+              <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                <a href="admin/dashboard.php" id="footerAdminLink">Admin Dashboard</a>
+              <?php endif; ?>
+              <a href="cart.php">Shopping Bag</a>
+              <a href="login.php?action=logout" id="footerLogoutLink">Sign Out</a>
+            <?php else: ?>
+              <a href="login.php" id="footerSignInLink">Sign In</a>
+              <a href="login.php#register" id="footerRegisterLink">Create Account</a>
+              <a href="cart.php">Shopping Bag</a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
