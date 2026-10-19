@@ -145,6 +145,11 @@ require '../includes/admin_sidebar.php';
         </div>
       </div>
 
+      <!-- Dynamic Pagination Container -->
+      <nav aria-label="Orders pagination" class="my-3">
+        <ul class="pagination justify-content-center" id="pagination"></ul>
+      </nav>
+
     </main>
   </div><!-- /admin-content -->
 </div><!-- /admin-layout -->

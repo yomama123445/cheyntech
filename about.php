@@ -51,11 +51,11 @@ require 'includes/header.php';
         <div class="col-lg-6" id="location">
           <div class="store-feature-card" id="pickup">
             <img
-              src="assets/img/store/storefront.jpg"
+              src="assets/img/hero-product.jpg"
               alt="Cheyn Gadgets storefront in Roxas City"
               class="store-feature-img"
               loading="lazy"
-              onerror="this.onerror=null;this.src='assets/img/hero-product.jpg'"
+              onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
             >
             <div class="store-feature-caption">
               <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
@@ -91,11 +91,11 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/store/customer-1.jpg"
+                src="assets/img/iphone15_promax.jpeg"
                 alt="Happy customer pickup at Cheyn Gadgets"
                 class="gallery-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/img/iphone15_promax.jpeg'"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">
@@ -111,11 +111,11 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/store/testing.jpg"
+                src="assets/img/iphone_13pro.jpeg"
                 alt="Device diagnostic check in store"
                 class="gallery-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/img/iphone_13pro.jpeg'"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">
@@ -131,11 +131,11 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/store/inventory.jpg"
+                src="assets/img/iPhone_12.jpeg"
                 alt="Fresh gadget stock ready for pickup"
                 class="gallery-img"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/img/iPhone_12.jpeg'"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">

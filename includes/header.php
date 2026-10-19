@@ -259,7 +259,7 @@ $activePage      = $activePage      ?? '';
                     <ul class="nav-tray-links">
                       <li><a href="contact.php">Customer Contact Form</a></li>
                       <li><a href="contact.php">Inquire on a Specific Model</a></li>
-                      <li><a href="https://facebook.com" target="_blank" rel="noopener">Official Facebook Page &rarr;</a></li>
+                      <li><a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer">Official Facebook Page &rarr;</a></li>
                     </ul>
                   </div>
                 </div>
