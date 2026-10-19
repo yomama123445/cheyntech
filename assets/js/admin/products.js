@@ -1,5 +1,8 @@
 // ====== PRODUCT DATA (Loaded live from api/admin/products.php) ======
 let products = [];
+const PAGE_SIZE = 10;
+let currentPage = 1;
+let currentFilteredProducts = [];
 
 let deleteTargetId = null;
 const productModal     = new bootstrap.Modal(document.getElementById('productModal'));
@@ -79,23 +82,71 @@ function statusBadge(st, stock) {
   return '<span class="badge-ct badge-available">In Stock</span>';
 }
 
-function renderTable(list) {
-  const tbody = document.getElementById('productsTbody');
-  document.getElementById('productCount').textContent = list.length;
-  if (!list.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-5 text-muted">No products found.</td></tr>';
+function renderPagination() {
+  const paginationEl = document.getElementById('pagination');
+  if (!paginationEl) return;
+  const total = currentFilteredProducts.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+
+  if (totalPages <= 1) {
+    paginationEl.innerHTML = '';
     return;
   }
-  tbody.innerHTML = list.map(p => `
+
+  let html = '';
+  const prevDisabled = currentPage === 1 ? 'disabled' : '';
+  html += `<li class="page-item ${prevDisabled}"><a class="page-link" href="#" onclick="changePage(${currentPage - 1}, event)" aria-label="Previous"><i class="bi bi-chevron-left"></i></a></li>`;
+
+  for (let p = 1; p <= totalPages; p++) {
+    const active = p === currentPage ? 'active' : '';
+    html += `<li class="page-item ${active}"><a class="page-link" href="#" onclick="changePage(${p}, event)">${p}</a></li>`;
+  }
+
+  const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+  html += `<li class="page-item ${nextDisabled}"><a class="page-link" href="#" onclick="changePage(${currentPage + 1}, event)" aria-label="Next"><i class="bi bi-chevron-right"></i></a></li>`;
+
+  paginationEl.innerHTML = html;
+}
+
+function renderCurrentPage() {
+  const tbody = document.getElementById('productsTbody');
+  const countEl = document.getElementById('productCount');
+  const total = currentFilteredProducts.length;
+  const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, total);
+  const paged = currentFilteredProducts.slice(start, end);
+
+  if (countEl) {
+    if (total === 0) {
+      countEl.textContent = '0';
+    } else if (total <= PAGE_SIZE) {
+      countEl.textContent = total;
+    } else {
+      countEl.textContent = `${start + 1}–${end} of ${total}`;
+    }
+  }
+
+  if (!paged.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-5 text-muted">No products found.</td></tr>';
+    renderPagination();
+    return;
+  }
+
+  tbody.innerHTML = paged.map(p => `
     <tr data-id="${p.id}" data-category="${p.category}" data-condition="${p.condition}">
       <td class="ps-4">
-        <img src="${p.img || '/assets/products/placeholder.jpg'}" alt="${p.name}" width="48" height="48" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
+        <img src="${p.img || '/assets/products/placeholder.jpg'}" alt="${p.name}" width="48" height="48" class="rounded border" style="object-fit:cover;" onerror="this.onerror=null;this.src='/assets/products/placeholder.jpg'">
       </td>
       <td>
-        <div>${p.name}</div>
+        <div class="fw-600 text-dark">${p.name}</div>
         <div class="text-xs text-muted">${p.storage && p.storage !== 'N/A' ? p.storage + ' · ' : ''}${p.color || ''}</div>
       </td>
-      <td class="d-none d-md-table-cell">${p.category}</td>
+      <td class="d-none d-md-table-cell text-muted">${p.category}</td>
       <td class="d-none d-lg-table-cell">${conditionBadge(p.condition)}</td>
       <td class="text-sm fw-700 text-ct">₱${Number(p.price || 0).toLocaleString()}</td>
       <td class="d-none d-md-table-cell">
@@ -113,12 +164,20 @@ function renderTable(list) {
       </td>
     </tr>
   `).join('');
+
+  renderPagination();
+}
+
+function renderTable(list) {
+  currentFilteredProducts = list;
+  renderCurrentPage();
 }
 
 function applyFilters() {
   const q     = document.getElementById('productSearch').value.toLowerCase().trim();
   const cat   = document.getElementById('filterCategory').value;
   const cond  = document.getElementById('filterCondition').value;
+  currentPage = 1;
   const list  = products.filter(p => {
     const matchQ    = !q    || p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
     const matchCat  = !cat  || p.category === cat;
@@ -132,7 +191,16 @@ function resetFilters() {
   document.getElementById('productSearch').value = '';
   document.getElementById('filterCategory').value = '';
   document.getElementById('filterCondition').value = '';
+  currentPage = 1;
   renderTable(products);
+}
+
+function changePage(p, e) {
+  if (e) e.preventDefault();
+  const totalPages = Math.ceil(currentFilteredProducts.length / PAGE_SIZE) || 1;
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
+  renderCurrentPage();
 }
 
 document.getElementById('productSearch').addEventListener('input', applyFilters);
@@ -297,12 +365,6 @@ document.getElementById('pImages').addEventListener('change', function () {
   });
 });
 
-// ---- PAGINATION STUB ----
-function changePage(p, e) {
-  e.preventDefault();
-  document.querySelectorAll('#pagination .page-item').forEach(li => li.classList.remove('active'));
-  e.currentTarget.parentElement.classList.add('active');
-}
 
 // ---- TOAST ----
 function showToast(msg, cls='') {

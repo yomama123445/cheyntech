@@ -136,7 +136,7 @@ require '../includes/admin_sidebar.php';
                 <span class="badge bg-primary ms-auto">Admin</span>
               </div>
               <div class="d-flex gap-2 flex-wrap">
-                <a href="../profile.php" class="btn btn-outline-dark btn-sm">
+                <a href="../profile.php" class="btn btn-ct-outline btn-sm">
                   <i class="bi bi-person-gear me-1"></i>Update Profile &amp; Password
                 </a>
                 <a href="../login.php?action=logout" class="btn btn-outline-danger btn-sm">
