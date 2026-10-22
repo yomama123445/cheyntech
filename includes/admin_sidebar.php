@@ -28,6 +28,9 @@
       <a href="orders.php" class="nav-link <?= $adminActivePage === 'orders' ? 'active' : '' ?>" <?= $adminActivePage === 'orders' ? 'aria-current="page"' : '' ?>>
         <i class="bi bi-receipt"></i> <span>Orders</span>
       </a>
+      <a href="inquiries.php" class="nav-link <?= $adminActivePage === 'inquiries' ? 'active' : '' ?>" <?= $adminActivePage === 'inquiries' ? 'aria-current="page"' : '' ?>>
+        <i class="bi bi-chat-left-dots"></i> <span>Inquiries</span>
+      </a>
     </nav>
 
     <div class="sidebar-section-label mt-2">Configuration</div>

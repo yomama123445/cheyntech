@@ -123,6 +123,7 @@ if ($method === 'GET') {
                 'fulfillment' => $fulfillmentLabel,
                 'payment'     => $paymentLabel,
                 'paid'        => $paid,
+                'notes'       => $row['notes'] ?? '',
                 'total'       => (float)$row['total_amount'],
                 'history'     => $history
             ];

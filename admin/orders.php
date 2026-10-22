@@ -185,6 +185,8 @@ require '../includes/admin_sidebar.php';
                   <div class="col-7" id="modalCustomerPhone">—</div>
                   <div class="col-5 text-muted fw-500">Address</div>
                   <div class="col-7" id="modalCustomerAddress">—</div>
+                  <div class="col-5 text-muted fw-500">Notes / Landmark</div>
+                  <div class="col-7" id="modalCustomerNotes">—</div>
                 </div>
               </div>
             </div>

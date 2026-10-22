@@ -13,11 +13,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# Deny web access to sensitive directories (config, database, docs, wireframes)
-RewriteRule ^(config|database|docs|wireframes)(/.*)?$ - [F,L,NC]
+# Deny web access to sensitive directories (config, database, docs, wireframes, tests, scripts)
+RewriteRule ^(config|database|docs|wireframes|tests|scripts)(/.*)?$ - [F,L,NC]
 
 # Deny web access to sensitive file extensions
-<FilesMatch "\.(md|xml|sql|env|log|example)$">
+<FilesMatch "\.(md|xml|sql|env|log|example|sh|zip)$">
     Require all denied
 </FilesMatch>
 
@@ -25,3 +25,6 @@ RewriteRule ^(config|database|docs|wireframes)(/.*)?$ - [F,L,NC]
 <Files "database.php">
     Require all denied
 </Files>
+
+# Custom Error Pages
+ErrorDocument 404 /404.php
