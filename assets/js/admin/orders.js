@@ -1,95 +1,6 @@
 // ====================================================
 // ORDER DATA
 // ====================================================
-const FALLBACK_ORDERS = [
-  {
-    id: 'CT-0091', date: '2026-08-27', status: 'Pending',
-    customer: { name:'Maria Santos', email:'maria.santos@email.com', phone:'+63 917 123 4567', address:'456 Rizal St., Roxas Avenue, Roxas City, Capiz' },
-    items: [{ name:'iPhone 14 Pro 256GB (Deep Purple)', qty:1, price:48000 }],
-    fulfillment: 'Delivery', payment: 'GCash', paid: true,
-    history: [{ date:'2026-08-27 09:12', status:'Pending', note:'Order placed by customer.' }]
-  },
-  {
-    id: 'CT-0090', date: '2026-08-26', status: 'Processing',
-    customer: { name:'Juan dela Cruz', email:'juan.delacruz@email.com', phone:'+63 918 234 5678', address:'789 Bonifacio Ave., Brgy. Tanque, Roxas City, Capiz' },
-    items: [{ name:'Samsung Galaxy S24 Ultra 512GB', qty:1, price:72500 }],
-    fulfillment: 'Pickup', payment: 'Bank Transfer', paid: true,
-    history: [
-      { date:'2026-08-26 14:00', status:'Pending', note:'Order placed.' },
-      { date:'2026-08-26 15:30', status:'Processing', note:'Payment verified. Preparing item.' }
-    ]
-  },
-  {
-    id: 'CT-0089', date: '2026-08-25', status: 'Ready for Pickup',
-    customer: { name:'Ana Reyes', email:'ana.reyes@email.com', phone:'+63 919 345 6789', address:'123 Katipunan Ave., Brgy. Tanque, Roxas City, Capiz' },
-    items: [
-      { name:'iPad Air M2 256GB (Starlight)', qty:1, price:41999 },
-      { name:'AirPods Pro 2nd Gen', qty:1, price:14999 }
-    ],
-    fulfillment: 'Pickup', payment: 'COD', paid: false,
-    history: [
-      { date:'2026-08-25 10:00', status:'Pending', note:'Order placed.' },
-      { date:'2026-08-25 11:30', status:'Processing', note:'Items picked and packed.' },
-      { date:'2026-08-25 14:00', status:'Ready for Pickup', note:'Ready at the store. Awaiting customer.' }
-    ]
-  },
-  {
-    id: 'CT-0088', date: '2026-08-24', status: 'Completed',
-    customer: { name:'Carlo Mendoza', email:'carlo.mendoza@email.com', phone:'+63 920 456 7890', address:'22 Mabini St., Pueblo de Panay, Roxas City, Capiz' },
-    items: [{ name:'iPhone 13 128GB Pre-owned (Midnight)', qty:2, price:19500 }],
-    fulfillment: 'Pickup', payment: 'Cash', paid: true,
-    history: [
-      { date:'2026-08-24 09:00', status:'Pending', note:'Order placed.' },
-      { date:'2026-08-24 10:00', status:'Processing', note:'Preparing items.' },
-      { date:'2026-08-24 11:30', status:'Ready for Pickup', note:'Ready at store.' },
-      { date:'2026-08-24 13:15', status:'Completed', note:'Customer picked up. Payment received.' }
-    ]
-  },
-  {
-    id: 'CT-0087', date: '2026-08-24', status: 'Out for Delivery',
-    customer: { name:'Liza Bautista', email:'liza.bautista@email.com', phone:'+63 921 567 8901', address:'67 Taft Ave., Brgy. Baybay, Roxas City, Capiz' },
-    items: [{ name:'Xiaomi 14T Pro 256GB (Titan Black)', qty:1, price:29999 }],
-    fulfillment: 'Delivery', payment: 'GCash', paid: true,
-    history: [
-      { date:'2026-08-24 08:00', status:'Pending', note:'Order placed.' },
-      { date:'2026-08-24 09:30', status:'Processing', note:'Payment confirmed. Packing.' },
-      { date:'2026-08-24 11:00', status:'Out for Delivery', note:'Handed to rider. ETA: 2–4 hrs.' }
-    ]
-  },
-  {
-    id: 'CT-0086', date: '2026-08-23', status: 'Completed',
-    customer: { name:'Ricky Torres', email:'ricky.torres@email.com', phone:'+63 922 678 9012', address:'Block 4, Villa San Antonio, Brgy. Lawaan, Roxas City, Capiz' },
-    items: [{ name:'Apple Watch Series 9 45mm (Midnight)', qty:1, price:22999 }],
-    fulfillment: 'Delivery', payment: 'PayMaya', paid: true,
-    history: [
-      { date:'2026-08-23 10:00', status:'Pending', note:'Order placed.' },
-      { date:'2026-08-23 11:00', status:'Processing', note:'Payment confirmed.' },
-      { date:'2026-08-23 13:00', status:'Out for Delivery', note:'On its way.' },
-      { date:'2026-08-23 16:45', status:'Completed', note:'Delivered. Customer confirmed receipt.' }
-    ]
-  },
-  {
-    id: 'CT-0085', date: '2026-08-22', status: 'Processing',
-    customer: { name:'Grace Villanueva', email:'grace.v@email.com', phone:'+63 923 789 0123', address:'San Roque Extension, Brgy. Tiza, Roxas City, Capiz' },
-    items: [
-      { name:'Oppo Find X7 Ultra 512GB', qty:1, price:54000 },
-      { name:'Oppo Smart Tag', qty:2, price:999 }
-    ],
-    fulfillment: 'Delivery', payment: 'Bank Transfer', paid: true,
-    history: [
-      { date:'2026-08-22 14:00', status:'Pending', note:'Order placed.' },
-      { date:'2026-08-22 16:00', status:'Processing', note:'Bank transfer confirmed.' }
-    ]
-  },
-  {
-    id: 'CT-0084', date: '2026-08-21', status: 'Pending',
-    customer: { name:'Ben Aquino', email:'ben.aquino@email.com', phone:'+63 924 890 1234', address:'Plaridel St., Brgy. Inzo Arnaldo, Roxas City, Capiz' },
-    items: [{ name:'Samsung Galaxy Tab S9 128GB (Refurbished)', qty:1, price:36000 }],
-    fulfillment: 'Pickup', payment: 'COD', paid: false,
-    history: [{ date:'2026-08-21 17:30', status:'Pending', note:'Order placed. Awaiting confirmation.' }]
-  },
-];
-
 let orders = [];
 let currentOrderId = null;
 const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
@@ -283,6 +194,10 @@ function openOrderModal(id) {
   }
   document.getElementById('modalCustomerPhone').innerHTML   = phoneHtml;
   document.getElementById('modalCustomerAddress').textContent = o.customer.address;
+  const notesEl = document.getElementById('modalCustomerNotes');
+  if (notesEl) {
+    notesEl.textContent = o.notes ? o.notes : '—';
+  }
 
   // Items
   const total = o.items.reduce((s, i) => s + i.price * i.qty, 0);
@@ -365,7 +280,9 @@ async function updateOrderStatus() {
       throw new Error(result.error || 'Failed to update order status');
     }
   } catch (err) {
-    console.warn('API update failed, updating in local view:', err);
+    showToast(err.message || 'Failed to update order status on server.', 'toast-danger');
+    document.getElementById('modalStatusSelect').value = o.status;
+    return;
   }
 
   const now = new Date().toLocaleString('en-PH', {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).replace(',','');
@@ -409,18 +326,8 @@ function updateCounters() {
 // EXPORT CSV
 // ====================================================
 function exportCSV() {
-  const header = ['Order ID','Date','Customer','Total','Fulfillment','Payment','Status'];
-  const rows   = orders.map(o => {
-    const total = o.items.reduce((s,i) => s + i.price * i.qty, 0);
-    return [o.id, o.date, o.customer.name, total, o.fulfillment, o.payment, o.status];
-  });
-  const csvContent = [header, ...rows].map(r => r.join(',')).join('\n');
-  const blob = new Blob([csvContent], { type:'text/csv;charset=utf-8;' });
-  const url  = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'cheyn-gadgets-orders.csv'; a.click();
-  URL.revokeObjectURL(url);
-  showToast('Orders exported to CSV!', 'toast-success');
+  window.location.href = '../api/admin/orders.php?export=csv';
+  showToast('Downloading orders CSV…', 'toast-success');
 }
 
 // ====================================================
@@ -452,11 +359,6 @@ async function loadOrders() {
     }
   } catch (err) {
     console.warn('Failed to fetch orders from API:', err);
-  }
-
-  // Fallback to initial mock orders if offline or API returns empty
-  if (!orders.length && typeof FALLBACK_ORDERS !== 'undefined') {
-    orders = [...FALLBACK_ORDERS];
   }
 
   renderOrders(orders);

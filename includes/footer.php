@@ -37,6 +37,8 @@
             <?php endif; ?>
             <a href="contact.php">Store Location &amp; Contact</a>
             <a href="about.php">Inspection Process</a>
+            <a href="policy.php#warranty">Warranty &amp; Replacement</a>
+            <a href="policy.php#privacy">Privacy Policy</a>
           </div>
         </div>
         <div class="col-6 col-md-3 col-lg-2">

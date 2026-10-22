@@ -93,10 +93,72 @@
 
     /* --- Condition badge --- */
     var badgesEl = document.getElementById('conditionBadges');
-    if (badgesEl) {
-      badgesEl.innerHTML =
-        '<span class="badge-ct ' + (product.badge || 'badge-preowned') + '">' + (product.badgeLabel || product.condition || 'Pre-owned') + '</span>' +
-        '<span class="badge-ct badge-available">Available</span>';
+
+    /* --- Add to Cart --- */
+    var addBtn = document.getElementById('addToCartBtn');
+
+    /* --- Sticky Mobile Purchase Bar --- */
+    var stickyBar   = document.getElementById('stickyMobileBar');
+    var stickyTitle = document.getElementById('stickyBarTitle');
+    var stickyPrice = document.getElementById('stickyBarPrice');
+    var stickyImg   = document.getElementById('stickyBarImg');
+    var stickyAdd   = document.getElementById('stickyBarAddBtn');
+
+    function updateStockState() {
+      var currentStock = 10;
+      if (product.variants && product.variants.length) {
+        var exactVariant = product.variants.find(function (v) {
+          return v.storage === currentStorage && v.color === currentColor;
+        });
+        if (!exactVariant) {
+          exactVariant = product.variants.find(function (v) {
+            return v.storage === currentStorage;
+          });
+        }
+        if (exactVariant && typeof exactVariant.stock !== 'undefined') {
+          currentStock = parseInt(exactVariant.stock, 10);
+        }
+      } else if (typeof product.stock !== 'undefined') {
+        currentStock = parseInt(product.stock, 10);
+      }
+
+      var isOutOfStock = currentStock <= 0;
+
+      if (badgesEl) {
+        var stockBadge = isOutOfStock
+          ? '<span class="badge-ct bg-danger text-white">Out of Stock</span>'
+          : (currentStock <= 3
+              ? '<span class="badge-ct bg-warning-subtle text-warning-emphasis">Only ' + currentStock + ' Left</span>'
+              : '<span class="badge-ct badge-available">In Stock</span>');
+
+        badgesEl.innerHTML =
+          '<span class="badge-ct ' + (product.badge || 'badge-preowned') + '">' + (product.badgeLabel || product.condition || 'Pre-owned') + '</span>' +
+          stockBadge;
+      }
+
+      if (addBtn) {
+        if (isOutOfStock) {
+          addBtn.disabled = true;
+          addBtn.classList.add('disabled');
+          addBtn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Out of Stock';
+        } else {
+          addBtn.disabled = false;
+          addBtn.classList.remove('disabled');
+          addBtn.innerHTML = '<i class="bi bi-bag-plus me-2"></i>Add to Bag';
+        }
+      }
+
+      if (stickyAdd) {
+        if (isOutOfStock) {
+          stickyAdd.disabled = true;
+          stickyAdd.classList.add('disabled');
+          stickyAdd.textContent = 'Out of Stock';
+        } else {
+          stickyAdd.disabled = false;
+          stickyAdd.classList.remove('disabled');
+          stickyAdd.textContent = 'Add to Bag';
+        }
+      }
     }
 
     /* --- Name & price --- */
@@ -148,6 +210,7 @@
           if (stickyPriceEl) stickyPriceEl.textContent = fmt(currentPrice);
           var specStorageEl = document.getElementById('specStorage');
           if (specStorageEl) specStorageEl.textContent = currentStorage;
+          updateStockState();
         });
       });
     }
@@ -176,6 +239,7 @@
           label.classList.add('active');
           currentColor = label.dataset.color;
           if (colorLabelEl) colorLabelEl.textContent = currentColor;
+          updateStockState();
         });
       });
     }
@@ -265,6 +329,9 @@
         }
       }, { passive: true });
     }
+
+    /* --- Initial Stock State Evaluation --- */
+    updateStockState();
 
     /* --- Related products grid --- */
     var relatedGrid = document.getElementById('relatedGrid');
