@@ -148,8 +148,8 @@ try {
     $orderStmt = $pdo->prepare('
         INSERT INTO orders (
             order_number, user_id, customer_name, customer_email, customer_phone,
-            fulfillment, delivery_address, payment_method, total_amount, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "pending")
+            fulfillment, delivery_address, payment_method, total_amount, status, notes
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "pending", ?)
     ');
     $orderStmt->execute([
         $orderNumber,
@@ -160,7 +160,8 @@ try {
         $fulfillment,
         $deliveryAddress ?: null,
         $paymentMethod,
-        $subtotal
+        $subtotal,
+        $notes ?: null
     ]);
 
     $orderId = (int)$pdo->lastInsertId();

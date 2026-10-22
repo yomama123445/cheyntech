@@ -274,13 +274,13 @@ async function saveProduct() {
       if (!res.ok || !result.success) {
         throw new Error(result.error || 'Failed to update product');
       }
+      const idx = products.findIndex(x => String(x.id) === String(id));
+      if (idx > -1) { products[idx] = { ...products[idx], ...data }; }
+      showToast('Product updated successfully!', 'toast-success');
     } catch (err) {
-      console.warn('API update failed, updating in local memory:', err);
+      showToast(err.message || 'Failed to update product on server.', 'toast-danger');
+      return;
     }
-
-    const idx = products.findIndex(x => String(x.id) === String(id));
-    if (idx > -1) { products[idx] = { ...products[idx], ...data }; }
-    showToast('Product updated successfully!', 'toast-success');
   } else {
     try {
       const res = await fetch('../api/admin/products.php', {
@@ -293,18 +293,16 @@ async function saveProduct() {
         body: JSON.stringify(data)
       });
       const result = await res.json();
-      if (res.ok && result.success && result.product_id) {
-        data.id = result.product_id;
-      } else {
-        data.id = 'prod-' + Date.now();
+      if (!res.ok || !result.success || !result.product_id) {
+        throw new Error(result.error || 'Failed to create product');
       }
+      data.id = result.product_id;
+      products.unshift(data);
+      showToast('Product added successfully!', 'toast-success');
     } catch (err) {
-      console.warn('API create failed, adding to local memory:', err);
-      data.id = 'prod-' + Date.now();
+      showToast(err.message || 'Failed to create product on server.', 'toast-danger');
+      return;
     }
-
-    products.unshift(data);
-    showToast('Product added successfully!', 'toast-success');
   }
 
   productModal.hide();
