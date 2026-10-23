@@ -518,4 +518,42 @@
     });
   });
 
+  // ============================================================
+  // GOOGLE SIGN-IN CREDENTIAL HANDLER
+  // ============================================================
+  window.handleGoogleCredentialResponse = function (response) {
+    if (!response || !response.credential) {
+      notify('Google authentication was cancelled or failed.', 'error');
+      return;
+    }
+
+    notify('Signing in with Google…', 'info');
+
+    fetch('api/auth/google.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ credential: response.credential })
+    })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (data && data.success) {
+        notify('Signed in with Google! Redirecting…', 'success');
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectParam = urlParams.get('redirect');
+        var target = (redirectParam && redirectParam.startsWith('checkout')) ? redirectParam : 'index.php';
+        setTimeout(function () {
+          window.location.href = target;
+        }, 600);
+      } else {
+        notify((data && data.error) || 'Google sign-in could not be completed.', 'error');
+      }
+    })
+    .catch(function () {
+      notify('Unable to verify Google credentials with the server.', 'error');
+    });
+  };
+
 })();

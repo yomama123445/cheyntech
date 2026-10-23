@@ -3618,6 +3618,33 @@ img { max-width: 100%; }
   text-decoration: underline;
   transition: color 0.15s ease;
 }
+
+/* Apple Auth Divider */
+.apple-auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.75rem 0;
+}
+.apple-auth-divider::before,
+.apple-auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e5e5ea;
+}
+.apple-auth-divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+.apple-auth-divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+.apple-divider-text {
+  font-size: 0.78rem;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
 .apple-footnote-link:hover {
   color: #1d1d1f;
 }
