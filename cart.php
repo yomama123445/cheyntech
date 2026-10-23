@@ -89,7 +89,7 @@ require 'includes/header.php';
 
             <?php if (empty($_SESSION['user_id'])): ?>
               <p class="secure-note text-center mt-2 mb-0">
-                <i class="bi bi-person-lock me-1"></i>Sign in or create a Cheyn ID to checkout
+                <i class="bi bi-person-lock me-1"></i>Sign in or create an account to checkout
               </p>
             <?php else: ?>
               <p class="secure-note text-center mt-2 mb-0">
