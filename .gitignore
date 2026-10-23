@@ -2,6 +2,7 @@
 config/database.php
 repomix-output.xml
 test-db.php
+*.zip
 
 # add these lines to .gitignore
 AUDIT.md
