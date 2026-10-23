@@ -27,6 +27,8 @@ if (!empty($_SESSION['user_id'])) {
     }
     exit;
 }
+
+$googleClientId  = getenv('GOOGLE_CLIENT_ID') ?: '652398471928-cheyngadgets.apps.googleusercontent.com';
 $pageTitle       = 'Cheyn ID | Sign In or Create Account';
 $pageDescription = 'Sign in with your Cheyn ID or create an account for fast checkout, device & order tracking, and local support in Roxas City.';
 $activePage      = 'login';
@@ -104,6 +106,29 @@ require 'includes/header.php';
                     <a href="contact.php?product=Password+Reset+Request" class="apple-subtle-link">Forgotten password?</a>
                   </div>
 
+                  <div class="apple-auth-divider my-4">
+                    <span class="apple-divider-text">or continue with</span>
+                  </div>
+
+                  <!-- Google Sign-In Integration -->
+                  <div class="d-flex justify-content-center">
+                    <div id="g_id_onload"
+                         data-client_id="<?= htmlspecialchars($googleClientId) ?>"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleGoogleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="outline"
+                         data-text="continue_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                  </div>
+
                   <div class="apple-switch-prompt text-center mt-4 pt-3">
                     <p class="mb-0 text-muted small">
                       Don't have a Cheyn ID? <a href="#" class="apple-accent-link fw-semibold" id="switchToRegister">Create yours now</a>
@@ -178,6 +203,22 @@ require 'includes/header.php';
                     </button>
                   </div>
                   <div class="apple-field-error" id="regNameError">Please enter your full name.</div>
+
+                  <div class="apple-auth-divider my-4">
+                    <span class="apple-divider-text">or continue with</span>
+                  </div>
+
+                  <!-- Google One-Click Registration -->
+                  <div class="d-flex justify-content-center">
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-shape="pill"
+                         data-theme="outline"
+                         data-text="signup_with"
+                         data-size="large"
+                         data-logo_alignment="left">
+                    </div>
+                  </div>
 
                   <div class="apple-switch-prompt text-center mt-4 pt-3">
                     <p class="mb-0 text-muted small">
@@ -285,14 +326,15 @@ require 'includes/header.php';
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center text-md-start">
       <div class="apple-minimal-footer-links d-flex flex-wrap justify-content-center justify-content-md-start align-items-center gap-2 gap-md-3">
         <span>&copy; <?= date('Y') ?> Cheyn Gadgets. All rights reserved.</span>
-        <a href="about.php">Privacy Policy</a>
-        <a href="about.php">Terms of Use</a>
+        <a href="policy.php#privacy">Privacy Policy</a>
+        <a href="policy.php#terms">Terms of Use</a>
         <a href="contact.php">Store Support</a>
       </div>
       <p class="apple-minimal-footnote mb-0 text-center text-md-end">This website is for educational purposes only.</p>
     </div>
   </footer>
 
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= asset_url('assets/js/main.js') ?>"></script>
   <script src="<?= asset_url('assets/js/login.js') ?>"></script>
