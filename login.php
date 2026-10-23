@@ -28,7 +28,7 @@ if (!empty($_SESSION['user_id'])) {
     exit;
 }
 
-$googleClientId  = getenv('GOOGLE_CLIENT_ID') ?: '652398471928-cheyngadgets.apps.googleusercontent.com';
+$googleClientId  = getenv('GOOGLE_CLIENT_ID') ?: '480546804601-3sp22htqa4012b9l7iphguup2chko76e.apps.googleusercontent.com';
 $pageTitle       = 'Cheyn ID | Sign In or Create Account';
 $pageDescription = 'Sign in with your Cheyn ID or create an account for fast checkout, device & order tracking, and local support in Roxas City.';
 $activePage      = 'login';
