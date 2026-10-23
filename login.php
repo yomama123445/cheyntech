@@ -29,8 +29,8 @@ if (!empty($_SESSION['user_id'])) {
 }
 
 $googleClientId  = getenv('GOOGLE_CLIENT_ID') ?: '480546804601-3sp22htqa4012b9l7iphguup2chko76e.apps.googleusercontent.com';
-$pageTitle       = 'Cheyn ID | Sign In or Create Account';
-$pageDescription = 'Sign in with your Cheyn ID or create an account for fast checkout, device & order tracking, and local support in Roxas City.';
+$pageTitle       = 'Account | Sign In or Create Account';
+$pageDescription = 'Sign in to your CheynTech account or create one for fast checkout, device & order tracking, and local support in Roxas City.';
 $activePage      = 'login';
 require 'includes/header.php';
 ?>
@@ -51,7 +51,7 @@ require 'includes/header.php';
       <?php if (!empty($_GET['redirect']) && str_starts_with($_GET['redirect'], 'checkout')): ?>
         <div class="alert alert-light border shadow-sm d-flex align-items-center gap-2 mb-4 py-2 px-3 rounded-3" role="status">
           <i class="bi bi-bag-check text-primary fs-5 flex-shrink-0"></i>
-          <span class="small text-muted">Please sign in or create a Cheyn ID to proceed with your checkout.</span>
+          <span class="small text-muted">Please sign in or create an account to proceed with your checkout.</span>
         </div>
       <?php endif; ?>
 
@@ -84,7 +84,7 @@ require 'includes/header.php';
               <!-- SIGN IN: STEP 1 (Email / Identifier) -->
               <div class="apple-auth-step" id="loginStep1">
                 <div class="text-center mb-4">
-                  <h1 class="apple-hero-title">Sign in with Cheyn ID</h1>
+                  <h1 class="apple-hero-title">Sign in to your account</h1>
                   <p class="apple-hero-subtitle">Enter your email address to continue to your account.</p>
                 </div>
 
@@ -131,7 +131,7 @@ require 'includes/header.php';
 
                   <div class="apple-switch-prompt text-center mt-4 pt-3">
                     <p class="mb-0 text-muted small">
-                      Don't have a Cheyn ID? <a href="#" class="apple-accent-link fw-semibold" id="switchToRegister">Create yours now</a>
+                      Don't have an account? <a href="#" class="apple-accent-link fw-semibold" id="switchToRegister">Create yours now</a>
                     </p>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ require 'includes/header.php';
               <!-- REGISTER: STEP 1 (Name) -->
               <div class="apple-auth-step" id="regStep1">
                 <div class="text-center mb-4">
-                  <h1 class="apple-hero-title">Create your Cheyn ID</h1>
+                  <h1 class="apple-hero-title">Create your account</h1>
                   <p class="apple-hero-subtitle">Let's start with your full name.</p>
                 </div>
 
@@ -222,7 +222,7 @@ require 'includes/header.php';
 
                   <div class="apple-switch-prompt text-center mt-4 pt-3">
                     <p class="mb-0 text-muted small">
-                      Already have a Cheyn ID? <a href="#" class="apple-accent-link fw-semibold" id="switchToLogin">Sign in</a>
+                      Already have an account? <a href="#" class="apple-accent-link fw-semibold" id="switchToLogin">Sign in</a>
                     </p>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ require 'includes/header.php';
               <div class="apple-auth-step d-none" id="regStep3">
                 <div class="text-center mb-4">
                   <h2 class="apple-hero-title">Set your password</h2>
-                  <p class="apple-hero-subtitle">Choose a secure password for your Cheyn ID.</p>
+                  <p class="apple-hero-subtitle">Choose a secure password for your account.</p>
                 </div>
 
                 <div class="apple-step-body">
