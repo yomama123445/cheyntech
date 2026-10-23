@@ -30,7 +30,7 @@ $activePage      = $activePage      ?? '';
     <div class="container d-flex align-items-center justify-content-between">
       <a href="index.php" class="apple-minimal-brand d-flex align-items-center gap-2 text-decoration-none">
         <img src="assets/img/logo-64.png" alt="Cheyn Gadgets logo" width="28" height="28">
-        <span class="apple-minimal-title">Cheyn ID</span>
+        <span class="apple-minimal-title">Account</span>
       </a>
       <a href="index.php" class="apple-minimal-back text-decoration-none">
         <span class="d-none d-sm-inline">Return to </span>Store &rarr;
