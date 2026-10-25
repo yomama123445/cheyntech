@@ -4,8 +4,7 @@
    Tech: Bootstrap 5.3 + Vanilla JS
    ===================================================== */
 
-/* ----- Google Font import (Inter) ----- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* ----- Font Loaded via <link> in <head> for zero-flicker parallel loading ----- */
 
 /* ----- CSS Custom Properties ----- */
 :root {
@@ -49,14 +48,19 @@ a:hover       { color: var(--ct-primary-dark); }
 /* ----- Base ----- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+}
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-size: 0.95rem;
   color: var(--ct-text);
-  background: #fff;
+  background-color: #ffffff;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img { max-width: 100%; }
@@ -75,7 +79,7 @@ img { max-width: 100%; }
   min-height: 44px !important;
   display: flex !important;
   align-items: center !important;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   z-index: 1020;
 }
 
@@ -373,29 +377,29 @@ img { max-width: 100%; }
     border-radius: 0 0 20px 20px !important;
     border: none !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-    background: rgba(255, 255, 255, 0.90) !important;
-    backdrop-filter: blur(32px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
     box-shadow: 0 32px 64px rgba(0, 0, 0, 0.08) !important;
     padding: 2.75rem 0 3.25rem !important;
     margin: 0 !important;
     display: block;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.32s ease !important;
+    transform: translate3d(0, -6px, 0);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.22s ease !important;
     pointer-events: none;
     z-index: 1020;
+    will-change: opacity, transform;
   }
 
-  /* Active or Hover State for Nav Tray */
-  .navbar-ct .nav-item.has-nav-tray.is-active > .dropdown-menu.nav-tray,
-  .navbar-ct .nav-item.has-nav-tray:hover > .dropdown-menu.nav-tray {
+  /* Active State for Nav Tray (Controlled by JS for seamless, zero-flicker handoff) */
+  .navbar-ct .nav-item.has-nav-tray.is-active > .dropdown-menu.nav-tray {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) !important;
+    transform: translate3d(0, 0, 0) !important;
     pointer-events: auto;
   }
 
@@ -494,14 +498,14 @@ img { max-width: 100%; }
   -webkit-backdrop-filter: blur(16px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.35s ease;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s ease;
   pointer-events: none;
   z-index: 1010;
+  will-change: opacity;
 }
 
 @media (min-width: 992px) {
-  .navbar-ct:has(.has-nav-tray:hover) + .nav-backdrop,
   body.nav-tray-active .nav-backdrop {
     opacity: 1;
     visibility: visible;

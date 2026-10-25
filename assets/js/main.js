@@ -589,6 +589,55 @@ function initHeroVideo() {
 }
 
 /* =====================================================
+   INSTANT SPECULATIVE PAGE PRELOADER (Zero-latency page transitions)
+   ===================================================== */
+function initInstantPagePreloader() {
+  const prefetched = new Set();
+
+  function isEligible(url) {
+    if (!url) return false;
+    try {
+      const loc = new URL(url, window.location.href);
+      return loc.origin === window.location.origin &&
+             !loc.pathname.endsWith('.pdf') &&
+             !loc.pathname.endsWith('.zip') &&
+             !loc.pathname.endsWith('.sql') &&
+             !loc.search.includes('logout') &&
+             loc.pathname !== window.location.pathname;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function prefetch(url) {
+    if (!isEligible(url)) return;
+    try {
+      const cleanUrl = new URL(url, window.location.href).href;
+      if (prefetched.has(cleanUrl)) return;
+      prefetched.add(cleanUrl);
+
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = cleanUrl;
+      link.as = 'document';
+      document.head.appendChild(link);
+    } catch (e) {}
+  }
+
+  // Preload on hover (gives ~200-300ms head start before click)
+  document.addEventListener('mouseover', function(e) {
+    const a = e.target.closest('a[href]');
+    if (a && a.href) prefetch(a.href);
+  }, { passive: true });
+
+  // Preload on mobile touchstart
+  document.addEventListener('touchstart', function(e) {
+    const a = e.target.closest('a[href]');
+    if (a && a.href) prefetch(a.href);
+  }, { passive: true });
+}
+
+/* =====================================================
    INIT ALL
    ===================================================== */
 document.addEventListener('DOMContentLoaded', () => {
@@ -603,5 +652,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initUserAuth();
   initNavTrayController();
   initHeroVideo();
+  initInstantPagePreloader();
 });
 
