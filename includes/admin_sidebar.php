@@ -38,12 +38,15 @@
       <a href="settings.php" class="nav-link <?= $adminActivePage === 'settings' ? 'active' : '' ?>" <?= $adminActivePage === 'settings' ? 'aria-current="page"' : '' ?>>
         <i class="bi bi-sliders"></i> <span>Settings</span>
       </a>
-      <a href="../catalog.php" class="nav-link" target="_blank" rel="noopener">
-        <i class="bi bi-arrow-up-right-square"></i> <span>Storefront</span>
+      <a href="../index.php" class="nav-link">
+        <i class="bi bi-shop"></i> <span>Customer Store</span>
       </a>
     </nav>
 
-    <div class="mt-auto p-3 border-top border-light-subtle">
+    <div class="mt-auto p-3 border-top border-light-subtle d-flex flex-column gap-1">
+      <a href="../index.php" class="nav-link d-flex align-items-center gap-2 text-secondary">
+        <i class="bi bi-house"></i> <span>Return to Store</span>
+      </a>
       <a href="../login.php?action=logout" class="nav-link sidebar-logout d-flex align-items-center gap-2">
         <i class="bi bi-box-arrow-left"></i> <span>Sign Out</span>
       </a>

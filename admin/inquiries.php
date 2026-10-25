@@ -13,6 +13,10 @@ require '../includes/admin_sidebar.php';
       </button>
       <h5 class="mb-0 me-auto">Customer Inquiries</h5>
       <div class="d-flex align-items-center gap-2 gap-sm-3">
+        <a href="../index.php" class="admin-view-store-btn" title="View Customer Storefront">
+          <i class="bi bi-arrow-up-right small text-muted"></i>
+          <span class="d-none d-sm-inline">View Store</span>
+        </a>
         <div class="dropdown">
           <button class="btn p-0 d-flex align-items-center gap-2 admin-profile-btn" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="admin-user-avatar"><?= strtoupper(substr($_SESSION['user_name'] ?? 'A', 0, 1)) ?></div>
@@ -30,6 +34,7 @@ require '../includes/admin_sidebar.php';
               </div>
             </li>
             <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item" href="../index.php"><i class="bi bi-house me-2"></i>Return to Store</a></li>
             <li><a class="dropdown-item" href="../profile.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
             <li><a class="dropdown-item" href="settings.php"><i class="bi bi-gear me-2"></i>Settings</a></li>
             <li><hr class="dropdown-divider my-1"></li>

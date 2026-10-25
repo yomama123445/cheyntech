@@ -12,8 +12,12 @@ require '../includes/admin_sidebar.php';
         <i class="bi bi-list fs-5"></i>
       </button>
       <h5 class="mb-0 me-auto">Dashboard</h5>
-      <div class="d-flex align-items-center gap-3">
-        <span class="d-none d-sm-inline text-muted qa-desc">
+      <div class="d-flex align-items-center gap-2 gap-sm-3">
+        <a href="../index.php" class="admin-view-store-btn" title="View Customer Storefront">
+          <i class="bi bi-arrow-up-right small text-muted"></i>
+          <span class="d-none d-sm-inline">View Store</span>
+        </a>
+        <span class="d-none d-md-inline text-muted qa-desc">
           <i class="bi bi-calendar3 me-1"></i><span id="todayDate"></span>
         </span>
         <div class="dropdown">
@@ -33,6 +37,7 @@ require '../includes/admin_sidebar.php';
               </div>
             </li>
             <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item" href="../index.php"><i class="bi bi-house me-2"></i>Return to Store</a></li>
             <li><a class="dropdown-item" href="../profile.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
             <li><a class="dropdown-item" href="settings.php"><i class="bi bi-gear me-2"></i>Settings</a></li>
             <li><hr class="dropdown-divider my-1"></li>

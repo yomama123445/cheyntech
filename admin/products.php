@@ -13,6 +13,10 @@ require '../includes/admin_sidebar.php';
       </button>
       <h5 class="mb-0 me-auto">Products</h5>
       <div class="d-flex align-items-center gap-2 gap-sm-3">
+        <a href="../index.php" class="admin-view-store-btn" title="View Customer Storefront">
+          <i class="bi bi-arrow-up-right small text-muted"></i>
+          <span class="d-none d-sm-inline">View Store</span>
+        </a>
         <button class="btn btn-ct btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openAddModal()">
           <i class="bi bi-plus-lg me-1"></i> <span class="d-none d-sm-inline">Add </span>Product
         </button>
@@ -33,6 +37,7 @@ require '../includes/admin_sidebar.php';
               </div>
             </li>
             <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item" href="../index.php"><i class="bi bi-house me-2"></i>Return to Store</a></li>
             <li><a class="dropdown-item" href="../profile.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
             <li><a class="dropdown-item" href="settings.php"><i class="bi bi-gear me-2"></i>Settings</a></li>
             <li><hr class="dropdown-divider my-1"></li>
