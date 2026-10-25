@@ -251,7 +251,7 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card spotlight-card">
             <div class="card-img-wrap">
-              <img src="assets/img/iphone_13pro.jpeg" alt="iPhone 13 128GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <img src="assets/img/products/real/iphone_13.jpg" alt="iPhone 13 128GB Midnight" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -264,7 +264,7 @@ require 'includes/header.php';
               <p class="product-price">₱29,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone13-128gb-midnight',name:'iPhone 13 128GB Midnight',price:29500,variant:'128GB',color:'Midnight',image:'assets/img/iphone_13pro.jpeg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone13-128gb-midnight',name:'iPhone 13 128GB Midnight',price:29500,variant:'128GB',color:'Midnight',image:'assets/img/products/real/iphone_13.jpg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.php?id=iphone13" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -276,7 +276,7 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card spotlight-card">
             <div class="card-img-wrap">
-              <img src="assets/img/iPhone_12.jpeg" alt="iPhone 12 128GB Blue" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <img src="assets/img/products/real/iphone_12.jpg" alt="iPhone 12 128GB Blue" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -289,7 +289,7 @@ require 'includes/header.php';
               <p class="product-price">₱24,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone12-128gb-blue',name:'iPhone 12 128GB Blue',price:24500,variant:'128GB',color:'Blue',image:'assets/img/iPhone_12.jpeg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone12-128gb-blue',name:'iPhone 12 128GB Blue',price:24500,variant:'128GB',color:'Blue',image:'assets/img/products/real/iphone_12.jpg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.php?id=iphone12" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -301,7 +301,7 @@ require 'includes/header.php';
         <div class="col">
           <article class="product-card spotlight-card">
             <div class="card-img-wrap">
-              <img src="assets/img/iphone_11.jpeg" alt="iPhone 11 128GB Black" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+              <img src="assets/img/products/real/iphone_11.jpg" alt="iPhone 11 128GB Black" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
               <span class="badge-ct badge-preowned">Pre-owned</span>
             </div>
             <div class="card-body">
@@ -314,7 +314,7 @@ require 'includes/header.php';
               <p class="product-price">₱18,500</p>
             </div>
             <div class="card-footer">
-              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone11-128gb-black',name:'iPhone 11 128GB Black',price:18500,variant:'128GB',color:'Black',image:'assets/img/iphone_11.jpeg'}, this)">
+              <button class="btn btn-ct btn-ct-sm flex-grow-1" onclick="quickAddToCart({id:'iphone11-128gb-black',name:'iPhone 11 128GB Black',price:18500,variant:'128GB',color:'Black',image:'assets/img/products/real/iphone_11.jpg'}, this)">
                 <i class="bi bi-cart-plus me-1"></i>Add
               </button>
               <a href="product.php?id=iphone11" class="btn btn-ct-outline btn-ct-sm">View</a>
@@ -358,23 +358,114 @@ require 'includes/header.php';
   </section>
 
   <!-- ==============================================
+       AUTHENTIC STORE & LOCAL COMMUNITY PROOF
+       ============================================== -->
+  <section class="py-5 bg-ct-soft border-top border-bottom" id="local-trust">
+    <div class="container">
+      <div class="apple-section-header text-center mb-5">
+        <span class="apple-section-tag">Tested &amp; Handed Over In Roxas City</span>
+        <h2 class="apple-section-title">Happy customers. Real devices.</h2>
+        <p class="apple-section-subtitle mx-auto">
+          Every device is thoroughly inspected and verified on-site before handover to our local customers across Capiz.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Customer 1 -->
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+            <img
+              src="assets/img/proof/customer_handover_1.jpeg"
+              alt="Customer receiving tested iPhone in Cheyn Gadgets Roxas City"
+              class="img-fluid w-100"
+              style="height: 320px; object-fit: cover;"
+              loading="lazy"
+            >
+            <div class="p-3 bg-white text-center">
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 mb-1 small">
+                <i class="bi bi-shield-check me-1"></i>Verified Store Handover
+              </span>
+              <p class="text-muted small mb-0">Inspected, fully tested, and released with genuine accessories.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer 2 -->
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+            <img
+              src="assets/img/proof/customer_handover_2.jpeg"
+              alt="Cheyn Gadgets happy customer handover"
+              class="img-fluid w-100"
+              style="height: 320px; object-fit: cover;"
+              loading="lazy"
+            >
+            <div class="p-3 bg-white text-center">
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 mb-1 small">
+                <i class="bi bi-shield-check me-1"></i>Pre-Owned Grade A Certified
+              </span>
+              <p class="text-muted small mb-0">Clean iCloud, verified battery health, and 7-day shop warranty.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer 3 -->
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+            <img
+              src="assets/img/proof/customer_handover_3.jpg"
+              alt="Cheyn Gadgets iPhone handover"
+              class="img-fluid w-100"
+              style="height: 320px; object-fit: cover;"
+              loading="lazy"
+            >
+            <div class="p-3 bg-white text-center">
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 mb-1 small">
+                <i class="bi bi-shield-check me-1"></i>In-Store Setup Assistance
+              </span>
+              <p class="text-muted small mb-0">Data transfer, screen testing, and device setup completed in-store.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
        PHYSICAL STOREFRONT PRESENCE (Roxas City)
        ============================================== -->
-  <section class="apple-storefront-section">
+  <section class="apple-storefront-section py-5">
     <div class="container">
-      <div class="apple-storefront-card">
-        <span class="apple-section-tag">Roxas City Shop</span>
-        <h2 class="apple-section-title mb-3">Drop by the shop.</h2>
-        <p class="apple-section-subtitle mx-auto mb-4">
-          Have questions or want to see a phone in person? Visit our store in Roxas City, Capiz. You can inspect screens, compare battery percentages, and test features with no pressure.
-        </p>
-        <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
-          <a href="contact.php" class="btn apple-btn-primary">
-            Store Location &amp; Hours <i class="bi bi-geo-alt ms-1"></i>
-          </a>
-          <a href="about.php" class="btn btn-ct-outline">
-            About Cheyn Gadgets
-          </a>
+      <div class="apple-storefront-card overflow-hidden p-0 border-0 shadow-sm rounded-4">
+        <div class="row g-0 align-items-center">
+          <div class="col-lg-6">
+            <img
+              src="assets/img/store/storefront_facade.jpg"
+              alt="Cheyn Gadgets storefront at ASB-1 Building, Premier De Mayo St., Roxas City"
+              class="img-fluid w-100 h-100"
+              style="object-fit: cover; min-height: 320px; max-height: 420px;"
+              loading="lazy"
+            >
+          </div>
+          <div class="col-lg-6 p-4 p-md-5 text-start">
+            <span class="apple-section-tag">Roxas City Shop</span>
+            <h2 class="apple-section-title mb-2">Drop by the shop.</h2>
+            <p class="text-muted mb-2">
+              <strong>ASB-1 Building, Premier De Mayo Street</strong>, Roxas City, Capiz<br>
+              <span class="small text-muted">(Near old GSIS riverside, between Laundry Hub and Hair Chef Salon)</span>
+            </p>
+            <p class="apple-section-subtitle mb-4">
+              Have questions or want to see a phone in person? Visit our store open daily from <strong>9:00 AM – 7:30 PM</strong>. Inspect screens, compare battery percentages, and test features with zero pressure.
+            </p>
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+              <a href="contact.php" class="btn apple-btn-primary">
+                Store Location &amp; Map <i class="bi bi-geo-alt ms-1"></i>
+              </a>
+              <a href="about.php" class="btn btn-ct-outline">
+                About Cheyn Gadgets
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

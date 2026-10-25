@@ -10,7 +10,7 @@
           <p class="mb-3">Your trusted electronics storefront in Roxas City. Specializing in function-tested pre-owned, refurbished, and brand-new smartphones, tablets, and wearables.</p>
           <p class="footer-meta-note d-flex align-items-center gap-2 mb-3">
             <i class="bi bi-geo-alt"></i>
-            <span>Roxas City, Capiz &middot; In-store pickup &amp; delivery</span>
+            <span>ASB-1 Bldg., Premier De Mayo St., Roxas City &middot; Open Daily 9:00 AM – 7:30 PM</span>
           </p>
           <div class="social-links d-flex gap-2">
             <a href="https://www.facebook.com/profile.php?id=61580936674089" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>

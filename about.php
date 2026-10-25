@@ -51,8 +51,8 @@ require 'includes/header.php';
         <div class="col-lg-6" id="location">
           <div class="store-feature-card" id="pickup">
             <img
-              src="assets/img/hero-product.jpg"
-              alt="Cheyn Gadgets storefront in Roxas City"
+              src="assets/img/store/storefront_facade.jpg"
+              alt="Cheyn Gadgets storefront at Premier De Mayo St., Roxas City"
               class="store-feature-img"
               loading="lazy"
               onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
@@ -60,11 +60,11 @@ require 'includes/header.php';
             <div class="store-feature-caption">
               <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                 <div>
-                  <h6 class="fw-bold mb-0 text-dark">Cheyn Gadgets Storefront</h6>
-                  <span class="text-muted small">Roxas City, Capiz</span>
+                  <h6 class="fw-bold mb-0 text-dark">ASB-1 Building, Premier De Mayo St.</h6>
+                  <span class="text-muted small">Near Old GSIS riverside, Roxas City, Capiz</span>
                 </div>
                 <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small">
-                  <i class="bi bi-door-open me-1"></i>Open for In-Store Pickup
+                  <i class="bi bi-door-open me-1"></i>Open Daily 9:00 AM – 7:30 PM
                 </span>
               </div>
             </div>
@@ -91,8 +91,8 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/iphone15_promax.jpeg"
-                alt="Happy customer pickup at Cheyn Gadgets"
+                src="assets/img/proof/customer_handover_1.jpeg"
+                alt="Happy customer device handover at Cheyn Gadgets"
                 class="gallery-img"
                 loading="lazy"
                 onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
@@ -111,8 +111,8 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/iphone_13pro.jpeg"
-                alt="Device diagnostic check in store"
+                src="assets/img/store/interior_display_1.jpg"
+                alt="Device diagnostic check and display in store"
                 class="gallery-img"
                 loading="lazy"
                 onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
@@ -131,17 +131,17 @@ require 'includes/header.php';
           <article class="gallery-card">
             <div class="gallery-img-wrap">
               <img
-                src="assets/img/iPhone_12.jpeg"
-                alt="Fresh gadget stock ready for pickup"
+                src="assets/img/store/interior_design.jpg"
+                alt="Showroom display at Cheyn Gadgets Roxas City"
                 class="gallery-img"
                 loading="lazy"
                 onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
               >
             </div>
             <div class="gallery-body">
-              <span class="gallery-tag">Fresh Arrivals</span>
+              <span class="gallery-tag">Store Showroom</span>
               <h5 class="gallery-title">Curated Inventory</h5>
-              <p class="gallery-desc">Sealed brand-new phones and clean Grade A pre-owned units ready for immediate release.</p>
+              <p class="gallery-desc">Clean displays, genuine accessories, and quality-inspected devices ready for release.</p>
             </div>
           </article>
         </div>
@@ -188,6 +188,49 @@ require 'includes/header.php';
             <p class="text-muted small mb-0">
               Straightforward pricing without hidden fees or surprise add-ons. We provide authentic value for both brand-new and quality-inspected pre-owned units.
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM -->
+  <section class="py-5 bg-white border-top" aria-labelledby="teamHeading">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <span class="section-label">OUR TEAM</span>
+          <h2 id="teamHeading" class="section-title mb-3">Meet the People Behind CheynTech</h2>
+          <p class="text-muted mb-3">
+            Behind every tested iPhone, honest recommendation, and smooth transaction is our dedicated Roxas City crew. We are local tech enthusiasts passionate about helping you get the best value for your device.
+          </p>
+          <ul class="list-unstyled text-muted mb-4">
+            <li class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-check2-circle text-ct fs-5"></i>
+              <span>Hands-on diagnostics and iCloud verification by our staff</span>
+            </li>
+            <li class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-check2-circle text-ct fs-5"></i>
+              <span>Patient in-store customer support and warranty assistance</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-check2-circle text-ct fs-5"></i>
+              <span>Accredited financing guidance with Skyro installment plans</span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <img
+              src="assets/img/store/the_crew.jpg"
+              alt="CheynTech Roxas City Team"
+              class="img-fluid w-100"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+            >
+            <div class="p-3 bg-light text-center border-top">
+              <span class="small fw-semibold text-dark">The Cheyn iPhones &amp; Gadgets Team – Roxas Branch</span>
+            </div>
           </div>
         </div>
       </div>

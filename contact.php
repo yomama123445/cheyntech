@@ -82,10 +82,21 @@ require 'includes/header.php';
 
         <!-- RIGHT: Contact Info Card -->
         <div class="col-lg-5">
-          <div class="contact-info-card">
-            <div class="contact-info-header">
-              <h2 class="h5 fw-bold text-white mb-1"><i class="bi bi-shop me-2 text-ct"></i>Cheyn Gadgets</h2>
-              <p class="text-white-50 small mb-0">Roxas City's trusted gadget store</p>
+          <div class="contact-info-card overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="assets/img/store/storefront_facade.jpg"
+                alt="Cheyn Gadgets storefront at Premier De Mayo St., Roxas City"
+                class="img-fluid w-100"
+                style="height: 180px; object-fit: cover;"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+              >
+              <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);">
+                <span class="badge bg-ct text-white px-2 py-1 mb-1 small">Physical Store</span>
+                <h2 class="h5 fw-bold text-white mb-0">Cheyn iPhones &amp; Gadgets</h2>
+                <p class="text-white-50 small mb-0">Roxas Branch</p>
+              </div>
             </div>
             <div class="contact-info-body">
               <div class="contact-info-list mb-4">
@@ -93,7 +104,8 @@ require 'includes/header.php';
                   <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-geo-alt-fill"></i></span>
                   <div>
                     <div class="contact-info-label">Store Location</div>
-                    <div class="contact-info-value">Roxas Avenue, Roxas City, Capiz</div>
+                    <div class="contact-info-value fw-semibold text-dark">ASB-1 Building, Premier De Mayo Street</div>
+                    <div class="small text-muted">Near old GSIS riverside, between Laundry Hub &amp; Hair Chef Salon, Roxas City, Capiz</div>
                   </div>
                 </div>
                 <div class="contact-info-item">
@@ -115,8 +127,8 @@ require 'includes/header.php';
                   <div>
                     <div class="contact-info-label">Store Hours</div>
                     <div class="contact-info-value">
-                      <div>Monday – Saturday</div>
-                      <div class="fw-semibold">9:00 AM – 6:00 PM</div>
+                      <div>Monday – Sunday (Open Daily)</div>
+                      <div class="fw-semibold text-dark">9:00 AM – 7:30 PM</div>
                     </div>
                   </div>
                 </div>
