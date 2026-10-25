@@ -40,7 +40,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: 'Dual 12MP ultra-wide and wide cameras · A13 Bionic · All-day battery',
     fullDesc: 'Pre-owned iPhone 11 in excellent tested condition. Verified Face ID, healthy battery life, and pristine display.',
-    image: 'assets/img/products/real/iphone_11.jpg',
+    image: 'assets/img/products/real/iphone_11.webp',
     storageOptions: [
       { label: '128GB', price: 18500, id: 'iphone11-128gb-black', stock: 10 },
       { label: '256GB', price: 21500, id: 'iphone11-256gb-black', stock: 2 }
@@ -49,8 +49,8 @@ var CHEYN_PRODUCTS = [
       { label: 'Black', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_11.jpg', thumb: 'assets/img/products/real/iphone_11.jpg', alt: 'iPhone 11' },
-      { src: 'assets/img/products/real/iphone_three_colors.jpg', thumb: 'assets/img/products/real/iphone_three_colors.jpg', alt: 'iPhone 11 in store' }
+      { src: 'assets/img/products/real/iphone_11.webp', thumb: 'assets/img/products/real/iphone_11.webp', alt: 'iPhone 11' },
+      { src: 'assets/img/products/real/iphone_three_colors.webp', thumb: 'assets/img/products/real/iphone_three_colors.webp', alt: 'iPhone 11 in store' }
     ],
     specs: {
       Display: '6.1″ Liquid Retina IPS',
@@ -69,7 +69,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: 'Super Retina XDR OLED · A14 Bionic · Ceramic Shield · 5G speed',
     fullDesc: 'Pre-owned iPhone 12 tested across all diagnostics. Features vibrant OLED display, MagSafe compatibility, and high-speed 5G.',
-    image: 'assets/img/products/real/iphone_12.jpg',
+    image: 'assets/img/products/real/iphone_12.webp',
     storageOptions: [
       { label: '128GB', price: 24500, id: 'iphone12-128gb-blue', stock: 5 },
       { label: '256GB', price: 27500, id: 'iphone12-256gb-blue', stock: 8 }
@@ -78,8 +78,8 @@ var CHEYN_PRODUCTS = [
       { label: 'Blue', hex: '#4b7db7', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_12.jpg', thumb: 'assets/img/products/real/iphone_12.jpg', alt: 'iPhone 12' },
-      { src: 'assets/img/products/real/iphone_blue.jpg', thumb: 'assets/img/products/real/iphone_blue.jpg', alt: 'iPhone 12 Blue' }
+      { src: 'assets/img/products/real/iphone_12.webp', thumb: 'assets/img/products/real/iphone_12.webp', alt: 'iPhone 12' },
+      { src: 'assets/img/products/real/iphone_blue.webp', thumb: 'assets/img/products/real/iphone_blue.webp', alt: 'iPhone 12 Blue' }
     ],
     specs: {
       Display: '6.1″ Super Retina XDR OLED',
@@ -98,7 +98,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: 'Cinematic mode in 1080p · A15 Bionic · Super Retina XDR display',
     fullDesc: 'Pre-owned iPhone 13 featuring advanced dual-camera system, durable flat-edge design, and extended battery endurance.',
-    image: 'assets/img/products/real/iphone_13.jpg',
+    image: 'assets/img/products/real/iphone_13.webp',
     storageOptions: [
       { label: '128GB', price: 29500, id: 'iphone13-128gb-midnight', stock: 5 },
       { label: '256GB', price: 33500, id: 'iphone13-256gb-midnight', stock: 8 }
@@ -107,9 +107,9 @@ var CHEYN_PRODUCTS = [
       { label: 'Midnight', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_13.jpg', thumb: 'assets/img/products/real/iphone_13.jpg', alt: 'iPhone 13' },
-      { src: 'assets/img/products/real/iphone_pink.jpg', thumb: 'assets/img/products/real/iphone_pink.jpg', alt: 'iPhone 13 Pink' },
-      { src: 'assets/img/products/real/more_iphones.jpg', thumb: 'assets/img/products/real/more_iphones.jpg', alt: 'iPhone 13 store stock' }
+      { src: 'assets/img/products/real/iphone_13.webp', thumb: 'assets/img/products/real/iphone_13.webp', alt: 'iPhone 13' },
+      { src: 'assets/img/products/real/iphone_pink.webp', thumb: 'assets/img/products/real/iphone_pink.webp', alt: 'iPhone 13 Pink' },
+      { src: 'assets/img/products/real/more_iphones.webp', thumb: 'assets/img/products/real/more_iphones.webp', alt: 'iPhone 13 store stock' }
     ],
     specs: {
       Display: '6.1″ Super Retina XDR',
@@ -155,7 +155,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: 'Triple camera system · 6.5″ Super Retina XDR OLED · Long battery life',
     fullDesc: 'Pre-owned iPhone 11 Pro Max offering high-performance triple zoom camera system and large vibrant OLED display.',
-    image: 'assets/img/products/real/iphone_11_promax.jpg',
+    image: 'assets/img/products/real/iphone_11_promax.webp',
     storageOptions: [
       { label: '256GB', price: 24500, id: 'iphone11promax-256gb-spacegray', stock: 2 },
       { label: '512GB', price: 26900, id: 'iphone11promax-512gb-spacegray', stock: 1 }
@@ -164,7 +164,7 @@ var CHEYN_PRODUCTS = [
       { label: 'Space Gray', hex: '#4a4a4a', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_11_promax.jpg', thumb: 'assets/img/products/real/iphone_11_promax.jpg', alt: 'iPhone 11 Pro Max' }
+      { src: 'assets/img/products/real/iphone_11_promax.webp', thumb: 'assets/img/products/real/iphone_11_promax.webp', alt: 'iPhone 11 Pro Max' }
     ],
     specs: {
       Display: '6.5″ Super Retina XDR OLED',
@@ -183,7 +183,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: '6.7″ Super Retina XDR · Sensor-shift optical stabilization · A14 Bionic',
     fullDesc: 'Pre-owned iPhone 12 Pro Max with max-size screen and studio-grade photography capabilities.',
-    image: 'assets/img/products/real/iphone_12_promax.jpg',
+    image: 'assets/img/products/real/iphone_12_promax.webp',
     storageOptions: [
       { label: '128GB', price: 31500, id: 'iphone12promax-128gb-pacificblue', stock: 3 }
     ],
@@ -191,7 +191,7 @@ var CHEYN_PRODUCTS = [
       { label: 'Pacific Blue', hex: '#2d4b68', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_12_promax.jpg', thumb: 'assets/img/products/real/iphone_12_promax.jpg', alt: 'iPhone 12 Pro Max' }
+      { src: 'assets/img/products/real/iphone_12_promax.webp', thumb: 'assets/img/products/real/iphone_12_promax.webp', alt: 'iPhone 12 Pro Max' }
     ],
     specs: {
       Display: '6.7″ Super Retina XDR OLED',
@@ -210,7 +210,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Refurbished',
     desc: '120Hz ProMotion display · Pro camera system · Massive battery life',
     fullDesc: 'Refurbished iPhone 13 Pro Max. Super-smooth 120Hz refresh rate, cinematic video, and exceptional battery runtime.',
-    image: 'assets/img/products/real/iphone_13_promax.jpg',
+    image: 'assets/img/products/real/iphone_13_promax.webp',
     storageOptions: [
       { label: '256GB', price: 39500, id: 'iphone13promax-256gb-sierrablue', stock: 2 }
     ],
@@ -218,7 +218,7 @@ var CHEYN_PRODUCTS = [
       { label: 'Sierra Blue', hex: '#9bb5ce', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_13_promax.jpg', thumb: 'assets/img/products/real/iphone_13_promax.jpg', alt: 'iPhone 13 Pro Max' }
+      { src: 'assets/img/products/real/iphone_13_promax.webp', thumb: 'assets/img/products/real/iphone_13_promax.webp', alt: 'iPhone 13 Pro Max' }
     ],
     specs: {
       Display: '6.7″ Super Retina XDR ProMotion 120Hz',
@@ -264,7 +264,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Refurbished',
     desc: 'Dynamic Island · 48MP main camera · Always-On display · A16 Bionic',
     fullDesc: 'Refurbished iPhone 14 Pro Max with revolutionary Dynamic Island interface and 48MP photography.',
-    image: 'assets/img/products/real/iphone_14_promax.jpeg',
+    image: 'assets/img/products/real/iphone_14_promax.webp',
     storageOptions: [
       { label: '256GB', price: 48500, id: 'iphone14promax-256gb-deeppurple', stock: 1 }
     ],
@@ -272,7 +272,7 @@ var CHEYN_PRODUCTS = [
       { label: 'Deep Purple', hex: '#433d4c', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/iphone_14_promax.jpeg', thumb: 'assets/img/products/real/iphone_14_promax.jpeg', alt: 'iPhone 14 Pro Max' }
+      { src: 'assets/img/products/real/iphone_14_promax.webp', thumb: 'assets/img/products/real/iphone_14_promax.webp', alt: 'iPhone 14 Pro Max' }
     ],
     specs: {
       Display: '6.7″ Super Retina XDR Always-On 120Hz',
@@ -345,7 +345,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Brand New',
     desc: '90Hz Sunlight display · 5,000mAh long battery · Sleek modern body',
     fullDesc: 'Brand new Vivo Y03s. Fluid 90Hz refresh rate and expandable storage support.',
-    image: 'assets/img/products/real/vivo_box.jpg',
+    image: 'assets/img/products/real/vivo_box.webp',
     storageOptions: [
       { label: '128GB', price: 5499, id: 'vivo-y03s-128gb-spaceblack', stock: 1 }
     ],
@@ -353,7 +353,7 @@ var CHEYN_PRODUCTS = [
       { label: 'Space Black', hex: '#1c1c1e', border: '' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/vivo_box.jpg', thumb: 'assets/img/products/real/vivo_box.jpg', alt: 'Vivo Box' }
+      { src: 'assets/img/products/real/vivo_box.webp', thumb: 'assets/img/products/real/vivo_box.webp', alt: 'Vivo Box' }
     ],
     specs: {
       Display: '6.56″ 90Hz Sunlight Display',
@@ -426,7 +426,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: '10.9″ Liquid Retina display · A14 Bionic · USB-C · Touch ID',
     fullDesc: 'Pre-owned Apple iPad 10th Gen with all-screen front, fast USB-C connectivity, and Apple Pencil support.',
-    image: 'assets/img/products/real/ipad_10thgen.jpg',
+    image: 'assets/img/products/real/ipad_10thgen.webp',
     storageOptions: [
       { label: '128GB', price: 23500, id: 'ipad10-128gb-silver', stock: 2 }
     ],
@@ -434,8 +434,8 @@ var CHEYN_PRODUCTS = [
       { label: 'Silver', hex: '#e2e2e4', border: '#c0c0c0' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/ipad_10thgen.jpg', thumb: 'assets/img/products/real/ipad_10thgen.jpg', alt: 'iPad 10th Gen' },
-      { src: 'assets/img/products/real/ipad_10thgen_b.jpg', thumb: 'assets/img/products/real/ipad_10thgen_b.jpg', alt: 'iPad 10th Gen Back' }
+      { src: 'assets/img/products/real/ipad_10thgen.webp', thumb: 'assets/img/products/real/ipad_10thgen.webp', alt: 'iPad 10th Gen' },
+      { src: 'assets/img/products/real/ipad_10thgen_b.webp', thumb: 'assets/img/products/real/ipad_10thgen_b.webp', alt: 'iPad 10th Gen Back' }
     ],
     specs: {
       Display: '10.9″ Liquid Retina IPS',
@@ -506,7 +506,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: 'High-fidelity audio · Automatic device switching · Siri voice control',
     fullDesc: 'Pre-owned authentic Apple AirPods with charging case. Fully sanitized, battery-tested, and sound verified.',
-    image: 'assets/img/products/real/airpods.jpg',
+    image: 'assets/img/products/real/airpods.webp',
     storageOptions: [
       { label: 'Standard', price: 6500, id: 'apple-airpods-white', stock: 10 }
     ],
@@ -514,7 +514,7 @@ var CHEYN_PRODUCTS = [
       { label: 'White', hex: '#f5f5f7', border: '#e2e2e4' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/airpods.jpg', thumb: 'assets/img/products/real/airpods.jpg', alt: 'Apple AirPods' }
+      { src: 'assets/img/products/real/airpods.webp', thumb: 'assets/img/products/real/airpods.webp', alt: 'Apple AirPods' }
     ],
     specs: {
       Connectivity: 'Bluetooth 5.0, Apple H1 chip',

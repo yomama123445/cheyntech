@@ -38,7 +38,7 @@ try {
     $ctx = stream_context_create([
         'http' => [
             'timeout'    => 5,
-            'user_agent' => 'CheynTech-Auth/1.0'
+            'user_agent' => 'CheynGadget-Auth/1.0'
         ]
     ]);
     

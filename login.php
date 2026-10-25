@@ -30,7 +30,7 @@ if (!empty($_SESSION['user_id'])) {
 
 $googleClientId  = getenv('GOOGLE_CLIENT_ID') ?: '480546804601-3sp22htqa4012b9l7iphguup2chko76e.apps.googleusercontent.com';
 $pageTitle       = 'Account | Sign In or Create Account';
-$pageDescription = 'Sign in to your CheynTech account or create one for fast checkout, device & order tracking, and local support in Roxas City.';
+$pageDescription = 'Sign in to your CheynGadget account or create one for fast checkout, device & order tracking, and local support in Roxas City.';
 $activePage      = 'login';
 require 'includes/header.php';
 ?>

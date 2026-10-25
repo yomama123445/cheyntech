@@ -57,6 +57,7 @@
       if (initialSrc && initialSrc.startsWith('/')) initialSrc = initialSrc.substring(1);
       mainImg.src = initialSrc;
       mainImg.alt = product.name;
+      mainImg.setAttribute('decoding', 'async');
       mainImg.onerror = function () {
         this.onerror = null;
         this.src = 'assets/products/placeholder.jpg';

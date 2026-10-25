@@ -85,15 +85,16 @@ require 'includes/header.php';
           <div class="contact-info-card overflow-hidden">
             <div class="position-relative">
               <img
-                src="assets/img/store/storefront_facade.jpg"
+                src="assets/img/store/storefront_facade.webp"
                 alt="Cheyn Gadgets storefront at Premier De Mayo St., Roxas City"
                 class="img-fluid w-100"
                 style="height: 180px; object-fit: cover;"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+                decoding="async"
+                onerror="this.onerror=null;this.src='assets/img/store/storefront_facade.jpg'"
               >
               <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);">
-                <span class="badge bg-ct text-white px-2 py-1 mb-1 small">Physical Store</span>
+                <span class="badge bg-dark text-white px-2 py-1 mb-1 small fw-normal">Physical Store</span>
                 <h2 class="h5 fw-bold text-white mb-0">Cheyn iPhones &amp; Gadgets</h2>
                 <p class="text-white-50 small mb-0">Roxas Branch</p>
               </div>
@@ -119,7 +120,7 @@ require 'includes/header.php';
                   <span class="contact-icon-wrap contact-info-icon"><i class="bi bi-envelope-fill"></i></span>
                   <div>
                     <div class="contact-info-label">Email</div>
-                    <div class="contact-info-value"><a href="mailto:hello@cheyntech.ph" class="text-dark text-decoration-none">hello@cheyntech.ph</a></div>
+                    <div class="contact-info-value"><a href="mailto:hello@cheyngadgets.site" class="text-dark text-decoration-none">hello@cheyngadgets.site</a></div>
                   </div>
                 </div>
                 <div class="contact-info-item">

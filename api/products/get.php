@@ -44,6 +44,10 @@ function formatProductRows(array $rows): array {
 
             $rawImage = !empty($row['main_image']) ? (string)preg_replace('/\s+/', '', (string)$row['main_image']) : 'assets/products/placeholder.jpg';
             $mainImage = ltrim($rawImage, '/');
+            $webpCandidate = (string)preg_replace('/\.(jpe?g|png)$/i', '.webp', $mainImage);
+            if ($webpCandidate !== $mainImage && file_exists(__DIR__ . '/../../' . $webpCandidate)) {
+                $mainImage = $webpCandidate;
+            }
 
             $products[$pid] = [
                 'id'             => $row['id'],

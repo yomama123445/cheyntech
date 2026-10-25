@@ -360,7 +360,7 @@ require 'includes/header.php';
   <!-- ==============================================
        AUTHENTIC STORE & LOCAL COMMUNITY PROOF
        ============================================== -->
-  <section class="py-5 bg-ct-soft border-top border-bottom" id="local-trust">
+  <section class="py-5 bg-white border-top border-bottom" id="local-trust">
     <div class="container">
       <div class="apple-section-header text-center mb-5">
         <span class="apple-section-tag">Tested &amp; Handed Over In Roxas City</span>
@@ -373,17 +373,19 @@ require 'includes/header.php';
       <div class="row g-4 justify-content-center">
         <!-- Customer 1 -->
         <div class="col-md-4">
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
             <img
-              src="assets/img/proof/customer_handover_1.jpeg"
+              src="assets/img/proof/customer_handover_1.webp"
               alt="Customer receiving tested iPhone in Cheyn Gadgets Roxas City"
               class="img-fluid w-100"
               style="height: 320px; object-fit: cover;"
               loading="lazy"
+              decoding="async"
+              onerror="this.onerror=null;this.src='assets/img/proof/customer_handover_1.jpeg'"
             >
-            <div class="p-3 bg-white text-center">
-              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 mb-1 small">
-                <i class="bi bi-shield-check me-1"></i>Verified Store Handover
+            <div class="p-3 bg-white text-center border-top">
+              <span class="badge bg-light text-dark border px-2 py-1 mb-1 small fw-normal">
+                <i class="bi bi-shield-check me-1 text-muted"></i>Verified Store Handover
               </span>
               <p class="text-muted small mb-0">Inspected, fully tested, and released with genuine accessories.</p>
             </div>
@@ -392,17 +394,19 @@ require 'includes/header.php';
 
         <!-- Customer 2 -->
         <div class="col-md-4">
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
             <img
-              src="assets/img/proof/customer_handover_2.jpeg"
+              src="assets/img/proof/customer_handover_2.webp"
               alt="Cheyn Gadgets happy customer handover"
               class="img-fluid w-100"
               style="height: 320px; object-fit: cover;"
               loading="lazy"
+              decoding="async"
+              onerror="this.onerror=null;this.src='assets/img/proof/customer_handover_2.jpeg'"
             >
-            <div class="p-3 bg-white text-center">
-              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 mb-1 small">
-                <i class="bi bi-shield-check me-1"></i>Pre-Owned Grade A Certified
+            <div class="p-3 bg-white text-center border-top">
+              <span class="badge bg-light text-dark border px-2 py-1 mb-1 small fw-normal">
+                <i class="bi bi-shield-check me-1 text-muted"></i>Pre-Owned Grade A Certified
               </span>
               <p class="text-muted small mb-0">Clean iCloud, verified battery health, and 7-day shop warranty.</p>
             </div>
@@ -411,17 +415,19 @@ require 'includes/header.php';
 
         <!-- Customer 3 -->
         <div class="col-md-4">
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-light">
             <img
-              src="assets/img/proof/customer_handover_3.jpg"
+              src="assets/img/proof/customer_handover_3.webp"
               alt="Cheyn Gadgets iPhone handover"
               class="img-fluid w-100"
               style="height: 320px; object-fit: cover;"
               loading="lazy"
+              decoding="async"
+              onerror="this.onerror=null;this.src='assets/img/proof/customer_handover_3.jpg'"
             >
-            <div class="p-3 bg-white text-center">
-              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 mb-1 small">
-                <i class="bi bi-shield-check me-1"></i>In-Store Setup Assistance
+            <div class="p-3 bg-white text-center border-top">
+              <span class="badge bg-light text-dark border px-2 py-1 mb-1 small fw-normal">
+                <i class="bi bi-shield-check me-1 text-muted"></i>In-Store Setup Assistance
               </span>
               <p class="text-muted small mb-0">Data transfer, screen testing, and device setup completed in-store.</p>
             </div>
@@ -440,11 +446,13 @@ require 'includes/header.php';
         <div class="row g-0 align-items-center">
           <div class="col-lg-6">
             <img
-              src="assets/img/store/storefront_facade.jpg"
+              src="assets/img/store/storefront_facade.webp"
               alt="Cheyn Gadgets storefront at ASB-1 Building, Premier De Mayo St., Roxas City"
               class="img-fluid w-100 h-100"
               style="object-fit: cover; min-height: 320px; max-height: 420px;"
               loading="lazy"
+              decoding="async"
+              onerror="this.onerror=null;this.src='assets/img/store/storefront_facade.jpg'"
             >
           </div>
           <div class="col-lg-6 p-4 p-md-5 text-start">
@@ -461,7 +469,7 @@ require 'includes/header.php';
               <a href="contact.php" class="btn apple-btn-primary">
                 Store Location &amp; Map <i class="bi bi-geo-alt ms-1"></i>
               </a>
-              <a href="about.php" class="btn btn-ct-outline">
+              <a href="about.php" class="btn btn-outline-secondary px-3" style="border-radius: 9999px;">
                 About Cheyn Gadgets
               </a>
             </div>

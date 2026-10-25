@@ -18,22 +18,24 @@ require 'includes/header.php';
   </div>
 
   <!-- PAGE HEADER -->
-  <section class="page-header" aria-labelledby="aboutHeroHeading">
-    <div class="container">
-      <span class="hero-badge"><i class="bi bi-geo-alt-fill me-1"></i>Roxas City, Capiz</span>
-      <h1 id="aboutHeroHeading">About Cheyn Gadgets</h1>
-      <p class="hero-sub page-subtitle mb-0">Serving Tech Lovers in Roxas City with Honest Advice &amp; Tested Hardware</p>
+  <header class="py-5 text-center bg-white border-bottom">
+    <div class="container py-lg-4" style="max-width: 760px;">
+      <span class="apple-section-tag mb-2 d-inline-block">Store Profile &middot; Roxas City</span>
+      <h1 class="display-6 fw-semibold text-dark tracking-tight mb-3">About Cheyn Gadgets</h1>
+      <p class="text-muted fs-6 mb-0">
+        Serving Roxas City with thoroughly inspected hardware, honest grading, and dependable local store support.
+      </p>
     </div>
-  </section>
+  </header>
 
   <!-- OUR STORY & STOREFRONT HIGHLIGHT -->
   <section class="py-5" id="story" aria-labelledby="ourStoryHeading">
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-lg-6">
-          <span class="section-label">OUR STORY</span>
-          <h2 id="ourStoryHeading" class="fw-bold mb-3">
-            Born Local, Built on Trust
+          <span class="apple-section-tag mb-1">Our Story</span>
+          <h2 id="ourStoryHeading" class="h2 fw-semibold text-dark mb-3">
+            Born local. Built on trust.
           </h2>
           <p class="text-muted mb-3">
             <strong>Cheyn Gadgets</strong> started as a small, passionate initiative right here in Roxas City. What began as helping friends and family find trusted pre-owned iPhones quickly grew into a community storefront known for honest deals and dependable gadgets.
@@ -41,30 +43,32 @@ require 'includes/header.php';
           <p class="text-muted mb-4">
             Today, we carry a curated lineup of <strong>pre-owned</strong>, <strong>refurbished</strong>, and <strong>brand-new</strong> smartphones, tablets, and accessories. Every single unit is personally tested by our team before it ever goes on display or gets dispatched to a customer.
           </p>
-          <div class="mission-box">
-            <p class="fw-bold mb-1"><i class="bi bi-quote fs-5 text-ct me-1"></i>Our Promise to Every Customer</p>
-            <p class="mb-0 text-muted">
-              We treat every buyer like a neighbor. You are always welcome to hold, test, and check the phone thoroughly before paying — no pressure, no hidden issues.
+          <div class="p-4 rounded-4 bg-light border border-light-subtle">
+            <p class="text-dark fw-medium mb-1">&ldquo;Every buyer is treated like a neighbor.&rdquo;</p>
+            <p class="text-muted small mb-0">
+              You are always welcome to hold, test, and check the phone thoroughly before paying &mdash; no pressure, no hidden issues.
             </p>
           </div>
         </div>
         <div class="col-lg-6" id="location">
-          <div class="store-feature-card" id="pickup">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden" id="pickup">
             <img
-              src="assets/img/store/storefront_facade.jpg"
+              src="assets/img/store/storefront_facade.webp"
               alt="Cheyn Gadgets storefront at Premier De Mayo St., Roxas City"
-              class="store-feature-img"
+              class="img-fluid w-100"
+              style="height: 340px; object-fit: cover;"
               loading="lazy"
-              onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+              decoding="async"
+              onerror="this.onerror=null;this.src='assets/img/store/storefront_facade.jpg'"
             >
-            <div class="store-feature-caption">
+            <div class="p-3 bg-white border-top">
               <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                 <div>
-                  <h6 class="fw-bold mb-0 text-dark">ASB-1 Building, Premier De Mayo St.</h6>
+                  <h3 class="h6 fw-semibold mb-0 text-dark">ASB-1 Building, Premier De Mayo St.</h3>
                   <span class="text-muted small">Near Old GSIS riverside, Roxas City, Capiz</span>
                 </div>
-                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small">
-                  <i class="bi bi-door-open me-1"></i>Open Daily 9:00 AM – 7:30 PM
+                <span class="badge bg-light text-dark border px-2 py-1 small fw-normal">
+                  <i class="bi bi-clock me-1 text-muted"></i>Open Daily 9:00 AM – 7:30 PM
                 </span>
               </div>
             </div>
@@ -75,12 +79,12 @@ require 'includes/header.php';
   </section>
 
   <!-- STORE & COMMUNITY GALLERY -->
-  <section class="py-5 bg-ct-soft border-top border-bottom" aria-labelledby="galleryHeading">
+  <section class="py-5 bg-light border-top border-bottom" aria-labelledby="galleryHeading">
     <div class="container">
-      <div class="section-header text-center mb-5">
-        <span class="section-label">IN OUR STORE</span>
-        <h2 id="galleryHeading" class="section-title">Life at Cheyn Gadgets</h2>
-        <p class="section-subtitle mx-auto" style="max-width: 540px;">
+      <div class="apple-section-header text-center mb-5">
+        <span class="apple-section-tag">Inside the Shop</span>
+        <h2 id="galleryHeading" class="apple-section-title">Life at Cheyn Gadgets.</h2>
+        <p class="apple-section-subtitle mx-auto">
           From careful device diagnostics on our bench to happy in-store customer handovers across Roxas City.
         </p>
       </div>
@@ -88,60 +92,66 @@ require 'includes/header.php';
       <div class="row g-4">
         <!-- Photo Card 1: Customer Pickup -->
         <div class="col-md-4">
-          <article class="gallery-card">
-            <div class="gallery-img-wrap">
+          <article class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white">
+            <div class="position-relative" style="height: 240px; overflow: hidden;">
               <img
-                src="assets/img/proof/customer_handover_1.jpeg"
+                src="assets/img/proof/customer_handover_1.webp"
                 alt="Happy customer device handover at Cheyn Gadgets"
-                class="gallery-img"
+                class="img-fluid w-100 h-100"
+                style="object-fit: cover;"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+                decoding="async"
+                onerror="this.onerror=null;this.src='assets/img/proof/customer_handover_1.jpeg'"
               >
             </div>
-            <div class="gallery-body">
-              <span class="gallery-tag">In-Store Handover</span>
-              <h5 class="gallery-title">Customer Pickups</h5>
-              <p class="gallery-desc">Satisfied customers checking their units in person with all accessories included.</p>
+            <div class="p-3 p-md-4">
+              <span class="text-xs text-muted text-uppercase tracking-wider fw-semibold d-block mb-1">In-Store Handover</span>
+              <h3 class="h6 fw-semibold text-dark mb-1">Customer Pickups</h3>
+              <p class="text-muted small mb-0">Satisfied customers checking their units in person with all accessories included.</p>
             </div>
           </article>
         </div>
 
         <!-- Photo Card 2: Bench Testing -->
         <div class="col-md-4" id="inspection">
-          <article class="gallery-card">
-            <div class="gallery-img-wrap">
+          <article class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white">
+            <div class="position-relative" style="height: 240px; overflow: hidden;">
               <img
-                src="assets/img/store/interior_display_1.jpg"
+                src="assets/img/store/interior_display_1.webp"
                 alt="Device diagnostic check and display in store"
-                class="gallery-img"
+                class="img-fluid w-100 h-100"
+                style="object-fit: cover;"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+                decoding="async"
+                onerror="this.onerror=null;this.src='assets/img/store/interior_display_1.jpg'"
               >
             </div>
-            <div class="gallery-body">
-              <span class="gallery-tag">Hands-On Inspection</span>
-              <h5 class="gallery-title">Diagnostic Verification</h5>
-              <p class="gallery-desc">Verifying TrueTone, camera sensors, and battery health before any device goes to stock.</p>
+            <div class="p-3 p-md-4">
+              <span class="text-xs text-muted text-uppercase tracking-wider fw-semibold d-block mb-1">Hands-On Inspection</span>
+              <h3 class="h6 fw-semibold text-dark mb-1">Diagnostic Verification</h3>
+              <p class="text-muted small mb-0">Verifying TrueTone, camera sensors, and battery health before any device goes to stock.</p>
             </div>
           </article>
         </div>
 
         <!-- Photo Card 3: Fresh Stock -->
         <div class="col-md-4" id="delivery">
-          <article class="gallery-card">
-            <div class="gallery-img-wrap">
+          <article class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 bg-white">
+            <div class="position-relative" style="height: 240px; overflow: hidden;">
               <img
-                src="assets/img/store/interior_design.jpg"
+                src="assets/img/store/interior_design.webp"
                 alt="Showroom display at Cheyn Gadgets Roxas City"
-                class="gallery-img"
+                class="img-fluid w-100 h-100"
+                style="object-fit: cover;"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+                decoding="async"
+                onerror="this.onerror=null;this.src='assets/img/store/interior_design.jpg'"
               >
             </div>
-            <div class="gallery-body">
-              <span class="gallery-tag">Store Showroom</span>
-              <h5 class="gallery-title">Curated Inventory</h5>
-              <p class="gallery-desc">Clean displays, genuine accessories, and quality-inspected devices ready for release.</p>
+            <div class="p-3 p-md-4">
+              <span class="text-xs text-muted text-uppercase tracking-wider fw-semibold d-block mb-1">Store Showroom</span>
+              <h3 class="h6 fw-semibold text-dark mb-1">Curated Inventory</h3>
+              <p class="text-muted small mb-0">Clean displays, genuine accessories, and quality-inspected devices ready for release.</p>
             </div>
           </article>
         </div>
@@ -150,31 +160,31 @@ require 'includes/header.php';
   </section>
 
   <!-- WHY BUY LOCALLY -->
-  <section class="py-5" id="why-us" aria-labelledby="whyHeading">
-    <div class="container">
-      <div class="section-header text-center mb-5">
-        <span class="section-label">WHY BUY LOCALLY</span>
-        <h2 id="whyHeading" class="section-title">The Local Store Advantage</h2>
-        <p class="section-subtitle mx-auto" style="max-width: 540px;">
+  <section class="py-5 bg-white" id="why-us" aria-labelledby="whyHeading">
+    <div class="container py-lg-3">
+      <div class="apple-section-header text-center mb-5">
+        <span class="apple-section-tag">Why Buy Locally</span>
+        <h2 id="whyHeading" class="apple-section-title">The local store advantage.</h2>
+        <p class="apple-section-subtitle mx-auto">
           Why gadget buyers in Capiz prefer visiting us directly instead of risking unseen online purchases.
         </p>
       </div>
 
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="feature-card h-100">
-            <div class="feature-icon-wrap"><i class="bi bi-person-check-fill text-ct"></i></div>
-            <h3 class="h5 fw-bold mb-2">Test Before You Pay</h3>
+          <div class="p-4 rounded-4 bg-light border border-light-subtle h-100">
+            <span class="text-xs text-muted text-uppercase tracking-wider fw-semibold d-block mb-2">01 &middot; Transparency</span>
+            <h3 class="h5 fw-semibold text-dark mb-2">Test before you pay</h3>
             <p class="text-muted small mb-0">
-              Hold the unit in your hands. Test the camera, check the touchscreen, verify the battery capacity, and ensure you're completely satisfied before completing your purchase.
+              Hold the unit in your hands. Test the camera, check touchscreen responsiveness, verify battery percentage, and be fully satisfied before completing your purchase.
             </p>
           </div>
         </div>
 
         <div class="col-md-4" id="warranty">
-          <div class="feature-card h-100">
-            <div class="feature-icon-wrap"><i class="bi bi-arrow-repeat text-ct"></i></div>
-            <h3 class="h5 fw-bold mb-2">7-Day Store Replacement</h3>
+          <div class="p-4 rounded-4 bg-light border border-light-subtle h-100">
+            <span class="text-xs text-muted text-uppercase tracking-wider fw-semibold d-block mb-2">02 &middot; Peace of mind</span>
+            <h3 class="h5 fw-semibold text-dark mb-2">7-Day store replacement</h3>
             <p class="text-muted small mb-0">
               No long waiting periods or complicated return forms. If any functional defect shows up within your first 7 days, bring it back to our Roxas City shop.
             </p>
@@ -182,9 +192,9 @@ require 'includes/header.php';
         </div>
 
         <div class="col-md-4">
-          <div class="feature-card h-100">
-            <div class="feature-icon-wrap"><i class="bi bi-tag-fill text-ct"></i></div>
-            <h3 class="h5 fw-bold mb-2">Honest, Fair Pricing</h3>
+          <div class="p-4 rounded-4 bg-light border border-light-subtle h-100">
+            <span class="text-xs text-muted text-uppercase tracking-wider fw-semibold d-block mb-2">03 &middot; Direct value</span>
+            <h3 class="h5 fw-semibold text-dark mb-2">Honest, fair pricing</h3>
             <p class="text-muted small mb-0">
               Straightforward pricing without hidden fees or surprise add-ons. We provide authentic value for both brand-new and quality-inspected pre-owned units.
             </p>
@@ -195,41 +205,42 @@ require 'includes/header.php';
   </section>
 
   <!-- MEET THE TEAM -->
-  <section class="py-5 bg-white border-top" aria-labelledby="teamHeading">
-    <div class="container">
+  <section class="py-5 bg-light border-top" aria-labelledby="teamHeading">
+    <div class="container py-lg-3">
       <div class="row g-4 align-items-center">
         <div class="col-lg-6">
-          <span class="section-label">OUR TEAM</span>
-          <h2 id="teamHeading" class="section-title mb-3">Meet the People Behind CheynTech</h2>
+          <span class="apple-section-tag mb-1">Our Team</span>
+          <h2 id="teamHeading" class="h2 fw-semibold text-dark mb-3">Meet the People Behind CheynGadget</h2>
           <p class="text-muted mb-3">
             Behind every tested iPhone, honest recommendation, and smooth transaction is our dedicated Roxas City crew. We are local tech enthusiasts passionate about helping you get the best value for your device.
           </p>
-          <ul class="list-unstyled text-muted mb-4">
+          <ul class="list-unstyled text-muted mb-4 small">
             <li class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-check2-circle text-ct fs-5"></i>
-              <span>Hands-on diagnostics and iCloud verification by our staff</span>
+              <i class="bi bi-check2 text-muted fs-6"></i>
+              <span>Hands-on diagnostics and iCloud verification by in-store staff</span>
             </li>
             <li class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-check2-circle text-ct fs-5"></i>
+              <i class="bi bi-check2 text-muted fs-6"></i>
               <span>Patient in-store customer support and warranty assistance</span>
             </li>
             <li class="d-flex align-items-center gap-2">
-              <i class="bi bi-check2-circle text-ct fs-5"></i>
+              <i class="bi bi-check2 text-muted fs-6"></i>
               <span>Accredited financing guidance with Skyro installment plans</span>
             </li>
           </ul>
         </div>
         <div class="col-lg-6">
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
             <img
-              src="assets/img/store/the_crew.jpg"
-              alt="CheynTech Roxas City Team"
+              src="assets/img/store/the_crew.webp"
+              alt="CheynGadget Roxas City Team"
               class="img-fluid w-100"
               loading="lazy"
-              onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'"
+              decoding="async"
+              onerror="this.onerror=null;this.src='assets/img/store/the_crew.jpg'"
             >
-            <div class="p-3 bg-light text-center border-top">
-              <span class="small fw-semibold text-dark">The Cheyn iPhones &amp; Gadgets Team – Roxas Branch</span>
+            <div class="p-3 bg-white text-center border-top">
+              <span class="small text-muted fw-medium">The Cheyn iPhones &amp; Gadgets Team &middot; Roxas Branch</span>
             </div>
           </div>
         </div>
@@ -238,15 +249,16 @@ require 'includes/header.php';
   </section>
 
   <!-- CTA BANNER -->
-  <section class="cta-section text-center py-5">
-    <div class="container">
-      <h2 class="mb-2">Visit Cheyn Gadgets in Roxas City</h2>
-      <p class="mb-4 mx-auto text-slate-400" style="max-width: 500px; color: #94a3b8;">
-        Check our available inventory online or get in touch for custom model inquiries and same-day reservation.
+  <section class="py-5 text-center bg-white border-top">
+    <div class="container py-lg-4" style="max-width: 620px;">
+      <span class="apple-section-tag mb-2 d-inline-block">Roxas City Storefront</span>
+      <h2 class="h3 fw-semibold text-dark mb-2">Visit Cheyn Gadgets in Roxas City</h2>
+      <p class="text-muted small mb-4">
+        Check our available inventory online or stop by our store to inspect devices in person.
       </p>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="catalog.php" class="btn btn-cta-light px-4">Browse Catalog <i class="bi bi-arrow-right ms-1"></i></a>
-        <a href="contact.php" class="btn btn-cta-outline-light px-4">Store Location &amp; Contact</a>
+      <div class="d-flex justify-content-center gap-2 flex-wrap">
+        <a href="catalog.php" class="btn apple-btn-primary">Browse Inventory <i class="bi bi-arrow-right ms-1"></i></a>
+        <a href="contact.php" class="btn btn-outline-secondary px-3" style="border-radius: 9999px;">Store Location &amp; Map</a>
       </div>
     </div>
   </section>

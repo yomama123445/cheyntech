@@ -192,7 +192,7 @@ function buildCardHTML(p) {
     <div class="col">
       <article class="product-card">
         <div class="card-img-wrap">
-          <img src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+          <img src="${imgSrc}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
           <span class="badge-ct ${p.badge}">${p.badgeLabel}</span>
         </div>
         <div class="card-body">
@@ -202,14 +202,14 @@ function buildCardHTML(p) {
           <div class="product-spec-row">
             <span class="spec-chip">${variant}</span>
             <span class="spec-chip">${condText}</span>
-            <span class="spec-chip text-success"><i class="bi bi-shield-check"></i> 7-Day Warranty</span>
+            <span class="spec-chip"><i class="bi bi-shield-check me-1"></i>7-Day Warranty</span>
           </div>
           <p class="product-price mb-0">${formatPrice(price)}</p>
         </div>
         <div class="card-footer">
           <button class="btn btn-ct btn-ct-sm flex-fill"
             onclick="CheynCart.add({id:'${defaultStorage.id}',name:'${p.name.replace(/'/g, "\\'")}',price:${price},variant:'${variant}',color:'${color}',image:'${p.image}'}, this)">
-            <i class="bi bi-bag-plus me-1"></i> Add to Bag
+            <i class="bi bi-bag me-1"></i> Add to Bag
           </button>
           <a href="product.php?id=${p.id}" class="btn btn-ct-outline btn-ct-sm px-3" aria-label="View ${p.name}">
             Details

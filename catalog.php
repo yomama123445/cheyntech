@@ -53,22 +53,18 @@ require 'includes/header.php';
           <span class="pill-count" id="countAll">0</span>
         </button>
         <button type="button" class="category-pill" data-cat="apple">
-          <i class="bi bi-apple me-1"></i>
-          <span>Apple iPhones &amp; Tech</span>
+          <span>Apple &amp; iPhone</span>
           <span class="pill-count" id="countApple">0</span>
         </button>
         <button type="button" class="category-pill" data-cat="android">
-          <i class="bi bi-android2 me-1"></i>
-          <span>Android Phones</span>
+          <span>Android</span>
           <span class="pill-count" id="countAndroid">0</span>
         </button>
         <button type="button" class="category-pill" data-cat="tablet">
-          <i class="bi bi-tablet me-1"></i>
-          <span>Tablets &amp; iPads</span>
+          <span>Tablets &amp; iPad</span>
           <span class="pill-count" id="countTablet">0</span>
         </button>
         <button type="button" class="category-pill" data-cat="wearable">
-          <i class="bi bi-smartwatch me-1"></i>
           <span>Wearables &amp; Tech</span>
           <span class="pill-count" id="countWearable">0</span>
         </button>
@@ -137,7 +133,7 @@ require 'includes/header.php';
           <span id="sortBarCount" class="fw-semibold text-dark">0</span> units verified &amp; available for pickup
         </div>
         <div class="text-xs text-muted d-none d-sm-block">
-          <i class="bi bi-geo-alt-fill text-danger me-1"></i>Cheyn Gadgets &middot; Roxas City Store
+          <i class="bi bi-geo-alt text-muted me-1"></i>CheynGadget &middot; Roxas City Store
         </div>
       </div>
 
