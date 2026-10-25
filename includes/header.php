@@ -76,7 +76,7 @@ $activePage      = $activePage      ?? '';
       </div>
 
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav mx-auto gap-lg-1">
+        <ul class="navbar-nav mx-lg-auto gap-lg-1">
           <!-- Home Dropdown -->
           <li class="nav-item has-nav-tray" data-tray="home">
             <a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php" id="homeDropdown">
@@ -352,16 +352,16 @@ $activePage      = $activePage      ?? '';
               <?php endif; ?>
             </div>
             <div class="d-grid gap-2">
-              <a href="profile.php" class="btn btn-sm btn-outline-secondary text-start"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a>
+              <a href="profile.php" class="btn btn-sm btn-outline-secondary text-start d-flex align-items-center"><i class="bi bi-person me-2"></i>My Profile &amp; Orders</a>
               <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
-                <a href="admin/dashboard.php" class="btn btn-sm btn-outline-primary text-start"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</a>
+                <a href="admin/dashboard.php" class="btn btn-sm btn-outline-primary text-start d-flex align-items-center"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</a>
               <?php endif; ?>
-              <a href="login.php?action=logout" class="btn btn-sm btn-outline-danger text-start"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a>
+              <a href="login.php?action=logout" class="btn btn-sm btn-outline-danger text-start d-flex align-items-center"><i class="bi bi-box-arrow-right me-2"></i>Log Out</a>
             </div>
           <?php else: ?>
             <div class="d-grid gap-2">
-              <a href="login.php" class="btn btn-sm btn-outline-secondary"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In</a>
-              <a href="login.php#register" class="btn btn-sm btn-ct"><i class="bi bi-person-plus me-2"></i>Create Account</a>
+              <a href="login.php" class="btn btn-sm btn-outline-secondary text-start d-flex align-items-center"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In</a>
+              <a href="login.php#register" class="btn btn-sm btn-ct text-start d-flex align-items-center"><i class="bi bi-person-plus me-2"></i>Create Account</a>
             </div>
           <?php endif; ?>
         </div>
