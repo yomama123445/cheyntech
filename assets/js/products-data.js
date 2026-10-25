@@ -426,7 +426,7 @@ var CHEYN_PRODUCTS = [
     condition: 'Pre-owned',
     desc: '10.9″ Liquid Retina display · A14 Bionic · USB-C · Touch ID',
     fullDesc: 'Pre-owned Apple iPad 10th Gen with all-screen front, fast USB-C connectivity, and Apple Pencil support.',
-    image: 'assets/img/products/real/ipad_10thgen.png',
+    image: 'assets/img/products/real/ipad_10thgen.jpg',
     storageOptions: [
       { label: '128GB', price: 23500, id: 'ipad10-128gb-silver', stock: 2 }
     ],
@@ -434,7 +434,7 @@ var CHEYN_PRODUCTS = [
       { label: 'Silver', hex: '#e2e2e4', border: '#c0c0c0' }
     ],
     gallery: [
-      { src: 'assets/img/products/real/ipad_10thgen.png', thumb: 'assets/img/products/real/ipad_10thgen.png', alt: 'iPad 10th Gen' },
+      { src: 'assets/img/products/real/ipad_10thgen.jpg', thumb: 'assets/img/products/real/ipad_10thgen.jpg', alt: 'iPad 10th Gen' },
       { src: 'assets/img/products/real/ipad_10thgen_b.jpg', thumb: 'assets/img/products/real/ipad_10thgen_b.jpg', alt: 'iPad 10th Gen Back' }
     ],
     specs: {
