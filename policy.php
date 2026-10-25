@@ -47,7 +47,7 @@ require 'includes/header.php';
               <h2 class="h4 fw-bold mb-0">7-Day Replacement Warranty</h2>
             </div>
             <p class="text-muted">
-              Every gadget sold at Cheyn Gadgets undergoes multi-point functional inspection. For peace of mind, all pre-owned, refurbished, and brand-new items include our standard replacement warranty:
+              Every gadget sold at Cheyn Gadgets undergoes multi-point functional inspection. For peace of mind, all pre-owned and brand-new items include our standard replacement warranty:
             </p>
             <ul class="text-muted small mb-3 lh-lg">
               <li><strong>Coverage Window:</strong> 7 calendar days from the date of in-store pickup or receipt of local delivery.</li>

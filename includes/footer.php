@@ -7,7 +7,7 @@
             <img src="assets/img/logo-64.png" alt="Cheyn Gadgets" width="34" height="34">
             <span class="footer-brand-name">Cheyn Gadgets</span>
           </a>
-          <p class="mb-3">Your trusted electronics storefront in Roxas City. Specializing in function-tested pre-owned, refurbished, and brand-new smartphones, tablets, and wearables.</p>
+          <p class="mb-3">Your trusted electronics storefront in Roxas City. Specializing in function-tested pre-owned and brand-new smartphones, tablets, and wearables.</p>
           <p class="footer-meta-note d-flex align-items-center gap-2 mb-3">
             <i class="bi bi-geo-alt"></i>
             <span>ASB-1 Bldg., Premier De Mayo St., Roxas City &middot; Open Daily 9:00 AM – 7:30 PM</span>

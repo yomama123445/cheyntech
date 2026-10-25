@@ -21,15 +21,12 @@ function formatProductRows(array $rows): array {
         if (!isset($products[$pid])) {
             $badgeClass = !empty($row['badge_class']) ? (string)$row['badge_class'] : 'badge-preowned';
             $condition  = !empty($row['condition']) ? (string)$row['condition'] : 'Pre-owned';
-
-            $badgeLabel = $condition;
-            if ($badgeClass === 'badge-refurbished') {
-                $badgeLabel = 'Refurbished';
-            } elseif ($badgeClass === 'badge-available') {
-                $badgeLabel = 'Brand New';
-            } elseif ($badgeClass === 'badge-preowned') {
-                $badgeLabel = 'Pre-owned';
+            if ($condition === 'Refurbished' || $badgeClass === 'badge-refurbished') {
+                $condition  = 'Pre-owned';
+                $badgeClass = 'badge-preowned';
             }
+
+            $badgeLabel = ($badgeClass === 'badge-available') ? 'Brand New' : 'Pre-owned';
 
             $specs = [];
             if (!empty($row['specs_json'])) {

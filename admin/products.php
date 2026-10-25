@@ -73,7 +73,6 @@ require '../includes/admin_sidebar.php';
             <select id="filterCondition" class="form-select" aria-label="Filter by condition">
               <option value="">All Conditions</option>
               <option value="Pre-owned">Pre-owned</option>
-              <option value="Refurbished">Refurbished</option>
               <option value="Brand New">Brand New</option>
             </select>
           </div>
@@ -162,7 +161,6 @@ require '../includes/admin_sidebar.php';
               <select class="form-select" id="pCondition" required>
                 <option value="" disabled selected>Select…</option>
                 <option value="Pre-owned">Pre-owned</option>
-                <option value="Refurbished">Refurbished</option>
                 <option value="Brand New">Brand New</option>
               </select>
               <div class="invalid-feedback">Select a condition.</div>

@@ -1,6 +1,6 @@
 <?php
 $pageTitle       = 'About Us | Cheyn Gadgets';
-$pageDescription = 'Learn about Cheyn Gadgets — Roxas City\'s trusted source for pre-owned, refurbished, and brand-new gadgets.';
+$pageDescription = 'Learn about Cheyn Gadgets — Roxas City\'s trusted source for pre-owned and brand-new gadgets.';
 $activePage      = 'about';
 require 'includes/header.php';
 ?>
@@ -41,7 +41,7 @@ require 'includes/header.php';
             <strong>Cheyn Gadgets</strong> started as a small, passionate initiative right here in Roxas City. What began as helping friends and family find trusted pre-owned iPhones quickly grew into a community storefront known for honest deals and dependable gadgets.
           </p>
           <p class="text-muted mb-4">
-            Today, we carry a curated lineup of <strong>pre-owned</strong>, <strong>refurbished</strong>, and <strong>brand-new</strong> smartphones, tablets, and accessories. Every single unit is personally tested by our team before it ever goes on display or gets dispatched to a customer.
+            Today, we carry a curated lineup of <strong>pre-owned</strong> and <strong>brand-new</strong> smartphones, tablets, and accessories. Every single unit is personally tested by our team before it ever goes on display or gets dispatched to a customer.
           </p>
           <div class="p-4 rounded-4 bg-light border border-light-subtle">
             <p class="text-dark fw-medium mb-1">&ldquo;Every buyer is treated like a neighbor.&rdquo;</p>

@@ -4,7 +4,7 @@ $_SESSION['csrf_token'] = $_SESSION['csrf_token'] ?? bin2hex(random_bytes(32));
 
 // Set defaults if not defined before including
 $pageTitle       = $pageTitle       ?? 'Cheyn Gadgets | Gadgets You Can Trust';
-$pageDescription = $pageDescription ?? 'Cheyn Gadgets — Browse pre-owned, refurbished, and brand-new phones and tablets. Order online for in-store pickup or local delivery in Roxas City.';
+$pageDescription = $pageDescription ?? 'Cheyn Gadgets — Browse pre-owned and brand-new phones and tablets. Order online for in-store pickup or local delivery in Roxas City.';
 $activePage      = $activePage      ?? '';
 ?>
 <!DOCTYPE html>

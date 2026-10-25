@@ -2,9 +2,9 @@
     'use strict';
 
     function conditionBadge(condition) {
-      const map = { 'Pre-owned': 'badge-preowned', 'Refurbished': 'badge-refurbished', 'Brand New': 'badge-available' };
-      const cls = map[condition] || 'badge-refurbished';
-      return '<span class="badge-ct ' + cls + '">' + (condition || 'Pre-owned') + '</span>';
+      const cond = (condition === 'Brand New') ? 'Brand New' : 'Pre-owned';
+      const cls = (cond === 'Brand New') ? 'badge-available' : 'badge-preowned';
+      return '<span class="badge-ct ' + cls + '">' + cond + '</span>';
     }
 
     function buildItemCard(item, index) {

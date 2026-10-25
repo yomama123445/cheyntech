@@ -215,12 +215,6 @@ require 'includes/header.php';
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="condRefurb" name="condition" value="refurbished">
-            <label class="form-check-label d-flex align-items-center justify-content-between" for="condRefurb">
-              <span>Refurbished</span>
-            </label>
-          </div>
-          <div class="form-check">
             <input class="form-check-input" type="checkbox" id="condNew" name="condition" value="brandnew">
             <label class="form-check-label d-flex align-items-center justify-content-between" for="condNew">
               <span>Brand New (Factory Sealed)</span>

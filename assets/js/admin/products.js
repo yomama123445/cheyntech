@@ -71,8 +71,7 @@ async function submitAdjustStock() {
 }
 
 function conditionBadge(cond) {
-  if (cond === 'Pre-owned')  return '<span class="badge-ct badge-preowned">Pre-owned</span>';
-  if (cond === 'Refurbished') return '<span class="badge-ct badge-refurbished">Refurbished</span>';
+  if (cond === 'Pre-owned' || cond === 'Refurbished') return '<span class="badge-ct badge-preowned">Pre-owned</span>';
   return '<span class="badge-ct badge-available">Brand New</span>';
 }
 

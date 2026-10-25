@@ -177,10 +177,8 @@
     if (trustNote) {
       if (product.condition === 'Brand New') {
         trustNote.innerHTML = 'Full function test passed — battery, screen, cameras, and all connectivity checked. <strong>7-day store replacement</strong> · Comes with charger and original box.';
-      } else if (product.condition === 'Refurbished') {
-        trustNote.innerHTML = 'Professionally refurbished — battery, screen, cameras, and ports all verified. <strong>7-day store replacement</strong> · Comes with a compatible charger.';
       } else {
-        trustNote.innerHTML = 'Function-tested by our team — screen, cameras, Face ID, and connectivity verified. <strong>7-day store replacement</strong> · Unit only; charger may not be included.';
+        trustNote.innerHTML = 'Function-tested by our team — screen, cameras, Face ID, and connectivity verified. <strong>7-day store replacement</strong> · Thoroughly inspected pre-owned unit.';
       }
     }
 

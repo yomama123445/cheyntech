@@ -139,8 +139,11 @@ if ($method === 'POST') {
         exit;
     }
 
+    if ($condition === 'Refurbished') {
+        $condition = 'Pre-owned';
+    }
     $dbCategory = mapCategoryToEnum($category, $condition);
-    $badgeClass = ($condition === 'Refurbished') ? 'badge-refurbished' : (($condition === 'Pre-owned') ? 'badge-preowned' : 'badge-available');
+    $badgeClass = ($condition === 'Brand New') ? 'badge-available' : 'badge-preowned';
 
     // Generate unique product and variant identifiers
     $cleanSlug  = strtolower((string)preg_replace('/[^a-zA-Z0-9]+/', '', $name));
@@ -277,10 +280,11 @@ if ($method === 'PUT') {
             $prodParams[] = $name;
         }
         if ($condition !== null) {
+            $effectiveCondition = ($condition === 'Refurbished') ? 'Pre-owned' : $condition;
             $prodFields[] = '`condition` = ?';
-            $prodParams[] = $condition;
+            $prodParams[] = $effectiveCondition;
             $prodFields[] = 'badge_class = ?';
-            $prodParams[] = ($condition === 'Refurbished') ? 'badge-refurbished' : (($condition === 'Pre-owned') ? 'badge-preowned' : 'badge-available');
+            $prodParams[] = ($effectiveCondition === 'Brand New') ? 'badge-available' : 'badge-preowned';
         }
         if ($desc !== null) {
             $prodFields[] = 'short_desc = ?';

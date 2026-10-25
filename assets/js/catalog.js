@@ -19,7 +19,7 @@ let activeFilters = {
   cats:     [],   // 'preowned' | 'new' | 'android' | 'tablet'
   variants: [],   // '64gb' | '128gb' | '256gb' | '512gb'
   colors:   [],   // 'space-gray' | 'silver' | 'midnight' | etc.
-  conds:    [],   // 'preowned' | 'refurbished' | 'brandnew'
+  conds:    [],   // 'preowned' | 'brandnew'
   priceMin: null, // number or null
   priceMax: null, // number or null
 };
@@ -83,10 +83,10 @@ function productCategories(p) {
 /** Normalise a condition string to the checkbox value format. */
 function conditionSlug(condition) {
   switch (condition) {
-    case 'Pre-owned':  return 'preowned';
-    case 'Refurbished': return 'refurbished';
-    case 'Brand New':  return 'brandnew';
-    default:           return condition.toLowerCase().replace(/[^a-z0-9]/g, '');
+    case 'Pre-owned':
+    case 'Refurbished': return 'preowned';
+    case 'Brand New':   return 'brandnew';
+    default:            return condition.toLowerCase().replace(/[^a-z0-9]/g, '');
   }
 }
 
@@ -186,7 +186,7 @@ function buildCardHTML(p) {
   const variant = defaultStorage.label;
   const color   = defaultColor.label;
   const imgSrc  = p.image ? (p.image.startsWith('/') ? p.image.substring(1) : p.image) : 'assets/products/placeholder.jpg';
-  const condText = p.condition === 'Brand New' ? 'Brand New Sealed' : (p.condition === 'Refurbished' ? 'Refurbished Grade A' : 'Grade A Pre-owned');
+  const condText = p.condition === 'Brand New' ? 'Brand New Sealed' : 'Grade A Pre-owned';
 
   return `
     <div class="col">
@@ -473,9 +473,8 @@ function extractFilterData(products) {
 
   // Extract conditions across all products
   const condDefinitions = [
-    { slug: 'preowned',    label: 'Pre-owned' },
-    { slug: 'refurbished', label: 'Refurbished' },
-    { slug: 'brandnew',    label: 'Brand New' }
+    { slug: 'preowned', label: 'Pre-owned' },
+    { slug: 'brandnew', label: 'Brand New' }
   ];
 
   const conditions = condDefinitions.map(def => {
@@ -713,7 +712,7 @@ function renderActiveTags() {
 
   // Human-readable label maps
   const catLabels  = { apple: 'Apple Tech', android: 'Android Phones', tablet: 'Tablets & iPads', wearable: 'Wearables', preowned: 'Pre-owned', new: 'Brand New' };
-  const condLabels = { preowned: 'Pre-owned', refurbished: 'Refurbished', brandnew: 'Brand New' };
+  const condLabels = { preowned: 'Pre-owned', brandnew: 'Brand New' };
 
   const tags = [];
 

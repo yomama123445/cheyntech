@@ -123,11 +123,11 @@ var CHEYN_PRODUCTS = [
   {
     id: 'iphone12pro',
     name: 'iPhone 12 Pro',
-    badge: 'badge-refurbished',
-    badgeLabel: 'Refurbished',
-    condition: 'Refurbished',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
     desc: 'Triple 12MP cameras with LiDAR · A14 Bionic · Surgical stainless steel',
-    fullDesc: 'Professionally refurbished iPhone 12 Pro. Fully restored, certified internal components, and polished stainless steel frame.',
+    fullDesc: 'Pre-owned iPhone 12 Pro in excellent condition. Fully tested internal components and polished stainless steel frame.',
     image: 'assets/img/iPhone_12.jpeg',
     storageOptions: [
       { label: '256GB', price: 29500, id: 'iphone12pro-256gb-graphite', stock: 2 }
@@ -144,7 +144,7 @@ var CHEYN_PRODUCTS = [
       'Rear Camera': 'Triple 12MP with LiDAR Scanner',
       'Front Camera': '12MP TrueDepth',
       Battery: '2,815 mAh',
-      Condition: 'Refurbished'
+      Condition: 'Pre-owned'
     }
   },
   {
@@ -205,11 +205,11 @@ var CHEYN_PRODUCTS = [
   {
     id: 'iphone13promax',
     name: 'iPhone 13 Pro Max',
-    badge: 'badge-refurbished',
-    badgeLabel: 'Refurbished',
-    condition: 'Refurbished',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
     desc: '120Hz ProMotion display · Pro camera system · Massive battery life',
-    fullDesc: 'Refurbished iPhone 13 Pro Max. Super-smooth 120Hz refresh rate, cinematic video, and exceptional battery runtime.',
+    fullDesc: 'Pre-owned iPhone 13 Pro Max. Super-smooth 120Hz refresh rate, cinematic video, and exceptional battery runtime.',
     image: 'assets/img/products/real/iphone_13_promax.webp',
     storageOptions: [
       { label: '256GB', price: 39500, id: 'iphone13promax-256gb-sierrablue', stock: 2 }
@@ -226,7 +226,7 @@ var CHEYN_PRODUCTS = [
       'Rear Camera': 'Triple 12MP Pro camera system',
       'Front Camera': '12MP TrueDepth',
       Battery: '4,352 mAh',
-      Condition: 'Refurbished'
+      Condition: 'Pre-owned'
     }
   },
   {
@@ -259,11 +259,11 @@ var CHEYN_PRODUCTS = [
   {
     id: 'iphone14promax',
     name: 'iPhone 14 Pro Max',
-    badge: 'badge-refurbished',
-    badgeLabel: 'Refurbished',
-    condition: 'Refurbished',
+    badge: 'badge-preowned',
+    badgeLabel: 'Pre-owned',
+    condition: 'Pre-owned',
     desc: 'Dynamic Island · 48MP main camera · Always-On display · A16 Bionic',
-    fullDesc: 'Refurbished iPhone 14 Pro Max with revolutionary Dynamic Island interface and 48MP photography.',
+    fullDesc: 'Pre-owned iPhone 14 Pro Max with revolutionary Dynamic Island interface and 48MP photography.',
     image: 'assets/img/products/real/iphone_14_promax.webp',
     storageOptions: [
       { label: '256GB', price: 48500, id: 'iphone14promax-256gb-deeppurple', stock: 1 }
@@ -280,7 +280,7 @@ var CHEYN_PRODUCTS = [
       'Rear Camera': '48MP Main + 12MP Ultra Wide + 12MP Telephoto',
       'Front Camera': '12MP TrueDepth',
       Battery: '4,323 mAh',
-      Condition: 'Refurbished'
+      Condition: 'Pre-owned'
     }
   },
   {
